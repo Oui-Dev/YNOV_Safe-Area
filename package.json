@@ -1,0 +1,17 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "autoprefixer": "latest",
+        "axios": "latest",
+        "laravel-vite-plugin": "latest",
+        "lodash": "latest",
+        "postcss": "latest",
+        "sass": "latest",
+        "tailwindcss": "latest",
+        "vite": "latest"
+    }
+}
