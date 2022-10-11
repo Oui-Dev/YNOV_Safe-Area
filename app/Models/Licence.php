@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use ESolution\DBEncryption\Traits\EncryptedAttribute;
 
 class Licence extends Model
 {
-    use HasFactory;
+    use HasFactory, EncryptedAttribute;
 
     protected $fillable = [
         'id',
@@ -38,4 +39,9 @@ class Licence extends Model
     public function is_private() {
         return $this->is_private;
     }
+
+    protected $encryptable = [
+        'title',
+        'description',
+    ];
 }

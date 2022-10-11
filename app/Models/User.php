@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use ESolution\DBEncryption\Traits\EncryptedAttribute;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, EncryptedAttribute;
 
     /**
      * The attributes that are mass assignable.
@@ -64,8 +65,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'sex',
+        'firstname',
+        'lastname',
+        'personal_email',
+        'professional_email',
+        'phone',
     ];
 
     /**
@@ -75,5 +80,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $encryptable = [
+        'label',
     ];
 }

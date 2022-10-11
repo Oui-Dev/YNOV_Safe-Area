@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use ESolution\DBEncryption\Traits\EncryptedAttribute;
 
 class Version extends Model
 {
-    use HasFactory;
+    use HasFactory, EncryptedAttribute;
 
     protected $fillable = [
         'id',
@@ -28,4 +29,9 @@ class Version extends Model
     {
         return Version::where('archived_at',null)->first();
     }
+
+    protected $hidden = [
+        'name',
+        'changelog',
+    ];
 }
