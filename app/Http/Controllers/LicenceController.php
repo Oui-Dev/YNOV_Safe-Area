@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Licence;
 use App\Http\Requests\StoreLicenceRequest;
 use App\Http\Requests\UpdateLicenceRequest;
+use Illuminate\Http\Request;
 
 class LicenceController extends Controller
 {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Version;
 use App\Http\Requests\StoreVersionRequest;
 use App\Http\Requests\UpdateVersionRequest;
+use Illuminate\Http\Request;
 
 class VersionController extends Controller
 {
