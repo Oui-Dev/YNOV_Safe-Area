@@ -407,7 +407,6 @@
 {{--                            More</a>--}}
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -646,6 +645,10 @@
     <!-- End Pricing Section -->
 
     <footer class="px-4 pt-12 pb-8 text-white bg-white border-t border-gray-200">
+        <p class="mt-6 mr-4 text-base text-gray-500 text-center mt-2" title="{{$version->changelog}}">
+            Version {{$version->name}} ({{$version->generation}}.{{$version->revision}}.{{$version->correction}})
+            {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y H:i')}}
+        </p>
         <div class="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
             <div class="w-full pl-12 mr-4 text-left lg:w-1/4 sm:text-center sm:pl-0 lg:text-left">
                 <a href="/"
