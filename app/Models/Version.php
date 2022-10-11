@@ -30,7 +30,7 @@ class Version extends Model
         return Version::where('archived_at',null)->first();
     }
 
-    protected $hidden = [
+    protected $encryptable = [
         'name',
         'changelog',
     ];
