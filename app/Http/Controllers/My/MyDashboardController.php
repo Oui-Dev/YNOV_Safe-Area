@@ -5,11 +5,11 @@ namespace App\Http\Controllers\My;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class MyDashboardController extends Controller
 {
     public function index() {
-        return inertia('Dashboard/Index', [
-            'pageName' => 'Dashboard',
+        return inertia('My/Index', [
+            'pageName' => 'My',
         ]);
     }
 }
