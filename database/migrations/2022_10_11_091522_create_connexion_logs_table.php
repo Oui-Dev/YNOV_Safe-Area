@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText('domain');
             $table->enum('status', ['connexion', 'deconnexion']);
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->ipAddress('ip_address');
+            $table->ipAddress('ip_address')->nullable();
             $table->longText('user_agent');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

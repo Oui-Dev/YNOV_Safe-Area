@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (Request $request) {
-    app('App\Http\Controllers\ActivityLogController')->create($request, 'log', 'NO', 'Log de test');
+//    app('App\Http\Controllers\ActivityLogController')->create($request, 'log', 'NO', 'Log de test');
     return view('welcome');
 });
