@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StaticViewController;
+use App\Http\Controllers\My\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +14,4 @@ use App\Http\Controllers\StaticViewController;
 |
 */
 
-Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
