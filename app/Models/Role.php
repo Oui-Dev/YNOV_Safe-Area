@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use ESolution\DBEncryption\Traits\EncryptedAttribute;
 
 class Role extends Model
 {
-    use HasFactory;
+    use HasFactory,EncryptedAttribute;
 
     protected $fillable = [
         'id',
@@ -23,4 +24,8 @@ class Role extends Model
     public function users() {
         return $this->belongsToMany(User::class, 'role_user');
     }
+
+    protected $encryptable = [
+        'label',
+    ];
 }

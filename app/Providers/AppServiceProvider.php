@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Version;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Auth\Guard;
@@ -27,17 +28,17 @@ class AppServiceProvider extends ServiceProvider
     {
         Carbon::setLocale('fr');
         setlocale(LC_TIME, 'French');
-        // view()->composer('*', function ($view) use ($auth) {
-        //     $view->with('user', $auth->user());
+         view()->composer('*', function ($view) use ($auth) {
+             $view->with('user', $auth->user());
 
-        //     $x_categories = Categorie::where('archived_at',null)->where('societe_id',1)->get();
-        //     $view->with('x_categories', $x_categories);
+//             $x_categories = Categorie::where('archived_at',null)->where('societe_id',1)->get();
+//             $view->with('x_categories', $x_categories);
 
-        //     $version = new Version();
-        //     if(!empty($version->active()))
-        //     {
-        //         $view->with('version', $version->active());
-        //     }
-        // });
+             $version = new Version();
+             if(!empty($version->active()))
+             {
+                 $view->with('version', $version->active());
+             }
+         });
     }
 }
