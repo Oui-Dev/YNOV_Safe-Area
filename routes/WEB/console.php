@@ -14,4 +14,4 @@ use App\Http\Controllers\Console\ConsoleDashboardController;
 |
 */
 
-Route::get('/', [ConsoleDashboardController::class, 'index'])->name('ConsoleIndex');
+Route::get('/', [ConsoleDashboardController::class, 'index'])->name('console.public.index');

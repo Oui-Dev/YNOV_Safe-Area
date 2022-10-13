@@ -14,4 +14,4 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 |
 */
 
-Route::get('/', [AdminDashboardController::class, 'index'])->name('AdminIndex');
+Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.public.index');

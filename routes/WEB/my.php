@@ -14,4 +14,4 @@ use App\Http\Controllers\My\MyDashboardController;
 |
 */
 
-Route::get('/', [MyDashboardController::class, 'index'])->name('MyIndex');
+Route::get('/', [MyDashboardController::class, 'index'])->name('my.public.index');

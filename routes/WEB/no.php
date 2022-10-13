@@ -16,4 +16,4 @@ use App\Http\Controllers\No\StaticViewController;
 |
 */
 
-Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
+Route::get('/', [StaticViewController::class, 'homepage'])->name('no.public.index');
