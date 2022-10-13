@@ -40,7 +40,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('category_supports');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('observator_id')->references('id')->on('users');
             $table->foreign('attributed_to')->references('id')->on('users');
