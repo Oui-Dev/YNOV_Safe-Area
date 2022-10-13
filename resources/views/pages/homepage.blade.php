@@ -21,7 +21,7 @@
                 <div class="flex-col hidden mt-12 sm:flex lg:mt-24">
                     <p class="mb-4 text-sm font-medium tracking-widest text-gray-500 uppercase">Ils nous font confiance</p>
                     <div class="flex">
-                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-gray-600"
+                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-red-700"
                             viewBox="0 0 2499 1037" xmlns="http://www.w3.org/2000/svg">
                             <g stroke="none" stroke-width="1">
                                 <g>
@@ -30,7 +30,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-gray-600"
+                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-red-700"
                             viewBox="0 0 2350 2315" xmlns="http://www.w3.org/2000/svg">
                             <g stroke="none" stroke-width="1"></g>
                             <g>
@@ -39,7 +39,7 @@
                             </g>
                             </g>
                         </svg>
-                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-gray-600"
+                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-red-700"
                             viewBox="0 0 2500 2158" xmlns="http://www.w3.org/2000/svg">
                             <g stroke="none" stroke-width="1">
                                 <g transform="translate(-.157)">
@@ -48,7 +48,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-gray-600"
+                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-red-700"
                             viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
                             <g stroke="none" stroke-width="1">
                                 <g transform="translate(-401 -701)">
@@ -65,7 +65,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-gray-600"
+                        <svg class="h-8 mr-4 text-gray-500 duration-150 cursor-pointer fill-current transition-color hover:text-red-700"
                             viewBox="0 0 1681 417" xmlns="http://www.w3.org/2000/svg">
                             <g stroke="none" stroke-width="1">
                                 <g>
@@ -119,8 +119,7 @@
             <h2 class="my-5 text-base font-medium tracking-tight text-indigo-500 uppercase">Le projet</h2>
             <h3
                 class="max-w-2xl px-5 mt-2 text-3xl font-black leading-tight text-center text-gray-900 sm:mt-0 sm:px-0 sm:text-6xl">
-                Développé pour sécuriser vos collaborateurs
-            </h3>
+
             <div class="flex flex-col w-full mt-0 lg:flex-row sm:mt-10 lg:mt-20">
 
                 <div class="w-full max-w-md p-4 mx-auto mb-0 sm:mb-16 lg:mb-0 lg:w-1/3">
