@@ -9,7 +9,7 @@ export default defineConfig({
             input: [
                 'resources/scss/app.scss',
                 'resources/js/app.js',
-                'ressources/js/inertia.js',
+                'resources/js/inertia.js',
             ],
             refresh: true,
         }),
