@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Safe Area</title>
+        <title>My Safe Area</title>
 
 
         <!-- Fonts -->
@@ -15,9 +15,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
+        @routes
         @vite(['resources/scss/app.scss', 'resources/js/app.js', 'resources/js/inertia.js'])
         @inertiaHead
-        @routes
     </head>
     <body class="overflow-x-hidden antialiased">
         @inertia

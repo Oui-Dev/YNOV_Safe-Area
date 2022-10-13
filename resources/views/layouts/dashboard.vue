@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-full">
-        <DashboardNavigation />
+        <DashboardNavbar />
         <div class="py-10">
             <header v-if="pageName">
                 <div class="page-container">
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import DashboardNavigation from "../components/dashboardNavbar.vue";
+import DashboardNavbar from "../components/dashboardNavbar.vue";
 
 export default {
     components: {
-        DashboardNavigation,
+        DashboardNavbar,
     },
     props: {
         pageName: String,

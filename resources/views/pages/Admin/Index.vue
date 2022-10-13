@@ -1,6 +1,6 @@
 <template>
     <div>
-        Test dashboard
+        Test ADMIN vue.js
     </div>
 </template>
 
