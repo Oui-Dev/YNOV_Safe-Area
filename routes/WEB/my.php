@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\My\MyDashboardController;
+use App\Http\Controllers\My\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +14,4 @@ use App\Http\Controllers\My\MyDashboardController;
 |
 */
 
-Route::get('/', [MyDashboardController::class, 'index'])->name('my.public.index');
+Route::get('/', [DashboardController::class, 'index'])->name('my.public.index');

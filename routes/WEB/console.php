@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Console\ConsoleDashboardController;
+use App\Http\Controllers\Console\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +14,4 @@ use App\Http\Controllers\Console\ConsoleDashboardController;
 |
 */
 
-Route::get('/', [ConsoleDashboardController::class, 'index'])->name('console.public.index');
+Route::get('/', [DashboardController::class, 'index'])->name('console.public.index');
