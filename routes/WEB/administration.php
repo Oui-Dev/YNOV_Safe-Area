@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +14,4 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 |
 */
 
-Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.public.index');
+Route::get('/', [DashboardController::class, 'index'])->name('admin.public.index');
