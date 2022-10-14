@@ -1,4 +1,4 @@
-<header class="relative z-50 w-full h-24">
+<header class="relative z-50 w-full h-20 overflow-y-clip">
     <div
         class="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
 
