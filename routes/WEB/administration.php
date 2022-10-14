@@ -18,5 +18,5 @@ Route::group([
     'as' => "admin.",
     'middleware' => 'role:admin'
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('public.index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 });

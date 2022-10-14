@@ -20,5 +20,12 @@ use App\Http\Controllers\TempController;
 Route::group([
     'as' => "no."
 ], function () {
-    Route::get('/', [StaticViewController::class, 'homepage'])->name('public.index');
+    Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
+});
+
+Route::group([
+    'middleware' => 'guest'
+], function () {
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 });
