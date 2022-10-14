@@ -15,7 +15,7 @@ on:
       - fix/*
 
 jobs:
-  pre-build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,7 +27,7 @@ jobs:
       - run: npm install
       - run: npm run build
 
-  laravel-tests:
+  tests:
     runs-on: ubuntu-latest
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
@@ -57,14 +57,3 @@ jobs:
       run: php artisan migrate:fresh --seed
     - name: Ziggy generate
       run: php artisan ziggy:generate
-
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
-      - run: npm run build
