@@ -10,8 +10,15 @@
         "laravel-vite-plugin": "latest",
         "lodash": "latest",
         "postcss": "latest",
-        "sass": "latest",
         "tailwindcss": "latest",
         "vite": "latest"
+    },
+    "dependencies": {
+        "@inertiajs/inertia": "latest",
+        "@inertiajs/inertia-vue3": "latest",
+        "@inertiajs/progress": "latest",
+        "@vitejs/plugin-vue": "latest",
+        "sass": "latest",
+        "vue": "latest"
     }
 }

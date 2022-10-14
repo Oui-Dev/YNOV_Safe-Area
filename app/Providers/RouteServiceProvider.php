@@ -32,33 +32,33 @@ class RouteServiceProvider extends ServiceProvider
 
             // Routes for landing pages => safearea.ml
             Route::domain(config('app.domain'))
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/WEB/no.php'));
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/WEB/no.php'));
 
-            // Routes for Client => my.safearea.ml
+            // Routes for client => my.safearea.ml
             Route::domain('my.' . config('app.domain'))
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/WEB/client.php'));
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/WEB/my.php'));
 
             // Routes for Administration => admin.safearea.ml
             Route::domain('admin.' . config('app.domain'))
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/WEB/administration.php'));
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/WEB/administration.php'));
 
             // Routes for Console => console.safearea.ml
             Route::domain('console.' . config('app.domain'))
-            ->middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/WEB/console.php'));
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/WEB/console.php'));
 
             // Routes for API => api.safearea.ml
             Route::domain('api.' . config('app.domain'))
-            ->middleware('api')
-            ->prefix('/v1')
-            ->group(base_path('routes/api.php'));
+                ->middleware('api')
+                ->prefix('/v1')
+                ->group(base_path('routes/api.php'));
         });
     }
 
