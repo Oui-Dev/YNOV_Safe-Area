@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "blade-ui-kit/blade-ui-kit": "^0.3.4",
         "elgibor-solution/laravel-database-encryption": "^1.1",
         "getsolaris/laravel-make-service": "^1.1",
         "guzzlehttp/guzzle": "^7.2",
