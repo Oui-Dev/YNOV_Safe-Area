@@ -13,6 +13,9 @@
                 <p class="pr-0 mb-8 text-base text-gray-600 sm:text-lg xl:text-xl lg:pr-20">
                     Sécurisez l'environnement de vos collaborateurs pour améliorer leurs efficience
                 </p>
+                <a href="/safe-area.apk" class="relative self-start inline-block w-auto px-8 py-4 mx-auto mt-0  sm:mt-1 lg:mx-0">
+                    <img src="https://help.shahid.mbc.net/servlet/rtaImage?eid=ka04K000000lRwG&feoid=00N4K00000AMyVI&refid=0EM4K000001hOr2" alt="Télécharger l'application Android" srcset="https://help.shahid.mbc.net/servlet/rtaImage?eid=ka04K000000lRwG&feoid=00N4K00000AMyVI&refid=0EM4K000001hOr2">
+                </a>
                 <a href="#pricing"
                     class="relative self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-indigo-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">
                     Voir les licences
