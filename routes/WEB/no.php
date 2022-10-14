@@ -22,12 +22,13 @@ Route::group([
     'as' => "no."
 ], function () {
     Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
+    Route::get('changelog', [StaticViewController::class, 'changelog'])->name('changelog');
 });
 
 Route::group([
     'middleware' => 'guest'
 ], function () {
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
-    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
+    // Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    // Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 });
 Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

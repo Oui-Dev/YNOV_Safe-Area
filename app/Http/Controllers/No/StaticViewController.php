@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 class StaticViewController extends Controller
 {
     // Homepage
-    public function homepage(){
+    public function homepage()
+    {
         return view('pages/homepage');
+    }
+
+    // Changelog
+    public function changelog()
+    {
+        return view('pages/changelog');
     }
 }
