@@ -2,14 +2,6 @@
 
 @section('content')
 <section id="login">
-    <!--
-      This example requires updating your template:
-  
-      ```
-      <html class="h-full bg-white">
-      <body class="h-full">
-      ```
-    -->
     <div class="flex min-h-full max-h">
       <div class="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div class="mx-auto w-full max-w-sm lg:w-96">
@@ -21,9 +13,9 @@
             <div class="mt-6">
               <x-form action="#" method="POST" class="space-y-6">
                 <div>
-                  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <label for="identifiant" class="block text-sm font-medium text-gray-700">Identifiant</label>
                   <div class="mt-1">
-                    <input id="email" name="email" type="email" autocomplete="email" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm" />
+                    <input id="identifiant" name="identifiant" autocomplete="identifiant" required="" class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm sm:text-sm" />
                   </div>
                 </div>
   
@@ -47,6 +39,12 @@
   
                 <div>
                   <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-blue py-2 px-4 text-sm font-medium text-white shadow-sm">Connexion</button>
+                </div>
+
+                <div class="mt-4 text-red">
+                  @foreach ($errors->all() as $error)
+                      <span>{{ $error }}</span>
+                  @endforeach
                 </div>
               </x-form>
             </div>
