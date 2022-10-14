@@ -46,14 +46,14 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
     - name: Optimize artisan
       run: php artisan optimize:clear
     - name: Migration
       run: php artisan migrate:fresh --seed
     - name: Ziggy generate
       run: php artisan ziggy:generate
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      run: vendor/bin/phpunit
