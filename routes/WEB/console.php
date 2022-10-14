@@ -14,4 +14,8 @@ use App\Http\Controllers\Console\DashboardController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('console.public.index');
+Route::group([
+    'as' => "console."
+], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('public.index');
+});

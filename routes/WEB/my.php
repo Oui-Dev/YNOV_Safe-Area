@@ -14,4 +14,8 @@ use App\Http\Controllers\My\DashboardController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('my.public.index');
+Route::group([
+    'as' => "my."
+], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('public.index');
+});

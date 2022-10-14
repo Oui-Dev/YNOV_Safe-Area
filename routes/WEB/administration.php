@@ -14,4 +14,8 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('admin.public.index');
+Route::group([
+    'as' => "admin."
+], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('public.index');
+});
