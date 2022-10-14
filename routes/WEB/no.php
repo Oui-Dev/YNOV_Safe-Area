@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\No\StaticViewController;
+use App\Http\Controllers\TempController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,12 @@ use App\Http\Controllers\No\StaticViewController;
 Route::group([
     'as' => "no."
 ], function () {
-    Route::get('/', [StaticViewController::class, 'homepage'])->name('public.index');
+    Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
+});
+
+Route::group([
+    'middleware' => 'guest'
+], function () {
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 });
