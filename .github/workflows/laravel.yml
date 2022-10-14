@@ -33,10 +33,11 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_DATABASE: safe_area_db
-          MYSQL_USER: admin
-          MYSQL_PASSWORD: Azerty@123
-          MYSQL_ROOT_PASSWORD: Azerty@123
+          MYSQL_DATABASE: ${{ env.DB_DATABASE }}
+          MYSQL_USER: ${{ env.DB_USER }}
+          MYSQL_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_ROOT_USER: ${{ env.DB_USER }}
         ports:
           - 3306
     steps:
