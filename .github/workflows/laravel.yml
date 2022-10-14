@@ -37,7 +37,7 @@ jobs:
           MYSQL_USER: admin
           MYSQL_PASSWORD: Azerty@123
           MYSQL_ROOT_PASSWORD: Azerty@123
-        port:
+        ports:
           - 3306
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
