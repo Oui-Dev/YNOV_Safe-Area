@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\No\StaticViewController;
+use App\Http\Controllers\TempController;
 
 /*
 |--------------------------------------------------------------------------
