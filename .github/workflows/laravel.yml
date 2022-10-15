@@ -34,8 +34,8 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_HOST: localhost
-          MYSQL_DATABASE: ${{ env.DB_DATABASE }}
-          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_DATABASE: safe_area_db
+          MYSQL_ROOT_PASSWORD: Azerty@123
           MYSQL_ROOT_USER: root
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         ports:
@@ -56,7 +56,7 @@ jobs:
     - name: Start Mysql
       run: sudo /etc/init.d/mysql start
     - name: Create Database
-      run: mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -h 127.0.0.1 -uroot --port=${{ job.services.mysql.ports[3306] }} -pAzerty@123
+      run: mysql -e 'CREATE DATABASE safe_area_db;' -h 127.0.0.1 -uroot --port=${{ job.services.mysql.ports[3306] }} -pAzerty@123
     - name: Optimize artisan
       run: php artisan optimize:clear
     - name: Migration
