@@ -42,6 +42,7 @@ jobs:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         ports:
           - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -50,7 +51,7 @@ jobs:
     - name: Start Mysql
       run: sudo /etc/init.d/mysql start
     - name: Verify MySQL connection
-      run: mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -pAzerty@123 -e "SHOW DATABASES" 
+      run: mysql -h127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -pAzerty@123 -e "SHOW DATABASES" 
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
@@ -60,7 +61,7 @@ jobs:
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
-      run: mysql -e 'CREATE DATABASE safe_area_db;' -h 127.0.0.1 -uroot --port=${{ job.services.mysql.ports[3306] }} -pAzerty@123
+      run: mysql -e 'CREATE DATABASE safe_area_db;' -h127.0.0.1 -uroot --port=${{ job.services.mysql.ports[3306] }} -pAzerty@123
     - name: Optimize artisan
       run: php artisan optimize:clear
     - name: Migration
