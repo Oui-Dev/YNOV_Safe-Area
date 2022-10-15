@@ -41,7 +41,11 @@ jobs:
           MYSQL_ROOT_USER: root
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         ports:
-          - 3306:3306
+          - '3306:3306'
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      steps:
+        - uses: actions/checkout@v1
+        - run: mysql -h 127.0.0.1 -u root -pAzerty@123 --port=--port=${{ job.services.mysql.ports[3306] }} -e 'CREATE DATABASE IF NOT EXISTS safe_area_db;'
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -57,8 +61,8 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Start Mysql
       run: sudo /etc/init.d/mysql start
-    - name: Create Database
-      run: mysql -e 'CREATE DATABASE safe_area_db;' -h 127.0.0.1 -uroot --port=${{ job.services.mysql.ports[3306] }} -pAzerty@123
+#    - name: Create Database
+#      run: mysql -e 'CREATE DATABASE safe_area_db;' -h 127.0.0.1 -uroot --port=${{ job.services.mysql.ports[3306] }} -pAzerty@123
     - name: Optimize artisan
       run: php artisan optimize:clear
     - name: Migration
