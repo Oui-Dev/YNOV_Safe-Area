@@ -57,7 +57,7 @@ jobs:
     - name: Start Mysql
       run: sudo /etc/init.d/mysql start
     - name: Create Database
-      run: mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -h 127.0.0.1 -u${{ env.DB_USER }} --port${{ job.services.mysql.ports[3306] }} -p${{ env.DB_PASSWORD }}
+      run: mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -h 127.0.0.1 -u${{ job.services.mysql.ports[MYSQL_USER] }} --port${{ job.services.mysql.ports[3306] }} -p${{ job.services.mysql.ports[MYSQL_PASSWORD] }}
     - name: Optimize artisan
       run: php artisan optimize:clear
     - name: Migration
