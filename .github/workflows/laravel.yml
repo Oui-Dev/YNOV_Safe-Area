@@ -35,6 +35,8 @@ jobs:
         env:
           MYSQL_HOST: localhost
           MYSQL_DATABASE: safe_area_db
+          MYSQL_USER: root
+          MYSQL_PASSWORD: Azerty@123
           MYSQL_ROOT_PASSWORD: Azerty@123
           MYSQL_ROOT_USER: root
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
