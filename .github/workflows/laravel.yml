@@ -51,7 +51,7 @@ jobs:
     - name: Start Mysql
       run: sudo /etc/init.d/mysql start
     - name: Init database
-      run: mysql -h 127.0.0.1 -u root -pAzerty@123 --port=--port=${{ job.services.mysql.ports[3306] }} -e 'CREATE DATABASE IF NOT EXISTS safe_area_db;'
+      run: mysql -h 127.0.0.1 -u root -pAzerty@123 --port=${{ job.services.mysql.ports[3306] }} -e 'CREATE DATABASE IF NOT EXISTS safe_area_db;'
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
