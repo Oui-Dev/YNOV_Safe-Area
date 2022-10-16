@@ -22,7 +22,7 @@ Route::group([
     'as' => "no."
 ], function () {
     Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
-    Route::get('changelog', [StaticViewController::class, 'changelog'])->name('changelog');
+    Route::get('/changelog', [StaticViewController::class, 'showChangelog'])->name('no.public.versions.index');
 });
 
 Route::group([

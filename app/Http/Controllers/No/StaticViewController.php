@@ -15,7 +15,7 @@ class StaticViewController extends Controller
     }
 
     // Changelog
-    public function changelog()
+    public function showChangelog()
     {
         $versions = Version::get();
         return view('pages/No/changelog', ['versions' => $versions]);
