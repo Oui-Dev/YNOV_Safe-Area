@@ -1,4 +1,4 @@
-name: Safe-Area
+name: Tests & Build
 on:
   push:
     branches:
