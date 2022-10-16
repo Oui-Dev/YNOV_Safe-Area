@@ -35,16 +35,13 @@ jobs:
         image: mysql:8.0
         ports:
           - 3306:3306
-        environment:
+        env:
           - MYSQL_DATABASE=${DB_DATABASE}  // from .env file
           - MYSQL_USER=${DB_USERNAME}  // from .env file
           - MYSQL_PASSWORD=${DB_PASSWORD}  // from .env file
           - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}  // from .env file
           - DB_PORT=${{ job.services.mysql.ports[3306] }}
-        env:
-          MYSQL_ROOT_PASSWORD: Azerty@123
-          MYSQL_DATABASE: safe_area_db
-          MYSQL_ROOT_USER: admin
+          - MYSQL_ROOT_USER=${DB_USERNAME}
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
