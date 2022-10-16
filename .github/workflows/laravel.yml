@@ -46,7 +46,7 @@ jobs:
 
     steps:
       - name: Init database
-        run: mysql -uroot -pAzerty@123 -host=mysql --port=${{ job.services.mysql.ports[3306] }} -e 'CREATE DATABASE IF NOT EXISTS safe_area_db;'
+        run: mysql -uroot -pAzerty@123 -host=127.0.0.1 --port=${{ job.services.mysql.ports[3306] }} -e 'CREATE DATABASE IF NOT EXISTS safe_area_db;'
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
         with:
           php-version: '8.1'
