@@ -39,10 +39,6 @@ class User extends Authenticatable
         'updated_at',
     ];
 
-    public function roles() {
-        return $this->belongsToMany(Role::class, 'role_user')->using(RoleUser::class);
-    }
-
     public function company() {
         return $this->belongsTo(Company::class, 'compagny_id');
     }

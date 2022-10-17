@@ -3,7 +3,6 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "prepare": "husky install"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.3",
@@ -13,8 +12,7 @@
         "lodash": "latest",
         "postcss": "latest",
         "tailwindcss": "latest",
-        "vite": "latest",
-        "husky": "latest"
+        "vite": "latest"
     },
     "dependencies": {
         "@inertiajs/inertia": "latest",
@@ -23,8 +21,5 @@
         "@vitejs/plugin-vue": "latest",
         "sass": "latest",
         "vue": "latest"
-    },
-    "lint-staged": {
-        "**/*.php": "./vendor/bin/pint"
     }
 }
