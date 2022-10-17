@@ -16,7 +16,7 @@ use App\Http\Controllers\My\DashboardController;
 
 Route::group([
     'as' => "my.",
-    'middleware' => 'role:my'
+    'middleware' => ['permission:my_access|admin_access|root']
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
