@@ -33,7 +33,8 @@ class UserSeeder extends Seeder
             'identifiant'=>'admin',
             'password'=>Hash::make('Azerty@123'),
         ])->id;
-        $user = User::find($id);
-        $user->roles()->attach(Role::first()->id);
+
+//        $user = User::find($id);
+//        $user->roles()->attach(Role::first()->id);
     }
 }

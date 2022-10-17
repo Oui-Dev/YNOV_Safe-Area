@@ -8,10 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use ESolution\DBEncryption\Traits\EncryptedAttribute;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, EncryptedAttribute;
+    use HasApiTokens, HasFactory, Notifiable, EncryptedAttribute, HasRoles;
 
     /**
      * The attributes that are mass assignable.

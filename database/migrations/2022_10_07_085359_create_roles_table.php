@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('compagny_id')->nullable();
-            $table->string('label');
-            $table->timestamp('is_system')->default(null)->nullable();
-            $table->timestamp('archived_at')->nullable();
-            $table->timestamps();
-            $table->foreign('compagny_id')->references('id')->on('companies');
-        });
+//        Schema::create('roles', function (Blueprint $table) {
+//            $table->id();
+//            $table->unsignedBigInteger('compagny_id')->nullable();
+//            $table->string('label');
+//            $table->timestamp('is_system')->default(null)->nullable();
+//            $table->timestamp('archived_at')->nullable();
+//            $table->timestamps();
+//            $table->foreign('compagny_id')->references('id')->on('companies');
+//        });
     }
 
     /**
