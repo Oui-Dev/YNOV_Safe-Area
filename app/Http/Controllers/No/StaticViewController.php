@@ -9,6 +9,6 @@ class StaticViewController extends Controller
 {
     // Homepage
     public function homepage(){
-        return view('pages/homepage');
+        return view('pages/no/homepage');
     }
 }

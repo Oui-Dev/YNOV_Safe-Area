@@ -1,5 +1,3 @@
-@use "import.scss";
-
 :root {
     --colors-blue: #3F459D;
     --colors-red: #A7296E;
@@ -11,24 +9,10 @@
     --colors-white-rgb: 222,222,222;
 }
 
-@media(max-width:1520px) {
-    .left-svg {
-        display: none;
-    }
+.bg-primary .border-primary {
+    color: #3F459D;
 }
 
-/* small css for the mobile nav close */
-#nav-mobile-btn.close span {
-    &:first-child {
-    transform: rotate(45deg);
-    top: 4px;
-    position: relative;
-    background: #a0aec0;
-    }
-
-    &:nth-child(2) {
-        transform: rotate(-45deg);
-        margin-top: 0px;
-        background: #a0aec0;
-    }
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

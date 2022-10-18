@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index() {
-        return inertia('My/Index', [
-            'pageName' => 'My',
+        return inertia('my/Index', [
+            'pageName' => 'my',
         ]);
     }
 }

@@ -11,6 +11,7 @@
         "laravel-vite-plugin": "latest",
         "lodash": "latest",
         "postcss": "latest",
+        "postcss-cli": "^9.1.0",
         "tailwindcss": "latest",
         "vite": "latest"
     },
@@ -20,6 +21,10 @@
         "@inertiajs/progress": "latest",
         "@vitejs/plugin-vue": "latest",
         "sass": "latest",
-        "vue": "latest"
+        "vue": "latest",
+        "cli": "^1.0.1",
+        "highlight.js": "^11.4.0",
+        "tailwindcss-transforms": "^2.2.0",
+        "tailgrids": "latest"
     }
 }
