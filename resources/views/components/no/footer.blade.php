@@ -8,7 +8,7 @@
                         class="mb-6 inline-block max-w-[160px]"
                     >
                         <img
-                            src="assets/images/logo/logo.svg"
+                            src="{{Vite::asset('resources/images/safe_area_logo.png')}}"
                             alt="logo"
                             class="max-w-full"
                         />
@@ -285,5 +285,6 @@
         </span>
     </div>
 </footer>
+
 </body>
 </html>
