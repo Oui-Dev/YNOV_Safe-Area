@@ -22,13 +22,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link
         rel="shortcut icon"
-        href="assets/images/favicon.svg"
+        href="{{Vite::asset('resources/images/safe_area_logo.png')}}"
         type="image/x-icon"
     />
     <!-- Scripts -->
 
-    <link rel="stylesheet" href="assets/css/tailwind.css" />
-    @vite(['resources/scss/landing.scss', 'resources/js/app.js', 'resources/js/landing/alpine.min.js'])
+    @vite(['resources/scss/landing/app.scss', 'resources/js/app.js', 'resources/js/landing/alpine.min.js'])
 </head>
 <body class="overflow-x-hidden antialiased">
 

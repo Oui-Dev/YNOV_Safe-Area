@@ -71,7 +71,7 @@
                 </div>
                 <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
                     <a
-                        href="javascript:void(0)"
+                        href="{{route('my.index')}}"
                         class="py-3 px-7 text-base font-medium text-dark hover:text-primary"
                     >
                         Login

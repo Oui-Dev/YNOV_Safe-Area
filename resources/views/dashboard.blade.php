@@ -16,7 +16,7 @@
 
         <!-- Scripts -->
         @routes
-        @vite(['resources/scss/app.scss', 'resources/js/app.js', 'resources/js/inertia.js'])
+        @vite(['resources/scss/crm/app.scss', 'resources/js/crm/app.js', 'resources/js/inertia.js'])
         @inertiaHead
     </head>
     <body class="overflow-x-hidden antialiased">

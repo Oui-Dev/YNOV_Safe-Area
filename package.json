@@ -25,6 +25,15 @@
         "cli": "^1.0.1",
         "highlight.js": "^11.4.0",
         "tailwindcss-transforms": "^2.2.0",
-        "tailgrids": "latest"
+        "tailgrids": "latest",
+        "@fullcalendar/core": "5.10.0",
+        "@fullcalendar/daygrid": "5.10.0",
+        "@fullcalendar/interaction": "5.10.0",
+        "@popperjs/core": "2.10.2",
+        "apexcharts": "3.29.0",
+        "flowbite": "1.4.1",
+        "prismjs": "1.25.0",
+        "sortablejs": "1.14.0",
+        "svgmap": "2.7.1"
     }
 }

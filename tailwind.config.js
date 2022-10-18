@@ -14,5 +14,6 @@ module.exports = {
   plugins: [
     require("tailgrids/plugin"),
     require('@tailwindcss/forms'),
+    require("flowbite/plugin"),
   ],
 }

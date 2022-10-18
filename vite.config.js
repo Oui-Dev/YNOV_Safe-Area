@@ -7,11 +7,12 @@ export default defineConfig({
         vue(),
         laravel({
             input: [
-                'resources/scss/app.scss',
-                'resources/scss/landing.scss',
+                'resources/scss/landing/app.scss',
+                'resources/scss/crm/app.scss',
+                'resources/js/crm/app.js',
                 'resources/js/app.js',
-                'resources/js/inertia.js',
                 'resources/js/landing/alpine.min.js',
+                'resources/js/inertia.js',
             ],
             refresh: true,
         }),
