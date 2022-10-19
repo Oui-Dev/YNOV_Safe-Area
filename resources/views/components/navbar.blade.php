@@ -1,25 +1,25 @@
 <header class="relative z-50 w-full h-20 overflow-y-clip">
-    <div
-        class="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
+    <div class="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
 
         <a href="/" class="relative flex items-center inline-block h-5 h-full font-black leading-none">
-            <img src="{{Vite::asset('resources/images/safe_area_logo.png')}}" alt="Logo Safe Area">
+            <img src="{{ Vite::asset('resources/images/safe_area_logo.png') }}" alt="Logo Safe Area">
         </a>
 
         <nav id="nav"
             class="absolute top-0 left-0 z-50 flex flex-col items-center justify-between hidden w-full h-64 pt-5 mt-24 text-sm text-gray-800 bg-white border-t border-gray-200 md:w-auto md:flex-row md:h-24 lg:text-base md:bg-transparent md:mt-0 md:border-none md:py-0 md:flex md:relative">
             <a href="#"
-                class="ml-0 mr-0 font-bold duration-100 md:ml-12 md:mr-3 lg:mr-8 transition-color hover:text-blue">Accueil</a>
+                class="ml-0 mr-0 font-bold duration-100 md:ml-12 md:mr-3 lg:mr-8 transition-color hover:text-safearea-blue">Accueil</a>
             <a href="#features"
-                class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-blue">Le projet</a>
+                class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-safearea-blue">Le
+                projet</a>
             <a href="#testimonials"
-            class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-blue">Notre équipe</a>
-            <a href="#pricing"
-                class="font-bold duration-100 transition-color hover:text-blue">Licences</a>
+                class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-safearea-blue">Notre
+                équipe</a>
+            <a href="#pricing" class="font-bold duration-100 transition-color hover:text-safearea-blue">Licences</a>
             <div class="flex flex-col block w-full font-medium border-t border-gray-200 md:hidden">
                 <a href="#_" class="w-full py-2 font-bold text-center text-pink-500">Login</a>
                 <a href="#_"
-                    class="relative inline-block w-full px-5 py-3 text-sm leading-none text-center text-white bg-blue fold-bold">Get
+                    class="relative inline-block w-full px-5 py-3 text-sm leading-none text-center text-white bg-safearea-blue fold-bold">Get
                     Started</a>
             </div>
         </nav>
@@ -31,20 +31,18 @@
                     class="relative z-40 px-3 py-2 mr-0 text-sm font-bold text-pink-500 md:px-5 lg:text-white sm:mr-3 md:mt-0">Connexion</a>
             @endguest
             @auth
-                <x-form
-                    action="{{ route('logout') }}"
-                    method="delete"
-                    class="relative z-40 px-3 py-2 mr-0 text-sm font-bold text-pink-500 md:px-5 lg:text-white sm:mr-3 md:mt-0"
-                    >
+                <x-form action="{{ route('logout') }}" method="delete"
+                    class="relative z-40 px-3 py-2 mr-0 text-sm font-bold text-pink-500 md:px-5 lg:text-white sm:mr-3 md:mt-0">
                     <button type="submit">Déconnexion</button>
                 </x-form>
 
                 <a href="#_"
-                    class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-blue sm:w-full lg:shadow-none hover:shadow-xl">Safe Admin</a>
+                    class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-safearea-blue sm:w-full lg:shadow-none hover:shadow-xl">Safe
+                    Admin</a>
             @endauth
 
-            <svg class="absolute top-0 left-0 hidden w-screen max-w-3xl -mt-64 -ml-12 lg:block"
-                viewBox="0 0 818 815" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <svg class="absolute top-0 left-0 hidden w-screen max-w-3xl -mt-64 -ml-12 lg:block" viewBox="0 0 818 815"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
                     <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="c">
                         <stop stop-color="#E614F2" offset="0%" />
@@ -98,7 +96,7 @@
 <!-- a little JS for the mobile nav button -->
 <script>
     if (document.getElementById('nav-mobile-btn')) {
-        document.getElementById('nav-mobile-btn').addEventListener('click', function () {
+        document.getElementById('nav-mobile-btn').addEventListener('click', function() {
             if (this.classList.contains('close')) {
                 document.getElementById('nav').classList.add('hidden');
                 this.classList.remove('close');
