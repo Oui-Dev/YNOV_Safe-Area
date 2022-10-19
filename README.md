@@ -1,3 +1,5 @@
+[![Safe-Area](https://github.com/Maxime-Larroze/safe-area-web/actions/workflows/laravel.yml/badge.svg)](https://github.com/Maxime-Larroze/safe-area-web/actions/workflows/laravel.yml)
+
 # Projet Safe Area (web)
 ![img.png](img.png)
 

@@ -16,7 +16,7 @@ use App\Http\Controllers\Console\DashboardController;
 
 Route::group([
     'as' => "console.",
-    'middleware' => 'role:console'
+    'middleware' => ['permission:root']
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
