@@ -37,7 +37,7 @@
                 </x-form>
 
                 <a href="{{ route('my.index') }}"
-                    class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-blue sm:w-full lg:shadow-none hover:shadow-xl">Mon
+                    class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-safearea-blue rounded shadow-md fold-bold lg:bg-white lg:text-blue sm:w-full lg:shadow-none hover:shadow-xl">Mon
                     espace</a>
             @endauth
 
