@@ -34,6 +34,7 @@ Route::group([
 ], function () {
     Route::prefix('/public')->group(function () {
         Route::post('/newsletters', [NewsletterController::class, 'store'])->name('no.public.newsletters.store');
+        Route::post('/contact', [StaticViewController::class, 'sendMailForm'])->name('no.public.contact.store');
     });
     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');

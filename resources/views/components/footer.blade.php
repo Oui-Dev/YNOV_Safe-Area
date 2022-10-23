@@ -98,8 +98,8 @@
                         <button type="submit" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-3 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">S'inscrire</button>
                     </div>
                 </x-form>
-                <p class="mt-4 text-base text-green-500">{{ Session::get('success') }}</p>
-                <p class="mt-4 text-base text-red-600">{{ Session::get('error') }}</p>
+                <p class="mt-4 text-base text-green-500">{{ Session::get('newsletter.success') }}</p>
+                <p class="mt-4 text-base text-red-600">{{ Session::get('newsletter.error') }}</p>
             </div>
         </div>
         <div class="mt-12 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between lg:mt-16">

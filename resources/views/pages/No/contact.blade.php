@@ -92,23 +92,23 @@
               <!-- Contact form -->
               <div class="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12">
                 <h3 class="text-lg font-medium">Nous envoyer un message</h3>
-                <form action="#" method="POST" class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                <x-form action="{{route('no.public.contact.store')}}" method="POST" class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                   <div>
-                    <label for="first-name" class="block text-sm font-medium">Prénom</label>
+                    <label for="firstname" class="block text-sm font-medium">Prénom</label>
                     <div class="mt-1">
-                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                      <input type="text" name="firstname" id="firstname" required autocomplete="given-name" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                     </div>
                   </div>
                   <div>
-                    <label for="last-name" class="block text-sm font-medium">Nom</label>
+                    <label for="lastname" class="block text-sm font-medium">Nom</label>
                     <div class="mt-1">
-                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                      <input type="text" name="lastname" id="lastname" required autocomplete="family-name" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                     </div>
                   </div>
                   <div>
                     <label for="email" class="block text-sm font-medium">Adresse email</label>
                     <div class="mt-1">
-                      <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                      <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                     </div>
                   </div>
                   <div>
@@ -116,13 +116,13 @@
                       <label for="phone" class="block text-sm font-medium">Numéro de téléphone</label>
                     </div>
                     <div class="mt-1">
-                      <input type="text" name="phone" id="phone" autocomplete="tel" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500" aria-describedby="phone-optional">
+                      <input type="text" name="phone" id="phone" required autocomplete="tel" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500" aria-describedby="phone-optional">
                     </div>
                   </div>
                   <div class="sm:col-span-2">
                     <label for="subject" class="block text-sm font-medium">Sujet de votre message</label>
                     <div class="mt-1">
-                      <input type="text" name="subject" id="subject" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                      <input type="text" name="subject" id="subject" required class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                     </div>
                   </div>
                   <div class="sm:col-span-2">
@@ -131,13 +131,15 @@
                       <span id="message-max" class="text-sm">Max. 500 characters</span>
                     </div>
                     <div class="mt-1">
-                      <textarea id="message" name="message" rows="4" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500" aria-describedby="message-max"></textarea>
+                      <textarea id="message" name="message" required rows="4" class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500" aria-describedby="message-max"></textarea>
                     </div>
                   </div>
                   <div class="sm:col-span-2 sm:flex sm:justify-end">
                     <button type="submit" class="mt-2 bg-gradient-to-r from-safearea-red to-safearea-blue  inline-flex w-full items-center justify-center rounded-md border border-transparent bg-teal-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">Valider le formulaire</button>
                   </div>
-                </form>
+                </x-form>
+                  <p class="mt-4 text-base text-green-500">{{ Session::get('contactform.success') }}</p>
+                  <p class="mt-4 text-base text-red-600">{{ Session::get('contactform.error') }}</p>
               </div>
             </div>
           </div>
