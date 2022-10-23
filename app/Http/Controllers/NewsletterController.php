@@ -43,10 +43,10 @@ class NewsletterController extends Controller
         ]);
         try {
             Newsletter::firstOrCreate(['email'=>$request->email], ['email'=>$request->email]);
-            return redirect()->back()->with(['success'=>"Votre email à bien été enregistré dans la liste des newsletters"]);
+            return redirect()->back()->with(['newsletter.success'=>"Votre email à bien été enregistré dans la liste des newsletters"]);
         } catch (\Exception $ex)
         {
-            return redirect()->back()->with(['success'=>"Votre adresse email à déjà été enregistrée"]);
+            return redirect()->back()->with(['newsletter.success'=>"Votre adresse email à déjà été enregistrée"]);
         }
     }
 
