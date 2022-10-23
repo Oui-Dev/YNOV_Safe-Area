@@ -17,7 +17,6 @@ use App\Http\Controllers\TempController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::group([
     'as' => "no."
 ], function () {
@@ -25,7 +24,7 @@ Route::group([
     Route::get('/features', [StaticViewController::class, 'features'])->name('public.features');
     Route::get('/prices', [StaticViewController::class, 'prices'])->name('public.prices');
     Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
-    Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
+    Route::get('/public/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
 });
 
 Route::group([

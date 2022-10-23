@@ -121,13 +121,10 @@
                 </a>
             </div>
             <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0">&copy; 2022 Safe Area. Tous droits réservés.</p>
-            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0">
+            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0"><a href="{{route('no.public.changelog')}}">
                 {{$version->name}} ({{$version->generation}}.{{$version->revision}}.{{$version->correction}})
-                {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y')}}</p>
+                {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y')}}</a>
+            </p>
         </div>
-
-        <p class="my-6 mr-4 text-base text-gray-500 text-center" title="{{$version->changelog}}">
-
-        </p>
     </div>
 </footer>
