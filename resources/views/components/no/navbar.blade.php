@@ -3,8 +3,8 @@
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
             <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="{{ route('no.public.homepage') }}">
-                    <span class="sr-only">Your Company</span>
-                    <img class="h-8 w-auto sm:h-10" src="http://safearea.ml/build/assets/safe_area_logo.37d1e5a7.png" alt="logo">
+                    <span class="sr-only">Safe Area</span>
+                    <img class="h-8 w-auto sm:h-10" src="{{Vite::asset('resources/images/logo.png')}}" alt="logo">
                 </a>
             </div>
             <div class="-my-2 -mr-2 md:hidden">
@@ -87,7 +87,7 @@
                                 class="mt-4 text-center text-base font-medium text-gray-800">
                                 <button type="submit">Déconnexion</button>
                             </x-form>
-                        @endauth 
+                        @endauth
                     </div>
                 </div>
             </div>
