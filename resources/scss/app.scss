@@ -4,31 +4,9 @@
     --colors-blue: #3F459D;
     --colors-red: #A7296E;
     --colors-green: #0F6E3C;
-    --colors-white: #DEDEDE;
+    --colors-grey: #DEDEDE;
     --colors-blue-rgb: 63,69,157;
     --colors-red-rgb: 167,41,110;
     --colors-green-rgb: 15,110,60;
-    --colors-white-rgb: 222,222,222;
-}
-
-@media(max-width:1520px) {
-    .left-svg {
-        display: none;
-    }
-}
-
-/* small css for the mobile nav close */
-#nav-mobile-btn.close span {
-    &:first-child {
-    transform: rotate(45deg);
-    top: 4px;
-    position: relative;
-    background: #a0aec0;
-    }
-
-    &:nth-child(2) {
-        transform: rotate(-45deg);
-        margin-top: 0px;
-        background: #a0aec0;
-    }
+    --colors-grey-rgb: 222,222,222;
 }

@@ -9,14 +9,15 @@ module.exports = {
     ],
     theme: {
         colors: {
-            "safearea-blue": "#3F459D",
-            "safearea-red": "#A7296E",
-            "safearea-green": "#0F6E3C",
+            "safearea-blue": "var(--colors-blue)",
+            "safearea-red": "var(--colors-red)",
+            "safearea-green": "var(--colors-green)",
+            "safearea-grey": "var(--colors-grey)",
+            white: colors.white,
+            black: colors.black,
             blue: colors.blue,
             red: colors.red,
             green: colors.green,
-            black: colors.black,
-            white: colors.white,
             yellow: colors.yellow,
             gray: colors.gray,
             purple: colors.purple,
@@ -28,5 +29,5 @@ module.exports = {
         },
         extend: {},
     },
-    plugins: [require("@tailwindcss/forms")],
+    // plugins: [require("@tailwindcss/forms")],
 };
