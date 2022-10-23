@@ -21,8 +21,11 @@ use App\Http\Controllers\TempController;
 Route::group([
     'as' => "no."
 ], function () {
-    Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
-    Route::get('/changelog', [StaticViewController::class, 'showChangelog'])->name('no.public.versions.index');
+    Route::get('/', [StaticViewController::class, 'homepage'])->name('public.homepage');
+    Route::get('/features', [StaticViewController::class, 'features'])->name('public.features');
+    Route::get('/prices', [StaticViewController::class, 'prices'])->name('public.prices');
+    Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
+    Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
 });
 
 Route::group([

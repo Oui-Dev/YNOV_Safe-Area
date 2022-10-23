@@ -1,4 +1,5 @@
 @extends('layouts.frontend')
+
 @section('content')
     <div class="flex flex-col flex-wrap justify-center content-center w-full p-4">
         <h2 class="mt-6 mb-6 text-3xl font-bold tracking-tight text-gray-900">Historique des versions</h2>
