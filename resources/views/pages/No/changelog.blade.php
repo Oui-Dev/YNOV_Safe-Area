@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts/no')
 
 @section('content')
     <div class="flex flex-col flex-wrap justify-center content-center w-full p-4">

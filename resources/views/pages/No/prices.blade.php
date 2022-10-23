@@ -1,4 +1,4 @@
-@extends('layouts/frontend')
+@extends('layouts/no')
 
 @section('content')
 <div class="bg-white">
