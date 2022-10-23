@@ -20,6 +20,7 @@
         "@inertiajs/progress": "latest",
         "@vitejs/plugin-vue": "latest",
         "sass": "latest",
+        "styled-components": "^5.3.6",
         "vue": "latest"
     }
 }

@@ -1,111 +1,96 @@
-<header class="relative z-50 w-full h-20 overflow-y-clip">
-    <div
-        class="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
-
-        <a href="/" class="relative flex items-center inline-block h-5 h-full font-black leading-none">
-            <img src="{{Vite::asset('resources/images/safe_area_logo.png')}}" alt="Logo Safe Area">
-        </a>
-
-        <nav id="nav"
-            class="absolute top-0 left-0 z-50 flex flex-col items-center justify-between hidden w-full h-64 pt-5 mt-24 text-sm text-gray-800 bg-white border-t border-gray-200 md:w-auto md:flex-row md:h-24 lg:text-base md:bg-transparent md:mt-0 md:border-none md:py-0 md:flex md:relative">
-            <a href="#"
-                class="ml-0 mr-0 font-bold duration-100 md:ml-12 md:mr-3 lg:mr-8 transition-color hover:text-blue">Accueil</a>
-            <a href="#features"
-                class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-blue">Le projet</a>
-            <a href="#testimonials"
-            class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-blue">Notre équipe</a>
-            <a href="#pricing"
-                class="font-bold duration-100 transition-color hover:text-blue">Licences</a>
-            <div class="flex flex-col block w-full font-medium border-t border-gray-200 md:hidden">
-                <a href="#_" class="w-full py-2 font-bold text-center text-pink-500">Login</a>
-                <a href="#_"
-                    class="relative inline-block w-full px-5 py-3 text-sm leading-none text-center text-white bg-blue fold-bold">Get
-                    Started</a>
+<header>
+    <div class="relative bg-white">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
+            <div class="flex justify-start lg:w-0 lg:flex-1">
+                <a href="#">
+                    <span class="sr-only">Your Company</span>
+                    <img class="h-8 w-auto sm:h-10" src="http://safearea.ml/build/assets/safe_area_logo.37d1e5a7.png" alt="logo">
+                </a>
             </div>
-        </nav>
+            <div class="-my-2 -mr-2 md:hidden">
+                <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-safearea-blue" aria-expanded="false">
+                    <span class="sr-only">Open menu</span>
+                    <!-- Heroicon name: outline/bars-3 -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="hidden space-x-10 md:flex">
+                <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Accueil</a>
+                <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Fonctionnalités</a>
+                <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Tarifs</a>
+                <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Contact</a>
+            </nav>
+            <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+                @guest
+                    <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
+                @endguest
+                @auth
+                    <x-form action="{{ route('logout') }}" method="delete"
+                        class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                        <button type="submit">Déconnexion</button>
+                    </x-form>
 
-        <div
-            class="absolute left-0 flex-col items-center justify-center hidden w-full pb-8 mt-48 border-b border-gray-200 md:relative md:w-auto md:bg-transparent md:border-none md:mt-0 md:flex-row md:p-0 md:items-end md:flex md:justify-between">
-            @guest
-                <a href="{{ route('login') }}"
-                    class="relative z-40 px-3 py-2 mr-0 text-sm font-bold text-pink-500 md:px-5 lg:text-white sm:mr-3 md:mt-0">Connexion</a>
-            @endguest
-            @auth
-                <x-form
-                    action="{{ route('logout') }}"
-                    method="delete"
-                    class="relative z-40 px-3 py-2 mr-0 text-sm font-bold text-pink-500 md:px-5 lg:text-white sm:mr-3 md:mt-0"
-                    >
-                    <button type="submit">Déconnexion</button>
-                </x-form>
-
-                <a href="{{ route('my.index') }}"
-                    class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-blue sm:w-full lg:shadow-none hover:shadow-xl">Mon espace</a>
-            @endauth
-
-            <svg class="absolute top-0 left-0 hidden w-screen max-w-3xl -mt-64 -ml-12 lg:block"
-                viewBox="0 0 818 815" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <defs>
-                    <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="c">
-                        <stop stop-color="#E614F2" offset="0%" />
-                        <stop stop-color="#FC3832" offset="100%" />
-                    </linearGradient>
-                    <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="f">
-                        <stop stop-color="#657DE9" offset="0%" />
-                        <stop stop-color="#1C0FD7" offset="100%" />
-                    </linearGradient>
-                    <filter x="-4.7%" y="-3.3%" width="109.3%" height="109.3%" filterUnits="objectBoundingBox"
-                        id="a">
-                        <feOffset dy="8" in="SourceAlpha" result="shadowOffsetOuter1" />
-                        <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
-                        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" in="shadowBlurOuter1" />
-                    </filter>
-                    <filter x="-4.7%" y="-3.3%" width="109.3%" height="109.3%" filterUnits="objectBoundingBox"
-                        id="d">
-                        <feOffset dy="8" in="SourceAlpha" result="shadowOffsetOuter1" />
-                        <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
-                        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" in="shadowBlurOuter1" />
-                    </filter>
-                    <path
-                        d="M160.52 108.243h497.445c17.83 0 24.296 1.856 30.814 5.342 6.519 3.486 11.635 8.602 15.12 15.12 3.487 6.52 5.344 12.985 5.344 30.815v497.445c0 17.83-1.857 24.296-5.343 30.814-3.486 6.519-8.602 11.635-15.12 15.12-6.52 3.487-12.985 5.344-30.815 5.344H160.52c-17.83 0-24.296-1.857-30.814-5.343-6.519-3.486-11.635-8.602-15.12-15.12-3.487-6.52-5.343-12.985-5.343-30.815V159.52c0-17.83 1.856-24.296 5.342-30.814 3.486-6.519 8.602-11.635 15.12-15.12 6.52-3.487 12.985-5.343 30.815-5.343z"
-                        id="b" />
-                    <path
-                        d="M159.107 107.829H656.55c17.83 0 24.296 1.856 30.815 5.342 6.518 3.487 11.634 8.602 15.12 15.12 3.486 6.52 5.343 12.985 5.343 30.816V656.55c0 17.83-1.857 24.296-5.343 30.815-3.486 6.518-8.602 11.634-15.12 15.12-6.519 3.486-12.985 5.343-30.815 5.343H159.107c-17.83 0-24.297-1.857-30.815-5.343-6.519-3.486-11.634-8.602-15.12-15.12-3.487-6.519-5.343-12.985-5.343-30.815V159.107c0-17.83 1.856-24.297 5.342-30.815 3.487-6.519 8.602-11.634 15.12-15.12 6.52-3.487 12.985-5.343 30.816-5.343z"
-                        id="e" />
-                </defs>
-                <g fill="none" fill-rule="evenodd" opacity=".9">
-                    <g transform="rotate(65 416.452 409.167)">
-                        <use fill="#000" filter="url(#a)" xlink:href="#b" />
-                        <use fill="url(#c)" xlink:href="#b" />
-                    </g>
-                    <g transform="rotate(29 421.929 414.496)">
-                        <use fill="#000" filter="url(#d)" xlink:href="#e" />
-                        <use fill="url(#f)" xlink:href="#e" />
-                    </g>
-                </g>
-            </svg>
+                    <a href="{{ route('my.index') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Mon espace</a>
+                @endauth
+            </div>
         </div>
 
-        <div id="nav-mobile-btn"
-            class="absolute top-0 right-0 z-50 block w-6 mt-8 mr-10 cursor-pointer select-none md:hidden sm:mt-10">
-            <span class="block w-full h-1 mt-2 duration-200 transform bg-gray rounded-full sm:mt-1"></span>
-            <span class="block w-full h-1 mt-1 duration-200 transform bg-gray rounded-full"></span>
-        </div>
+        <!--
+            Mobile menu, show/hide based on mobile menu state.
 
+            Entering: "duration-200 ease-out"
+            From: "opacity-0 scale-95"
+            To: "opacity-100 scale-100"
+            Leaving: "duration-100 ease-in"
+            From: "opacity-100 scale-100"
+            To: "opacity-0 scale-95"
+        -->
+        <div class="absolute inset-x-0 top-0 z-30 origin-top-right transform p-2 transition md:hidden">
+            <div class="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                <div class="px-5 pt-5 pb-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?from-color=purple&from-shade=600&to-color=indigo&to-shade=600&toShade=600" alt="Your Company">
+                        </div>
+                        <div class="-mr-2">
+                            <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-safearea-blue">
+                                <span class="sr-only">Close menu</span>
+                                <!-- Heroicon name: outline/x-mark -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-6 px-5">
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
+                        <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Fonctionnalités</a>
+                        <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Tarifs</a>
+                        <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
+                    </div>
+                    <div class="mt-6">
+                        @guest
+                            <a href="{{ route('login') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
+                        @endguest
+
+                        @auth
+                            <a href="{{ route('my.index') }}"
+                                class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Mon
+                                espace
+                            </a>
+
+                            <x-form action="{{ route('logout') }}" method="delete"
+                                class="mt-4 text-center text-base font-medium text-gray-800">
+                                <button type="submit">Déconnexion</button>
+                            </x-form>
+                        @endauth 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
-
-<!-- a little JS for the mobile nav button -->
-<script>
-    if (document.getElementById('nav-mobile-btn')) {
-        document.getElementById('nav-mobile-btn').addEventListener('click', function () {
-            if (this.classList.contains('close')) {
-                document.getElementById('nav').classList.add('hidden');
-                this.classList.remove('close');
-            } else {
-                document.getElementById('nav').classList.remove('hidden');
-                this.classList.add('close');
-            }
-        });
-    }
-</script>

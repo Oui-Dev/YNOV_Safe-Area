@@ -23,7 +23,10 @@ class Version extends Model
     ];
 
     public function is_archived()
-    {if(!empty($this->archived_at)){return true;} else {return false;}}
+    {if(empty($this->archived_at)){return false;} else {return true;}}
+
+    public function is_updated()
+    {if($this->updated_at != $this->created_at){return true;} else {return false;}}
 
     static public function active()
     {
