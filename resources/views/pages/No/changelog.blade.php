@@ -1,9 +1,9 @@
 @extends('layouts/no')
 
 @section('content')
-    <div class="flex flex-col flex-wrap justify-center content-center w-full p-4">
+    <div class="flex flex-col flex-wrap justify-center content-center p-4 w-full">
         <h2 class="mt-6 mb-6 text-3xl font-bold tracking-tight text-gray-900">Historique des versions</h2>
-        <div class="flow-root" id="changelog">
+        <div class="flow-root w-1/2 max-w-3xl">
             <ul role="list" class="-mb-8">
                 @foreach ($versions->reverse() as $version)
                     <li :key="{{ $version->id }}">
