@@ -69,18 +69,18 @@
                     <svg class="h-6 w-6 flex-shrink-0 text-teal-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                     </svg>
-                    <span class="ml-3">safearea.app@gmail.com</span>
+                    <span class="ml-3"><a href="mailto:safearea.app@gmail.com">safearea.app@gmail.com</a></span>
                   </dd>
                 </dl>
                 <ul role="list" class="mt-8 flex space-x-12">
                   <li>
-                    <a class="text-teal-200 hover:text-teal-100" href="https://www.linkedin.com/company/safe-area-app/">
+                    <a class="text-teal-200 hover:text-teal-100" target="_blank" href="https://www.linkedin.com/company/safe-area-app/">
                       <span class="sr-only">Linkedin</span>
                         <img src="{{Vite::asset('resources/images/linkedin.png')}}" alt="Logo linkedin" style="width: 40px">
                     </a>
                   </li>
                   <li>
-                    <a class="text-teal-200 hover:text-teal-100" href="https://twitter.com/SafeAreaOff">
+                    <a class="text-teal-200 hover:text-teal-100" target="_blank" href="https://twitter.com/SafeAreaOff">
                       <span class="sr-only">Twitter</span>
                         <img src="{{Vite::asset('resources/images/twitter.svg')}}" alt="Logo linkedin" style="width: 40px">
 
