@@ -17,10 +17,10 @@
                 </button>
             </div>
             <nav class="hidden space-x-10 md:flex">
-                <a href="{{ route('no.public.homepage') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Accueil</a>
-                <a href="{{ route('no.public.features') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Fonctionnalités</a>
-                <a href="{{ route('no.public.prices') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Tarifs</a>
-                <a href="{{ route('no.public.contact') }}" class="text-base font-medium text-gray-500 hover:text-gray-900">Contact</a>
+                <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Accueil</a>
+                <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Fonctionnalités</a>
+                <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Tarifs</a>
+                <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Contact</a>
             </nav>
             <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                 @guest
@@ -67,10 +67,10 @@
                 </div>
                 <div class="py-6 px-5">
                     <div class="grid grid-cols-2 gap-4 text-center">
-                        <a href="{{ route('no.public.homepage') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
-                        <a href="{{ route('no.public.features') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">Fonctionnalités</a>
-                        <a href="{{ route('no.public.prices') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">Tarifs</a>
-                        <a href="{{ route('no.public.contact') }}" class="text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
+                        <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Accueil</a>
+                        <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Fonctionnalités</a>
+                        <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Tarifs</a>
+                        <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:text-gray-700">Contact</a>
                     </div>
                     <div class="mt-6">
                         @guest
