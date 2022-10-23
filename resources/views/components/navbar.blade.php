@@ -2,7 +2,7 @@
     <div class="relative bg-white">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
             <div class="flex justify-start lg:w-0 lg:flex-1">
-                <a href="#">
+                <a href="{{ route('no.public.homepage') }}">
                     <span class="sr-only">Your Company</span>
                     <img class="h-8 w-auto sm:h-10" src="http://safearea.ml/build/assets/safe_area_logo.37d1e5a7.png" alt="logo">
                 </a>
@@ -52,7 +52,7 @@
                 <div class="px-5 pt-5 pb-6">
                     <div class="flex items-center justify-between">
                         <div>
-                            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?from-color=purple&from-shade=600&to-color=indigo&to-shade=600&toShade=600" alt="Your Company">
+                            <img class="h-8 w-auto" src="http://safearea.ml/build/assets/safe_area_logo.37d1e5a7.png" alt="Your Company">
                         </div>
                         <div class="-mr-2">
                             <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-safearea-blue">
