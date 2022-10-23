@@ -41,12 +41,13 @@ class NewsletterController extends Controller
         $this->validate($request, [
             'email' => 'required',
         ]);
-        if(!empty(Newsletter::where(['email'=>$request->email])->first()))
-        {
+        try {
             Newsletter::firstOrCreate(['email'=>$request->email], ['email'=>$request->email]);
             return redirect()->back()->with(['success'=>"Votre email à bien été enregistré dans la liste des newsletters"]);
+        } catch (\Exception $ex)
+        {
+            return redirect()->back()->with(['success'=>"Votre adresse email à déjà été enregistrée"]);
         }
-        return redirect()->back()->with(['success'=>"Votre adresse email à déjà été enregistrée"]);
     }
 
     /**
