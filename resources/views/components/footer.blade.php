@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-7xl px-4 pt-12 pb-8 sm:px-6 lg:px-8 lg:pt-16">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="grid grid-cols-2 gap-8 xl:col-span-2">
-                <div class="md:grid md:grid-cols-2 md:gap-8">
+                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
                     <div>
                         <h3 class="text-base font-medium text-gray-900">Solutions</h3>
                         <ul role="list" class="mt-4 space-y-4">
@@ -45,7 +45,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="md:grid md:grid-cols-2 md:gap-8">
+                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
                     <div>
                         <h3 class="text-base font-medium text-gray-900">Company</h3>
                         <ul role="list" class="mt-4 space-y-4">
@@ -88,12 +88,12 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-12 xl:mt-0">
+            <div class="mt-12 xl:mt-0 text-center lg:text-left">
                 <h3 class="text-base font-medium text-gray-900">Subscribe to our newsletter</h3>
                 <p class="mt-4 text-base text-gray-500">The latest news, articles, and resources, sent to your inbox weekly.</p>
-                <form class="mt-4 sm:flex sm:max-w-md">
+                <form class="mt-4 sm:flex sm:max-w-md mx-auto lg:mx-0">
                     <label for="email-address" class="sr-only">Email address</label>
-                    <input type="email" name="email-address" id="email-address" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500" placeholder="Enter your email">
+                    <input type="email" name="email-address" id="email-address" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500 text-center lg:text-left" placeholder="Enter your email">
                     <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                         <button type="submit" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-3 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Subscribe</button>
                     </div>
