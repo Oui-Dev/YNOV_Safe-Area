@@ -14,7 +14,7 @@
               <span class="text-base font-medium text-gray-500">/mo</span>
             </p>
             <p class="mt-4 text-sm text-gray-500">Quis suspendisse ut fermentum neque vivamus non tellus.</p>
-            <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Basic</a>
+            <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Basic</a>
           </div>
   
           <table class="w-full">
@@ -189,7 +189,7 @@
           </table>
   
           <div class="border-t border-gray-200 px-4 pt-5">
-            <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Basic</a>
+            <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Basic</a>
           </div>
         </section>
   
@@ -201,7 +201,7 @@
               <span class="text-base font-medium text-gray-500">/mo</span>
             </p>
             <p class="mt-4 text-sm text-gray-500">Quis eleifend a tincidunt pellentesque. A tempor in sed.</p>
-            <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Essential</a>
+            <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Essential</a>
           </div>
   
           <table class="w-full">
@@ -372,7 +372,7 @@
           </table>
   
           <div class="border-t border-gray-200 px-4 pt-5">
-            <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Essential</a>
+            <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Essential</a>
           </div>
         </section>
   
@@ -384,7 +384,7 @@
               <span class="text-base font-medium text-gray-500">/mo</span>
             </p>
             <p class="mt-4 text-sm text-gray-500">Orci volutpat ut sed sed neque, dui eget. Quis tristique non.</p>
-            <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Premium</a>
+            <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Premium</a>
           </div>
   
           <table class="w-full">
@@ -555,7 +555,7 @@
           </table>
   
           <div class="border-t border-gray-200 px-4 pt-5">
-            <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Premium</a>
+            <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Premium</a>
           </div>
         </section>
       </div>
@@ -593,7 +593,7 @@
                     </p>
                     <p class="mt-4 text-sm text-gray-500">Quis suspendisse ut fermentum neque vivamus non tellus.</p>
                   </div>
-                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Basic</a>
+                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Basic</a>
                 </div>
               </td>
   
@@ -606,7 +606,7 @@
                     </p>
                     <p class="mt-4 text-sm text-gray-500">Quis eleifend a tincidunt pellentesque. A tempor in sed.</p>
                   </div>
-                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Essential</a>
+                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Essential</a>
                 </div>
               </td>
   
@@ -619,7 +619,7 @@
                     </p>
                     <p class="mt-4 text-sm text-gray-500">Orci volutpat ut sed sed neque, dui eget. Quis tristique non.</p>
                   </div>
-                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Premium</a>
+                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Premium</a>
                 </div>
               </td>
             </tr>
@@ -969,15 +969,15 @@
               <th class="sr-only" scope="row">Choose your plan</th>
   
               <td class="px-6 pt-5">
-                <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Basic</a>
+                <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Basic</a>
               </td>
   
               <td class="px-6 pt-5">
-                <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Essential</a>
+                <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Essential</a>
               </td>
   
               <td class="px-6 pt-5">
-                <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-pink-500 py-2 text-center text-sm font-semibold text-white shadow hover:to-pink-600">Buy Premium</a>
+                <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Buy Premium</a>
               </td>
             </tr>
           </tfoot>
@@ -1053,15 +1053,15 @@
         <div class="flex-1"></div>
       </div>
       <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="overflow-hidden rounded-lg bg-gradient-to-r from-orange-400 to-pink-500 shadow-xl lg:grid lg:grid-cols-2 lg:gap-4">
+        <div class="overflow-hidden rounded-lg bg-gradient-to-r from-safearea-red to-safearea-blue shadow-xl lg:grid lg:grid-cols-2 lg:gap-4">
           <div class="px-6 pt-10 pb-12 sm:px-16 sm:pt-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
             <div class="lg:self-center">
               <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 <span class="block">Ready to dive in?</span>
-                <span class="block text-red-900">Start your free trial today.</span>
+                <span class="block text-gray-200 font-semibold">Start your free trial today.</span>
               </h2>
-              <p class="mt-4 text-lg leading-6 text-orange-50">Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.</p>
-              <a href="#" class="mt-8 inline-flex items-center rounded-md border border-transparent bg-orange-100 py-3 px-6 text-base font-medium text-red-600 shadow hover:text-red-500">Sign up for free</a>
+              <p class="mt-4 text-lg leading-6 text-white">Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.</p>
+              <a href="#" class="mt-8 inline-flex items-center rounded-md border border-transparent bg-white py-3 px-6 text-base font-medium text-safearea-blue shadow hover:text-safearea-red">Sign up for free</a>
             </div>
           </div>
           <div class="aspect-w-5 aspect-h-3 -mt-6 md:aspect-w-2 md:aspect-h-1">

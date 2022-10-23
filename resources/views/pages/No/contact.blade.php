@@ -21,7 +21,7 @@
   
             <div class="grid grid-cols-1 lg:grid-cols-3">
               <!-- Contact information -->
-              <div class="relative overflow-hidden bg-gradient-to-b from-teal-500 to-teal-600 py-10 px-6 sm:px-10 xl:p-12 bg-safearea-blue rounded-lg">
+              <div class="relative overflow-hidden bg-gradient-to-b from-teal-500 to-teal-600 py-10 px-6 sm:px-10 xl:p-12 from-safearea-red to-safearea-blue rounded-lg">
                 <!-- Decorative angle backgrounds -->
                 <div class="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
                   <svg class="absolute inset-0 h-full w-full" width="343" height="388" viewBox="0 0 343 388" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
