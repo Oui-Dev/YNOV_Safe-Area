@@ -2,6 +2,8 @@
 
 *.blade.php diff=html
 *.css diff=css
+*.scss diff=scss
+*.vue diff=vue
 *.html diff=html
 *.md diff=markdown
 *.php diff=php
