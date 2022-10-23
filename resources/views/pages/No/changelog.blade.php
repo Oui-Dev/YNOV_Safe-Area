@@ -26,8 +26,9 @@
                                 <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
                                     <div>
                                         <p class="font-medium text-gray-900">
-                                            Version {{ $version->name }}
-                                            ({{ $version->generation }}.{{ $version->revision }}.{{ $version->correction }})
+                                            Version
+                                            {{ $version->generation }}.{{ $version->revision }}.{{ $version->correction }} ({{ $version->name }})
+
                                         </p>
                                         <p class="text-sm text-gray-500">{{ $version->changelog }}</p>
                                     </div>
