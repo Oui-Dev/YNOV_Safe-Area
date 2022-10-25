@@ -5,22 +5,22 @@
             <div class="grid grid-cols-2 gap-8 xl:col-span-2">
                 <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
                     <div>
-                        <h3 class="text-base font-medium text-gray-900">Solutions</h3>
+                        <h3 class="text-base font-medium text-gray-900">Informations</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Marketing</a>
+                                <a href="{{route('no.public.homepage')}}" class="text-base text-gray-500 hover:text-gray-900">A propos</a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Analytics</a>
+                                <a href="{{route('no.public.features')}}" class="text-base text-gray-500 hover:text-gray-900">Fonctionnalités</a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Commerce</a>
+                                <a href="{{route('no.public.prices')}}" class="text-base text-gray-500 hover:text-gray-900">Tarifs</a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Insights</a>
+                                <a href="{{route('no.public.contact')}}" class="text-base text-gray-500 hover:text-gray-900">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -28,61 +28,28 @@
                         <h3 class="text-base font-medium text-gray-900">Support</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Pricing</a>
+                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Tickets</a>
                             </li>
-
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Documentation</a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Guides</a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">API Status</a>
+                                <a href="{{route('no.public.changelog')}}" class="text-base text-gray-500 hover:text-gray-900">Changelog</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
-                    <div>
-                        <h3 class="text-base font-medium text-gray-900">Company</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                        <li>
-                            <a href="#" class="text-base text-gray-500 hover:text-gray-900">About</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-base text-gray-500 hover:text-gray-900">Jobs</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-base text-gray-500 hover:text-gray-900">Press</a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="text-base text-gray-500 hover:text-gray-900">Partners</a>
-                        </li>
-                        </ul>
-                    </div>
                     <div class="mt-12 md:mt-0">
-                        <h3 class="text-base font-medium text-gray-900">Legal</h3>
+                        <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Claim</a>
+                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">CGV</a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Privacy</a>
+                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">CGU</a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Terms</a>
+                                <a href="{{route('no.public.legal')}}" class="text-base text-gray-500 hover:text-gray-900">Mentions Légales</a>
                             </li>
                         </ul>
                     </div>

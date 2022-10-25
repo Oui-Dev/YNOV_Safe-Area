@@ -25,6 +25,7 @@ Route::group([
     Route::get('/features', [StaticViewController::class, 'features'])->name('public.features');
     Route::get('/prices', [StaticViewController::class, 'prices'])->name('public.prices');
     Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
+    Route::get('/mentions-légales', [StaticViewController::class, 'showLegal'])->name('public.legal');
     Route::prefix('/public')->group(function () {
         Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
     });

@@ -65,4 +65,9 @@ class StaticViewController extends Controller
             return redirect()->back()->with(['contactform.error'=>"une erreur à été rencontrée lors de l'envoie de votre formulaire."]);
         }
     }
+
+    public function showLegal()
+    {
+        return view('pages/No/legal');
+    }
 }
