@@ -94,7 +94,7 @@
                     </div>
                     <div class="mt-12 sm:mt-16 lg:mt-0">
                         <div class="-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg" alt="Inbox user interface">
+                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.webp" alt="Inbox user interface">
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
                         <div class="-ml-48 pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg" alt="Customer profile user interface">
+                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.webp" alt="Customer profile user interface">
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/kevin_blaise.jpg')}}" alt="Photo Kévin Blaise">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/kevin_blaise.webp')}}" alt="Photo Kévin Blaise">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
@@ -188,7 +188,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.jpg')}}" alt="Photo Léo CORRE">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.webp')}}" alt="Photo Léo CORRE">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
@@ -212,7 +212,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/petru_oltean.jpg')}}" alt="Photo Petru OLTEAN">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/petru_oltean.webp')}}" alt="Photo Petru OLTEAN">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">

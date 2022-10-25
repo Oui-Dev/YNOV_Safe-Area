@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Safe Area</title>
-    <meta name="description" content="">
+    <meta name="description" content="Safe Area, votre application interne à la gestion de l'environnement de travail de vos collaborateurs">
     <meta name="author" content="">
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/logo.png')}}">
 
