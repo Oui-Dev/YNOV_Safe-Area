@@ -8,12 +8,16 @@
     <title>Safe Area</title>
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="{{Vite::asset('resources/images/logo.png')}}">
 
     <meta property="og:title" content="">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.safearea.ml">
     <meta property="og:description" content="">
-
+    <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <meta property="og:image" content="{{Vite::asset('resources/images/logo.png')}}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
