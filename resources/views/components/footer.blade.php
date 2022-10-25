@@ -1,72 +1,99 @@
-<footer class="px-4 pt-12 pb-8 text-white bg-white border-t border-gray-200">
-    <p class="mt-6 mr-4 text-base text-gray-500 text-center mt-2" title="{{$version->changelog}}">
-        Version {{$version->name}} ({{$version->generation}}.{{$version->revision}}.{{$version->correction}})
-        {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y H:i')}}
-    </p>
-    <div class="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
-        <div class="w-full pl-12 mr-4 text-left lg:w-1/4 sm:text-center sm:pl-0 lg:text-left">
-            <a href="/"
-                class="flex justify-start block text-left sm:text-center lg:text-left sm:justify-center lg:justify-start">
-                <img src="{{Vite::asset('resources/images/safe_area_logo.png')}}" alt="Logo Safe Area">
-            </a>
-            <p class="mt-6 mr-4 text-base text-gray-500">Créez un environnement de travail sécurisé pour vos collaborateurs
-            </p>
-        </div>
-        <div class="block w-full pl-10 mt-6 text-sm lg:w-3/4 sm:flex lg:mt-0">
-            <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
-                <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
-                    Product</li>
-                <li><a href="#_"
-                        class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Features</a>
-                </li>
-                <li><a href="#_"
-                        class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Integrations</a>
-                </li>
-                <li><a href="#_"
-                        class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Pricing</a>
-                </li>
-                <li><a href="#_"
-                        class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">FAQ</a></li>
-            </ul>
-            <ul class="flex flex-col w-full p-0 font-medium text-left text-gray-700 list-none">
-                <li class="inline-block px-3 py-2 mt-5 font-bold tracking-wide text-gray-800 uppercase md:mt-0">
-                    Company</li>
-                <li><a href="#_"
-                        class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Privacy</a>
-                </li>
-                <li><a href="#_" class="inline-block px-3 py-2 text-gray-500 no-underline hover:text-gray-600">Terms
-                        of
-                        Service</a></li>
-            </ul>
-            <div class="flex flex-col w-full text-gray-700">
-                <div class="inline-block px-3 py-2 mt-5 font-bold text-gray-800 uppercase md:mt-0">Follow Us</div>
-                <div class="flex justify-start pl-4 mt-2">
-                    <a class="flex items-center block mr-6 text-gray-400 no-underline hover:text-gray-600"
-                        target="_blank" rel="noopener noreferrer" href="#">
-                        <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M23.998 12c0-6.628-5.372-12-11.999-12C5.372 0 0 5.372 0 12c0 5.988 4.388 10.952 10.124 11.852v-8.384H7.078v-3.469h3.046V9.356c0-3.008 1.792-4.669 4.532-4.669 1.313 0 2.686.234 2.686.234v2.953H15.83c-1.49 0-1.955.925-1.955 1.874V12h3.328l-.532 3.469h-2.796v8.384c5.736-.9 10.124-5.864 10.124-11.853z" />
-                        </svg>
-                    </a>
-                    <a class="flex items-center block mr-6 text-gray-400 no-underline hover:text-gray-600"
-                        target="_blank" rel="noopener noreferrer" href="#">
-                        <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M23.954 4.569a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.691 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.061a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z" />
-                        </svg>
-                    </a>
-                    <a class="flex items-center block text-gray-400 no-underline hover:text-gray-600"
-                        target="_blank" rel="noopener noreferrer" href="#">
-                        <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                        </svg>
-                    </a>
+<footer class="bg-gray-50 sticky top-full" aria-labelledby="footer-heading">
+    <h2 id="footer-heading" class="sr-only">Footer</h2>
+    <div class="mx-auto max-w-7xl px-4 pt-12 pb-8 sm:px-6 lg:px-8 lg:pt-16">
+        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+            <div class="grid grid-cols-2 gap-8 xl:col-span-2">
+                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
+                    <div>
+                        <h3 class="text-base font-medium text-gray-900">Informations</h3>
+                        <ul role="list" class="mt-4 space-y-4">
+                            <li>
+                                <a href="{{route('no.public.homepage')}}" class="text-base text-gray-500 hover:text-gray-900">A propos</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('no.public.features')}}" class="text-base text-gray-500 hover:text-gray-900">Fonctionnalités</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('no.public.prices')}}" class="text-base text-gray-500 hover:text-gray-900">Tarifs</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('no.public.contact')}}" class="text-base text-gray-500 hover:text-gray-900">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-12 md:mt-0">
+                        <h3 class="text-base font-medium text-gray-900">Support</h3>
+                        <ul role="list" class="mt-4 space-y-4">
+                            <li>
+                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Tickets</a>
+                            </li>
+                            <li>
+                                <a href="{{route('no.public.changelog')}}" class="text-base text-gray-500 hover:text-gray-900">Changelog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
+                    <div class="mt-12 md:mt-0">
+                        <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
+                        <ul role="list" class="mt-4 space-y-4">
+                            <li>
+                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">CGV</a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">CGU</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('no.public.legal')}}" class="text-base text-gray-500 hover:text-gray-900">Mentions Légales</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <div class="mt-12 xl:mt-0 text-center lg:text-left">
+                <h3 class="text-base font-medium text-gray-900">Utilisez notre newsletter</h3>
+                <p class="mt-4 text-base text-gray-500">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
+                <x-form class="mt-4 sm:flex sm:max-w-md mx-auto lg:mx-0" method="POST" action="{{route('no.public.newsletters.store')}}">
+                    <label for="email" class="sr-only">Adresse email</label>
+                    <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500 text-center lg:text-left" placeholder="Votre adresse e-mail">
+                    <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                        <button type="submit" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-3 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">S'inscrire</button>
+                    </div>
+                </x-form>
+                <p class="mt-4 text-base text-green-500">{{ Session::get('newsletter.success') }}</p>
+                <p class="mt-4 text-base text-red-600">{{ Session::get('newsletter.error') }}</p>
+            </div>
         </div>
-    </div>
-    <div class="pt-4 pt-6 mt-10 text-center text-gray-500 border-t border-gray-100">© 2020 Safe Area. All rights
-        reserved.
+        <div class="mt-12 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between lg:mt-16">
+            <div class="flex space-x-6 md:order-2">
+                <a href="https://www.linkedin.com/company/safe-area-app/" target="_blank" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Linkedin</span>
+                    <svg class="h-6 w-6" fill="currentColor" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512">
+                        <path
+                            d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+                        ></path>
+                    </svg>
+                </a>
+
+                <a href="https://twitter.com/SafeAreaOff" target="_blank" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Twitter</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                    </svg>
+                </a>
+            </div>
+            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0">&copy; 2022 Safe Area. Tous droits réservés.</p>
+            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0"><a  target="_blank" href="{{route('no.public.changelog')}}">
+                {{$version->name}} ({{$version->generation}}.{{$version->revision}}.{{$version->correction}})
+                {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y')}}</a>
+            </p>
+        </div>
     </div>
 </footer>

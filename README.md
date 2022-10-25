@@ -1,5 +1,7 @@
+[![Safe-Area](https://github.com/Maxime-Larroze/safe-area-web/actions/workflows/laravel.yml/badge.svg)](https://github.com/Maxime-Larroze/safe-area-web/actions/workflows/laravel.yml)
+
 # Projet Safe Area (web)
-![img.png](img.png)
+![img.png](./resources/images/logo.png)
 
 
 Aujourd'hui, le nombre quantifié de plaintes, rapports et dénonciations au sujet des comportements entre collègues, ou sur le plan hiérarchique est en constante hausse. Sur l'ensemble des situations dégradantes et/ou malsaine au travail, seul une infime partie est reportée, par peur de représailles ou de non-traitement du problème.
