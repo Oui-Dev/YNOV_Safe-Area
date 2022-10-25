@@ -4,7 +4,7 @@
             <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="{{ route('no.public.homepage') }}">
                     <span class="sr-only">Safe Area</span>
-                    <img class="h-8 w-auto sm:h-10" src="{{Vite::asset('resources/images/logo.png')}}" alt="logo">
+                    <img class="h-8 w-auto sm:h-10" src="{{Vite::asset('resources/images/logo.png')}}" alt="Safe Area">
                 </a>
             </div>
             <div class="-my-2 -mr-2 md:hidden">
@@ -25,6 +25,7 @@
             <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                 @guest
                     <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
+                    <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-blue to-safearea-red bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Safe Admin</a>
                 @endguest
                 @auth
                     <x-form action="{{ route('logout') }}" method="delete"
@@ -52,7 +53,7 @@
                 <div class="px-5 pt-5 pb-6">
                     <div class="flex items-center justify-between">
                         <div>
-                            <img class="h-8 w-auto" src="http://safearea.ml/build/assets/safe_area_logo.37d1e5a7.png" alt="Your Company">
+                            <img class="h-8 w-auto" src="{{Vite::asset('resources/images/logo.png')}}" alt="Safe Area">
                         </div>
                         <div class="-mr-2">
                             <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-safearea-blue">
