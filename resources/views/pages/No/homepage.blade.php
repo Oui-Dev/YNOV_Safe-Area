@@ -21,7 +21,7 @@
                         </p>
                         <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                             <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
-                                <a href="{{route('no.public.features')}}" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-safearea-blue shadow-sm hover:bg-indigo-50 sm:px-8">Voir notre solution</a>
+                                <a href="{{route('no.public.features')}}" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-safearea-blue shadow-sm sm:px-8 hover:border-transparent hover:bg-gradient-to-r hover:text-white hover:from-safearea-red hover:to-safearea-blue">Voir notre solution</a>
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.png')}}" alt="Photo Léo CORRE">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.jpg')}}" alt="Photo Léo CORRE">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
