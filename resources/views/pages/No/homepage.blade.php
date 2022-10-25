@@ -164,7 +164,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="https://media-exp1.licdn.com/dms/image/D4E03AQE5yLYugqyymA/profile-displayphoto-shrink_800_800/0/1666121452470?e=1672272000&v=beta&t=wloYfi0cmUUzi1pbT4pjJAzDptPv4vWkH11pEh3WeHg" alt="Photo Kévin Blaise">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/kevin_blaise.jpg')}}" alt="Photo Kévin Blaise">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
@@ -188,7 +188,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="https://media-exp1.licdn.com/dms/image/C5603AQHEFwaEGQ7qrA/profile-displayphoto-shrink_800_800/0/1658331956735?e=1672272000&v=beta&t=nmj-Yer9yVL2zL4lreznNONp2oftk01XDf3qKNfNbSc" alt="Photo Léo CORRE">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.png')}}" alt="Photo Léo CORRE">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
@@ -212,7 +212,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="https://media-exp1.licdn.com/dms/image/C4E03AQHQpZBNcRRWcg/profile-displayphoto-shrink_800_800/0/1658218395326?e=1672272000&v=beta&t=nqlHOXI2YMsf6ymI3uDH6WmGvIm43rWqOHQ70M0aWfs" alt="Photo Petru OLTEAN">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/petru_oltean.jpg')}}" alt="Photo Petru OLTEAN">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
