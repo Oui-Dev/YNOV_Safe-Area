@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\My\DashboardController;
+use App\Http\Controllers\My\HelpDeskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ Route::group([
     'middleware' => ['permission:my_access|admin_access|root']
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('/helpdesk', [HelpDeskController::class, 'helpDesk'])->name('helpDesk');
 });
