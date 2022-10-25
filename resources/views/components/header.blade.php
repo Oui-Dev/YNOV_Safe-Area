@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://www.safearea.ml">
     <meta property="og:description" content="">
     <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <meta property="og:image" content="{{Vite::asset('resources/images/logo.png')}}">
+    <meta property="og:image" content="{{Vite::asset('resources/images/logo.webp')}}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 

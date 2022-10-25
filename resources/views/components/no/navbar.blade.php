@@ -4,7 +4,7 @@
             <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="{{ route('no.public.homepage') }}">
                     <span class="sr-only">Safe Area</span>
-                    <img class="h-8 w-auto sm:h-10" src="{{Vite::asset('resources/images/logo.png')}}" alt="Safe Area">
+                    <img class="h-8 w-auto sm:h-10" src="{{Vite::asset('resources/images/logo.webp')}}" alt="Safe Area">
                 </a>
             </div>
             <div class="-my-2 -mr-2 md:hidden">
