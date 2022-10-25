@@ -8,7 +8,7 @@
                 </a>
             </div>
             <div class="-my-2 -mr-2 md:hidden">
-                <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-safearea-blue" aria-expanded="false">
+                <button type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-900 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-safearea-blue" aria-expanded="false">
                     <span class="sr-only">Open menu</span>
                     <!-- Heroicon name: outline/bars-3 -->
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -17,14 +17,14 @@
                 </button>
             </div>
             <nav class="hidden space-x-10 md:flex">
-                <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Accueil</a>
-                <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Fonctionnalités</a>
-                <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Tarifs</a>
-                <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-500 hover:text-gray-900">Contact</a>
+                <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:border-b-2 hover:border-safearea-red">Accueil</a>
+                <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:border-b-2 hover:border-safearea-red">Fonctionnalités</a>
+                <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:border-b-2 hover:border-safearea-red">Tarifs</a>
+                <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} pb-2 text-base font-medium text-gray-900 hover:border-b-2 hover:border-safearea-red">Contact</a>
             </nav>
             <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                 @guest
-                    <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
+                    <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-blue hover:to-safearea-red">Connexion</a>
                     <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-blue to-safearea-red bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Safe Admin</a>
                 @endguest
                 @auth

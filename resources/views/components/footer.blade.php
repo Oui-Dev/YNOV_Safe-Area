@@ -8,19 +8,19 @@
                         <h3 class="text-base font-medium text-gray-900">Informations</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="{{route('no.public.homepage')}}" class="text-base text-gray-500 hover:text-gray-900">A propos</a>
+                                <a href="{{route('no.public.homepage')}}" class="text-base text-gray-700 hover:text-gray-900">A propos</a>
                             </li>
 
                             <li>
-                                <a href="{{route('no.public.features')}}" class="text-base text-gray-500 hover:text-gray-900">Fonctionnalités</a>
+                                <a href="{{route('no.public.features')}}" class="text-base text-gray-700 hover:text-gray-900">Fonctionnalités</a>
                             </li>
 
                             <li>
-                                <a href="{{route('no.public.prices')}}" class="text-base text-gray-500 hover:text-gray-900">Tarifs</a>
+                                <a href="{{route('no.public.prices')}}" class="text-base text-gray-700 hover:text-gray-900">Tarifs</a>
                             </li>
 
                             <li>
-                                <a href="{{route('no.public.contact')}}" class="text-base text-gray-500 hover:text-gray-900">Contact</a>
+                                <a href="{{route('no.public.contact')}}" class="text-base text-gray-700 hover:text-gray-900">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -28,10 +28,10 @@
                         <h3 class="text-base font-medium text-gray-900">Support</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">Tickets</a>
+                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">Tickets</a>
                             </li>
                             <li>
-                                <a href="{{route('no.public.changelog')}}" class="text-base text-gray-500 hover:text-gray-900">Changelog</a>
+                                <a href="{{route('no.public.changelog')}}" class="text-base text-gray-700 hover:text-gray-900">Changelog</a>
                             </li>
                         </ul>
                     </div>
@@ -41,15 +41,15 @@
                         <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">CGV</a>
+                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">CGV</a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-base text-gray-500 hover:text-gray-900">CGU</a>
+                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">CGU</a>
                             </li>
 
                             <li>
-                                <a href="{{route('no.public.legal')}}" class="text-base text-gray-500 hover:text-gray-900">Mentions Légales</a>
+                                <a href="{{route('no.public.legal')}}" class="text-base text-gray-700 hover:text-gray-900">Mentions Légales</a>
                             </li>
                         </ul>
                     </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="mt-12 xl:mt-0 text-center lg:text-left">
                 <h3 class="text-base font-medium text-gray-900">Utilisez notre newsletter</h3>
-                <p class="mt-4 text-base text-gray-500">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
+                <p class="mt-4 text-base text-gray-900">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
                 <x-form class="mt-4 sm:flex sm:max-w-md mx-auto lg:mx-0" method="POST" action="{{route('no.public.newsletters.store')}}">
                     <label for="email" class="sr-only">Adresse email</label>
                     <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500 text-center lg:text-left" placeholder="Votre adresse e-mail">
@@ -69,9 +69,9 @@
                 <p class="mt-4 text-base text-red-600">{{ Session::get('newsletter.error') }}</p>
             </div>
         </div>
-        <div class="mt-12 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between lg:mt-16">
+        <div class="mt-12 border-t border-gray-900 pt-8 md:flex md:items-center md:justify-between lg:mt-16">
             <div class="flex space-x-6 md:order-2">
-                <a href="https://www.linkedin.com/company/safe-area-app/" target="_blank" class="text-gray-400 hover:text-gray-500">
+                <a href="https://www.linkedin.com/company/safe-area-app/" target="_blank" class="text-gray-500 hover:text-gray-900">
                     <span class="sr-only">Linkedin</span>
                     <svg class="h-6 w-6" fill="currentColor" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
@@ -82,15 +82,15 @@
                     </svg>
                 </a>
 
-                <a href="https://twitter.com/SafeAreaOff" target="_blank" class="text-gray-400 hover:text-gray-500">
+                <a href="https://twitter.com/SafeAreaOff" target="_blank" class="text-gray-500 hover:text-gray-900">
                     <span class="sr-only">Twitter</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                     </svg>
                 </a>
             </div>
-            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0">&copy; 2022 Safe Area. Tous droits réservés.</p>
-            <p class="mt-8 text-base text-gray-400 md:order-1 md:mt-0"><a  target="_blank" href="{{route('no.public.changelog')}}">
+            <p class="mt-8 text-base text-gray-900 md:order-1 md:mt-0">&copy; 2022 Safe Area. Tous droits réservés.</p>
+            <p class="mt-8 text-base text-gray-900 md:order-1 md:mt-0"><a  target="_blank" href="{{route('no.public.changelog')}}">
                 {{$version->name}} ({{$version->generation}}.{{$version->revision}}.{{$version->correction}})
                 {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y')}}</a>
             </p>

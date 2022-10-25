@@ -32,7 +32,7 @@
         <!-- Logo Cloud -->
         <div class="bg-gray-100">
             <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
-                <p class="text-center text-base font-semibold text-gray-500">Ils font confiance à notre solution (et ce ne sont pas les seuls)</p>
+                <p class="text-center text-base font-semibold text-gray-900">Ils font confiance à notre solution (et ce ne sont pas les seuls)</p>
                 <div class="mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
                     <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
                         <img class="h-12" src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg" alt="Tuple">
@@ -70,7 +70,7 @@
                             </div>
                             <div class="mt-6">
                                 <h2 class="text-3xl font-bold tracking-tight text-gray-900">Remontée des informations</h2>
-                                <p class="mt-4 text-lg text-gray-500">
+                                <p class="mt-4 text-lg text-gray-900">
                                     Faire remonter les informations, vite, simplement et à la bonne personne. C'est ce que vous propose notre solution. <br><br>
                                     Une informations bien traitées, c'est une information qui est bien utilisée, et donc un collaborateur qui est plus productif.
                                 </p>
@@ -113,7 +113,7 @@
                             </div>
                             <div class="mt-6">
                                 <h2 class="text-3xl font-bold tracking-tight text-gray-900">Traitement des données</h2>
-                                <p class="mt-4 text-lg text-gray-500">
+                                <p class="mt-4 text-lg text-gray-900">
                                     Notre solution vous permet de controller, analyser et traiter les données de vos collaborateurs. <br>
                                     Vous pouvez ainsi avoir une vision globale du comportement de votre entreprise, et ainsi prendre les bonnes décisions.
                                 </p>
@@ -149,7 +149,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/" class="text-gray-400 hover:text-gray-500">
+                                            <a href="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/" class="text-gray-400 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -173,7 +173,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/k%C3%A9vin-blaise/" class="text-gray-400 hover:text-gray-500">
+                                            <a href="https://www.linkedin.com/in/k%C3%A9vin-blaise/" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -197,7 +197,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/lcorre/" class="text-gray-400 hover:text-gray-500">
+                                            <a href="https://www.linkedin.com/in/lcorre/" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -221,7 +221,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/petru-oltean-7308a4171/" class="text-gray-400 hover:text-gray-500">
+                                            <a href="https://www.linkedin.com/in/petru-oltean-7308a4171/" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -245,7 +245,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                                            <a href="#" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -269,7 +269,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                                            <a href="#" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
