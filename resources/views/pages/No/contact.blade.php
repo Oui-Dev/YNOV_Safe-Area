@@ -76,7 +76,7 @@
                   <li>
                     <a class="text-teal-200 hover:text-teal-100" target="_blank" href="https://www.linkedin.com/company/safe-area-app/">
                       <span class="sr-only">Linkedin</span>
-                        <img src="{{Vite::asset('resources/images/linkedin.png')}}" alt="Logo linkedin" style="width: 40px">
+                        <img src="{{Vite::asset('resources/images/linkedin.webp')}}" alt="Logo linkedin" style="width: 40px">
                     </a>
                   </li>
                   <li>
