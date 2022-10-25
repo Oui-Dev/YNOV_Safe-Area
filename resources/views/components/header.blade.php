@@ -8,7 +8,7 @@
     <title>Safe Area</title>
     <meta name="description" content="Safe Area, votre application interne à la gestion de l'environnement de travail de vos collaborateurs">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="{{Vite::asset('resources/images/logo.png')}}">
+    <link rel="shortcut icon" href="{{Vite::asset('resources/images/logo.webp')}}">
 
     <meta property="og:title" content="">
     <meta property="og:type" content="website">
