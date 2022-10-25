@@ -21,7 +21,7 @@
                         </p>
                         <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                             <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
-                                <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-safearea-blue shadow-sm hover:bg-indigo-50 sm:px-8">Voir notre solution</a>
+                                <a href="{{route('no.public.features')}}" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-safearea-blue shadow-sm hover:bg-indigo-50 sm:px-8">Voir notre solution</a>
                             </div>
                         </div>
                     </div>
