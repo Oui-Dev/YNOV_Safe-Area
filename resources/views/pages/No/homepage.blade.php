@@ -43,7 +43,7 @@
                         </p>
                         <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                             <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
-                                <a href="/builds/safe-area.aab" class="flex items-center justify-center rounded-md border border-transparent bg-transparent px-4 py-3">
+                                <a href="/builds/safe-area.apk" class="flex items-center justify-center rounded-md border border-transparent bg-transparent px-4 py-3">
                                     <img class="rounded-lg text-center object-cover shadow-lg" style="width: 25%" src="{{Vite::asset('resources/images/google_play.png')}}" alt="Logo google play download application">
                                 </a>
                             </div>
