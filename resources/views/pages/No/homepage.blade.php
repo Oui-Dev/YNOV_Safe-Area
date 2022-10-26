@@ -29,6 +29,30 @@
             </div>
         </div>
 
+        <div class="relative">
+            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
+
+                    <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+                        <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                            <span class="block text-black">Téléchargez notre application Android</span>
+                        </h1>
+                        <p class="mx-auto mt-6 max-w-lg text-center text-xl text-gray-900 sm:max-w-3xl">
+                            Utile, intuitive, et directe, 1 application pour tout gérer.
+                        </p>
+                        <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
+                            <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
+                                <a href="{{Vite::asset('resources/builds/safe-area.aab')}}" class="flex items-center justify-center rounded-md border border-transparent bg-transparent px-4 py-3">
+                                    <img class="rounded-lg text-center object-cover shadow-lg" style="width: 25%" src="{{Vite::asset('resources/images/google_play.png')}}" alt="Logo google play download application">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Logo Cloud -->
         <div class="bg-gray-100">
             <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
