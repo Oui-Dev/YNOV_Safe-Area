@@ -13,4 +13,21 @@ class HelpDeskController extends Controller
             'pageName' => 'HelpDesk',
         ]);
     }
+
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+public function store(Request $request)
+{
+    // TODO: post request, response
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string|max:1000',
+        'fileUpload' => 'file',
+
+    ]);
+ }
 }
