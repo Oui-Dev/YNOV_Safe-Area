@@ -1,7 +1,7 @@
 @extends('layouts/no')
 
 @section('content')
-    <div class="flex flex-col flex-wrap justify-center content-center p-4 w-full">
+    <div class="flex flex-col flex-wrap justify-center content-center p-4 w-full mt-8">
         <h2 class="mt-6 mb-6 text-3xl font-bold tracking-tight text-gray-900">Mentions Légales</h2>
         <div class="flow-root w-1/2 max-w-3xl">
             <h3 class="text-2xl font-bold tracking-tight mt-5 mb-2">Informations Légales</h3>

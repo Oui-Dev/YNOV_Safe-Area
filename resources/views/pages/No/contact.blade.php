@@ -1,7 +1,7 @@
 @extends('layouts/no')
 
 @section('content')
-<div class="bg-white">
+<div class="bg-white mt-8">
       <!-- Header -->
       <div>
         <div class="py-12 lg:py-16">

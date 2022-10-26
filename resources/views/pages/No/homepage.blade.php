@@ -1,7 +1,7 @@
 @extends('layouts/no')
 
 @section('content')
-    <section class="bg-white">
+    <section class="bg-white mt-8">
         <!-- Hero section -->
         <div class="relative">
             <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
