@@ -590,7 +590,6 @@
                     </p>
                     <p class="mt-4 text-sm text-gray-500">Quis suspendisse ut fermentum neque vivamus non tellus.</p>
                   </div>
-                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>
                 </div>
               </td>
 
@@ -603,7 +602,6 @@
                     </p>
                     <p class="mt-4 text-sm text-gray-500">Quis eleifend a tincidunt pellentesque. A tempor in sed.</p>
                   </div>
-                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>
                 </div>
               </td>
 
@@ -616,7 +614,6 @@
                     </p>
                     <p class="mt-4 text-sm text-gray-500">Orci volutpat ut sed sed neque, dui eget. Quis tristique non.</p>
                   </div>
-                  <a href="#" class="mt-6 block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>
                 </div>
               </td>
             </tr>
