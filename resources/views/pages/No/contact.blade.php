@@ -1,11 +1,11 @@
 @extends('layouts/no')
 
 @section('content')
-<div class="bg-white mt-8">
+<div class="bg-white mb-14">
       <!-- Header -->
       <div>
-        <div class="py-12 lg:py-16">
-          <div class="relative z-10 mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
+        <div class="py-6 lg:py-10">
+          <div class="relative mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
             <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Nous contacter</h1>
             <p class="mt-6 max-w-3xl text-xl">
                 Retrouvez toutes nos coordonnées pour nous contacter.

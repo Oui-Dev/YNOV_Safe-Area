@@ -1,5 +1,5 @@
-<header>
-    <navbar class="bg-white fixed top-0 z-10 w-full">
+<header class="sticky top-0 bg-white z-10">
+    <navbar class="w-full">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
             <div class="flex justify-start lg:w-0 lg:flex-1">
                 <a href="{{ route('no.public.homepage') }}">
@@ -95,4 +95,3 @@
         </div>
     </navbar>
 </header>
-<div class="mt-10"><br></div>
