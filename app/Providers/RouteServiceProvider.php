@@ -36,6 +36,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/WEB/no.php'));
 
+            // Routes for landing pages => www.safearea.ml
+            Route::domain('www.' . config('app.domain'))
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/WEB/no.php'));
+
             // Routes for client => my.safearea.ml
             Route::domain('my.' . config('app.domain'))
                 ->middleware('web')
