@@ -553,7 +553,7 @@
         </section>
       </div>
 
-        @include('pages.No.mobile.price')
+        @include('pages.No.mobile_price')
 
     </div>
   </div>
