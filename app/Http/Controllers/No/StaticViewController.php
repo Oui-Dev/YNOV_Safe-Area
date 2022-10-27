@@ -22,6 +22,11 @@ class StaticViewController extends Controller
         return view('pages/No/prices');
     }
 
+    public function error404()
+    {
+        return view('errors/404');
+    }
+
     public function features()
     {
         return view('pages/No/features');

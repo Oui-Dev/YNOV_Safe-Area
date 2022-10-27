@@ -27,6 +27,7 @@ Route::group([
     Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
     Route::get('/mentions-légales', [StaticViewController::class, 'showLegal'])->name('public.legal');
     Route::get('/maintenance', [StaticViewController::class, 'maintenance'])->name('public.maintenance');
+    Route::get('/404',[StaticViewController::class, 'error404'])->name('public.404');
     Route::prefix('/public')->group(function () {
         Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
     });
