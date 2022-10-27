@@ -32,6 +32,10 @@ class StaticViewController extends Controller
         return view('pages/No/contact');
     }
 
+    public function maintenance() {
+        return view('errors/maintenance');
+    }
+
     // Changelog
     public function changelog()
     {
