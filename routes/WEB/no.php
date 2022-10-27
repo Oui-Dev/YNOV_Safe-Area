@@ -29,6 +29,7 @@ Route::group([
     Route::get('/maintenance', [StaticViewController::class, 'maintenance'])->name('public.maintenance');
     Route::get('/404',[StaticViewController::class, 'error404'])->name('public.404');
     Route::get('/405',[StaticViewController::class, 'error405'])->name('public.405');
+    Route::get('/401',[StaticViewController::class, 'error401'])->name('public.401');
     Route::prefix('/public')->group(function () {
         Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
     });
