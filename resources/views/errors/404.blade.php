@@ -8,7 +8,7 @@
                 <div class="mx-auto max-w-max">
                     <main class="sm:flex">
                         <p class="text-4xl font-bold tracking-tight text-safearea-blue sm:text-5xl pr-4">404</p>
-                        <div class="sm:ml-6">git
+                        <div class="sm:ml-6">
                             <div class="sm:border-l sm:border-gray-200 sm:pl-6">
                                 <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page introuvable</h1>
                                 <p class="mt-3 text-base text-gray-500">La page que vous tentez d'afficher n'existe pas</p>
