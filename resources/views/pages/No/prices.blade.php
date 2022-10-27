@@ -77,7 +77,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Prix pour 1 utilisateur</th>
+                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Prix par utilisateur</th>
 
                     <td class="py-5 px-6">
                         <span class="block text-sm text-gray-700">1€ /mois</span>
@@ -187,13 +187,13 @@
                 </tr>
 
                 <tr>
-                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Export des plaintes.</th>
+                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Export des plaintes</th>
 
                     <td class="py-5 px-6">
-                        <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
                         </svg>
-                        <span class="sr-only">Included in Basic</span>
+                        <span class="sr-only">Not included in Basic</span>
                     </td>
                     <td class="py-5 px-6">
                         <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -213,10 +213,10 @@
                     <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Export des sanctions</th>
 
                     <td class="py-5 px-6">
-                        <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
                         </svg>
-                        <span class="sr-only">Included in Basic</span>
+                        <span class="sr-only">Not included in Basic</span>
                     </td>
                     <td class="py-5 px-6">
                         <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -447,18 +447,18 @@
                     <th class="sr-only" scope="row">Choose your plan</th>
 
                     <td class="px-6 pt-5">
-{{--                        <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement Essentiel</a>--}}
-                        <a class="block w-full rounded-md border border-transparent bg-gray-400 py-2 text-center text-sm font-semibold text-white shadow">Souscrire à l'abonnement Essentiel</a>
+{{--                        <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>--}}
+                        <a class="block w-full rounded-md border bg-gray-400 py-2 text-center text-sm font-semibold text-gray-700 shadow">Souscrire à l'abonnement</a>
                     </td>
 
                     <td class="px-6 pt-5">
-{{--                        <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement Professionnel</a>--}}
-                        <a class="block w-full rounded-md border border-transparent bg-gray-400 py-2 text-center text-sm font-semibold text-white shadow">Souscrire à l'abonnement Professionnel</a>
+{{--                        <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>--}}
+                        <a class="block w-full rounded-md border bg-gray-400 py-2 text-center text-sm font-semibold text-gray-700 shadow">Souscrire à l'abonnement</a>
                     </td>
 
                     <td class="px-6 pt-5">
-{{--                        <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement Entreprise</a>--}}
-                        <a class="block w-full rounded-md border border-transparent bg-gray-400 py-2 text-center text-sm font-semibold text-white shadow">Souscrire à l'abonnement Entreprise</a>
+{{--                        <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>--}}
+                        <a class="block w-full rounded-md border bg-gray-400 py-2 text-center text-sm font-semibold text-gray-700 shadow">Souscrire à l'abonnement</a>
                     </td>
                 </tr>
                 </tfoot>
