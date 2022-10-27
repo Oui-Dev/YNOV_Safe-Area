@@ -25,7 +25,6 @@
             <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
                 @guest
                     <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-blue hover:to-safearea-red">Connexion</a>
-                    <a href="{{ route('login') }}" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gradient-to-r from-safearea-blue to-safearea-red bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Safe Admin</a>
                 @endguest
                 @auth
                     <x-form action="{{ route('logout') }}" method="delete"
