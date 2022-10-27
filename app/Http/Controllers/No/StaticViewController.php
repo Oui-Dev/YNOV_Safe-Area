@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Mail\ContactForm;
 use App\Models\User;
 use App\Models\Version;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class StaticViewController extends Controller
@@ -73,5 +75,15 @@ class StaticViewController extends Controller
     public function showLegal()
     {
         return view('pages/No/legal');
+    }
+
+    public function downloadAndoidApp()
+    {
+        Log::info("Téléchargement de l'application Android à ".now()->format('d/m/Y H:i'));
+        $file= public_path(). "/safe-area.apk";
+        $headers = array(
+            'Content-Type: application/apk',
+        );
+        return response()->download($file, 'safe-area.apk', $headers);
     }
 }
