@@ -6,20 +6,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Safe Area</title>
-    <meta name="description" content="Safe Area, votre application interne à la gestion de l'environnement de travail de vos collaborateurs">
-    <meta name="author" content="">
+    <meta name="description" content="Safe Area, votre application SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs">
+    <meta name="author" content="Maxime LARROZE-FRANCEZAT (Chef de projet), Kévin BLAISE (Développeur superviseur), Léo CORRE (Développeur), Petru OLTEAN (Développeur), Evan MARCEL (Développeur), Jules BESSON (Développeur)">
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/logo.webp')}}">
 
-    <meta property="og:title" content="">
+    <meta property="og:title" content="Safe Area">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.safearea.ml">
-    <meta property="og:description" content="">
+    <meta property="og:description" content="Safe Area, votre application SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs">
     <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
     <meta property="og:image" content="{{Vite::asset('resources/images/logo.webp')}}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <!-- Fonts -->
+    <link rel="preconnect" href="{{Vite::asset('resources/scss/app.scss')}}">
+    <link rel="preconnect" href="{{Vite::asset('resources/js/app.js')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
