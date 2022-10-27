@@ -76,6 +76,19 @@
                         <span class="block text-sm text-gray-700">12 mois renouvelable</span>
                     </td>
                 </tr>
+                <tr>
+                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Prix pour 1 utilisateur</th>
+
+                    <td class="py-5 px-6">
+                        <span class="block text-sm text-gray-700">1€ /mois</span>
+                    </td>
+                    <td class="py-5 px-6">
+                        <span class="block text-sm text-gray-700">0,92€ /mois <br> (économie de 2,40€ dès 30 utilisateurs)</span>
+                    </td>
+                    <td class="py-5 px-6">
+                        <span class="block text-sm text-gray-700">0,80€ /mois <br> (économie de 6€ dès 30 utilisateurs)</span>
+                    </td>
+                </tr>
 
                 <tr>
                     <th class="bg-gray-50 py-3 pl-6 text-left text-sm font-medium text-gray-900" colspan="4" scope="colgroup">Fonctionnalités</th>
