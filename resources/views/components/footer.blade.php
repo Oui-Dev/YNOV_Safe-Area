@@ -51,6 +51,10 @@
                             <li>
                                 <a href="{{route('no.public.legal')}}" class="text-base text-gray-700 hover:text-gray-900">Mentions Légales</a>
                             </li>
+
+                            <li>
+                                <a href="/sitemap.xml" class="text-base text-gray-700 hover:text-gray-900">Sitemap</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
