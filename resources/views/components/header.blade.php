@@ -19,6 +19,13 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="safearea.ml">
+    <meta name="twitter:title" content="Safe Area">
+    <meta name="twitter:description" content="Safe Area, votre application SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs">
+    <meta name="twitter:creator" content="@SafeAreaOff">
+    <meta name="twitter:image" content="{{Vite::asset('resources/images/logo.webp')}}">
+
     <!-- Fonts -->
     <link rel="preconnect" href="{{Vite::asset('resources/scss/app.scss')}}">
     <link rel="preconnect" href="{{Vite::asset('resources/js/app.js')}}">
@@ -27,6 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+    <link rel="alternate" href="http://safearea.ml/" hreflang="x-default" />
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
 
