@@ -1,5 +1,5 @@
 @extends('layouts/no')
-
+@section('title', '- Nous contacter')
 @section('content')
 <div class="bg-white mb-14">
       <!-- Header -->

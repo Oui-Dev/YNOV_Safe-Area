@@ -1,5 +1,5 @@
 @extends('layouts/no')
-
+@section('title', '- Nos fonctionnalités')
 @section('content')
         <div class="relative overflow-hidden bg-gradient-to-b from-teal-500 to-teal-600 py-10 px-6 sm:px-10 xl:p-12 from-safearea-red to-safearea-blue rounded-lg mt-8">
             <!-- Decorative angle backgrounds -->

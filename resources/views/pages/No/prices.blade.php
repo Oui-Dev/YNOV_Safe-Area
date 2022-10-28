@@ -1,5 +1,5 @@
 @extends('layouts/no')
-
+@section('title', '- Nos offres')
 @section('content')
 <div class="bg-white mt-8">
     <!-- Comparison table -->

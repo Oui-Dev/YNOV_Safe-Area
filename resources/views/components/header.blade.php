@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Safe Area</title>
-    <meta name="description" content="Safe Area, votre application SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs">
+    <title>Safe Area @yield('title')</title>
+    <meta name="description" content="Safe Area, votre application entreprise SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs, en respect avec vos données">
     <meta name="author" content="Maxime LARROZE-FRANCEZAT (Chef de projet), Kévin BLAISE (Développeur superviseur), Léo CORRE (Développeur), Petru OLTEAN (Développeur), Evan MARCEL (Développeur), Jules BESSON (Développeur)">
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/logo.webp')}}">
 
-    <meta property="og:title" content="Safe Area">
+    <meta property="og:title" content="Safe Area @yield('title')">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.safearea.ml">
-    <meta property="og:description" content="Safe Area, votre application SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs">
+    <meta property="og:description" content="Safe Area, votre application entreprise SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs, en respect avec vos données">
     <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
     <meta property="og:image" content="{{Vite::asset('resources/images/logo.webp')}}">
     <meta property="og:image:width" content="1200">
@@ -21,8 +21,8 @@
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="safearea.ml">
-    <meta name="twitter:title" content="Safe Area">
-    <meta name="twitter:description" content="Safe Area, votre application SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs">
+    <meta name="twitter:title" content="Safe Area @yield('title')">
+    <meta name="twitter:description" content="Safe Area, votre application entreprise SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs, en respect avec vos données">
     <meta name="twitter:creator" content="@SafeAreaOff">
     <meta name="twitter:image" content="{{Vite::asset('resources/images/logo.webp')}}">
 

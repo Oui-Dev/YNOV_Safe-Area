@@ -1,5 +1,5 @@
 @extends('layouts/no')
-
+@section('title', '- Mentions légales')
 @section('content')
     <div class="flex flex-col flex-wrap justify-center content-center p-4 w-full mt-8">
         <h2 class="mt-6 mb-6 text-3xl font-bold tracking-tight text-gray-900">Mentions Légales</h2>

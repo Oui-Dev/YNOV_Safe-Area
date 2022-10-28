@@ -1,5 +1,5 @@
 @extends('layouts/no')
-
+@section('title', '')
 @section('content')
     <section class="bg-white mt-8">
         <!-- Hero section -->
