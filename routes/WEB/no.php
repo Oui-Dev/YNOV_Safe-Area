@@ -42,3 +42,6 @@ Route::group([
 
 });
 Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+
+Route::fallback(function () {return redirect()->route('no.public.homepage');});
