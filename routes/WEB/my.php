@@ -20,3 +20,8 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 });
+
+
+
+
+Route::fallback(function () {return redirect()->route('no.public.homepage');});

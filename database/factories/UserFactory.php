@@ -2,8 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -17,12 +20,20 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+//        $identifiant = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', ceil(50/strlen($x)) )),1,6);
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'reference'=>Uuid::uuid4(),
+            'sex'=>0,
+            'firstname'=>fake()->firstName(),
+            'lastname'=>fake()->lastName(),
+            'personal_email'=>fake()->unique()->email(),
+            'professional_email'=>fake()->unique()->companyEmail(),
+            'personal_email_verified_at'=>now(),
+            'professional_email_verified_at'=>now(),
+            'phone'=>fake()->phoneNumber(),
+            'company_id'=>random_int(1,7),
+            'identifiant'=>fake()->unique()->ean8(),
+            'password'=>Hash::make(Str::random(10)),
         ];
     }
 

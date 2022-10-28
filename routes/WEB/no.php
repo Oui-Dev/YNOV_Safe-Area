@@ -22,17 +22,22 @@ Route::group([
     'as' => "no."
 ], function () {
     Route::get('/', [StaticViewController::class, 'homepage'])->name('public.homepage');
-    Route::get('/features', [StaticViewController::class, 'features'])->name('public.features');
-    Route::get('/prices', [StaticViewController::class, 'prices'])->name('public.prices');
+    Route::get('/fonctionnalites', [StaticViewController::class, 'features'])->name('public.features');
+    Route::get('/prix', [StaticViewController::class, 'prices'])->name('public.prices');
     Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
-    Route::get('/mentions-légales', [StaticViewController::class, 'showLegal'])->name('public.legal');
+    Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('public.legal');
     Route::get('/maintenance', [StaticViewController::class, 'maintenance'])->name('public.maintenance');
+<<<<<<< HEAD
     Route::get('/404',[StaticViewController::class, 'error404'])->name('public.404');
     Route::get('/405',[StaticViewController::class, 'error405'])->name('public.405');
     Route::get('/401',[StaticViewController::class, 'error401'])->name('public.401');
     Route::prefix('/public')->group(function () {
         Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
     });
+=======
+    Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
+    Route::get('/download/android', [StaticViewController::class, 'downloadAndoidApp'])->name('public.download.android');
+>>>>>>> 94015a1952fbfc92d4142f870cc7454952d562d5
 });
 Route::group([
     'middleware' => 'guest'
@@ -46,3 +51,6 @@ Route::group([
 
 });
 Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+
+Route::fallback(function () {return redirect()->route('no.public.homepage');});

@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'personal_email_verified_at'=>now(),
             'professional_email_verified_at'=>now(),
             'phone'=>'0102030405',
-            'compagny_id'=>Company::first()->id,
+            'company_id'=>Company::first()->id,
             'identifiant'=>'admin',
             'password'=>Hash::make('Azerty@123'),
         ])->id;
