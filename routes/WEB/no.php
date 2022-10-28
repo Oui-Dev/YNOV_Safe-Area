@@ -22,10 +22,10 @@ Route::group([
     'as' => "no."
 ], function () {
     Route::get('/', [StaticViewController::class, 'homepage'])->name('public.homepage');
-    Route::get('/fonctionnalités', [StaticViewController::class, 'features'])->name('public.features');
+    Route::get('/fonctionnalites', [StaticViewController::class, 'features'])->name('public.features');
     Route::get('/prix', [StaticViewController::class, 'prices'])->name('public.prices');
     Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
-    Route::get('/mentions-légales', [StaticViewController::class, 'showLegal'])->name('public.legal');
+    Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('public.legal');
     Route::get('/maintenance', [StaticViewController::class, 'maintenance'])->name('public.maintenance');
     Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
     Route::get('/download/android', [StaticViewController::class, 'downloadAndoidApp'])->name('public.download.android');
