@@ -32,4 +32,3 @@
         </div>
     </div>
 </nav>
-<div class="mt-12"><br></div>
