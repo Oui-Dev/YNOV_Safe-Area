@@ -26,7 +26,7 @@
                     <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium dark:text-white white:text-black hover:border-b-2 hover:border-safearea-red">Contact</a>
                 </li>
                 <li>
-                    <a href="{{ route('login') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium dark:text-white white:text-black shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
+                    <a href="{{ route('login') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
                 </li>
             </ul>
         </div>
