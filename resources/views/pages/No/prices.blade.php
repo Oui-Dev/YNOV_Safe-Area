@@ -447,8 +447,8 @@
                     <th class="sr-only" scope="row">Choose your plan</th>
 
                     <td class="px-6 pt-5">
-{{--                        <a href="#" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>--}}
-                        <a class="block w-full rounded-md border bg-gray-400 py-2 text-center text-sm font-semibold text-gray-700 shadow">Souscrire à l'abonnement</a>
+                        <a type="button" href="#" data-modal-toggle="modalEssential" class="block w-full rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Souscrire à l'abonnement</a>
+{{--                        <a class="block w-full rounded-md border bg-gray-400 py-2 text-center text-sm font-semibold text-gray-700 shadow">Souscrire à l'abonnement</a>--}}
                     </td>
 
                     <td class="px-6 pt-5">
@@ -469,4 +469,6 @@
 
     </div>
   </div>
+@include('pages.No.components.modal_essential')
+
 @endsection

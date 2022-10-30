@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Models\Version;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Auth\Guard;
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,5 +42,8 @@ class AppServiceProvider extends ServiceProvider
                  $view->with('version', $version->active());
              }
          });
+        Cashier::ignoreMigrations();
+        Cashier::useCustomerModel(User::class);
+        Cashier::calculateTaxes();
     }
 }

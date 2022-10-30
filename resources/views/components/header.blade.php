@@ -50,5 +50,8 @@
 
     <!-- Scripts -->
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+
+    <script src="https://flowbite.com/docs/flowbite.js"></script>
+
 </head>
 <body class="overflow-x-hidden antialiased">
