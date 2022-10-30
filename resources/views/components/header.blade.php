@@ -37,6 +37,7 @@
     <link rel="alternate" href="http://safearea.ml/" hreflang="x-default" />
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
+    <script src="https://flowbite.com/docs/flowbite.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKQ1BXLE78"></script>
