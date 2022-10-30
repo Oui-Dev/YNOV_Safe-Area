@@ -14,19 +14,19 @@
         <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
             <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                    <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-white hover:border-b-2 hover:border-safearea-red">Accueil</a>
+                    <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium dark:text-white white:text-black hover:border-b-2 hover:border-safearea-red">Accueil</a>
                 </li>
                 <li>
-                    <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-white hover:border-b-2 hover:border-safearea-red">Fonctionnalités</a>
+                    <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium dark:text-white white:text-black hover:border-b-2 hover:border-safearea-red">Fonctionnalités</a>
                 </li>
                 <li>
-                    <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-white hover:border-b-2 hover:border-safearea-red">Tarifs</a>
+                    <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium dark:text-white white:text-black hover:border-b-2 hover:border-safearea-red">Tarifs</a>
                 </li>
                 <li>
-                    <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-white hover:border-b-2 hover:border-safearea-red">Contact</a>
+                    <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium dark:text-white white:text-black hover:border-b-2 hover:border-safearea-red">Contact</a>
                 </li>
                 <li>
-                    <a href="{{ route('login') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
+                    <a href="{{ route('login') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium dark:text-white white:text-black shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
                 </li>
             </ul>
         </div>
