@@ -59,4 +59,4 @@
     <!-- Scripts -->
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
-<body class="overflow-x-hidden antialiased">
+<body class="overflow-x-hidden antialiased @if(str_contains(Route::currentRouteName(), 'console')) dark:bg-gray-900 white:bg-gray-50 @endif">

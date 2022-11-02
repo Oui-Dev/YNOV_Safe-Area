@@ -36,5 +36,23 @@ class UserSeeder extends Seeder
 
        $user = User::find($id);
        $user->givePermissionTo('root');
+
+        $id = User::create([
+            'reference'=>Uuid::uuid4(),
+            'sex'=>1,
+            'firstname'=>'Simple',
+            'lastname'=>'Utilisateur',
+            'personal_email'=>'safearea.app@gmail.com',
+            'professional_email'=>'safearea.app@gmail.com',
+            'personal_email_verified_at'=>now(),
+            'professional_email_verified_at'=>now(),
+            'phone'=>'0102030406',
+            'company_id'=>Company::first()->id,
+            'identifiant'=>'client',
+            'password'=>Hash::make('Azerty@123'),
+        ])->id;
+
+        $user = User::find($id);
+        $user->givePermissionTo('my_access');
     }
 }
