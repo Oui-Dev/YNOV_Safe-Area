@@ -15,8 +15,12 @@ class LoginController extends Controller
         return view('pages.Console.public.login');
     }
 
-    public function store(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
+        $this->validate($request, [
+            'identifiant' => 'required',
+            'password' => 'required',
+        ]);
         $request->authenticate();
         $request->session()->regenerate();
         return redirect()->route('console.auth.dashboard.index');
@@ -27,7 +31,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request)
+    public function logout(Request $request)
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();
