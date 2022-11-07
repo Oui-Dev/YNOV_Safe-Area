@@ -5,5 +5,5 @@
         @include('components.no.navbar')
         @yield('content')
     </div>
-    @include('components/footer')
+    @include('components.no.footer')
 @endsection
