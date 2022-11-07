@@ -16,11 +16,12 @@ function resolvePageComponent(name, pages) {
 }
 
 createInertiaApp({
-    // resolve: name => require(`../views/pages/**/${name}`),
     resolve: (name) => resolvePageComponent(name, import.meta.glob('../views/pages/**/*.vue')),
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
-            .use(plugin)
-            .mount(el)
+        const app = createApp({ render: () => h(App, props) })
+            .use(plugin);
+
+        app.config.globalProperties.$route = route;
+        app.mount(el);
     },
-})
+});
