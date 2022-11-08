@@ -30,7 +30,7 @@
             </div>
         </div>
   
-        <!-- Logo Cloud -->
+        <!-- Partners section -->
         <div class="bg-gray-100">
             <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
                 <p class="text-center text-lg font-semibold text-gray-700">Ils font confiance à notre solution (et ce ne sont pas les seuls)</p>
@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <!-- Stats section -->
+        <!-- Team section -->
         <div class="bg-white">
             <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
                 <div class="space-y-12">
@@ -123,151 +123,30 @@
                         <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Notre équipe</h2>
                     </div>
                     <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
-                        <li>
-                            <div class="space-y-4">
-                                <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/maxime_larroze.webp')}}" alt="Photo Maxime LARROZE-FRANCEZAT">
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="space-y-1 text-lg font-medium leading-6">
-                                        <h3>Maxime LARROZE-F.</h3>
-                                        <p class="text-indigo-600">Chef de projet / Expert web & hébergement</p>
-                                    </div>
-                                    <ul role="list" class="flex space-x-5">
-                                        <li>
-                                            <a title="Linkedin Maxime LARROZE-F." href="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/" class="text-gray-400 hover:text-gray-900">
-                                                <span class="sr-only">LinkedIn</span>
-                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="space-y-4">
-                                <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/kevin_blaise.webp')}}" alt="Photo Kévin Blaise">
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="space-y-1 text-lg font-medium leading-6">
-                                        <h3>Kévin BLAISE</h3>
-                                        <p class="text-indigo-600">Superviseur / Expert web</p>
-                                    </div>
-                                    <ul role="list" class="flex space-x-5">
-                                        <li>
-                                             <a title="Linkedin Kévin BLAISE" href="https://www.linkedin.com/in/k%C3%A9vin-blaise/" class="text-gray-500 hover:text-gray-900">
-                                                <span class="sr-only">LinkedIn</span>
-                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="space-y-4">
-                                <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.webp')}}" alt="Photo Léo CORRE">
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="space-y-1 text-lg font-medium leading-6">
-                                        <h3>Léo CORRE</h3>
-                                        <p class="text-indigo-600">Développeur web</p>
-                                    </div>
-                                    <ul role="list" class="flex space-x-5">
-                                        <li>
-                                            <a title="Linkedin Léo CORRE" href="https://www.linkedin.com/in/lcorre/" class="text-gray-500 hover:text-gray-900">
-                                                <span class="sr-only">LinkedIn</span>
-                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="space-y-4">
-                                <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/petru_oltean.webp')}}" alt="Photo Petru OLTEAN">
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="space-y-1 text-lg font-medium leading-6">
-                                        <h3>Petru OLTEAN</h3>
-                                        <p class="text-indigo-600">Développeur web</p>
-                                    </div>
-                                    <ul role="list" class="flex space-x-5">
-                                        <li>
-                                            <a title="Linkedin Petru OLTEAN" href="https://www.linkedin.com/in/petru-oltean-7308a4171/" class="text-gray-500 hover:text-gray-900">
-                                                <span class="sr-only">LinkedIn</span>
-                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="space-y-4">
-                                <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/evan_marcel.webp')}}" alt="Photo Evan MARCEL">
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="space-y-1 text-lg font-medium leading-6">
-                                        <h3>Evan MARCEL</h3>
-                                        <p class="text-indigo-600">Développeur web</p>
-                                    </div>
-                                    <ul role="list" class="flex space-x-5">
-                                        <li>
-                                            <a title="Linkedin Evan MARCEL" href="https://www.linkedin.com/in/evan-marcel-178a64171/" class="text-gray-500 hover:text-gray-900">
-                                                <span class="sr-only">LinkedIn</span>
-                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="space-y-4">
-                                <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="Photo Jules Besson">
-                                </div>
-                                <div class="space-y-2">
-                                    <div class="space-y-1 text-lg font-medium leading-6">
-                                        <h3>Jules BESSON</h3>
-                                        <p class="text-indigo-600">Développeur web</p>
-                                    </div>
-                                    <ul role="list" class="flex space-x-5">
-                                        <li>
-                                            <a title="Linkedin Jules BESSON" href="#" class="text-gray-500 hover:text-gray-900">
-                                                <span class="sr-only">LinkedIn</span>
-                                                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- More people... -->
+                        <x-team-card name="Maxime LARROZE-F."
+                            role="Chef de projet / Expert web & hébergement"
+                            img="resources/images/team/maxime_larroze.webp"
+                            linkedin="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/"/>
+                        <x-team-card name="Kévin BLAISE"
+                            role="Superviseur / Expert web"
+                            img="resources/images/team/kevin_blaise.webp"
+                            linkedin="https://www.linkedin.com/in/k%C3%A9vin-blaise/"/>
+                        <x-team-card name="Léo CORRE"
+                            role="Développeur web"
+                            img="resources/images/team/leo_corre.webp"
+                            linkedin="https://www.linkedin.com/in/lcorre/"/>
+                        <x-team-card name="Petru OLTEAN"
+                            role="Développeur web"
+                            img="resources/images/team/petru_oltean.webp"
+                            linkedin="https://www.linkedin.com/in/petru-oltean-7308a4171/"/>
+                        <x-team-card name="Evan MARCEL"
+                            role="Développeur web"
+                            img="resources/images/team/evan_marcel.webp"
+                            linkedin="https://www.linkedin.com/in/evan-marcel-178a64171/"/>
+                        <x-team-card name="Jules Besson"
+                            role="Développeur web"
+                            img="resources/images/team/evan_marcel.webp"
+                            linkedin="#"/>
                     </ul>
                 </div>
             </div>
