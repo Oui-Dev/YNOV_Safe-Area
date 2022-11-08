@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Console\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Console\DashboardController;
 
@@ -16,7 +17,8 @@ use App\Http\Controllers\Console\DashboardController;
 
 Route::group([
     'as' => "console.",
-    'middleware' => ['permission:root']
+    'middleware' => ['auth', 'permission:root']
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 });

@@ -1,27 +1,51 @@
 @extends('layouts/no')
-
+@section('title', '')
 @section('content')
-    <section class="bg-white">
+    <section class="bg-white mt-8">
         <!-- Hero section -->
         <div class="relative">
-            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
+            <div class="bg-gray-100">
+                <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    <div class="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
+                        <div class="absolute inset-0">
+                            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100" alt="People working on laptops">
+                            <div class="absolute inset-0 bg-gradient-to-r from-safearea-red to-safearea-blue mix-blend-multiply"></div>
+                        </div>
+                        <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+                            <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                                <span class="block text-white">Sécurisez l'environnement de travail</span>
+                                <span class="block text-indigo-200">de vos collaborateurs</span>
+                            </h1>
+                            <p class="mx-auto mt-6 max-w-lg text-center text-xl text-indigo-200 sm:max-w-3xl">
+                                Un collaborateur qui se sent bien au travail, c'est un collaborateur qui est plus productif.
+                            </p>
+                            <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
+                                <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
+                                    <a href="{{route('no.public.features')}}" title="Voir notre solution" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-safearea-blue shadow-sm sm:px-8 hover:border-transparent hover:bg-gradient-to-r hover:text-white hover:from-safearea-red hover:to-safearea-blue">Voir notre solution</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
-                    <div class="absolute inset-0">
-                        <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100" alt="People working on laptops">
-                        <div class="absolute inset-0 bg-gradient-to-r from-safearea-red to-safearea-blue mix-blend-multiply"></div>
-                    </div>
+
                     <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                        <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-                            <span class="block text-white">Sécurisez l'environnement de travail</span>
-                            <span class="block text-indigo-200">de vos collaborateurs</span>
-                        </h1>
-                        <p class="mx-auto mt-6 max-w-lg text-center text-xl text-indigo-200 sm:max-w-3xl">
-                            Un collaborateur qui se sent bien au travail, c'est un collaborateur qui est plus productif.
+                        <h2 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                            <span class="block text-black">Téléchargez notre application Android</span>
+                        </h2>
+                        <p class="mx-auto mt-6 max-w-lg text-center text-xl text-gray-900 sm:max-w-3xl">
+                            Utile, intuitive, et directe, 1 application pour tout gérer.
                         </p>
                         <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                             <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
-                                <a href="{{route('no.public.features')}}" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-safearea-blue shadow-sm sm:px-8 hover:border-transparent hover:bg-gradient-to-r hover:text-white hover:from-safearea-red hover:to-safearea-blue">Voir notre solution</a>
+                                <a href="{{route('no.public.download.android')}}" title="Télécharger notre application android" class="flex items-center justify-center rounded-md border border-transparent bg-transparent px-4 py-3">
+                                    <img class="rounded-lg text-center object-cover shadow-lg" style="width: 500px" src="{{Vite::asset('resources/images/google_play.png')}}" alt="Logo google play download application">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -149,7 +173,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/" class="text-gray-400 hover:text-gray-900">
+                                            <a title="Linkedin Maxime LARROZE-F." href="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/" class="text-gray-400 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -173,7 +197,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/k%C3%A9vin-blaise/" class="text-gray-500 hover:text-gray-900">
+                                             <a title="Linkedin Kévin BLAISE" href="https://www.linkedin.com/in/k%C3%A9vin-blaise/" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -188,7 +212,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.webp')}}" alt="Photo Léo CORRE">
+                                    <img class="rounded-lg object-cover shadow-lg" style="width: 75%" src="{{Vite::asset('resources/images/team/leo_corre.webp')}}" alt="Photo Léo CORRE">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
@@ -197,7 +221,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/lcorre/" class="text-gray-500 hover:text-gray-900">
+                                            <a title="Linkedin Léo CORRE" href="https://www.linkedin.com/in/lcorre/" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -221,7 +245,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="https://www.linkedin.com/in/petru-oltean-7308a4171/" class="text-gray-500 hover:text-gray-900">
+                                            <a title="Linkedin Petru OLTEAN" href="https://www.linkedin.com/in/petru-oltean-7308a4171/" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -236,7 +260,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="Photo Evan MARCEL">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/evan_marcel.webp')}}" alt="Photo Evan MARCEL">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
@@ -245,7 +269,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="#" class="text-gray-500 hover:text-gray-900">
+                                            <a title="Linkedin Evan MARCEL" href="https://www.linkedin.com/in/evan-marcel-178a64171/" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
@@ -269,7 +293,7 @@
                                     </div>
                                     <ul role="list" class="flex space-x-5">
                                         <li>
-                                            <a href="#" class="text-gray-500 hover:text-gray-900">
+                                            <a title="Linkedin Jules BESSON" href="#" class="text-gray-500 hover:text-gray-900">
                                                 <span class="sr-only">LinkedIn</span>
                                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />

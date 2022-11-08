@@ -17,9 +17,10 @@ use App\Http\Controllers\My\HelpDeskController;
 
 Route::group([
     'as' => "my.",
-    'middleware' => ['permission:my_access|admin_access|root']
+    'middleware' => ['auth', 'permission:my_access|admin_access|root']
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
     Route::get('/helpdesk', [HelpDeskController::class, 'helpDesk'])->name('helpDesk');
     Route::post('/helpdesk', [HelpDeskController::class, 'store'])->name('helpDesk.post');
 });

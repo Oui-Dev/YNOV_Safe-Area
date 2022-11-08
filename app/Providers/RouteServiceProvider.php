@@ -42,12 +42,6 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/WEB/my.php'));
 
-            // Routes for Administration => admin.safearea.ml
-            Route::domain('admin.' . config('app.domain'))
-                ->middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/WEB/administration.php'));
-
             // Routes for Console => console.safearea.ml
             Route::domain('console.' . config('app.domain'))
                 ->middleware('web')

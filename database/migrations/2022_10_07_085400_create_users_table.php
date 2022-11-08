@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('compagny_id')->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->string('identifiant')->unique();
             $table->string('password');
             $table->uuid('reference')->unique();
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->timestamp('blocked_at')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('compagny_id')->references('id')->on('companies');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 
