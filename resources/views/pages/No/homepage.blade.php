@@ -4,47 +4,24 @@
     <section class="bg-white mt-8">
         <!-- Hero section -->
         <div class="relative">
-            <div class="bg-gray-100">
-                <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div class="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
-                        <div class="absolute inset-0">
-                            <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100" alt="People working on laptops">
-                            <div class="absolute inset-0 bg-gradient-to-r from-safearea-red to-safearea-blue mix-blend-multiply"></div>
-                        </div>
-                        <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                            <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-                                <span class="block text-white">Sécurisez l'environnement de travail</span>
-                                <span class="block text-indigo-200">de vos collaborateurs</span>
-                            </h1>
-                            <p class="mx-auto mt-6 max-w-lg text-center text-xl text-indigo-200 sm:max-w-3xl">
-                                Un collaborateur qui se sent bien au travail, c'est un collaborateur qui est plus productif.
-                            </p>
-                            <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
-                                <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
-                                    <a href="{{route('no.public.features')}}" title="Voir notre solution" class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-safearea-blue shadow-sm sm:px-8 hover:border-transparent hover:bg-gradient-to-r hover:text-white hover:from-safearea-red hover:to-safearea-blue">Voir notre solution</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="relative">
+            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
-
+                    <div class="absolute inset-0">
+                        <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100" alt="People working on laptops">
+                        <div class="absolute inset-0 bg-gradient-to-r from-safearea-red to-safearea-blue mix-blend-multiply"></div>
+                    </div>
                     <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-                        <h2 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-                            <span class="block text-black">Téléchargez notre application Android</span>
-                        </h2>
-                        <p class="mx-auto mt-6 max-w-lg text-center text-xl text-gray-900 sm:max-w-3xl">
-                            Utile, intuitive, et directe, 1 application pour tout gérer.
-                        </p>
+                        <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                            <span class="block text-white">Sécurisez l'environnement de travail</span>
+                            <span class="block text-indigo-400">de vos collaborateurs</span>
+                        </h1>
+                        <p class="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">Un collaborateur qui se sent bien au travail, c'est un collaborateur qui est plus productif.</p>
                         <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
-                            <div class="space-y-4 sm:mx-auto sm:inline-grid sm:space-y-0">
-                                <a href="{{route('no.public.download.android')}}" title="Télécharger notre application android" class="flex items-center justify-center rounded-md border border-transparent bg-transparent px-4 py-3">
-                                    <img class="rounded-lg text-center object-cover shadow-lg" style="width: 500px" src="{{Vite::asset('resources/images/google_play.png')}}" alt="Logo google play download application">
+                            <div class="space-y-4 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-8 sm:space-y-0">
+                                <a href="{{route('no.public.prices')}}" class="flex items-center justify-center rounded-md border border-transparent bg-white px-8 md:px-4 py-3 text-base md:text-lg font-medium text-black shadow-sm hover:bg-indigo-50 h-full md:w-52">Voir notre solution</a>
+                                <a href="#" class="rounded-md shadow-sm">
+                                    <img src="{{Vite::asset('resources/images/google_play.png')}}" alt="Logo google play download application" class="text-center object-cover shadow-lg w-52">
                                 </a>
                             </div>
                         </div>
