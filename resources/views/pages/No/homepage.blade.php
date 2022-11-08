@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-
+  
         <!-- Logo Cloud -->
         <div class="bg-gray-100">
             <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
@@ -141,7 +141,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" src="https://media-exp1.licdn.com/dms/image/C5603AQF6fxarjIsJkA/profile-displayphoto-shrink_800_800/0/1574261571668?e=1672272000&v=beta&t=Vm5sPiudMaSPHxKcXi9XFZliJmQhHkRt5HdhuT2i48A" alt="Photo Maxime LARROZE-FRANCEZAT">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/maxime_larroze.webp')}}" alt="Photo Maxime LARROZE-FRANCEZAT">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
@@ -189,7 +189,7 @@
                         <li>
                             <div class="space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
-                                    <img class="rounded-lg object-cover shadow-lg" style="width: 75%" src="{{Vite::asset('resources/images/team/leo_corre.webp')}}" alt="Photo Léo CORRE">
+                                    <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset('resources/images/team/leo_corre.webp')}}" alt="Photo Léo CORRE">
                                 </div>
                                 <div class="space-y-2">
                                     <div class="space-y-1 text-lg font-medium leading-6">
