@@ -1,0 +1,54 @@
+#navbar {
+    @apply sticky top-0 w-full bg-white text-black z-10;
+
+    nav {
+        @apply justify-between items-center max-w-7xl h-16 mx-auto px-4 md:px-10;
+
+        a:hover {
+            @apply text-safearea-blue;
+        }
+    
+        .logo-side {
+            @screen lg {
+                width: 295px;
+            }
+        }
+    
+        .menu-side {
+            @apply flex items-center gap-6 justify-center;
+        }
+    
+        .button-side {
+            @apply flex items-center gap-3 md:gap-6 justify-end;
+            @screen lg {
+                width: 295px;
+            }
+
+            i {
+                @apply text-2xl relative;
+            }
+        }
+    
+        .menu-button {
+            @apply inline-flex items-center justify-center rounded bg-gradient-to-l from-safearea-red to-safearea-blue text-white px-3 md:px-6 py-2 md:py-1 text-xs md:text-base font-medium shadow-sm;
+        }
+
+        #sidebar {
+            @apply bg-white;
+            opacity: 1;
+            pointer-events: all;
+            transition: opacity 400ms ease 0ms;
+
+            &.reduced {
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 400ms ease 0ms;
+            }
+        }
+    }
+
+    // Scrolled navbar
+    &.dark {
+        @apply bg-black text-white;
+    }
+}
