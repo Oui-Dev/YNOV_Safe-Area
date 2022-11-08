@@ -8,10 +8,14 @@
         </div>
 
         <div class="menu-side">
-            <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Accueil</a>
-            <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Fonctionnalités</a>
-            <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Tarifs</a>
-            <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Contact</a>
+            <a href="{{ route('no.public.homepage') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Accueil</a>
+            <a href="{{ route('no.public.features') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Fonctionnalités</a>
+            <a href="{{ route('no.public.prices') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Tarifs</a>
+            <a href="{{ route('no.public.contact') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Contact</a>
         </div>
 
         <div class="button-side">
