@@ -2,7 +2,7 @@
 @section('title', '- Notre application')
 @section('content')
     <div class="flex lg:items-center justify-center w-full p-4 lg:p-8 lg:flex-auto">
-        <div class="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 max-w-7xl lg:pb-24 h-fit">
+        <div class="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-32 max-w-7xl lg:pb-24 h-fit">
             <div class="text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
                 <h1>
                     <span class="mt-1 block text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
@@ -11,9 +11,13 @@
                     </span>
                 </h1>
                 <p class="mt-3 text-base text-gray-500 lg:text-lg">Utile, intuitive, et directe, 1 application pour tout gérer.</p>
-                <div class="mt-8 sm:mx-auto sm:max-w-lg text-center lg:mx-0 lg:text-left">
+                <div class="mt-8 lg:mt-12 sm:mx-auto sm:max-w-lg text-center lg:mx-0 lg:text-left">
+                    <a href="{{route('no.public.mobileApp.download.android')}}"
+                        class="text-center font-bold text-xl block w-full bg-gradient-to-l from-safearea-red to-safearea-blue text-white p-3 rounded-xl">
+                        Télécharger
+                    </a>
                     <!-- Add link to changelog or something else ? -->
-                    <p class="mt-3 text-sm text-gray-500">
+                    <p class="mt-3 lg:mt-5 text-sm text-gray-500">
                         We care about the protection of your data. Read our
                         <a href="#" class="font-medium text-gray-900 underline">Privacy Policy</a>.
                     </p>
