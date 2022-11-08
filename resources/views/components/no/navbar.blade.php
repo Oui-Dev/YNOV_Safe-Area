@@ -10,10 +10,10 @@
         <div class="menu-side">
             <a href="{{ route('no.public.homepage') }}"
                 class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Accueil</a>
-            <a href="{{ route('no.public.features') }}"
-                class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Fonctionnalités</a>
             <a href="{{ route('no.public.prices') }}"
                 class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Tarifs</a>
+            <a href="{{ route('no.public.mobileApp') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.mobileApp') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Application</a>
             <a href="{{ route('no.public.contact') }}"
                 class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Contact</a>
         </div>
@@ -46,10 +46,10 @@
                 <div class="relative grid gap-2 px-5 py-5 text-sm md:text-base">
                     <a href="{{ route('no.public.homepage') }}"
                         class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Accueil</a>
-                    <a href="{{ route('no.public.features') }}"
-                        class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Fonctionnalités</a>
                     <a href="{{ route('no.public.prices') }}"
                         class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Tarifs</a>
+                    <a href="{{ route('no.public.mobileApp') }}"
+                        class="{{ strpos(Route::currentRouteName(), 'no.public.mobileApp') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Application</a>
                     <a href="{{ route('no.public.contact') }}"
                         class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Contact</a>
                 </div>

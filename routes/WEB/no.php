@@ -22,14 +22,14 @@ Route::group([
     'as' => "no."
 ], function () {
     Route::get('/', [StaticViewController::class, 'homepage'])->name('public.homepage');
-    Route::get('/fonctionnalites', [StaticViewController::class, 'features'])->name('public.features');
     Route::get('/prix', [StaticViewController::class, 'prices'])->name('public.prices');
+    Route::get('/application', [StaticViewController::class, 'application'])->name('public.mobileApp');
+    Route::get('/application/download/android', [StaticViewController::class, 'downloadAndoidApp'])->name('public.mobileApp.download.android');
     Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
     Route::post('/contact', [StaticViewController::class, 'sendMailForm'])->name('public.contact.store');
     Route::post('/newsletters', [NewsletterController::class, 'store'])->name('public.newsletters.store');
     Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('public.legal');
     Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
-    Route::get('/download/android', [StaticViewController::class, 'downloadAndoidApp'])->name('public.download.android');
     // To delete
     Route::get('/maintenance', [StaticViewController::class, 'maintenance'])->name('public.maintenance');
 });

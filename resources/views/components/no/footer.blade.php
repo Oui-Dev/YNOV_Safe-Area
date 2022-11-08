@@ -12,7 +12,7 @@
                             </li>
 
                             <li>
-                                <a href="{{route('no.public.features')}}" class="text-base text-gray-700 hover:text-gray-900">Fonctionnalités</a>
+                                <a href="{{route('no.public.mobileApp')}}" class="text-base text-gray-700 hover:text-gray-900">Fonctionnalités</a>
                             </li>
 
                             <li>

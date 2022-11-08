@@ -39,9 +39,9 @@ class StaticViewController extends Controller
         return view('errors/405');
     }
 
-    public function features()
+    public function application()
     {
-        return view('pages/No/features');
+        return view('pages/No/application');
     }
 
     public function contact()
