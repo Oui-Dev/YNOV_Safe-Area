@@ -1,21 +1,12 @@
 <template>
-    <div class="min-h-full">
+    <section class="min-h-full">
         <DashboardNavbar />
-        <div class="py-10">
-            <header v-if="pageName">
-                <div class="page-container">
-                    <h1>
-                        {{ pageName }}
-                    </h1>
-                </div>
-            </header>
-            <main>
-                <div class="page-container">
-                    <slot />
-                </div>
-            </main>
-        </div>
-    </div>
+        <main>
+            <div class="page-container">
+                <slot />
+            </div>
+        </main>
+    </section>
 </template>
 
 <script>
