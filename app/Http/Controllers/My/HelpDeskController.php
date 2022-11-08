@@ -5,7 +5,6 @@ namespace App\Http\Controllers\My;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use App\Models\HelpDeskSupport;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 
 class HelpDeskController extends Controller
@@ -23,12 +22,12 @@ class HelpDeskController extends Controller
     */
 public function store()
 {
-    // TODO: post request, response
+    // TODO: response, handle error
     $data = request()->validate([
         'title' => 'required|string|max:255',
         'message' => 'required|string|max:500',
         'fileUpload' => 'file|nullable',
-        'type' => ['string', Rule::in(['incident', 'demande'])],
+        'type' => 'boolean',
 
     ]);
 
@@ -42,11 +41,10 @@ public function store()
         'user_id' => $user->id,
         'title' => $data['title'],
         'description' => $data['message'],
-        'type' => $data['type'],
+        'type' => $data['type'] ? 'incident' : 'demande' ,
         'emergency' => 3,
         // 'file' => $data['fileUpload'],
     ]);
     $ticket->save();
-
  }
 }
