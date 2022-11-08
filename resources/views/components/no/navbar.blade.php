@@ -33,7 +33,7 @@
                 @endguest
                 @auth
                     <li>
-                        <a href="{{ route('my.index') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Mon espace</a>
+                        <a href="{{ route('my.auth.dashboard.index') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Mon espace</a>
                     </li>
                     <li>
                         <x-form action="{{ route('logout') }}" method="delete"
