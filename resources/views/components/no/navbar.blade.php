@@ -2,8 +2,8 @@
     {{-- Laptop --}}
     <nav class="hidden lg:flex">
         <div class="logo-side">
-            <a href="{{ route('no.public.homepage') }}">
-                <img src="{{ Vite::asset('resources/images/logo.webp') }}" class="w-10" alt="Logo">
+            <a href="{{ route('no.public.homepage') }}" class="flex flex-row items-center gap-4 font-bold">
+                <img src="{{ Vite::asset('resources/images/logo.webp') }}" class="w-10" alt="Logo">Safe Area
             </a>
         </div>
 
@@ -21,7 +21,7 @@
         <div class="button-side">
             @auth
                 <x-form action="{{ route('logout') }}" method="delete"
-                        class="block py-2 pr-4 pl-3 text-base hover:text-safearea-blue">
+                        class="block py-2 pr-4 pl-3 text-base hover:text-safearea-red">
                     <button type="submit">Déconnexion</button>
                 </x-form>
             @endauth
