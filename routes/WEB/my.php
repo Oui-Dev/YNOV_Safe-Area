@@ -20,5 +20,5 @@ Route::group([
     'middleware' => ['auth', 'permission:my_access|admin_access|root']
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
-    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
 });
