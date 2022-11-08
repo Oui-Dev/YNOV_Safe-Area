@@ -3,31 +3,50 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\HelpDeskSupport;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class HelpDeskController extends Controller
 {
     public function helpDesk() {
         return Inertia::render('My/HelpDesk', [
             'pageName' => 'HelpDesk',
+            'user' => auth()->user(),
         ]);
     }
 
     /**
     * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-public function store(Request $request)
+public function store()
 {
     // TODO: post request, response
-    $request->validate([
+    $data = request()->validate([
         'title' => 'required|string|max:255',
-        'description' => 'required|string|max:1000',
-        'fileUpload' => 'file',
+        'message' => 'required|string|max:500',
+        'fileUpload' => 'file|nullable',
+        'type' => ['string', Rule::in(['incident', 'demande'])],
 
     ]);
+
+    $user = auth()->user();
+
+    /**
+     * @var \App\Models\HelpDeskSupport $ticket
+     * */
+    $ticket = HelpDeskSupport::create([
+        'reference' => Str::uuid(),
+        'user_id' => $user->id,
+        'title' => $data['title'],
+        'description' => $data['message'],
+        'type' => $data['type'],
+        'emergency' => 3,
+        // 'file' => $data['fileUpload'],
+    ]);
+    $ticket->save();
+
  }
 }

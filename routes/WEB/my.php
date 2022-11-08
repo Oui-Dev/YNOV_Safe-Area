@@ -21,4 +21,5 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::get('/helpdesk', [HelpDeskController::class, 'helpDesk'])->name('helpDesk');
+    Route::post('/helpdesk', [HelpDeskController::class, 'store'])->name('helpDesk.post');
 });
