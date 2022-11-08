@@ -21,7 +21,7 @@
                     <button type="submit">Déconnexion</button>
                 </x-form>
             @endauth
-            <a href="{{ route('my.index') }}" class="menu-button">Mon espace</a>
+            <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button">Mon espace</a>
         </div>
     </nav>
 
@@ -56,7 +56,7 @@
                             <button type="submit" class="bg-gradient-to-r from-safearea-red to-safearea-blue bg-clip-text text-transparent">Déconnexion</button>
                         </x-form>
                     @endauth
-                    <a href="{{ route('my.index') }}" class="menu-button w-full">Mon espace</a>
+                    <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button w-full">Mon espace</a>
                 </div>
             </div>
         </div>
