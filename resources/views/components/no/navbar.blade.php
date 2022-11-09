@@ -1,50 +1,96 @@
-<nav class="bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b">
-    <div class="container flex flex-wrap justify-between items-center mx-auto max-w-7xl lg:px-8">
-        <a href="{{ route('no.public.homepage') }}" class="flex items-center">
-            <span class="sr-only">Safe Area</span>
-            <img class="mr-3 h-6 sm:h-9" src="{{Vite::asset('resources/images/logo.webp')}}" alt="Safe Area Logo">
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Safe Area</span>
-        </a>
-        <div class="flex md:order-2">
-            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
-                <span class="sr-only">Ouvrir le menu</span>
-                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-            </button>
+<header id="navbar">
+    {{-- Laptop --}}
+    <nav class="hidden lg:flex">
+        <div class="logo-side">
+            <a href="{{ route('no.public.homepage') }}" class="flex flex-row items-center gap-4 font-bold">
+                <img src="{{ Vite::asset('resources/images/logo.webp') }}" class="w-10" alt="Logo">Safe Area
+            </a>
         </div>
-        <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-            <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
-                <li>
-                    <a href="{{ route('no.public.homepage') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-black hover:border-b-2 hover:border-safearea-red">Accueil</a>
-                </li>
-                <li>
-                    <a href="{{ route('no.public.features') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.features') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-black hover:border-b-2 hover:border-safearea-red">Fonctionnalités</a>
-                </li>
-                <li>
-                    <a href="{{ route('no.public.prices') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-black hover:border-b-2 hover:border-safearea-red">Tarifs</a>
-                </li>
-                <li>
-                    <a href="{{ route('no.public.contact') }}" class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} block py-2 pr-4 pl-3 text-base font-medium text-black hover:border-b-2 hover:border-safearea-red">Contact</a>
-                </li>
 
-                @guest
-                    <li>
-                        <a href="{{ route('login') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Connexion</a>
+        <div class="menu-side">
+            <a href="{{ route('no.public.homepage') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Accueil</a>
+            <a href="{{ route('no.public.prices') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Tarifs</a>
+            <a href="{{ route('no.public.mobileApp') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.mobileApp') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Application</a>
+            <a href="{{ route('no.public.contact') }}"
+                class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} py-3">Contact</a>
+        </div>
 
-                @endguest
-                @auth
-                    <li>
-                        <a href="{{ route('my.auth.dashboard.index') }}" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-2 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue">Mon espace</a>
-                    </li>
-                    <li>
+        <div class="button-side">
+            @auth
+                <x-form action="{{ route('logout') }}" method="delete"
+                        class="block py-2 pr-4 pl-3 text-base hover:text-safearea-red">
+                    <button type="submit">Déconnexion</button>
+                </x-form>
+            @endauth
+            <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button">Mon espace</a>
+        </div>
+    </nav>
+
+    {{-- Tablet and mobile --}}
+    <nav class="flex lg:hidden">
+        <div class="logo-side">
+            <a href="{{ route('no.public.homepage') }}">
+                <img src="{{ Vite::asset('resources/images/logo.webp') }}" class="w-8" alt="Logo">
+            </a>
+        </div>
+
+        <div class="button-side">
+            <span class="material-icons text-3xl" id="sidebarToggle">menu</span>
+        </div>
+
+        <div class="absolute top-16 -mt-px right-0 z-10 w-screen max-w-lg">
+            <div class="overflow-hidden shadow-lg rounded-b-lg reduced border-t border-lockanda-gray" id="sidebar">
+                <div class="relative grid gap-2 px-5 py-5 text-sm md:text-base">
+                    <a href="{{ route('no.public.homepage') }}"
+                        class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Accueil</a>
+                    <a href="{{ route('no.public.prices') }}"
+                        class="{{ strpos(Route::currentRouteName(), 'no.public.prices') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Tarifs</a>
+                    <a href="{{ route('no.public.mobileApp') }}"
+                        class="{{ strpos(Route::currentRouteName(), 'no.public.mobileApp') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Application</a>
+                    <a href="{{ route('no.public.contact') }}"
+                        class="{{ strpos(Route::currentRouteName(), 'no.public.contact') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Contact</a>
+                </div>
+                <div class="px-5 pb-5 flex justify-around gap-5">
+                    @auth
                         <x-form action="{{ route('logout') }}" method="delete"
-                                class="block py-2 pr-4 pl-3 text-base font-medium dark:text-red-400 white:text-red-600 hover:border-b-2 hover:border-safearea-red">
-                            <button type="submit">Déconnexion</button>
+                                class="block py-2 pr-4 pl-3 w-full text-center text-base">
+                            <button type="submit" class="bg-gradient-to-r from-safearea-red to-safearea-blue bg-clip-text text-transparent">Déconnexion</button>
                         </x-form>
-                    </li>
-                @endauth
-                </li>
-            </ul>
+                    @endauth
+                    <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button w-full">Mon espace</a>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
-<div class="lg:mt-10"><br></div>
+    </nav>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbar = document.getElementById('navbar');
+        const sidebar = document.getElementById('sidebar');
+
+        window.onscroll = () => {
+            let y = 1 + (window.scrollY || window.pageYOffset) / 35;
+            y = y < 1 ? 1 : y; // ensure y is always >= 1 (due to Safari's elastic scroll)
+            let color = `rgb(${255/y}, ${255/y}, ${255/y})`;
+            navbar.style.backgroundColor = color;
+            sidebar.style.backgroundColor = color;
+
+            if (window.scrollY > 10) {
+                navbar.classList.add('dark');
+            } else {
+                navbar.classList.remove('dark');
+            }
+        };
+
+        const burger = navbar.querySelector('#sidebarToggle');
+        burger.addEventListener('click', () => {
+            sidebar.classList.toggle('reduced');
+            console.log(burger.innerHTML);
+            burger.innerHTML === "menu" ? burger.innerHTML = 'close' : burger.innerHTML = 'menu';
+        });
+    }, false);
+</script>
