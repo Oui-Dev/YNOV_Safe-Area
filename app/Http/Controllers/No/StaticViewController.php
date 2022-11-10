@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Mail\ContactForm;
 use App\Models\User;
 use App\Models\Version;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;

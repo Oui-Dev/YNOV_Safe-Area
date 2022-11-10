@@ -12,22 +12,27 @@ use Illuminate\Support\Facades\Storage;
  */
 class FileService
 {
-    protected  Filesystem $fs;
+    protected Filesystem $fs;
 
     public function __construct()
     {
         $this->fs = Storage::disk('minio');
     }
 
-    public function store(User $user, string $name, $file)
+    public function get(string $path)
+    {
+        return $this->fs->get($path);
+    }
+
+    public function store(User $user, string $name, $file) : string
     {
         $path = $user->reference.'/'.$name.'.'.$file->getClientOriginalExtension();
         $this->fs->put($path, file_get_contents($file));
         return $path;
     }
 
-    public function delete(string $path)
+    public function delete(string $path) : void
     {
-        $this->fs->delete(str_replace(config('AWS_ENDPOINT').'/'.config('AWS_BUCKET'), '',$path));
+        $this->fs->delete($path);
     }
 }
