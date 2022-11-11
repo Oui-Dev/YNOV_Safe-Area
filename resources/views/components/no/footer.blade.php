@@ -10,15 +10,12 @@
                             <li>
                                 <a href="{{route('no.public.homepage')}}" class="text-base text-gray-700 hover:text-gray-900">A propos</a>
                             </li>
-
-                            <li>
-                                <a href="{{route('no.public.mobileApp')}}" class="text-base text-gray-700 hover:text-gray-900">Fonctionnalités</a>
-                            </li>
-
                             <li>
                                 <a href="{{route('no.public.prices')}}" class="text-base text-gray-700 hover:text-gray-900">Tarifs</a>
                             </li>
-
+                            <li>
+                                <a href="{{route('no.public.mobileApp')}}" class="text-base text-gray-700 hover:text-gray-900">Application</a>
+                            </li>
                             <li>
                                 <a href="{{route('no.public.contact')}}" class="text-base text-gray-700 hover:text-gray-900">Contact</a>
                             </li>
