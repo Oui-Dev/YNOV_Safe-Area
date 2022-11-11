@@ -4,9 +4,9 @@ namespace App\Http\Controllers\No;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ContactForm;
+use App\Models\ActivityLog;
 use App\Models\User;
 use App\Models\Version;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -92,8 +92,9 @@ class StaticViewController extends Controller
         return view('pages/No/legal');
     }
 
-    public function downloadAndoidApp()
+    public function downloadAndoidApp(Request $request)
     {
+        app('App\Http\Controllers\ActivityLogController')->create($request, 'info', 'NO', "Téléchargement de l'application Android à ".now()->format('d/m/Y H:i'));
         Log::info("Téléchargement de l'application Android à ".now()->format('d/m/Y H:i'));
         $file= public_path(). "/safe-area.apk";
         $headers = array(
