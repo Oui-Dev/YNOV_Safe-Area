@@ -20,7 +20,7 @@
                         <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                             <div class="space-y-4 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-8 sm:space-y-0">
                                 <a href="{{route('no.public.prices')}}" class="flex items-center justify-center rounded-md border border-transparent bg-white px-8 md:px-4 py-3 text-base md:text-lg font-medium text-black shadow-sm hover:bg-indigo-50 h-full md:w-52">Voir notre solution</a>
-                                <a href="#" class="rounded-md shadow-sm">
+                                <a href="{{ route('no.public.mobileApp') }}" class="rounded-md shadow-sm">
                                     <img src="{{Vite::asset('resources/images/google_play.png')}}" alt="Logo google play download application" class="text-center object-cover shadow-lg w-52">
                                 </a>
                             </div>
