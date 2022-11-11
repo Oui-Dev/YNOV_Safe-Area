@@ -11,7 +11,7 @@
                         <p class="mt-1 text-base text-gray-500">Nous faisons tout notre possible pour qu'il soit a nouveau disponible</p>
                     </div>
                     <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-                        <a href="{{ url()->previous() }}" class="inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm bg-gradient-to-r from-safearea-red to-safearea-blue">Retour</a>
+                        <a href="{{route('no.public.homepage')}}" class="inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white shadow-sm bg-gradient-to-r from-safearea-red to-safearea-blue">Accueil</a>
                         <a href="mailto:safearea.app@gmail.com" class="inline-flex items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-safearea-blue to-safearea-red">Contacter le support par email</a>
                     </div>
                 </div>
