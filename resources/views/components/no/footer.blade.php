@@ -1,4 +1,4 @@
-<footer class="bg-gray-50 sticky top-full" aria-labelledby="footer-heading">
+<footer aria-labelledby="footer-heading" id="footer">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl px-4 pt-12 pb-8 sm:px-6 lg:px-8 lg:pt-16">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -8,16 +8,16 @@
                         <h3 class="text-base font-medium text-gray-900">Informations</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="{{route('no.public.homepage')}}" class="text-base text-gray-700 hover:text-gray-900">A propos</a>
+                                <a href="{{route('no.public.homepage')}}">A propos</a>
                             </li>
                             <li>
-                                <a href="{{route('no.public.prices')}}" class="text-base text-gray-700 hover:text-gray-900">Tarifs</a>
+                                <a href="{{route('no.public.prices')}}">Tarifs</a>
                             </li>
                             <li>
-                                <a href="{{route('no.public.mobileApp')}}" class="text-base text-gray-700 hover:text-gray-900">Application</a>
+                                <a href="{{route('no.public.mobileApp')}}">Application</a>
                             </li>
                             <li>
-                                <a href="{{route('no.public.contact')}}" class="text-base text-gray-700 hover:text-gray-900">Contact</a>
+                                <a href="{{route('no.public.contact')}}">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -25,10 +25,10 @@
                         <h3 class="text-base font-medium text-gray-900">Support</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">Tickets</a>
+                                <a href="#">Tickets</a>
                             </li>
                             <li>
-                                <a href="{{route('no.public.changelog')}}" class="text-base text-gray-700 hover:text-gray-900">Changelog</a>
+                                <a href="{{route('no.public.changelog')}}">Changelog</a>
                             </li>
                         </ul>
                     </div>
@@ -38,19 +38,19 @@
                         <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
                         <ul role="list" class="mt-4 space-y-4">
                             <li>
-                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">CGV</a>
+                                <a href="#">CGV</a>
                             </li>
 
                             <li>
-                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">CGU</a>
+                                <a href="#">CGU</a>
                             </li>
 
                             <li>
-                                <a href="{{route('no.public.legal')}}" class="text-base text-gray-700 hover:text-gray-900">Mentions Légales</a>
+                                <a href="{{route('no.public.legal')}}">Mentions Légales</a>
                             </li>
 
                             <li>
-                                <a href="/sitemap.xml" class="text-base text-gray-700 hover:text-gray-900">Sitemap</a>
+                                <a href="/sitemap.xml">Sitemap</a>
                             </li>
                         </ul>
                     </div>
@@ -63,7 +63,7 @@
                     <label for="email" class="sr-only">Adresse email</label>
                     <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500 text-center lg:text-left" placeholder="Votre adresse e-mail">
                     <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                        <button type="submit" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-3 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue hover:from-safearea-blue hover:to-safearea-red">S'inscrire</button>
+                        <button type="submit" class="newsletter_btn">S'inscrire</button>
                     </div>
                 </x-form>
                 <p class="mt-4 text-base text-green-500">{{ Session::get('newsletter.success') }}</p>
