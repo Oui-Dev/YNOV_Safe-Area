@@ -5,7 +5,7 @@
                 <h2 class="sr-only">Créez un ticket de support</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-3">
                     <!-- Contact information -->
-                    <div class="relative overflow-hidden bg-indigo-700 py-10 px-6 sm:px-10 xl:p-12 rounded-lg">
+                    <div class="relative overflow-hidden bg-gradient-to-b from-safearea-red to-safearea-blue py-10 px-6 sm:px-10 xl:p-12 rounded-lg">
                         <div class="pointer-events-none absolute inset-0 sm:hidden"
                              aria-hidden="true">
                             <svg class="absolute inset-0 h-full w-full"
@@ -87,17 +87,17 @@
                                 </defs>
                             </svg>
                         </div>
-                        <h3 class="text-lg font-medium text-white">Informations Utiles</h3>
+                        <h1 class="text-2xl font-medium text-white">Bonjour, {{ this.user.lastname }}</h1>
                         <p class="mt-6 max-w-3xl text-base text-indigo-50">Les données sont confidentielles. <br> Ne partagez pas de données personnelles ou sensibles. <br> Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.</p>
                     </div>
                     <!-- Contact form -->
                     <div class="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12 rounded-r-lg">
-                        <h3 class="text-lg font-medium text-gray-900">Créez un ticket de support</h3>
+                        <h3 class="text-xl font-medium text-gray-900">Créez un ticket de support</h3>
                         <form @submit.prevent="submit"
                               method="POST"
                               class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                             <SwitchGroup as="div"
-                                         class="flex items-center sm:col-span-2 w-full">
+                                         class="flex items-center justify-end sm:col-span-2 w-full">
                                 <SwitchLabel as="span"
                                              class="mr-3">
                                     <span class="text-sm font-medium text-gray-900">Demande</span>
@@ -113,59 +113,6 @@
                                     <span class="text-sm font-medium text-gray-900">Incident</span>
                                 </SwitchLabel>
                             </SwitchGroup>
-                            <div>
-                                <label for="firstName"
-                                       class="block text-sm font-medium text-gray-900">Prénom</label>
-                                <div class="mt-1">
-                                    <input type="text"
-                                           name="firstName"
-                                           id="firstName"
-                                           v-model="form.firstName"
-                                           autocomplete="given-name"
-                                           class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-                                </div>
-                            </div>
-                            <div>
-                                <label for="lastName"
-                                       class="block text-sm font-medium text-gray-900">Nom</label>
-                                <div class="mt-1">
-                                    <input type="text"
-                                           name="lastName"
-                                           id="lastName"
-                                           v-model="form.lastName"
-                                           autocomplete="family-name"
-                                           class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-                                </div>
-                            </div>
-                            <div>
-                                <label for="email"
-                                       class="block text-sm font-medium text-gray-900">Email</label>
-                                <div class="mt-1">
-                                    <input id="email"
-                                           name="email"
-                                           v-model="form.email"
-                                           type="email"
-                                           autocomplete="email"
-                                           class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between">
-                                    <label for="phone"
-                                           class="block text-sm font-medium text-gray-900">Mobile</label>
-                                    <span id="phone-optional"
-                                          class="text-sm text-gray-500">Optional</span>
-                                </div>
-                                <div class="mt-1">
-                                    <input type="text"
-                                           name="phone"
-                                           v-model="form.phone"
-                                           id="phone"
-                                           autocomplete="tel"
-                                           class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                           aria-describedby="phone-optional" />
-                                </div>
-                            </div>
                             <div class="sm:col-span-2">
                                 <label for="title"
                                        class="block text-sm font-medium text-gray-900">Titre</label>
@@ -176,6 +123,8 @@
                                            id="title"
                                            class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
                                 </div>
+                                <div v-if="form.errors.title && !form.title"
+                                     class="form-error-field"> Le champs Titre est obligatoire </div>
                             </div>
                             <div class="sm:col-span-2">
                                 <div class="flex justify-between">
@@ -192,6 +141,12 @@
                                               class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                                               aria-describedby="message-max" />
                                 </div>
+                                <div v-if="form.errors.message && !form.message"
+                                     class="form-error-field">Le champ message est obligatoire</div>
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-sm font-medium text-gray-900">Ajoutez un document</label>
+                                <dropzone />
                             </div>
                             <div class="sm:col-span-2 sm:flex sm:justify-end">
                                 <button type="submit"
@@ -208,12 +163,14 @@
 <script>
 import DashboardLayout from "../../layouts/dashboard.vue";
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
+import Dropzone from '../../components/dropzone.vue';
 
 export default {
     components: {
         Switch,
         SwitchGroup,
         SwitchLabel,
+        Dropzone,
     },
     name: "DashboardIndex",
     layout: DashboardLayout,
@@ -234,7 +191,7 @@ export default {
                 type: false,
                 title: null,
                 message: null,
-                fileUpload: null,
+                file: this.file,
 
             }),
             isLoading: false,
@@ -247,6 +204,7 @@ export default {
         submit() {
             console.log("HEY !!!")
             console.log(this.form.type)
+            console.log(this.form.file)
             this.form.post(this.$route("my.helpDesk.post"), {
                 onStart: () => {
                     this.form.clearErrors();
@@ -262,6 +220,9 @@ export default {
                 }
             });
         },
+        handleFileUpload() {
+            this.file = this.$refs.file.files[0];
+        }
     },
 };
 </script>
@@ -269,5 +230,9 @@ export default {
 <style lang="scss" scoped>
 button:disabled {
     @apply bg-safearea-grey;
+}
+
+.form-error-field {
+    color: red;
 }
 </style>
