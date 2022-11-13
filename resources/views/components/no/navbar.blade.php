@@ -38,7 +38,7 @@
         </div>
 
         <div class="button-side">
-            <span class="material-icons text-3xl" id="sidebarToggle">menu</span>
+            <span class="material-icons" id="sidebarToggle">menu</span>
         </div>
 
         <div class="absolute top-16 -mt-px right-0 z-10 w-screen max-w-lg">
@@ -72,7 +72,10 @@
         const navbar = document.getElementById('navbar');
         const sidebar = document.getElementById('sidebar');
 
-        window.onscroll = () => {
+        setNavbarDisplay();
+        window.onscroll = () => { setNavbarDisplay(); };
+
+        function setNavbarDisplay() {
             let y = 1 + (window.scrollY || window.pageYOffset) / 35;
             y = y < 1 ? 1 : y; // ensure y is always >= 1 (due to Safari's elastic scroll)
             let color = `rgb(${255/y}, ${255/y}, ${255/y})`;
@@ -84,7 +87,7 @@
             } else {
                 navbar.classList.remove('dark');
             }
-        };
+        }
 
         const burger = navbar.querySelector('#sidebarToggle');
         burger.addEventListener('click', () => {

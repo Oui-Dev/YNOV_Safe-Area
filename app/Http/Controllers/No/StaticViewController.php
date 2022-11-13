@@ -3,13 +3,8 @@
 namespace App\Http\Controllers\No;
 
 use App\Http\Controllers\Controller;
-use App\Mail\ContactForm;
-use App\Models\ActivityLog;
-use App\Models\User;
-use App\Models\Version;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
+use App\Models\Version;
 
 class StaticViewController extends Controller
 {
@@ -19,38 +14,21 @@ class StaticViewController extends Controller
         return view('pages/No/homepage');
     }
 
+    // Prices page
     public function prices()
     {
         return view('pages/No/prices');
     }
 
-    public function error404()
-    {
-        return view('errors/404');
-    }
-
-    public function error401()
-    {
-        return view('errors/401');
-    }
-
-    public function error405()
-    {
-        return view('errors/405');
-    }
-
-    public function application()
-    {
-        return view('pages/No/application');
-    }
-
-    public function contact()
-    {
-        return view('pages/No/contact');
-    }
-
+    // Maintenance page
     public function maintenance() {
         return view('errors/maintenance');
+    }
+
+    // TOS page
+    public function showLegal()
+    {
+        return view('pages/No/legal');
     }
 
     // Changelog
@@ -58,48 +36,5 @@ class StaticViewController extends Controller
     {
         $versions = Version::get();
         return view('pages/No/changelog', ['versions' => $versions]);
-    }
-
-    public function sendMailForm(Request $request)
-    {
-        $this->validate($request, [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'subject' => 'required',
-            'message' => 'required',
-        ]);
-
-        try {
-            Mail::to('safearea.app@gmail.com')->send(new ContactForm(
-                $request->firstname,
-                $request->lastname,
-                $request->email,
-                $request->phone,
-                $request->subject,
-                $request->message,
-            ));
-            return redirect()->back()->with(['contactform.success'=>"Votre demande de contact à bien été envoyée"]);
-        } catch(\Exception $ex)
-        {
-            return redirect()->back()->with(['contactform.error'=>"une erreur à été rencontrée lors de l'envoie de votre formulaire."]);
-        }
-    }
-
-    public function showLegal()
-    {
-        return view('pages/No/legal');
-    }
-
-    public function downloadAndoidApp(Request $request)
-    {
-        app('App\Http\Controllers\ActivityLogController')->create($request, 'info', 'NO', "Téléchargement de l'application Android à ".now()->format('d/m/Y H:i'));
-        Log::info("Téléchargement de l'application Android à ".now()->format('d/m/Y H:i'));
-        $file= public_path(). "/safe-area.apk";
-        $headers = array(
-            'Content-Type: application/apk',
-        );
-        return response()->download($file, 'safe-area.apk', $headers);
     }
 }
