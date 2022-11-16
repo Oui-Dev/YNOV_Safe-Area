@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\No;
 
 use App\Http\Controllers\Controller;
-use App\Mail\ContactForm;
-use App\Models\User;
-use App\Models\Version;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Models\Version;
 
 class StaticViewController extends Controller
 {
@@ -17,19 +14,21 @@ class StaticViewController extends Controller
         return view('pages/No/homepage');
     }
 
+    // Prices page
     public function prices()
     {
         return view('pages/No/prices');
     }
 
-    public function features()
-    {
-        return view('pages/No/features');
+    // Maintenance page
+    public function maintenance() {
+        return view('errors/maintenance');
     }
 
-    public function contact()
+    // TOS page
+    public function showLegal()
     {
-        return view('pages/No/contact');
+        return view('pages/No/legal');
     }
 
     // Changelog
@@ -37,37 +36,5 @@ class StaticViewController extends Controller
     {
         $versions = Version::get();
         return view('pages/No/changelog', ['versions' => $versions]);
-    }
-
-    public function sendMailForm(Request $request)
-    {
-        $this->validate($request, [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'subject' => 'required',
-            'message' => 'required',
-        ]);
-
-        try {
-            Mail::to('safearea.app@gmail.com')->send(new ContactForm(
-                $request->firstname,
-                $request->lastname,
-                $request->email,
-                $request->phone,
-                $request->subject,
-                $request->message,
-            ));
-            return redirect()->back()->with(['contactform.success'=>"Votre demande de contact à bien été envoyée"]);
-        } catch(\Exception $ex)
-        {
-            return redirect()->back()->with(['contactform.error'=>"une erreur à été rencontrée lors de l'envoie de votre formulaire."]);
-        }
-    }
-
-    public function showLegal()
-    {
-        return view('pages/No/legal');
     }
 }

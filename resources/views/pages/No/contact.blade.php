@@ -1,11 +1,11 @@
 @extends('layouts/no')
-
+@section('title', '- Nous contacter')
 @section('content')
-<div class="bg-white">
+<div class="bg-white mb-14">
       <!-- Header -->
       <div>
-        <div class="py-12 lg:py-16">
-          <div class="relative z-10 mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
+        <div class="py-6 lg:py-10">
+          <div class="relative mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
             <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Nous contacter</h1>
             <p class="mt-6 max-w-3xl text-xl">
                 Retrouvez toutes nos coordonnées pour nous contacter.
@@ -23,7 +23,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3">
               <!-- Contact information -->
-              <div class="relative overflow-hidden bg-gradient-to-b from-teal-500 to-teal-600 py-10 px-6 sm:px-10 xl:p-12 from-safearea-red to-safearea-blue rounded-lg">
+              <div class="relative overflow-hidden bg-gradient-to-b py-10 px-6 sm:px-10 xl:p-12 from-safearea-red to-safearea-blue rounded-lg">
                 <!-- Decorative angle backgrounds -->
                 <div class="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
                   <svg class="absolute inset-0 h-full w-full" width="343" height="388" viewBox="0 0 343 388" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -59,12 +59,12 @@
                   </svg>
                 </div>
                 <h3 class="text-lg font-medium text-white">Informations</h3>
-                <p class="mt-6 max-w-3xl text-base text-teal-50 text-white">
+                <p class="mt-6 max-w-3xl text-base text-white">
                     Toutes les informations nécessaires pour nous contacter sur Twitter, Linkedin, par e-mail et via notre formulaire de contact.
                 </p>
                 <dl class="mt-8 space-y-6 text-white">
                   <dt><span class="sr-only">Email</span></dt>
-                  <dd class="flex text-base text-teal-50">
+                  <dd class="flex text-base text-white">
                     <!-- Heroicon name: outline/envelope -->
                     <svg class="h-6 w-6 flex-shrink-0 text-teal-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -76,7 +76,7 @@
                   <li>
                     <a class="text-teal-200 hover:text-teal-100" target="_blank" href="https://www.linkedin.com/company/safe-area-app/">
                       <span class="sr-only">Linkedin</span>
-                        <img src="{{Vite::asset('resources/images/linkedin.png')}}" alt="Logo linkedin" style="width: 40px">
+                        <img src="{{Vite::asset('resources/images/linkedin.webp')}}" alt="Logo linkedin" style="width: 40px">
                     </a>
                   </li>
                   <li>

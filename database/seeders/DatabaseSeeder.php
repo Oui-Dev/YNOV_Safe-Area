@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Company;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,5 +23,7 @@ class DatabaseSeeder extends Seeder
             VersionSeeder::class,
             LicenceSeeder::class,
         ]);
+        Company::factory()->count(500)->create();
+        User::factory()->count(1000)->create();
     }
 }

@@ -1,26 +1,27 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
+import {ZiggyVue} from "ziggy";
+import {Ziggy} from "./ziggy";
+
+// Cookie consent
+import { cc } from "./cc";
 
 InertiaProgress.init()
 
-function resolvePageComponent(name, pages) {
-    for (const path in pages) {
-        if (path.endsWith(`${name.replace('.', '/')}.vue`)) {
-            return typeof pages[path] === 'function'
-                ? pages[path]()
-                : pages[path]
-        }
-    }
-    throw new Error(`Page not found: ${name}`)
-}
-
 createInertiaApp({
-    // resolve: name => require(`../views/pages/**/${name}`),
-    resolve: (name) => resolvePageComponent(name, import.meta.glob('../views/pages/**/*.vue')),
-    setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
-            .use(plugin)
-            .mount(el)
+    resolve: async (name) => {
+        const comps = import.meta.glob('../views/pages/**/*.vue');
+        const match = comps[`../views/pages/${name}.vue`];
+        const page = (await match()).default;
+        return page;
     },
-})
+    setup({ el, App, props, plugin }) {
+        const app = createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(ZiggyVue, Ziggy);
+
+        app.config.globalProperties.$cc = cc;
+        app.mount(el);
+    },
+});
