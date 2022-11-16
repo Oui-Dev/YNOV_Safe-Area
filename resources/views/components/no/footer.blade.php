@@ -1,62 +1,55 @@
 <footer aria-labelledby="footer-heading" id="footer">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl px-4 pt-12 pb-8 sm:px-6 lg:px-8 lg:pt-16">
-        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div class="grid grid-cols-2 gap-8 xl:col-span-2">
-                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
-                    <div>
-                        <h3 class="text-base font-medium text-gray-900">Informations</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li>
-                                <a href="{{route('no.public.homepage')}}">A propos</a>
-                            </li>
-                            <li>
-                                <a href="{{route('no.public.prices')}}">Tarifs</a>
-                            </li>
-                            <li>
-                                <a href="{{route('no.public.mobileApp')}}">Application</a>
-                            </li>
-                            <li>
-                                <a href="{{route('no.public.contact')}}">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mt-12 md:mt-0">
-                        <h3 class="text-base font-medium text-gray-900">Support</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li>
-                                <a href="#">Tickets</a>
-                            </li>
-                            <li>
-                                <a href="{{route('no.public.changelog')}}">Changelog</a>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="lg:grid lg:grid-cols-5 lg:gap-24">
+            <div class="md:grid md:grid-cols-3 lg:col-span-3 md:gap-8 text-center lg:text-left">
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Informations</h3>
+                    <ul role="list" class="mt-4 space-y-4">
+                        <li>
+                            <a href="{{route('no.public.homepage')}}">A propos</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.prices')}}">Tarifs</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.mobileApp')}}">Application</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.contact')}}">Contact</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
-                    <div class="mt-12 md:mt-0">
-                        <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li>
-                                <a href="#">CGV</a>
-                            </li>
-
-                            <li>
-                                <a href="#">CGU</a>
-                            </li>
-
-                            <li>
-                                <a href="{{route('no.public.legal')}}">Mentions Légales</a>
-                            </li>
-
-                            <li>
-                                <a href="/sitemap.xml">Sitemap</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="mt-12 md:mt-0">
+                    <h3 class="text-base font-medium text-gray-900">Support</h3>
+                    <ul role="list" class="mt-4 space-y-4">
+                        <li>
+                            <a href="#">Tickets</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.changelog')}}">Changelog</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-12 md:mt-0">
+                    <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
+                    <ul role="list" class="mt-4 space-y-4">
+                        <li>
+                            <a href="#">Politique de confidentialité</a>
+                        </li>
+                        <li>
+                            <a href="#" data-cc="c-settings">Politique de cookies</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.legal')}}">Mentions Légales</a>
+                        </li>
+                        <li>
+                            <a href="/sitemap.xml" class="sr-only">Sitemap</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="mt-12 xl:mt-0 text-center lg:text-left">
+            <div class="mt-12 lg:mt-0 lg:col-span-2 text-center lg:text-left">
                 <h3 class="text-base font-medium text-gray-900">Utilisez notre newsletter</h3>
                 <p class="mt-4 text-base text-gray-900">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
                 <x-form class="mt-4 sm:flex sm:max-w-md mx-auto lg:mx-0" method="POST" action="{{route('no.public.newsletters.store')}}">
