@@ -23,11 +23,11 @@
                     </div>
                     <nav class="mt-5 space-y-1 px-2">
                         <div v-for="item in navigation" :key="item.name">
-                            <Link v-if="item.type === 'Link'" :href="$route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+                            <Link v-if="item.type === 'Link'" :href="route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
                                 <component :is="item.icon" :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']" aria-hidden="true" />
                                 {{ item.name }}
                             </Link>
-                            <a v-else :href="$route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+                            <a v-else :href="route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
                                 <component :is="item.icon" :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']" aria-hidden="true" />
                                 {{ item.name }}
                             </a>
@@ -66,11 +66,11 @@
             </div>
             <nav class="mt-5 flex-1 space-y-1 px-2">
                 <div v-for="item in navigation" :key="item.name">
-                    <Link v-if="item.type === 'Link'" :href="$route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+                    <Link v-if="item.type === 'Link'" :href="route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
                         <component :is="item.icon" :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']" aria-hidden="true" />
                         {{ item.name }}
                     </Link>
-                    <a v-else :href="$route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
+                    <a v-else :href="route(item.href)" :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']" :aria-current="item.current ? 'page' : undefined">
                         <component :is="item.icon" :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']" aria-hidden="true" />
                         {{ item.name }}
                     </a>
