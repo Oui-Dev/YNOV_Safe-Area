@@ -4,6 +4,9 @@ import { InertiaProgress } from '@inertiajs/progress'
 import {ZiggyVue} from "ziggy";
 import {Ziggy} from "./ziggy";
 
+// Cookie consent
+import { cc } from "./cc";
+
 InertiaProgress.init()
 
 createInertiaApp({
@@ -18,6 +21,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy);
 
+        app.config.globalProperties.$cc = cc;
         app.mount(el);
     },
 });

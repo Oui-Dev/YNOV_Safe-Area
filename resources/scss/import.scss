@@ -2,7 +2,7 @@
 @use "tailwind.scss";
 
 // Utilities
-// @use "";
+@use 'vanilla-cookieconsent/dist/cookieconsent.css';
 
 // Component
 @use "components/navbar";
