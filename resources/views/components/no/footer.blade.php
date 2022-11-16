@@ -1,8 +1,8 @@
 <footer aria-labelledby="footer-heading" id="footer">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl px-4 pt-12 pb-8 sm:px-6 lg:px-8 lg:pt-16">
-        <div class="lg:grid lg:grid-cols-5 lg:gap-24">
-            <div class="md:grid md:grid-cols-3 lg:col-span-3 md:gap-8 text-center lg:text-left">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-16">
+            <div class="md:grid md:grid-cols-3 lg:col-span-2 md:gap-4 text-center lg:text-left">
                 <div>
                     <h3 class="text-base font-medium text-gray-900">Informations</h3>
                     <ul role="list" class="mt-4 space-y-4">
@@ -44,14 +44,17 @@
                             <a href="{{route('no.public.legal')}}">Mentions Légales</a>
                         </li>
                         <li>
+                            <a href="#">Conditions générales d’utilisation</a>
+                        </li>
+                        <li>
                             <a href="/sitemap.xml" class="sr-only">Sitemap</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-12 lg:mt-0 lg:col-span-2 text-center lg:text-left">
+            <div class="mt-12 lg:mt-0 lg:col-span-1 text-center lg:text-left">
                 <h3 class="text-base font-medium text-gray-900">Utilisez notre newsletter</h3>
-                <p class="mt-4 text-base text-gray-900">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
+                <p class="mt-4 text-base font-light text-gray-900">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
                 <x-form class="mt-4 sm:flex sm:max-w-md mx-auto lg:mx-0" method="POST" action="{{route('no.public.newsletters.store')}}">
                     <label for="email" class="sr-only">Adresse email</label>
                     <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500 text-center lg:text-left" placeholder="Votre adresse e-mail">
