@@ -23,6 +23,7 @@
         "@vitejs/plugin-vue": "latest",
         "sass": "latest",
         "styled-components": "^5.3.6",
+        "vanilla-cookieconsent": "^2.8.8",
         "vue": "latest"
     }
 }
