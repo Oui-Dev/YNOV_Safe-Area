@@ -21,7 +21,7 @@ class ConnexionLogController extends Controller
         ])->id;
         if(ConnexionLog::where('user_id',Auth::user()->id)->where('status', 'connexion')->where('user_agent',$request->server('HTTP_USER_AGENT'))->count() == 0)
         {
-            $x_user = User::find($id);
+            $x_user = User::find($log_id);
 //            Mail::to($x_user->professional_email)->send(new NewConnexion($x_user, ConnexionLog::find($log_id)));
         }
     }
