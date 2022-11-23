@@ -2,7 +2,7 @@
     <section class="min-h-full">
         <DashboardNavbar />
         <main>
-            <div class="page-container">
+            <div class="page-container min-h-screen lg:pl-64">
                 <slot />
             </div>
         </main>
