@@ -72,9 +72,6 @@ export default {
                 onStart: () => {
                     this.form.clearErrors();
                 },
-                onError: (e) => {
-                    console.log(e)
-                }
             });
         },
     },
