@@ -1,5 +1,5 @@
 #navbar {
-    @apply sticky top-0 w-full bg-white text-black z-10;
+    @apply sticky top-0 w-full z-10 bg-white text-black z-10;
 
     nav {
         @apply justify-between items-center max-w-7xl h-16 mx-auto px-4 md:px-10;
@@ -24,8 +24,8 @@
                 width: 295px;
             }
 
-            i {
-                @apply text-2xl relative;
+            .material-icons {
+                @apply text-3xl relative cursor-pointer;
             }
         }
     

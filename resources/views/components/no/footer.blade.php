@@ -1,79 +1,72 @@
-<footer class="bg-gray-50 sticky top-full" aria-labelledby="footer-heading">
+<footer aria-labelledby="footer-heading" id="footer">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl px-4 pt-12 pb-8 sm:px-6 lg:px-8 lg:pt-16">
-        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-            <div class="grid grid-cols-2 gap-8 xl:col-span-2">
-                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
-                    <div>
-                        <h3 class="text-base font-medium text-gray-900">Informations</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li>
-                                <a href="{{route('no.public.homepage')}}" class="text-base text-gray-700 hover:text-gray-900">A propos</a>
-                            </li>
-
-                            <li>
-                                <a href="{{route('no.public.mobileApp')}}" class="text-base text-gray-700 hover:text-gray-900">Fonctionnalités</a>
-                            </li>
-
-                            <li>
-                                <a href="{{route('no.public.prices')}}" class="text-base text-gray-700 hover:text-gray-900">Tarifs</a>
-                            </li>
-
-                            <li>
-                                <a href="{{route('no.public.contact')}}" class="text-base text-gray-700 hover:text-gray-900">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mt-12 md:mt-0">
-                        <h3 class="text-base font-medium text-gray-900">Support</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li>
-                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">Tickets</a>
-                            </li>
-                            <li>
-                                <a href="{{route('no.public.changelog')}}" class="text-base text-gray-700 hover:text-gray-900">Changelog</a>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="lg:grid lg:grid-cols-3 lg:gap-16">
+            <div class="md:grid md:grid-cols-3 lg:col-span-2 md:gap-4 text-center lg:text-left">
+                <div>
+                    <h3 class="text-base font-medium text-gray-900">Informations</h3>
+                    <ul role="list" class="mt-4 space-y-4">
+                        <li>
+                            <a href="{{route('no.public.homepage')}}">A propos</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.prices')}}">Tarifs</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.mobileApp')}}">Application</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.contact')}}">Contact</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="md:grid md:grid-cols-2 md:gap-8 text-center lg:text-left">
-                    <div class="mt-12 md:mt-0">
-                        <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
-                        <ul role="list" class="mt-4 space-y-4">
-                            <li>
-                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">CGV</a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="text-base text-gray-700 hover:text-gray-900">CGU</a>
-                            </li>
-
-                            <li>
-                                <a href="{{route('no.public.legal')}}" class="text-base text-gray-700 hover:text-gray-900">Mentions Légales</a>
-                            </li>
-
-                            <li>
-                                <a href="/sitemap.xml" class="text-base text-gray-700 hover:text-gray-900">Sitemap</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="mt-12 md:mt-0">
+                    <h3 class="text-base font-medium text-gray-900">Support</h3>
+                    <ul role="list" class="mt-4 space-y-4">
+                        <li>
+                            <a href="#">Tickets</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.changelog')}}">Changelog</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-12 md:mt-0">
+                    <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
+                    <ul role="list" class="mt-4 space-y-4">
+                        <li>
+                            <a href="#">Politique de confidentialité</a>
+                        </li>
+                        <li>
+                            <a href="#" data-cc="c-settings">Politique de cookies</a>
+                        </li>
+                        <li>
+                            <a href="{{route('no.public.legal')}}">Mentions Légales</a>
+                        </li>
+                        <li>
+                            <a href="#">Conditions générales d’utilisation</a>
+                        </li>
+                        <li>
+                            <a href="/sitemap.xml" class="sr-only">Sitemap</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="mt-12 xl:mt-0 text-center lg:text-left">
+            <div class="mt-12 lg:mt-0 lg:col-span-1 text-center lg:text-left">
                 <h3 class="text-base font-medium text-gray-900">Utilisez notre newsletter</h3>
-                <p class="mt-4 text-base text-gray-900">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
+                <p class="mt-4 text-base font-light text-gray-900">Recevez nos dernières nouveautés, nos bilans et des conseils pour mieux protégrer l'environnement de vos collaborateurs</p>
                 <x-form class="mt-4 sm:flex sm:max-w-md mx-auto lg:mx-0" method="POST" action="{{route('no.public.newsletters.store')}}">
                     <label for="email" class="sr-only">Adresse email</label>
                     <input type="email" name="email" id="email" autocomplete="email" required class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-indigo-500 text-center lg:text-left" placeholder="Votre adresse e-mail">
                     <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                        <button type="submit" class="flex w-full items-center justify-center rounded-md border border-transparent bg-gradient-to-r from-safearea-red to-safearea-blue bg-origin-border px-4 py-3 text-base font-medium text-white shadow-sm hover:from-safearea-red hover:to-safearea-blue hover:from-safearea-blue hover:to-safearea-red">S'inscrire</button>
+                        <button type="submit" class="newsletter_btn">S'inscrire</button>
                     </div>
                 </x-form>
                 <p class="mt-4 text-base text-green-500">{{ Session::get('newsletter.success') }}</p>
                 <p class="mt-4 text-base text-red-600">{{ Session::get('newsletter.error') }}</p>
             </div>
         </div>
-        <div class="mt-12 border-t border-gray-900 pt-8 md:flex md:items-center md:justify-between lg:mt-16">
+        <div class="mt-12 border-t border-gray-900 pt-8 flex flex-col md:flex-row items-center md:justify-between lg:mt-16">
             <div class="flex space-x-6 md:order-2">
                 <a href="https://www.linkedin.com/company/safe-area-app/" target="_blank" class="text-gray-500 hover:text-gray-900">
                     <span class="sr-only">Linkedin</span>

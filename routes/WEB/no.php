@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\NewsletterController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\No\StaticViewController;
-use App\Http\Controllers\TempController;
+use App\Http\Controllers\No\ContactController;
+use App\Http\Controllers\No\MobileAppController;
+use App\Http\Controllers\NewsletterController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +17,16 @@ use App\Http\Controllers\TempController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group([
     'as' => "no."
 ], function () {
     Route::get('/', [StaticViewController::class, 'homepage'])->name('public.homepage');
     Route::get('/prix', [StaticViewController::class, 'prices'])->name('public.prices');
-    Route::get('/application', [StaticViewController::class, 'application'])->name('public.mobileApp');
-    Route::get('/application/download/android', [StaticViewController::class, 'downloadAndoidApp'])->name('public.mobileApp.download.android');
-    Route::get('/contact', [StaticViewController::class, 'contact'])->name('public.contact');
-    Route::post('/contact', [StaticViewController::class, 'sendMailForm'])->name('public.contact.store');
+    Route::get('/application', [MobileAppController::class, 'create'])->name('public.mobileApp');
+    Route::get('/application/download/android', [MobileAppController::class, 'store'])->name('public.mobileApp.download.android');
+    Route::get('/contact', [ContactController::class, 'create'])->name('public.contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('public.contact.store');
     Route::post('/newsletters', [NewsletterController::class, 'store'])->name('public.newsletters.store');
     Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('public.legal');
     Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
