@@ -7,6 +7,6 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-        return inertia('My/User/Index');
+        return inertia('My/User/user');
     }
 }
