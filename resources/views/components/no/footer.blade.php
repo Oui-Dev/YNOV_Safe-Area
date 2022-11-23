@@ -66,7 +66,7 @@
                 <p class="mt-4 text-base text-red-600">{{ Session::get('newsletter.error') }}</p>
             </div>
         </div>
-        <div class="mt-12 border-t border-gray-900 pt-8 md:flex md:items-center md:justify-between lg:mt-16">
+        <div class="mt-12 border-t border-gray-900 pt-8 flex flex-col md:flex-row items-center md:justify-between lg:mt-16">
             <div class="flex space-x-6 md:order-2">
                 <a href="https://www.linkedin.com/company/safe-area-app/" target="_blank" class="text-gray-500 hover:text-gray-900">
                     <span class="sr-only">Linkedin</span>
