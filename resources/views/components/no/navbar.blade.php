@@ -92,7 +92,6 @@
         const burger = navbar.querySelector('#sidebarToggle');
         burger.addEventListener('click', () => {
             sidebar.classList.toggle('reduced');
-            console.log(burger.innerHTML);
             burger.innerHTML === "menu" ? burger.innerHTML = 'close' : burger.innerHTML = 'menu';
         });
     }, false);
