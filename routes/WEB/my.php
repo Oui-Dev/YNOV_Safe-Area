@@ -26,5 +26,5 @@ Route::group([
     Route::post("/users/create", [UserController::class, 'store'])-> name('auth.users.create.post');
     Route::get('/annuaire', [DashboardController::class, 'annuaire'])->name('annuaire');
     Route::get('/users/edit/{user:reference}', [UserController::class, 'edit'])->name('auth.users.edit');
-    Route::put('/users/edit/{user:reference}', [UserController::class, 'editPut'])->name('auth.users.edit.put')
+    Route::put('/users/edit/{user:reference}', [UserController::class, 'editPut'])->name('auth.users.edit.put');
 });
