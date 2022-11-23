@@ -15,8 +15,7 @@ class DashboardController extends Controller
     public function annuaire() {
         $users = User::paginate(20);
         return inertia('My/Annuaire', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
-
 }
