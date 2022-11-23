@@ -21,4 +21,5 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
+    Route::get('/annuaire', [DashboardController::class, 'annuaire'])->name('annuaire');
 });
