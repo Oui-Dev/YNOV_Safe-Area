@@ -4,7 +4,7 @@
         <div class="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 bg-white"
             @dragenter.prevent="toggleActive" @dragleave.prevent="toggleActive" @dragover.prevent @drop.prevent="drop"
             :class="{'file-dropped': dropped, 'active-dropzone': active}">
-            <div class="space-y-1 text-center">
+            <div class="space-y-1 text-center h-24 justify-center content-center flex">
                 <div v-if="!dropzoneFile">
                     <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
                         aria-hidden="true">
@@ -17,9 +17,9 @@
                             class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                             <span>Téléchargez un fichier</span>
                         </label>
-                        <p class="pl-1">ou glisser-déposer</p>
+                        <p class="pl-1 text-sm text-gray-500">ou glisser-déposer</p>
                     </div>
-                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                    <p class="text-xs text-gray-500">PNG, JPG, GIF, jusqu'à 10MB</p>
                     <input name="file" type="file" id="file" class="sr-only" @change="selectFile" />
                 </div>
                 <div v-if="dropzoneFile" class="flex items-center justify-center">
@@ -37,12 +37,23 @@
 
 <script>
 
+/*
+|---------------------------------------------------------------------------------------
+| Component Dropzone that can be used in any form to upload a file with drag and drop
+| Emits an event with the file when a file is selected or dropped
+|---------------------------------------------------------------------------------------
+|  Dropzone Component example - VueJS
+|
+|  <dropzone @file="myMethod" />
+|
+*/
+
 import { ref } from 'vue';
 
 export default {
+    emits: ['file'],
     name: "dropzone",
-
-    setup() {
+    setup(props, context) {
         const active = ref(false);
         const dropped = ref(false);
 
@@ -56,17 +67,20 @@ export default {
             active.value = false;
             dropped.value = true;
             dropzoneFile.value = e.dataTransfer.files[0];
+            context.emit('file', dropzoneFile.value);
         };
 
         const selectFile = (e) => {
             dropzoneFile.value = e.target.files[0];
             active.value = false;
             dropped.value = true;
+            context.emit('file', dropzoneFile.value);
         };
 
         const removeFile = () => {
             dropzoneFile.value = null;
             dropped.value = false;
+            context.emit('file', null);
         };
 
         return { active, dropped, toggleActive, drop, dropzoneFile, selectFile, removeFile }
@@ -80,6 +94,6 @@ export default {
 }
 
 .file-dropped {
-    @apply border-none;
+    @apply border-transparent;
 }
 </style>
