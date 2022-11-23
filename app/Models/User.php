@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use ESolution\DBEncryption\Traits\EncryptedAttribute;
@@ -23,10 +24,10 @@ class User extends Authenticatable
         'id',
         'company_id',
         'identifiant',
-        'password',
         'reference',
         'sex',
         'firstname',
+        'password',
         'lastname',
         'personal_email',
         'professional_email',
@@ -37,6 +38,28 @@ class User extends Authenticatable
         'blocked_at',
         'created_at',
         'updated_at',
+    ];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    protected $encryptable = [
+        'label',
     ];
 
     public function company() {
@@ -56,16 +79,9 @@ class User extends Authenticatable
         if(!empty($this->professional_email_verified_at)){return true;} else {return false;}
     }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
+    }
 
-    protected $encryptable = [
-        'label',
-    ];
 }

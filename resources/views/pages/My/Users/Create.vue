@@ -3,37 +3,43 @@
         <div class="max-w-s">
         <h1>Nouvel utilisateur</h1>
             <form @submit.prevent="submit" class="mt-8">
-                <div >
-                    <label for="user">Nom :</label>
-                    <input id="user" v-model="form.lastname" autocomplete="off"/>
+                <div :class="{'form-error-div': form.errors.name}">
+                    <label for="lastname">Nom :</label>
+                    <input id="lastname" v-model="form.lastname" />
+                    <div v-if="form.errors.name" class="form-error-field">{{form.errors.name }}</div>
                 </div>
-                <div >
-                    <label for="user">Prenom :</label>
-                    <input id="user" v-model="form.firstname" autocomplete="off"/>
+                <div :class="{'form-error-div': form.errors.firstname}">
+                    <label for="firstname">Prenom :</label>
+                    <input id="firstname" v-model="form.firstname" />
+                    <div v-if="form.errors.firstname" class="form-error-field">{{form.errors.firstname }}</div>
                 </div>
-                <div >
-                    <label for="user">Mail :</label>
-                    <input id="user" v-model="form.mail" autocomplete="off"/>
+                <div :class="{'form-error-div': form.errors.mail}">
+                    <label for="mail">Mail :</label>
+                    <input type="email" id="mail" v-model="form.mail" />
+                    <div v-if="form.errors.mail" class="form-error-field">{{form.errors.mail }}</div>
                 </div>
-                <div >
-                    <label for="user">Numéro de téléphone :</label>
-                    <input id="user" v-model="form.phone" autocomplete="off"/>
+                <div :class="{'form-error-div': form.errors.phone}">
+                    <label for="phone">Numéro de téléphone :</label>
+                    <input id="phone" v-model="form.phone"/>
+                    <div v-if="form.errors.phone" class="form-error-field">{{form.errors.phone }}</div>
                 </div>
-                <div >
-                    <label for="user">Mot de passe :</label>
-                    <input type="password"  id="user" v-model="form.password" autocomplete="off"/>
+                <div :class="{'form-error-div': form.errors.mailpro}">
+                    <label for="mailpro">Mail professionel :</label>
+                    <input type="email" id="mailpro" v-model="form.mailpro" />
+                    <div v-if="form.errors.mailpro" class="form-error-field">{{form.errors.mailpro }}</div>
                 </div>
-                <div >
-                    <label for="user">Mail professionel :</label>
-                    <input type="password"  id="user" v-model="form.mailpro" autocomplete="off"/>
+                <div :class="{'form-error-div': form.errors.identifiant}">
+                    <label for="identifiant">identifiant :</label>
+                    <input id="identifiant" v-model="form.identifiant"/>
+                    <div v-if="form.errors.identifiant" class="form-error-field">{{form.errors.identifiant }}</div>
                 </div>
-                <div >
-                    <label for="user">Sexe :</label>
-                    <select>
-                        <option value="fr">...</option>
-                        <option value="fr">Homme</option>
-                        <option value="fr">Femme</option>
+                <div :class="{'form-error-div': form.errors.sexe}">
+                    <label for="sexe">Sexe :</label>
+                    <select id="sexe" v-model="form.sexe">
+                        <option value="0">Homme</option>
+                        <option value="1">Femme</option>
                     </select>
+                    <div v-if="form.errors.sexe" class="form-error-field">{{form.errors.sexe }}</div>
                 </div>
                 <button type="submit" class="btn-primary">Enregistrer les informations</button>
             </form>
@@ -46,7 +52,7 @@ import DashboardLayout from "../../../layouts/dashboard.vue";
 
 export default {
     name: "createUser",
-    //layout: DashboardLayout,
+    layout: DashboardLayout,
     data() {
         return {
             form: this.$inertia.form({
@@ -54,9 +60,9 @@ export default {
                 mail: null,
                 firstname: null,
                 phone: null,
-                password: null,
-                identifiant: null,
                 mailpro: null,
+                sexe: null,
+                identifiant: null,
             }),
         };
     },
@@ -66,6 +72,9 @@ export default {
                 onStart: () => {
                     this.form.clearErrors();
                 },
+                onError: (e) => {
+                    console.log(e)
+                }
             });
         },
     },
