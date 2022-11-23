@@ -94,7 +94,7 @@ export default {
                 firstname: this.user.firstname,
                 emailperso : this.user.personal_email,
                 emailpro : this.user.professional_email,
-                password: this.user.password,
+                password: null,
                 password_confirmation : null
             }),
         };

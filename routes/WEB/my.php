@@ -22,6 +22,6 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
     Route::get('/profil', [UserController::class, 'profil'])->name('auth.dashboard.profil');
-    Route::put('/profil', [UserController::class, 'editProfil'])->name('auth.dashboard.profil.edit');
+    Route::put('/profil', [UserController::class, 'editProfil'])->name('auth.dashboard.profil.put');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
 });
