@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\My;
 
-use App\Http\Controllers\ConnexionLogController;
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\Authenticate;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use App\Mail\ConfirmEmail;
