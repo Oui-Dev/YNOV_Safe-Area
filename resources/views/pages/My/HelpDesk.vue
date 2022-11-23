@@ -98,7 +98,7 @@
                             </div>
                             <div class="sm:col-span-2">
                                 <label class="block text-sm font-medium text-gray-900">Ajoutez un document</label>
-                                <dropzone />
+                                <dropzone @file="getFile" />
                             </div>
                             <div class="sm:col-span-2 sm:flex sm:justify-end">
                                 <button type="submit"
@@ -143,7 +143,7 @@ export default {
                 type: false,
                 title: null,
                 message: null,
-                file: this.file,
+                file: null,
 
             }),
             isLoading: false,
@@ -154,7 +154,9 @@ export default {
 
     methods: {
         submit() {
-            this.form.post(this.$route("my.helpDesk.post"), {
+            console.log("HEY !!!")
+            console.log(this.form.type)
+            this.form.post(this.route("my.helpDesk.post"), {
                 onStart: () => {
                     this.form.clearErrors();
                     this.isLoading = true;
@@ -169,8 +171,8 @@ export default {
                 }
             });
         },
-        handleFileUpload() {
-            this.file = this.$refs.file.files[0];
+        getFile(file) {
+            this.form.file = file;
         }
     },
 };
