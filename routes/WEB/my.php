@@ -24,4 +24,6 @@ Route::group([
     Route::get('/profil', [UserController::class, 'profil'])->name('auth.dashboard.profil');
     Route::put('/profil', [UserController::class, 'editProfil'])->name('auth.dashboard.profil.put');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
+    Route::get("/users/create", [UserController::class, 'create'])-> name('auth.users.create');
+    Route::post("/users/create", [UserController::class, 'store'])-> name('auth.users.create.post');
 });
