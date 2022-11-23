@@ -1,0 +1,33 @@
+input, textarea,
+input[type='password'],
+input[type='number'],
+input[type='email'],
+input[type='phone'],
+input[type='text'],
+input[type='url'],
+select {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-safearea-red focus:ring-safearea-red sm:text-sm border py-3 px-3;
+}
+
+form {
+    label {
+        @apply block mb-2 mt-3 text-sm font-medium text-gray-900;
+    }
+
+    .btn-primary {
+        @apply rounded-md bg-gradient-to-r text-white from-safearea-red to-safearea-blue p-2 mt-6 text-white;
+    }
+
+    .form-error-div {
+        label {
+            @apply text-red-500;
+        }
+
+        input:not(.vs__search), textarea, select, .v-select {
+            @apply border-red-500;
+        }
+    }
+    .form-error-field {
+        @apply text-red-500 text-sm font-normal mt-1;
+    }
+}
