@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\My\DashboardController;
+use App\Http\Controllers\My\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,9 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
+    Route::get("/users/create", [UserController::class, 'create'])-> name('auth.users.create');
+    Route::post("/users/create", [UserController::class, 'store'])-> name('auth.users.create.post');
     Route::get('/annuaire', [DashboardController::class, 'annuaire'])->name('annuaire');
+    Route::get('/users/edit/{user:reference}', [UserController::class, 'edit'])->name('auth.users.edit');
+    Route::put('/users/edit/{user:reference}', [UserController::class, 'editPut'])->name('auth.users.edit.put')
 });
