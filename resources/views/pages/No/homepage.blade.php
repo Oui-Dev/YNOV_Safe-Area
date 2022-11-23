@@ -14,7 +14,7 @@
                     <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                         <h1 class="text-center tracking-tight text-white">
                             Sécurisez l'environnement de travail
-                            <span class="text-indigo-400">de vos collaborateurs</span>
+                            <span class="sm:block text-indigo-400">de vos collaborateurs</span>
                         </h1>
                         <p class="mx-auto mt-6 max-w-lg text-center text-white sm:max-w-3xl">Un collaborateur qui se sent bien au travail, c'est un collaborateur qui est plus productif.</p>
                         <div class="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
