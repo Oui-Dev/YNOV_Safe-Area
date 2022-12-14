@@ -82,10 +82,6 @@ const submit = () => {
     });
 }
 
-
-
-console.log(props.user.phone);
-
 app.component('dashboardVue', dashboardVue);
 
 </script>
