@@ -154,8 +154,6 @@ export default {
 
     methods: {
         submit() {
-            console.log("HEY !!!")
-            console.log(this.form.type)
             this.form.post(this.route("my.helpDesk.post"), {
                 onStart: () => {
                     this.form.clearErrors();
@@ -172,6 +170,7 @@ export default {
             });
         },
         getFile(file) {
+            console.log(file);
             this.form.file = file;
         }
     },

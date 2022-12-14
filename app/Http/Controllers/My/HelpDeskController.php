@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use App\Models\HelpDeskSupport;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class HelpDeskController extends Controller
 {
@@ -29,10 +30,13 @@ class HelpDeskController extends Controller
         $data = request()->validate([
             'title' => 'required|string|max:255',
             'message' => 'required|string|max:500',
-            'fileUpload' => 'file|nullable',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'type' => 'boolean',
-
         ]);
+
+        $ticketRef = Str::uuid();
+        $fileName = $ticketRef . '.' . $data['file']->extension();
+        // $filePath = Storage::disk('s3')->put('helpdesk/', $data['file'], $fileName, 'private');
 
         $user = auth()->user();
 
@@ -40,13 +44,13 @@ class HelpDeskController extends Controller
          * @var \App\Models\HelpDeskSupport $ticket
          * */
         $ticket = HelpDeskSupport::create([
-            'reference' => Str::uuid(),
+            'reference' => $ticketRef,
             'user_id' => $user->id,
             'title' => $data['title'],
             'description' => $data['message'],
             'type' => $data['type'] ? 'incident' : 'demande',
             'emergency' => 3,
-            // 'file' => $data['fileUpload'],
+            'file' => $data['fileUpload'],
         ]);
         $ticket->save();
     }
