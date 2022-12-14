@@ -146,6 +146,7 @@ export default {
                 { name: 'Home', href: 'my.auth.dashboard.index', icon: HomeIcon, current: true, type: "Link" },
                 // { name: 'Helpdesk', href: 'my.helpdesk', icon: UserGroupIcon, current: false, type: "Link" },
                 { name: 'Console', href: 'console.auth.dashboard.index', icon: UserGroupIcon, current: false, type: "a" },
+                { name: 'Annuaire', href: 'my.auth.annuaire', icon: DocumentChartBarIcon, current: false, type: "Link" },
                 { name: 'Retourner sur le site', href: 'no.public.homepage', icon: DocumentChartBarIcon, current: false, type: "a" },
             ],
             adminNavigation: [
