@@ -51,11 +51,8 @@
 
 
 <script setup>
-import { createApp } from 'vue';
 import dashboardVue from '../../../layouts/dashboard.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
-
-const app = createApp({});
 
 const props = defineProps({
     user: {
@@ -81,7 +78,5 @@ const submit = () => {
         }
     });
 }
-
-app.component('dashboardVue', dashboardVue);
 
 </script>

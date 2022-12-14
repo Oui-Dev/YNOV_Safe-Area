@@ -69,15 +69,9 @@
   
 
 <script setup>
-import { ref } from '@vue/reactivity';
-import DashboardLayout from "../../layouts/dashboard.vue";
-
-import { createApp } from 'vue';
 import dashboardVue from '../../layouts/dashboard.vue';
-import Pagination from '../../components/dashboard/pagination.vue';
+import Pagination from '../../components/dashboard/Pagination.vue';
 import { Link } from '@inertiajs/inertia-vue3';
-
-const app = createApp({})
 
 const props = defineProps({
     users: {
@@ -94,12 +88,6 @@ const isAdmin = () => {
     return props.auth.user.permissions.some((e) => e.name === 'admin_access');
 }
 
-app.component('dashboardVue', dashboardVue);
-app.component('Pagination', Pagination);
-app.component('Link', Link);
-
-
 const people = props.users;
-
 
 </script>
