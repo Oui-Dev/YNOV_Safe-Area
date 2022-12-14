@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ComplainsController extends Controller {
 
     public function list() {
-        $complains = Complain::with('user')->paginate(20);
+        $complains = Complain::with('user')->with('assignedUser')->paginate(20);
         return inertia('My/Complains/List', [
             'complains' => $complains,
         ]);

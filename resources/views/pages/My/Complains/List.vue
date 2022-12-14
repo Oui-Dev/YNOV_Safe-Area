@@ -49,9 +49,9 @@
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
                                         comp.urgency
                                         }}</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
-                                            comp.assigned_to
-                                        }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {{ assignedUser(comp) }}
+                                        </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ comp.urgency }}
                                     </td>
                                     <!-- <td
@@ -84,6 +84,10 @@ const props = defineProps({
         required: true,
     }
 });
+
+const assignedUser = (comp) => {
+    return comp.assigned_user ? comp.assigned_user.firstname + " " + comp.assigned_user.lastname : 'Not assigned';
+}
 
 
 </script>
