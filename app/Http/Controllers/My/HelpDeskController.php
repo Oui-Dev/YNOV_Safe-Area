@@ -41,12 +41,12 @@ class HelpDeskController extends Controller
         $data = request()->validate([
             'title' => 'required|string|max:255',
             'message' => 'required|string|max:500',
-            'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'type' => 'boolean',
         ]);
 
         $ticketRef = Str::uuid();
-        $fileName = $ticketRef . '.' . $data['file']->extension();
+        // $fileName = $ticketRef . '.' . $data['file']->extension();
         // $filePath = Storage::disk('s3')->put('helpdesk/', $data['file'], $fileName, 'private');
 
         $user = auth()->user();
@@ -61,7 +61,7 @@ class HelpDeskController extends Controller
             'description' => $data['message'],
             'type' => $data['type'] ? 'incident' : 'demande',
             'emergency' => 3,
-            'file' => $data['fileUpload'],
+            'file' => null // $data['$filePath'], //
         ]);
         $ticket->save();
     }
