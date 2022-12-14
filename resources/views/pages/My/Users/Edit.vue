@@ -71,7 +71,7 @@ const form = useForm({
     phone: props.user.phone,
     mailpro: props.user.professional_email,
     identifiant: props.user.identifiant,
-    sexe: props
+    sex: props.user.sex
 })
 
 const submit = () => {
@@ -84,7 +84,7 @@ const submit = () => {
 
 
 
-console.log(props.user);
+console.log(props.user.reference);
 
 app.component('dashboardVue', dashboardVue);
 
