@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Controllers\My\ComplainsController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
@@ -68,6 +69,10 @@ class User extends Authenticatable
     }
 
     public function complains() {
+        return $this->hasMany(Complain::class);
+    }
+
+    public function assignedComplains() {
         return $this->hasMany(Complain::class);
     }
 

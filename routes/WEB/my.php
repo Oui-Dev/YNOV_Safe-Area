@@ -35,5 +35,6 @@ Route::group([
     Route::post("/users/create", [UserController::class, 'store'])-> name('auth.users.create.post');
     Route::get('/users/edit/{user:reference}', [UserController::class, 'edit'])->name('auth.users.edit');
     Route::put('/users/edit/{user:reference}', [UserController::class, 'editPut'])->name('auth.users.edit.put');
+    Route::delete('/users/delete/{user:reference}', [UserController::class, 'delete'])->name('auth.users.delete');
     Route::get('/complains/list',[ComplainsController::class , 'list'])->name('auth.complains.list');
 });
