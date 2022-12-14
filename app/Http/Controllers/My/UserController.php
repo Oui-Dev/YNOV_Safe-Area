@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 use App\Mail\ConfirmEmail;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Redirect;
+
 
 class UserController extends Controller
 {
@@ -96,18 +98,67 @@ class UserController extends Controller
     }
 
     public function editProfil(){
+        $user = auth()->user();
+
         $data = request()->validate([
-            'lastname' => ['required', 'string', 'max:255'],
-            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['string', 'max:255'],
+            'firstname' => ['string', 'max:255'],
+            'emailperso' => ['string', 'max:255'],
+            'emailpro' => ['string', 'max:255'],
+        ]);
+
+        $user->update([
+            'lastname' => $data['lastname'],
+            'firstname' => $data['firstname'],
+            'personal_email' => $data['emailperso'],
+            'professional_email' => $data['emailpro']
+        ]);
+
+        if($user->save()){
+            return redirect()->route('my.auth.dashboard.profil')->with('toast', [
+                'type' => 'success',
+                'message' => 'Enregistrer avec succès.',
+            ]);
+        }
+        else{
+            return Redirect::route('my.auth.dashboard.profil')->with('toast', [
+                'type' => 'error',
+                'message' => 'Erreur lors de l\'enregistrement.',
+            ]);
+        }
+    }
+
+    public function editPassword(){
+        $user = auth()->user();
+
+        $data = request()->validate([
+            'old_password' => ['required', 'string'],
             'password' => ['required', 'confirmed', Password::min(8)
                 ->letters()
                 ->mixedCase()
-                ->numbers(),
+                ->numbers()
             ],
-            'mailperso' => ['required', 'string', 'max:255'],
-            'mailpro' => ['required', 'string', 'max:255'],
         ]);
 
-        dd($data);
+        if(!Hash::check($data['old_password'], $user->password)) {
+            return Redirect::route('my.auth.dashboard.profil')->with('toast', [
+                'type' => 'error',
+                'message' => 'Ancien mot de passe incorrect',
+            ]);
+        }
+        
+        $user->password = $data['password'];
+        if($user->save()){
+            return redirect()->route('my.auth.dashboard.profil')->with('toast', [
+                'type' => 'success',
+                'message' => 'Enregistrer avec succès.',
+            ]);
+        }
+        else{
+            return Redirect::route('my.auth.dashboard.profil')->with('toast', [
+                'type' => 'error',
+                'message' => 'Erreur lors de l\'enregistrement.',
+            ]);
+        }
     }
 }
