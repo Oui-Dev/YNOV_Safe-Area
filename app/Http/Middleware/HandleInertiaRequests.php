@@ -54,6 +54,7 @@ class HandleInertiaRequests extends Middleware
             'toast' => function () {
                 return Session::get('toast');
             },
+            'popstate' => false,
         ]);
     }
 }
