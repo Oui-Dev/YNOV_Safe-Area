@@ -58,6 +58,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     protected $encryptable = [
         'label',
     ];
@@ -65,6 +66,11 @@ class User extends Authenticatable
     public function company() {
         return $this->belongsTo(Company::class, 'compagny_id');
     }
+
+    public function complains() {
+        return $this->hasMany(Complain::class);
+    }
+
 
     public function is_blocked() {
         if(!empty($this->blocked_at)){return true;} else {return false;}
