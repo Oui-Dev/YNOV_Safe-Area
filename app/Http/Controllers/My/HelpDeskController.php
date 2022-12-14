@@ -5,18 +5,29 @@ namespace App\Http\Controllers\My;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use App\Models\HelpDeskSupport;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 class HelpDeskController extends Controller
 {
+
+    public function helpDeskList()
+    {
+        return Inertia::render(
+            'My/HelpDeskList',
+            [
+                'users' => User::all(),
+                'tickets' => HelpDeskSupport::all(),
+            ]
+        );
+    }
+
+
     public function helpDesk()
     {
         return Inertia::render(
             'My/HelpDesk',
-            [
-                'user' => auth()->user(),
-            ]
         );
     }
 
@@ -30,7 +41,7 @@ class HelpDeskController extends Controller
         $data = request()->validate([
             'title' => 'required|string|max:255',
             'message' => 'required|string|max:500',
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'type' => 'boolean',
         ]);
 
