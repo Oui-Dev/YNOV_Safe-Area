@@ -1,6 +1,7 @@
 <template>
     <dashboardVue>
         <div class="px-4 mt-3 sm:px-6 lg:px-8">
+            <Link :href="route('my.auth.users.create')" class="float-right items-center rounded-md border border-transparent bg-safearea-blue px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Ajouter un utilisateur</Link>
             <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
                     <h1 class="text-xl font-semibold text-gray-900">Utilisateurs</h1>

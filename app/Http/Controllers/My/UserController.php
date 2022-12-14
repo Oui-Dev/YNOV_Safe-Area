@@ -44,7 +44,10 @@ class UserController extends Controller
 
 
         //Mail::to($user->email)->send(new ConfirmEmail($user));
-        return Redirect::route('my.auth.dashboard.index');
+        return redirect()->route('my.auth.annuaire')->with('toast', [
+            'type' => 'success',
+            'message' => "L'utilisateur a bien été crée.",
+        ]);
     }
 
 
@@ -77,11 +80,11 @@ class UserController extends Controller
             'identifiant' => $data['identifiant'],
         ]);
         
-        //$user->save();
+        $user->save();
 
         return redirect()->route('my.auth.users.edit', $user->reference)->with('toast', [
-            'type' => 'success', // or 'error'
-            'message' => "La plainte a bien été déposé",
-       ]);
+            'type' => 'success',
+            'message' => "L'utilisateur a bien été modifié.",
+        ]);
     }
 }

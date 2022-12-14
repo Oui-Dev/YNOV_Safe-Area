@@ -3,10 +3,10 @@
         <div class="max-w-s">
         <h1>Nouvel utilisateur</h1>
             <form @submit.prevent="submit" class="mt-8">
-                <div :class="{'form-error-div': form.errors.name}">
+                <div :class="{'form-error-div': form.errors.lastname}">
                     <label for="lastname">Nom :</label>
                     <input id="lastname" v-model="form.lastname" />
-                    <div v-if="form.errors.name" class="form-error-field">{{form.errors.name }}</div>
+                    <div v-if="form.errors.lastname" class="form-error-field">{{form.errors.lastname }}</div>
                 </div>
                 <div :class="{'form-error-div': form.errors.firstname}">
                     <label for="firstname">Prenom :</label>
