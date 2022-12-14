@@ -161,4 +161,12 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function delete(User $user) {
+        $user->delete();
+        return redirect()->back()->with('toast', [
+            'type' => 'success',
+            'message' => "L'utilisateur a bien été modifié.",
+        ]);
+    }
 }

@@ -13,7 +13,10 @@ class DashboardController extends Controller
     }
 
     public function annuaire() {
-        $users = User::paginate(20);
+        $currentUser = auth()->user();
+        $users = $currentUser->hasAnyPermission(['admin_access', 'root'])
+            ? User::paginate(20)
+            : $currentUser->company->users()->paginate(20);
         return inertia('My/Annuaire', [
             'users' => $users,
         ]);

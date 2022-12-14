@@ -1,14 +1,12 @@
 <template>
     <dashboardVue>
         <div class="px-4 mt-3 sm:px-6 lg:px-8">
-            <Link :href="route('my.auth.users.create')" class="float-right items-center rounded-md border border-transparent bg-safearea-blue px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Ajouter un utilisateur</Link>
+            <Link v-if="isAdmin()" :href="route('my.auth.users.create')"
+                class="float-right items-center rounded-md border border-transparent bg-safearea-blue px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
+            Ajouter un utilisateur</Link>
             <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
                     <h1 class="text-xl font-semibold text-gray-900">Utilisateurs</h1>
-                </div>
-                <div class="sm:mt-0 sm:ml-16 sm:flex-none">
-                    <button v-if="isAdmin()" type="button"
-                        class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Ajouter un utilisateur</button>
                 </div>
             </div>
             <div class="mt-8 flex flex-col">
@@ -36,7 +34,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white">
-                                    <tr v-for="(person, personIdx) in people.data" :key="person.id"
+                                    <tr v-for="(person, personIdx) in users.data" :key="person.id"
                                         :class="personIdx % 2 === 0 ? undefined : 'bg-gray-50'">
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
@@ -51,8 +49,16 @@
                                         </td>
                                         <td
                                             class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <Link v-if="true" :href="route('my.auth.users.edit', {reference: person.reference})" class="text-indigo-600 hover:text-indigo-900">Edit<span
-                                                    class="sr-only">, {{ person.name }}</span></Link>
+                                            <button v-if="isAdmin() && !isCurrentRef(person.reference)"
+                                                @click="deleteUser(person.reference)"
+                                                class="text-red-600 hover:text-red-900">Supprimer</button>
+                                        </td>
+                                        <td
+                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <Link v-if="true"
+                                                :href="route('my.auth.users.edit', { reference: person.reference })"
+                                                class="text-indigo-600 hover:text-indigo-900">Edit<span
+                                                class="sr-only">, {{ person.name }}</span></Link>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -62,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <Pagination class="pt-5 border-t border-gray-200 flex items-center justify-center" :paginator="people" />
+        <Pagination class="pt-5 border-t border-gray-200 flex items-center justify-center" :paginator="users" />
     </dashboardVue>
 
 </template>
@@ -71,23 +77,38 @@
 <script setup>
 import dashboardVue from '../../layouts/dashboard.vue';
 import Pagination from '../../components/dashboard/Pagination.vue';
-import { Link } from '@inertiajs/inertia-vue3';
+import { Link, usePage } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
     users: {
         type: Object,
         required: true,
     },
-    auth: {
-        type: Object,
-        required: true,
-    }
 });
 
 const isAdmin = () => {
-    return props.auth.user.permissions.some((e) => e.name === 'admin_access');
+    return usePage().props.value.auth.user.permissions.some((e) => e.name === 'admin_access' || e.name === 'root');
 }
 
-const people = props.users;
+const isCurrentRef = (ref) => {
+    return usePage().props.value.auth.user.reference === ref;
+}
+
+const deleteUser = (reference) => {
+    Inertia.delete(route('my.auth.users.delete', { reference: reference }), {
+        onBefore: () => {
+            return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');
+        },
+        onSuccess: () => {
+            Inertia.reload({ only: ['users'] });
+        }
+    }
+    );
+}
+
+
+
+
 
 </script>
