@@ -77,7 +77,7 @@
 <script setup>
 import dashboardVue from '../../layouts/dashboard.vue';
 import Pagination from '../../components/dashboard/Pagination.vue';
-import { Link } from '@inertiajs/inertia-vue3';
+import { Link, usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
@@ -85,18 +85,14 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-    auth: {
-        type: Object,
-        required: true,
-    }
 });
 
 const isAdmin = () => {
-    return props.auth.user.permissions.some((e) => e.name === 'admin_access' || e.name === 'root');
+    return usePage().props.value.auth.user.permissions.some((e) => e.name === 'admin_access' || e.name === 'root');
 }
 
 const isCurrentRef = (ref) => {
-    return props.auth.user.reference === ref;
+    return usePage().props.value.auth.user.reference === ref;
 }
 
 const deleteUser = (reference) => {
