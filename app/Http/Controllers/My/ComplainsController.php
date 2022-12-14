@@ -15,6 +15,10 @@ class ComplainsController extends Controller {
         ]);
     }
 
+    public function create() {
+        return inertia('My/Complains/Create');
+    }
+
 
 
 }
