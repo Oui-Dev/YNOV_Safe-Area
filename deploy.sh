@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+#vendor/bin/phpunit
+
+(git push) || true
+
+git checkout main
+
+git pull origin main
+
+git merge dev
+
+git push origin main
+
+git checkout dev
