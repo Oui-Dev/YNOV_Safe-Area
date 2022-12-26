@@ -5,12 +5,12 @@ set -e
 
 (git push) || true
 
-git checkout main
+git checkout prod
 
-git pull origin main
+git pull origin prod
 
-git merge dev
+git merge master
 
-git push origin main
+git push origin prod
 
-git checkout dev
+git checkout master

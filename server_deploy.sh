@@ -7,7 +7,7 @@ echo "Deploying application ..."
 (php artisan down --message 'The app is being (quickly!) updated. Please try again in a minute.') || true
     # Update codebase
     git reset --hard
-    git pull origin main
+    git pull origin prod
     yarn install
 
     # Install dependencies based on lock file
