@@ -21,7 +21,7 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_DATABASE: safe_area_db
+          MYSQL_DATABASE: safearea_db
           MYSQL_USER: admin
           MYSQL_PASSWORD: Azerty@123
           MYSQL_ROOT_PASSWORD: Azerty@123
