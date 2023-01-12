@@ -25,13 +25,16 @@
                                         Titre</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Assignée à </th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Urgence</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Assignée à</th>
-                                    <th scope="col"
-                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Status</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 text-right">
+                                        Action</th>
                                    <!-- <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                         <span class="sr-only">Edit</span>
                                     </th> -->
@@ -46,14 +49,31 @@
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ comp.title
                                         }}
                                     </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
-                                        comp.urgency
-                                        }}</td>
+
+
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                            {{ assignedUser(comp) }}
-                                        </td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ comp.urgency }}
+                                        {{ assignedUser(comp) }}
                                     </td>
+
+
+                                    <td v-if="comp.urgency === 0" class="whitespace-nowrap px-7 py-4 text-sm text-gray-500">
+                                        <div class="h-4 w-4 bg-green-600 rounded-full"></div>
+                                    </td>
+                                    <td v-if="comp.urgency === 2" class="whitespace-nowrap px-7 py-4 text-sm text-gray-500">
+                                        <div class="h-4 w-4 bg-red-600 rounded-full"></div>
+                                    </td>
+                                    <td v-if="comp.urgency === 1" class="whitespace-nowrap px-7 py-4 text-sm text-gray-500">
+                                        <div class="h-4 w-4 bg-orange-500 rounded-full"></div>
+                                    </td>
+
+
+
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ comp.status }}</td>
+
+                                    <div class="flex justify-end">
+                                    <a href=""><ArrowTopRightOnSquareIcon class="mr-5 h-5 w-5 flex-shrink-0 mt-4 text-gray-500 hover:text-safearea-red" aria-hidden="true"></ArrowTopRightOnSquareIcon></a>
+                                    </div>
+
                                     <!-- <td
                                         class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                         <Link v-if="true" :href="route('my.auth.users.edit', {reference: complainA.reference})" class="text-indigo-600 hover:text-indigo-900">Edit<span
@@ -77,6 +97,11 @@
 import dashboardVue from '../../../layouts/dashboard.vue';
 import Pagination from '../../../components/dashboard/pagination.vue';
 import { Link } from '@inertiajs/inertia-vue3';
+import {
+    ArrowTopRightOnSquareIcon,
+} from '@heroicons/vue/20/solid'
+
+
 
 const props = defineProps({
     complains: {
