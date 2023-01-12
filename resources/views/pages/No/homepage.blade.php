@@ -300,7 +300,7 @@
                             linkedin="https://www.linkedin.com/in/evan-marcel-178a64171/"/>
                         <x-team-card name="Jules Besson"
                             role="Développeur web"
-                            img="resources/images/team/evan_marcel.webp"
+                            img="resources/images/team/default.webp"
                             linkedin="#"/>
                     </ul>
                 </div>
