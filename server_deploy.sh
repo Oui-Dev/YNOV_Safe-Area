@@ -15,7 +15,7 @@ echo "Deploying application ..."
 
     # Migrate database
     php artisan migrate --force
-    php artisan optimize
+    php artisan optimize:clear
 
     php artisan ziggy:generate
 
