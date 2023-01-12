@@ -15,4 +15,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           password: ${{ secrets.SSH_PASSWORD }}
           debug: true
-          script: 'cd ../../var/www/safe-area-web && echo ${{ secrets.SSH_PASSWORD }} | sudo -S su . && ./server_deploy.sh'
+          script: 'cd ../../var/www/safe-area-web && echo ${{ secrets.SSH_PASSWORD }} | sudo -S su && ./server_deploy.sh'
