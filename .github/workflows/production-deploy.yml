@@ -16,3 +16,4 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           debug: true
           script: 'cd ../../var/www/safe-area-web && ./server_deploy.sh'
+
