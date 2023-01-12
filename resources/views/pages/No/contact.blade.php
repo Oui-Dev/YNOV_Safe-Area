@@ -5,8 +5,8 @@
       <!-- Header -->
       <div>
         <div class="py-6 lg:py-10">
-          <div class="relative mx-auto max-w-7xl pl-4 pr-8 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">Nous contacter</h1>
+          <div class="relative mx-auto max-w-6xl pl-4 pr-8 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Nous contacter</h1>
             <p class="mt-6 max-w-3xl text-xl">
                 Retrouvez toutes nos coordonnées pour nous contacter.
             </p>
@@ -17,7 +17,7 @@
       <!-- Contact section -->
       <section class="relative bg-white rounded-lg" aria-labelledby="contact-heading">
         <div class="absolute h-1/2 w-full" aria-hidden="true"></div>
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div class="relative bg-gray-50 rounded-lg shadow-xl">
             <h2 id="contact-heading" class="sr-only">Contact us</h2>
 
