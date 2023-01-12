@@ -39,7 +39,7 @@
                                         <span class="sr-only">Edit</span>
                                     </th> -->
                                 </tr>
-                                
+
                                 </thead>
                                 <tbody class="bg-white">
                                 <tr v-for="(comp, personIdx) in complains.data" :key="comp.id"
@@ -96,7 +96,7 @@
 
 <script setup>
 import dashboardVue from '../../../layouts/dashboard.vue';
-import Pagination from '../../../components/dashboard/pagination.vue';
+import Pagination from '../../../components/dashboard/Pagination.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 import {
     ArrowTopRightOnSquareIcon,
