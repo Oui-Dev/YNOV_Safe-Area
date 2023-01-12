@@ -39,6 +39,7 @@
                                         <span class="sr-only">Edit</span>
                                     </th> -->
                                 </tr>
+                                
                                 </thead>
                                 <tbody class="bg-white">
                                 <tr v-for="(comp, personIdx) in complains.data" :key="comp.id"
