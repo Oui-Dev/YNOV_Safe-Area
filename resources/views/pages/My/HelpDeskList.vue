@@ -48,7 +48,9 @@
 													 :class="getStatus(ticket)"> </div>
 										</td>
 										<td class="whitespace-nowrap px-3 py-4 text-gray-500">
+											<Link :href="route('auth.helpDesk.show', { ticket })">
 											<ArrowTopRightOnSquareIcon class="h-6 w-6 mx-auto hover:cursor-pointer" />
+											</Link>
 										</td>
 									</tr>
 								</tbody>
@@ -64,6 +66,7 @@
 <script setup>
 import DashboardLayout from "../../layouts/dashboard.vue";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/vue/24/outline";
+import { Link } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
 	tickets: {

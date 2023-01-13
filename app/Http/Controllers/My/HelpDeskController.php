@@ -23,12 +23,18 @@ class HelpDeskController extends Controller
         );
     }
 
-
     public function helpDesk()
     {
         return Inertia::render(
             'My/HelpDesk',
         );
+    }
+
+    public function show(Ticket $ticket)
+    {
+        return inertia('My/HelpDeskShow', [
+            'ticket' => $ticket,
+        ]);
     }
 
     /**

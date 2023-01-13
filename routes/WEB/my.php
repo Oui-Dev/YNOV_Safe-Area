@@ -32,5 +32,5 @@ Route::group([
     Route::get('/helpdesk/new', [HelpDeskController::class, 'helpDesk'])->name('auth.helpDesk.add');
     Route::post('/helpdesk', [HelpDeskController::class, 'store'])->name('auth.helpDesk.add.post');
     Route::get('/helpdesk', [HelpDeskController::class, 'helpDeskList'])->name('auth.helpDesk.add');
-    // Route::get('/helpdesk/{id}', [HelpDeskController::class, 'show'])->name('auth.helpDesk.show');
+    Route::get('/helpdesk/{id}', [HelpDeskController::class, 'show'])->name('auth.helpDesk.show');
 });
