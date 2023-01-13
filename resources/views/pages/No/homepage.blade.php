@@ -5,7 +5,7 @@
         <!-- Hero section -->
         <div class="relative">
             <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-6xl sm:px-6 lg:px-8">
                 <div class="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
                     <div class="absolute inset-0">
                         <img class="h-full w-full object-cover" src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100" alt="People working on laptops">
@@ -32,7 +32,7 @@
   
         <!-- Partners section -->
         <div class="bg-gray-100">
-            <div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-6xl py-16 px-4 sm:px-6 lg:px-8">
                 <p class="text-center text-lg font-semibold text-gray-700">Ils font confiance à notre solution (et bien d'autres)</p>
                 <div class="mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
                     <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
@@ -59,7 +59,7 @@
             <div aria-hidden="true" class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-100"></div>
             <div class="relative">
                 <h2 class="text-center mb-16 md:mb-20">Pourquoi Safe Area ?</h2>
-                <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+                <div class="lg:mx-auto lg:grid lg:max-w-6xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
                     <div class="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
                         <div class="mt-6">
                             <div class="flex gap-4 items-center">
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="mt-16 md:mt-24">
-                <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+                <div class="lg:mx-auto lg:grid lg:max-w-6xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
                     <div class="mx-auto max-w-xl px-4 sm:px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
                         <div class="mt-6">
                             <div class="flex flex-row-reverse md:flex-row gap-4 items-center">
@@ -114,7 +114,7 @@
 
         <!-- Bloc features -->
         <div class="relative overflow-hidden bg-gradient-to-b from-safearea-red to-safearea-blue md:mt-8">
-            <div class="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
+            <div class="mx-auto max-w-6xl p-4 md:p-6 lg:p-8">
                 <!-- Decorative angle backgrounds -->
                 <div class="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
                     <svg class="absolute inset-0 h-full w-full" width="343" height="388" viewBox="0 0 343 388" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -151,7 +151,7 @@
                 </div>
                 <!-- End decorative angle backgrounds -->
                 <div class="py-10 px-6 md:px-10 lg:col-span-2 xl:p-12">
-                    <div class="mx-auto max-w-4xl lg:max-w-7xl">
+                    <div class="mx-auto max-w-4xl lg:max-w-6xl">
                         <div class="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
                             <div class="flex gap-4 items-center md:flex-col md:items-start md:gap-0">
                                 <div>
@@ -272,35 +272,35 @@
 
         <!-- Team section -->
         <div class="bg-white">
-            <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
+            <div class="mx-auto max-w-6xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
                 <div class="space-y-12">
                     <div class="mx-auto space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
                         <h2 class="text-center py-4">Notre équipe</h2>
                     </div>
                     <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
-                        <x-team-card name="Maxime LARROZE-F."
-                            role="Chef de projet / Expert web & hébergement"
-                            img="resources/images/team/maxime_larroze.webp"
-                            linkedin="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/"/>
                         <x-team-card name="Kévin BLAISE"
-                            role="Superviseur / Expert web"
+                            role="Chef de projet / Expert web"
                             img="resources/images/team/kevin_blaise.webp"
                             linkedin="https://www.linkedin.com/in/k%C3%A9vin-blaise/"/>
+                        <x-team-card name="Maxime LARROZE-F."
+                            role="Superviseur / Expert hébergement"
+                            img="resources/images/team/maxime_larroze.webp"
+                            linkedin="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/"/>
+                        <x-team-card name="Petru OLTEAN"
+                            role="Conseiller / Développeur web"
+                            img="resources/images/team/petru_oltean.webp"
+                            linkedin="https://www.linkedin.com/in/petru-oltean-7308a4171/"/>
                         <x-team-card name="Léo CORRE"
                             role="Développeur web"
                             img="resources/images/team/leo_corre.webp"
                             linkedin="https://www.linkedin.com/in/lcorre/"/>
-                        <x-team-card name="Petru OLTEAN"
-                            role="Développeur web"
-                            img="resources/images/team/petru_oltean.webp"
-                            linkedin="https://www.linkedin.com/in/petru-oltean-7308a4171/"/>
                         <x-team-card name="Evan MARCEL"
                             role="Développeur web"
                             img="resources/images/team/evan_marcel.webp"
                             linkedin="https://www.linkedin.com/in/evan-marcel-178a64171/"/>
                         <x-team-card name="Jules Besson"
                             role="Développeur web"
-                            img="resources/images/team/evan_marcel.webp"
+                            img="resources/images/team/default.webp"
                             linkedin="#"/>
                     </ul>
                 </div>
