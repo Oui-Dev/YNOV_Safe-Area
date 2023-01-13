@@ -49,20 +49,21 @@
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person.phone }}
                                         </td>
                                         <td
-                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <button v-if="isAdmin() && !isCurrentRef(person.reference)"
-                                                @click="deleteUser(person.reference)"
-                                                class="text-red-600 hover:text-red-900">
-                                                Supprimer
-                                            </button>
+                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                                            <Link v-if="isAdmin()"
+                                                :href="route('my.auth.users.edit', { reference: person.reference })">
+                                            <PencilSquareIcon 
+                                                class="h-5 w-auto flex-shrink-0 text-gray-500 hover:text-indigo-900 cursor-pointer">
+                                            </PencilSquareIcon>
+                                            </Link>
                                         </td>
                                         <td
-                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <Link v-if="isAdmin()"
-                                                :href="route('my.auth.users.edit', { reference: person.reference })"
-                                                class="text-indigo-600 hover:text-indigo-900">
-                                                Edit
-                                                <span class="sr-only">, {{ person.name }}</span></Link>
+                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                                            <TrashIcon v-if="isAdmin() && !isCurrentRef(person.reference)"
+                                                @click="deleteUser(person.reference)"
+                                                class=" h-5 w-5 flex-shrink-0  text-gray-500 hover:text-safearea-red cursor-pointer">
+
+                                            </TrashIcon>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -83,6 +84,8 @@ import dashboardVue from '../../layouts/dashboard.vue';
 import Pagination from '../../components/dashboard/Pagination.vue';
 import { Link, usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
+import { TrashIcon, PencilSquareIcon } from '@heroicons/vue/20/solid';
+
 
 const props = defineProps({
     users: {
