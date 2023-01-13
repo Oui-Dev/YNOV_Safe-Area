@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use ESolution\DBEncryption\Traits\EncryptedAttribute;
 use Spatie\Permission\Traits\HasRoles;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class User extends Authenticatable
 {
@@ -58,6 +58,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     protected $encryptable = [
         'label',
     ];
@@ -65,6 +66,15 @@ class User extends Authenticatable
     public function company() {
         return $this->belongsTo(Company::class, 'compagny_id');
     }
+
+    public function complains() {
+        return $this->hasMany(Complain::class);
+    }
+
+    public function assignedComplains() {
+        return $this->hasMany(Complain::class);
+    }
+
 
     public function is_blocked() {
         if(!empty($this->blocked_at)){return true;} else {return false;}
