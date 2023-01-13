@@ -39,11 +39,12 @@
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                             {{ person.firstname }}</td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person.lastname
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
+                                            person.lastname
                                         }}
                                         </td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
-                                                person.professional_email
+                                            person.professional_email
                                         }}</td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person.phone }}
                                         </td>
@@ -51,14 +52,17 @@
                                             class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                             <button v-if="isAdmin() && !isCurrentRef(person.reference)"
                                                 @click="deleteUser(person.reference)"
-                                                class="text-red-600 hover:text-red-900">Supprimer</button>
+                                                class="text-red-600 hover:text-red-900">
+                                                Supprimer
+                                            </button>
                                         </td>
                                         <td
                                             class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <Link v-if="true"
+                                            <Link v-if="isAdmin()"
                                                 :href="route('my.auth.users.edit', { reference: person.reference })"
-                                                class="text-indigo-600 hover:text-indigo-900">Edit<span
-                                                class="sr-only">, {{ person.name }}</span></Link>
+                                                class="text-indigo-600 hover:text-indigo-900">
+                                                Edit
+                                                <span class="sr-only">, {{ person.name }}</span></Link>
                                         </td>
                                     </tr>
                                 </tbody>
