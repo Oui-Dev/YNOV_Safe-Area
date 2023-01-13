@@ -24,9 +24,9 @@
 										<th scope="col"
 												class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Type</th>
 										<th scope="col"
-												class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Statut</th>
+												class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Statut</th>
 										<th scope="col"
-												class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Action</th>
+												class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Action</th>
 									</tr>
 								</thead>
 								<tbody class="bg-white">
@@ -43,9 +43,12 @@
 												<span class="font-semibold text-white"> {{ ticket.type === "incident" ? "I" : "D" }} </span>
 											</div>
 										</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> <status-indicator new /></td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+											<div class="h-4 w-4 rounded-full mx-auto"
+													 :class="getStatus(ticket)"> </div>
+										</td>
 										<td class="whitespace-nowrap px-3 py-4 text-gray-500">
-											<EyeIcon class="h-6 w-6" />
+											<ArrowTopRightOnSquareIcon class="h-6 w-6 mx-auto hover:cursor-pointer" />
 										</td>
 									</tr>
 								</tbody>
@@ -60,7 +63,7 @@
 
 <script setup>
 import DashboardLayout from "../../layouts/dashboard.vue";
-import { EyeIcon } from "@heroicons/vue/24/outline";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
 	tickets: {
@@ -85,50 +88,24 @@ function prettyDate(date) {
 function getStatus(ticket) {
 	switch (ticket.status) {
 		case "nouveau":
-			return "new";
+			return 'bg-green-600';
 
 		case "attribue":
 		case "en cours":
-			return "active";
-
-		case "en cours":
-			return "En attente";
+			return "bg-yellow-600";
 
 		case "termine":
-			return "resolved";
+			return "bg-slate-600";
 
 		case "clos":
-			return "closed";
+			return "bg-gray-600";
 
 		default:
-			return "new";
+			return "bg-green-600";
 	}
 }
 
 </script>
 <style lang="scss" scoped>
-status-indicator {
-	@apply inline-block rounded-full w-4 h-4;
-}
 
-status-indicator[new] {
-	background-color: green;
-}
-
-status-indicator[active] {
-	background-color: yellow;
-}
-
-status-indicator[waiting] {
-	background-color: orange;
-}
-
-status-indicator[resolved] {
-	background-color: gray;
-}
-
-status-indicator[closed] {
-	background-color: transparent;
-	border: 2px solid #ccc
-}
 </style>

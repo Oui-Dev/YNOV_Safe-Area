@@ -1,7 +1,7 @@
 <template>
 	<DashboardLayout>
 		<div class="bg-white">
-			<div class="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+			<div class="mx-auto max-w-7xl pt-16 px-4 sm:pt-24 sm:px-6 lg:px-8">
 				<div class="relative bg-gray-100 shadow-xl rounded-lg">
 					<h2 class="sr-only">Créez un ticket de support</h2>
 					<div class="grid grid-cols-1 lg:grid-cols-3">
@@ -88,7 +88,7 @@
 									</defs>
 								</svg>
 							</div>
-							<h1 class="text-2xl font-medium text-white">Bonjour, {{ this.currentUser.lastname }}</h1>
+							<h1 class="text-2xl font-medium text-white">Bonjour, {{ currentUser.lastname }}</h1>
 							<p class="mt-6 max-w-3xl text-base text-indigo-50">Les données sont confidentielles. <br> Ne partagez pas de données personnelles ou sensibles. <br> Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.</p>
 						</div>
 						<!-- Contact form -->
