@@ -25,7 +25,8 @@ Route::group([
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
     Route::get('/annuaire', [DashboardController::class, 'annuaire'])->name('auth.annuaire');
-
+    Route::post('/helpdesk/new', [HelpDeskController::class, 'store'])->name('auth.helpDesk.add.post');
+    Route::get('/helpdesk/new', [HelpDeskController::class, 'create'])->name('auth.helpDesk.add');
 });
 
 Route::group([
@@ -38,8 +39,6 @@ Route::group([
     Route::put('/users/edit/{user:reference}', [UserController::class, 'editPut'])->name('auth.users.edit.put');
     Route::delete('/users/delete/{user:reference}', [UserController::class, 'delete'])->name('auth.users.delete');
     Route::get('/complains/list',[ComplainsController::class , 'list'])->name('auth.complains.list');
-    Route::get('/helpdesk/new', [HelpDeskController::class, 'helpDesk'])->name('auth.helpDesk.add');
-    Route::post('/helpdesk', [HelpDeskController::class, 'store'])->name('auth.helpDesk.add.post');
-    Route::get('/helpdesk', [HelpDeskController::class, 'helpDeskList'])->name('auth.helpDesk.add');
+    Route::get('/helpdesk', [HelpDeskController::class, 'list'])->name('auth.helpDesk.list');
     Route::get('/helpdesk/{id}', [HelpDeskController::class, 'show'])->name('auth.helpDesk.show');
 });

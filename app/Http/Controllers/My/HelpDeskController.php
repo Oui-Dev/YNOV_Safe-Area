@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class HelpDeskController extends Controller
 {
 
-    public function helpDeskList()
+    public function list()
     {
         return Inertia::render(
             'My/HelpDeskList',
@@ -23,14 +23,14 @@ class HelpDeskController extends Controller
         );
     }
 
-    public function helpDesk()
+    public function create()
     {
         return Inertia::render(
             'My/HelpDesk',
         );
     }
 
-    public function show(Ticket $ticket)
+    public function show(HelpdeskSupport $ticket)
     {
         return inertia('My/HelpDeskShow', [
             'ticket' => $ticket,
