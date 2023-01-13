@@ -147,7 +147,7 @@
 								</div>
 								<div class="sm:col-span-2">
 									<label class="block text-sm font-medium text-gray-900">Ajoutez un document</label>
-									<dropzone @file="getFile" />
+									<Dropzone @file="getFile" />
 								</div>
 								<div class="sm:col-span-2 sm:flex sm:justify-end">
 									<button type="submit"
@@ -165,7 +165,7 @@
 <script setup>
 import DashboardLayout from "../../layouts/dashboard.vue";
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-import Dropzone from '../../components/dropzone.vue';
+import Dropzone from "../../components/dashboard/Dropzone.vue"; // Import the dropzone component
 import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import { computed, ref } from "vue";
 
@@ -201,7 +201,6 @@ const submit = () => {
 	});
 };
 const getFile = (file) => {
-	console.log(file);
 	form.file = file;
 }
 </script>

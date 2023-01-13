@@ -3,7 +3,12 @@
 		<div class="px-4 sm:px-6 lg:px-8">
 			<div class="sm:flex sm:items-center">
 				<div class="sm:flex-auto">
-					<h1 class="text-xl font-semibold text-gray-900">Tickets de support</h1>
+					<h1 class="text-2xl font-bold text-gray-900 mt-4">Tickets de support</h1>
+					<Link :href="route('my.auth.helpDesk.add')"
+								class="float-right mt-2 inline-flex w-auto items-center justify-center rounded-md border border-transparent bg-safearea-blue px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 gap-2">
+					<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
+					<span>Nouveau Ticket</span>
+					</Link>
 				</div>
 			</div>
 			<div class="mt-8 flex flex-col">
@@ -65,7 +70,7 @@
 
 <script setup>
 import DashboardLayout from "../../layouts/dashboard.vue";
-import { ArrowTopRightOnSquareIcon } from "@heroicons/vue/24/outline";
+import { ArrowTopRightOnSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
 import { Link } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
