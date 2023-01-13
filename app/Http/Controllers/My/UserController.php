@@ -19,7 +19,6 @@ class UserController extends Controller
         return inertia('My/Users/Create');
     }
 
-
     public function store() {
         $data = request()->validate([
             'lastname' => ['required', 'string', 'max:255'],
@@ -44,16 +43,12 @@ class UserController extends Controller
             'reference' => Str::uuid(),
         ]);
 
-
-
         //Mail::to($user->email)->send(new ConfirmEmail($user));
         return redirect()->route('my.auth.annuaire')->with('toast', [
             'type' => 'success',
             'message' => "L'utilisateur a bien été crée.",
         ]);
     }
-
-
 
     public function edit(User $user) {
         return inertia('My/Users/Edit', [
@@ -62,7 +57,6 @@ class UserController extends Controller
     }
 
     public function editPut(User $user) {
-        
         $data = request()->validate([
             'lastname' => ['required', 'string', 'max:255'],
             'firstname' => ['required', 'string', 'max:255'],
