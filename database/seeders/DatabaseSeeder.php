@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             VersionSeeder::class,
             LicenceSeeder::class,
         ]);
-        Company::factory()->count(500)->create();
-        User::factory()->count(1000)->create();
+        Company::factory()->count(100)->create();
+        User::factory()->count(500)->create();
     }
 }

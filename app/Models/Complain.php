@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -34,10 +33,4 @@ class Complain extends Model{
     public function assignedUser() {
         return $this->belongsTo(User::class, 'assigned_to');
     }
-
 }
-
-
-
-
-

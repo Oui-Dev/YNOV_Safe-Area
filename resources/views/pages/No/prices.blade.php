@@ -3,7 +3,7 @@
 @section('content')
 <div class="bg-white mt-8">
     <!-- Comparison table -->
-    <div class="mx-auto max-w-2xl bg-white py-8 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="mx-auto max-w-2xl bg-white py-8 sm:py-12 sm:px-6 lg:max-w-6xl lg:px-8">
         <div class="hidden lg:block">
             <table class="h-px w-full table-fixed">
                 <caption class="sr-only">
@@ -447,15 +447,15 @@
                         <th class="sr-only" scope="row">Choose your plan</th>
 
                         <td class="px-6 pt-5">
-                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Choisir cette offre</a>
+                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:bg-safearea-red">Choisir cette offre</a>
                         </td>
         
                         <td class="px-6 pt-5">
-                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Choisir cette offre</a>
+                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:bg-safearea-red">Choisir cette offre</a>
                         </td>
         
                         <td class="px-6 pt-5">
-                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Choisir cette offre</a>
+                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:bg-safearea-red">Choisir cette offre</a>
                         </td>
                     </tr>
                 </tfoot>
