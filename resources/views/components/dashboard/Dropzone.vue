@@ -45,33 +45,25 @@ function removeFile() {
 
 <template>
 	<section :class="{ 'file-dropped': dropped, 'hover-dropzone': hovered }"
-					 @dragenter.prevent="toggleHovered"
-					 @dragleave.prevent="toggleHovered"
-					 @dragover.prevent
-					 @drop.prevent="drop">
+		@dragenter.prevent="toggleHovered"
+		@dragleave.prevent="toggleHovered"
+		@dragover.prevent
+		@drop.prevent="drop"
+	>
 		<div class="space-y-1 text-center h-24 justify-center content-center flex">
 			<div v-if="!dropzoneFile">
-				<component :is="icon"
-									 class="mx-auto h-12 w-12 text-gray-400"
-									 aria-hidden="true" />
+				<component :is="icon" class="mx-auto h-12 w-12 text-gray-400" aria-hidden="true" />
 				<div class="flex text-sm mt-2 text-gray-600 justify-center">
-					<label for="file"
-								 class="relative cursor-pointer rounded-md m-0 bg-white font-medium text-safearea-blue focus-within:outline-none focus-within:ring-2 focus-within:ring-lockanda-green focus-within:ring-offset-2 hover:text-lockanda-green">
+					<label for="file" class="relative cursor-pointer rounded-md m-0 bg-white font-medium text-safearea-blue focus-within:outline-none focus-within:ring-2 focus-within:ring-safearea-blue focus-within:ring-offset-2 hover:text-safearea-blue">
 						<span>Téléchargez un fichier</span>
 					</label>
 					<p class="pl-1 text-sm text-gray-500">ou glisser-déposer</p>
 				</div>
 				<p class="text-xs text-gray-500">{{ description }}</p>
-				<input name="file"
-							 type="file"
-							 id="file"
-							 class="sr-only"
-							 @change="selectFile" />
+				<input @change="selectFile" name="file" type="file" id="file" class="sr-only" />
 			</div>
-			<div v-else
-					 class="flex items-center justify-center gap-2">
-				<TrashIcon class="h-8 w-8 p-1 text-red-500 cursor-pointer"
-									 @click="removeFile" />
+			<div v-else class="flex items-center justify-center gap-2">
+				<TrashIcon @click="removeFile" class="h-8 w-8 p-1 text-red-500 cursor-pointer" />
 				<p class="flex text-sm text-gray-600">{{ dropzoneFile.name }}</p>
 			</div>
 		</div>
