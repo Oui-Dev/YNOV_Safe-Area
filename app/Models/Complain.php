@@ -36,8 +36,3 @@ class Complain extends Model{
     }
 
 }
-
-
-
-
-
