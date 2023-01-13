@@ -11,7 +11,6 @@ class DashboardController extends Controller
         return inertia('My/Index');
     }
 
-
     public function annuaire() {
         $currentUser = auth()->user();
         $users = $currentUser->hasAnyPermission(['admin_access', 'root'])
