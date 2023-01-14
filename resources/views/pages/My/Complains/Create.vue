@@ -15,7 +15,7 @@
                 </div>
                 <div :class="{ 'form-error-div': form.errors.dropzone }">
                     <label for="url">Lien vers une pièce jointe :</label>
-                    <Dropzone></Dropzone>
+                    <Dropzone @file="getFile"></Dropzone>
                     <div v-if="form.errors.dropzone" class="form-error-field">{{ form.errors.dropzone }}</div>
                 </div>
                 <div :class="{ 'form-error-div': form.errors.anonyme }">
@@ -46,7 +46,7 @@ export default {
             form: this.$inertia.form({
                 title: null,
                 description: null,
-                dropzonepro: null,
+                dropzone: null,
                 anonyme: null,
             }),
         };
@@ -59,6 +59,9 @@ export default {
                 },
             });
         },
+        getFile(file) {
+            this.form.dropzone = file;
+        }
     },
 };
 </script>
