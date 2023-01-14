@@ -1,47 +1,31 @@
 <template>
     <div class="flex justify-center">
         <div class="max-w-s">
-        <h1>Nouvel utilisateur</h1>
+            <h1>Nouvelle plainte</h1>
             <form @submit.prevent="submit" class="mt-8">
-                <div :class="{'form-error-div': form.errors.lastname}">
-                    <label for="lastname">Nom :</label>
-                    <input id="lastname" v-model="form.lastname" />
-                    <div v-if="form.errors.lastname" class="form-error-field">{{form.errors.lastname }}</div>
+                <div :class="{ 'form-error-div': form.errors.title }">
+                    <label for="title">Titre :</label>
+                    <input id="title" v-model="form.title" />
+                    <div v-if="form.errors.title" class="form-error-field">{{ form.errors.title }}</div>
                 </div>
-                <div :class="{'form-error-div': form.errors.firstname}">
-                    <label for="firstname">Prenom :</label>
-                    <input id="firstname" v-model="form.firstname" />
-                    <div v-if="form.errors.firstname" class="form-error-field">{{form.errors.firstname }}</div>
+                <div :class="{ 'form-error-div': form.errors.description }">
+                    <label for="description">Description :</label>
+                    <textarea rows="7" class="resize-none" id="description" v-model="form.description"> </textarea>
+                    <div v-if="form.errors.description" class="form-error-field">{{ form.errors.description }}</div>
                 </div>
-                <div :class="{'form-error-div': form.errors.mail}">
-                    <label for="mail">Mail :</label>
-                    <input type="email" id="mail" v-model="form.mail" />
-                    <div v-if="form.errors.mail" class="form-error-field">{{form.errors.mail }}</div>
+                <div :class="{ 'form-error-div': form.errors.dropzone }">
+                    <label for="url">Lien vers une pièce jointe :</label>
+                    <Dropzone></Dropzone>
+                    <div v-if="form.errors.dropzone" class="form-error-field">{{ form.errors.dropzone }}</div>
                 </div>
-                <div :class="{'form-error-div': form.errors.phone}">
-                    <label for="phone">Numéro de téléphone :</label>
-                    <input id="phone" v-model="form.phone"/>
-                    <div v-if="form.errors.phone" class="form-error-field">{{form.errors.phone }}</div>
+                <div :class="{ 'form-error-div': form.errors.anonyme }">
+                    <div class="flex flex-row space-x-4">
+                        <label for="anonymize">Poster anonymement :</label>
+                        <input type="checkbox" class="w-auto mt-2" id="anonymize" v-model="form.anonyme" />
+                    </div>
+                    <div v-if="form.errors.anonyme" class="form-error-field">{{ form.errors.anonyme }}</div>
                 </div>
-                <div :class="{'form-error-div': form.errors.mailpro}">
-                    <label for="mailpro">Mail professionel :</label>
-                    <input type="email" id="mailpro" v-model="form.mailpro" />
-                    <div v-if="form.errors.mailpro" class="form-error-field">{{form.errors.mailpro }}</div>
-                </div>
-                <div :class="{'form-error-div': form.errors.identifiant}">
-                    <label for="identifiant">identifiant :</label>
-                    <input id="identifiant" v-model="form.identifiant"/>
-                    <div v-if="form.errors.identifiant" class="form-error-field">{{form.errors.identifiant }}</div>
-                </div>
-                <div :class="{'form-error-div': form.errors.sexe}">
-                    <label for="sexe">Sexe :</label>
-                    <select id="sexe" v-model="form.sexe">
-                        <option value="0">Homme</option>
-                        <option value="1">Femme</option>
-                    </select>
-                    <div v-if="form.errors.sexe" class="form-error-field">{{form.errors.sexe }}</div>
-                </div>
-                <button type="submit" class="btn-primary">Enregistrer les informations</button>
+                <button type="submit" class="btn-primary">Envoyer</button>
             </form>
         </div>
     </div>
@@ -49,26 +33,27 @@
 
 <script>
 import DashboardLayout from "../../../layouts/dashboard.vue";
+import Dropzone from "../../../components/dashboard/Dropzone.vue"
 
 export default {
     name: "createUser",
     layout: DashboardLayout,
+    components : {
+        Dropzone
+    },
     data() {
         return {
             form: this.$inertia.form({
-                lastname: null,
-                mail: null,
-                firstname: null,
-                phone: null,
-                mailpro: null,
-                sexe: null,
-                identifiant: null,
+                title: null,
+                description: null,
+                dropzonepro: null,
+                anonyme: null,
             }),
         };
     },
     methods: {
         submit() {
-            this.form.post(route("my.auth.users.create.post"), {
+            this.form.post(route("my.auth.complains.create.post"), {
                 onStart: () => {
                     this.form.clearErrors();
                 },

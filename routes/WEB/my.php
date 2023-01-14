@@ -38,4 +38,5 @@ Route::group([
     Route::delete('/users/delete/{user:reference}', [UserController::class, 'delete'])->name('auth.users.delete');
     Route::get('/complains',[ComplainsController::class , 'list'])->name('auth.complains.list');
     Route::get('/complains/create',[ComplainsController::class , 'create'])->name('auth.complains.create');
+    Route::post('/complains/create', [ComplainsController::class, 'store'])-> name('auth.complains.create.post');
 });
