@@ -31,6 +31,9 @@
                                         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                             <span class="sr-only">Edit</span>
                                         </th>
+                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                                            <span class="sr-only">Actions</span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white">
@@ -39,30 +42,23 @@
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                             {{ person.firstname }}</td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
-                                            person.lastname
-                                        }}
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {{ person.lastname }}
                                         </td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
-                                            person.professional_email
-                                        }}</td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person.phone }}
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {{ person.professional_email }}</td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                            {{ person.phone }}
                                         </td>
-                                        <td
-                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                                            <Link v-if="isAdmin()"
-                                                :href="route('my.auth.users.edit', { reference: person.reference })">
-                                            <PencilSquareIcon 
-                                                class="h-5 w-auto flex-shrink-0 text-gray-500 hover:text-indigo-900 cursor-pointer">
-                                            </PencilSquareIcon>
+                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                                            <Link v-if="isAdmin()" :href="route('my.auth.users.edit', { reference: person.reference })">
+                                                <PencilSquareIcon 
+                                                    class="h-5 w-auto flex-shrink-0 text-gray-500 hover:text-indigo-900 cursor-pointer">
+                                                </PencilSquareIcon>
                                             </Link>
-                                        </td>
-                                        <td
-                                            class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
-                                            <TrashIcon v-if="isAdmin() && !isCurrentRef(person.reference)"
-                                                @click="deleteUser(person.reference)"
+                                            <TrashIcon v-if="isAdmin() && !isCurrentRef(person.reference)" 
+                                                @click="deleteUser(person.reference)" 
                                                 class=" h-5 w-5 flex-shrink-0  text-gray-500 hover:text-safearea-red cursor-pointer">
-
                                             </TrashIcon>
                                         </td>
                                     </tr>
