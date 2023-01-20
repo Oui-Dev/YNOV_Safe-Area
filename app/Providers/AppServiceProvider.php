@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Version;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Auth\Guard;
 
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Guard $auth)
     {
+        URL::forceScheme('https');
         Carbon::setLocale('fr');
         setlocale(LC_TIME, 'French');
          view()->composer('*', function ($view) use ($auth) {

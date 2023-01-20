@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://safearea.ml'),
+    'url' => env('APP_URL', 'https://safearea.ml'),
 
     'domain' => env('APP_DOMAIN', 'safearea.ml'),
 
