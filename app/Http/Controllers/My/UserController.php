@@ -160,7 +160,7 @@ class UserController extends Controller
         $user->delete();
         return redirect()->back()->with('toast', [
             'type' => 'success',
-            'message' => "L'utilisateur a bien été modifié.",
+            'message' => "L'utilisateur a bien été supprimé.",
         ]);
     }
 }
