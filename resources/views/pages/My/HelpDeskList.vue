@@ -53,7 +53,7 @@
 													 :class="getStatus(ticket)"> </div>
 										</td>
 										<td class="whitespace-nowrap px-3 py-4 text-gray-500">
-											<Link :href="route('my.auth.helpDesk.show', { id: ticket })">
+											<Link :href="route('my.auth.helpDesk.show', { ticket: ticket })">
 											<ArrowTopRightOnSquareIcon class="h-6 w-6 mx-auto hover:cursor-pointer" />
 											</Link>
 										</td>
