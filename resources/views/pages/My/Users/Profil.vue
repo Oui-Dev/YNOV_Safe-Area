@@ -3,8 +3,7 @@
         <h1 class="text-safearea-grey text-center mb-4">Mon Profil</h1>
         <form @submit.prevent="submitProfil" class="h-auto w-auto m-auto flex flex-col justify-center items-center">
             <div class="md:flex items-stretch">
-                    <span class="inline-block h-20 w-20 overflow-hidden rounded-full bg-gray-100">
-                    </span>
+                <Avatar :initials=getInitials()></Avatar>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
@@ -93,6 +92,7 @@
 
 <script>
 import DashboardLayout from "../../../layouts/dashboard.vue";
+import Avatar from "../../../components/avatar.vue";
 
 export default {
     name: "UserIndex",
@@ -130,7 +130,11 @@ export default {
                     this.form.clearErrors();
                 },
             });
+        },
+        getInitials() {
+            return this.user.firstname[0]+this.user.lastname[0];
         }
     },
+    components: { Avatar }
 };
 </script>
