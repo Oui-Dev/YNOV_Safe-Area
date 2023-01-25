@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->nullable();
             $table->string('user_reference');
             $table->foreignId('complain_type_id')->constrained('complain_types');
-            $table->foreignId('assigned_to')->constrained('users')->nullable();
+            $table->foreignId('assigned_to')->nullable()->constrained('users');
             $table->boolean('is_anonymous')->default(false);
             $table->timestamp('viewed_at')->nullable();
             $table->timestamp('closed_at')->nullable();
