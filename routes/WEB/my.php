@@ -39,6 +39,8 @@ Route::group([
     Route::put('/users/edit/{user:reference}', [UserController::class, 'editPut'])->name('auth.users.edit.put');
     Route::delete('/users/delete/{user:reference}', [UserController::class, 'delete'])->name('auth.users.delete');
     Route::get('/complains',[ComplainsController::class , 'list'])->name('auth.complains.list');
+    Route::get('/complains/create',[ComplainsController::class , 'create'])->name('auth.complains.create');
+    Route::post('/complains/create', [ComplainsController::class, 'store'])-> name('auth.complains.create.post');
     Route::get('/helpdesk', [HelpDeskController::class, 'list'])->name('auth.helpDesk.list');
     Route::get('/helpdesk/{id}', [HelpDeskController::class, 'show'])->name('auth.helpDesk.show');
 });
