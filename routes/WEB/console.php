@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Console\DashboardController;
+use App\Http\Controllers\Console\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,7 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
+    Route::get('companies', [CompanyController::class, 'list'])->name('auth.companies.list');
+    Route::get('companies/create', [CompanyController::class, 'create'])->name('auth.companies.create');
+    Route::post('companies/create', [CompanyController::class, 'store'])->name('auth.companies.create.post');
 });

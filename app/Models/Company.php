@@ -33,12 +33,5 @@ class Company extends Model
     }
 
     protected $encryptable = [
-        'name',
-        'address_id',
-        'city_id',
-        'siren',
-        'siret',
-        'email',
-        'phone',
     ];
 }
