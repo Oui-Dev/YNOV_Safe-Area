@@ -45,13 +45,14 @@ class HelpDeskController extends Controller
     {
         // TODO: response, handle error
         $data = request()->validate([
-            'title' => 'required|string|max:255',
-            'message' => 'required|string|max:500',
-            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'type' => 'boolean',
+            'reference' => ['required','string','max:6'],
+            'title' => ['required','string','max:255'],
+            'message' => ['required','string','max:500'],
+            'file' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'type' => ['boolean'],
         ]);
 
-        $ticketRef = Str::uuid();
+        //$ticketRef = Str::uuid();
         // $fileName = $ticketRef . '.' . $data['file']->extension();
         // $filePath = Storage::disk('s3')->put('helpdesk/', $data['file'], $fileName, 'private');
 
@@ -61,7 +62,7 @@ class HelpDeskController extends Controller
          * @var \App\Models\HelpDeskSupport $ticket
          * */
         $ticket = HelpDeskSupport::create([
-            'reference' => $ticketRef,
+            'reference' => $data['reference'],
             'user_id' => $user->id,
             'title' => $data['title'],
             'description' => $data['message'],
@@ -70,5 +71,9 @@ class HelpDeskController extends Controller
             'file' => null // $data['$filePath'], //
         ]);
         $ticket->save();
+        return redirect()->route('my.auth.helpDesk.list')->with('toast', [
+            'type' => 'success', 
+            'message' => 'Votre ticket a bien été envoyé'
+        ]);
     }
 }

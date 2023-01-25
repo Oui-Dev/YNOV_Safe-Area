@@ -1,13 +1,13 @@
 <template>
 	<DashboardLayout>
-		<div class="bg-white">
-			<div class="mx-auto max-w-7xl px-4 sm:my-4 sm:px-6 lg:px-8">
+		<div class="bg-white xl:flex xl:px-20 lg:flex lg:px-20 justify-center items-center h-screen">
+			<div class="mx-auto max-w-7xl w-auto">
 				<div class="relative bg-gray-100 shadow-xl rounded-lg">
 					<h2 class="sr-only">Créez un ticket de support</h2>
 					<div class="grid grid-cols-1 lg:grid-cols-3">
 						<!-- Contact information -->
 						<div
-							class="relative overflow-hidden bg-gradient-to-b from-safearea-red to-safearea-blue py-10 px-6 sm:px-10 xl:p-12 rounded-lg">
+							class="relative overflow-hidden bg-gradient-to-b from-safearea-red to-safearea-blue py-10 px-6 sm:px- xl:p-12 rounded-lg">
 							<div class="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
 								<svg class="absolute inset-0 h-full w-full" width="343" height="388" viewBox="0 0 343 388" fill="none"
 									preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -56,9 +56,9 @@
 								justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.</p>
 						</div>
 						<!-- Contact form -->
-						<div class="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12 rounded-r-lg">
+						<div class="py-8 px-6 sm:px-10 lg:col-span-2 rounded-r-lg">
 							<h3 class="text-xl font-medium text-gray-900">Créez un ticket de support</h3>
-							<form @submit.prevent="submit" method="POST" class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+							<form @submit.prevent="submit" method="POST" class="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-8">
 								<SwitchGroup as="div" class="flex items-center justify-end sm:col-span-2 w-full">
 									<SwitchLabel as="span" class="mr-3">
 										<span class="text-sm font-medium text-gray-900">Demande</span>
@@ -115,13 +115,19 @@
 import DashboardLayout from "../../layouts/dashboard.vue";
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 import Dropzone from "../../components/dashboard/Dropzone.vue"; // Import the dropzone component
-import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import { useForm, usePage, visit } from "@inertiajs/inertia-vue3";
 import { computed, ref } from "vue";
 
 const currentUser = computed(() => usePage().props.value.auth.user);
 const isLoading = ref(false);
+let firstPart = (Math.random() * 46656) | 0;
+let secondPart = (Math.random() * 46656) | 0;
+firstPart = ("000" + firstPart.toString(36)).slice(-3);
+secondPart = ("000" + secondPart.toString(36)).slice(-3);
+const ticketNumber = firstPart + secondPart;
 
 const form = useForm({
+	reference : ticketNumber,
 	firstName: currentUser.value.firstname,
 	lastName: currentUser.value.lastname,
 	email: currentUser.value.professional_email,
@@ -131,6 +137,7 @@ const form = useForm({
 	message: null,
 	file: null,
 });
+
 
 const submit = () => {
 	form.post(route("my.auth.helpDesk.add.post"), {
@@ -143,8 +150,9 @@ const submit = () => {
 		},
 		onSuccess: () => {
 			form.reset();
+
 		},
-		onError: () => { //debug
+		onError: () => { 
 			console.log(form.errors);
 		},
 	});
