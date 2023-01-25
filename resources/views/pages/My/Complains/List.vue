@@ -81,7 +81,7 @@
                                                 aria-hidden="true">
                                             </ArrowTopRightOnSquareIcon>
                                         </Link>
-                                        <Link href="">
+                                        <Link v-if="currentuser.permissions[0].name === 'my_access'" :href="route('my.auth.complains.list.delete', {id:comp.id})" as="button" method="PUT">
                                             <TrashIcon
                                                 class="mr-5 h-5 w-5 flex-shrink-0 mt-4 text-gray-500 hover:text-safearea-red"
                                                 aria-hidden="true">

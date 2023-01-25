@@ -13,10 +13,20 @@ class ComplainsController extends Controller
             ? Complain::select('*')
             : $user->complains();
 
-        $complains = $complains->with('user')->with('assignedUser')->paginate(20);
+        $complains = $complains->with('user')->with('assignedUser')->where('deleted_at', NULL)->paginate(20);
         return inertia('My/Complains/List', [
             'complains' => $complains,
         ]);
     }
+
+    public function delete(Complain $complain) {
+        $complain->deleted_at=now();
+        $complain->save();
+        return redirect()->route('my.auth.complains.list')->with('toast', [
+            'type' => 'success',
+            'message' => "Plainte supprimée avec succès",
+        ]);
+    }
+
 
 }

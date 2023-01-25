@@ -150,7 +150,7 @@ export default {
                 { name: 'Retourner sur le site', href: 'no.public.homepage', icon: DocumentChartBarIcon, current: false, type: "a" },
             ],
             adminNavigation: [
-                { name: 'ACTION ADMIN', href: 'my.auth.dashboard.index', icon: HomeIcon, current: false, type: "Link" },
+                { name: 'Gestion des plaintes', href: 'my.auth.dashboard.index', icon: DocumentChartBarIcon, current: false, type: "Link" },
             ],
             consoleNavigation: [
                 // All console. routes will be type "Link" else it will be "a"

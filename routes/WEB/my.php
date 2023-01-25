@@ -21,6 +21,7 @@ Route::group([
     'as' => "my.",
     'middleware' => ['auth', 'permission:my_access|admin_access|root']
 ], function () {
+    Route::put('/complains/list/delete/{complain:id}', [ComplainsController::class, 'delete'])->name('auth.complains.list.delete');
     Route::get('/complains/list',[ComplainsController::class , 'list'])->name('auth.complains.list');
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
