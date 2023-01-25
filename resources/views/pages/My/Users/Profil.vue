@@ -4,7 +4,6 @@
         <form @submit.prevent="submitProfil" class="h-auto w-auto m-auto flex flex-col justify-center items-center">
             <div class="md:flex items-stretch">
                     <span class="inline-block h-20 w-20 overflow-hidden rounded-full bg-gray-100">
-                        <Avatar></Avatar>
                     </span>
             </div>
 
@@ -94,14 +93,10 @@
 
 <script>
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import Avatar from "../../../components/dashboard/Avatar.vue";
 
 export default {
     name: "UserIndex",
     layout: DashboardLayout,
-    components: {
-        Avatar,
-    },
     props: {
         user: {
             type: Object,
