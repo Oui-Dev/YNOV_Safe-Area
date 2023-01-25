@@ -92,7 +92,7 @@
 
 <script>
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import Avatar from "../../../components/avatar.vue";
+import Avatar from "../../../components/Avatar.vue";
 
 export default {
     name: "UserIndex",
