@@ -47,7 +47,7 @@
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                             {{ person.phone }}
                                         </td>
-                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
+                                        <td class="relative flex flex-row gap-5 items-center justify-center whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm sm:pr-6">
                                             <Link v-if="isAdmin()" :href="route('my.auth.users.edit', { reference: person.reference })">
                                                 <PencilSquareIcon 
                                                     class="h-5 w-auto flex-shrink-0 text-gray-500 hover:text-indigo-900 cursor-pointer">
