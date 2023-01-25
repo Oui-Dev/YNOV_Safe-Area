@@ -18,7 +18,7 @@ class HelpDeskController extends Controller
             'My/HelpDeskList',
             [
                 'users' => User::all(),
-                'tickets' => HelpDeskSupport::all(),
+                'tickets' => HelpDeskSupport::paginate(9),
             ]
         );
     }

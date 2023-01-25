@@ -3,15 +3,15 @@
 		<div class="px-4 sm:px-6 lg:px-8">
 			<div class="sm:flex sm:items-center">
 				<div class="sm:flex-auto">
-					<h1 class="text-2xl font-bold text-gray-900 mt-4">Tickets de support</h1>
+					<h1 class="text-xl font-bold text-gray-900">Tickets de support</h1>
 					<Link :href="route('my.auth.helpDesk.add')"
-								class="float-right mt-2 inline-flex w-auto items-center justify-center rounded-md border border-transparent bg-safearea-blue px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 gap-2">
+							class="float-right inline-flex w-auto items-center justify-center rounded-md border border-transparent bg-safearea-blue px-3 py-1 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 gap-2">
 					<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
 					<span>Nouveau Ticket</span>
 					</Link>
 				</div>
 			</div>
-			<div class="mt-8 flex flex-col">
+			<div class="mt-4 flex flex-col">
 				<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
 					<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
 						<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -35,13 +35,13 @@
 									</tr>
 								</thead>
 								<tbody class="bg-white">
-									<tr v-for="(ticket, ticketIdx) in tickets"
+									<tr v-for="(ticket, ticketIdx) in tickets.data"
 											:key="ticket.email"
 											:class="ticketIdx % 2 === 0 ? undefined : 'bg-gray-50'">
 										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"> {{ ticket.reference }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ prettyDate(ticket.created_at) }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ ticket.title }} </td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ getTicketUser(ticket).lastname }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{getTicketUser(ticket) }}</td>
 										<td class="whitespace-nowrap px-3 text-sm text-gray-500">
 											<div class="w-12 h-12 flex justify-center items-center"
 													 :class="ticket.type === 'incident' ? 'bg-safearea-red' : 'bg-safearea-blue'">
@@ -65,12 +65,14 @@
 				</div>
 			</div>
 		</div>
+		<Pagination class="pt-5 border-t border-gray-200 flex items-center justify-center" :paginator="tickets" />
 	</DashboardLayout>
 </template>
 
 <script setup>
 import DashboardLayout from "../../layouts/dashboard.vue";
 import { ArrowTopRightOnSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import Pagination from '../../components/dashboard/Pagination.vue';
 import { Link } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
@@ -85,7 +87,7 @@ const props = defineProps({
 });
 
 function getTicketUser(ticket) {
-	return props.users.find((user) => user.id === ticket.user_id);
+	return props.users.find((user) => user.id === ticket.user_id).firstname;
 };
 
 function prettyDate(date) {
