@@ -42,5 +42,5 @@ Route::group([
     Route::get('/complains/create',[ComplainsController::class , 'create'])->name('auth.complains.create');
     Route::post('/complains/create', [ComplainsController::class, 'store'])-> name('auth.complains.create.post');
     Route::get('/helpdesk', [HelpDeskController::class, 'list'])->name('auth.helpDesk.list');
-    Route::get('/helpdesk/{id}', [HelpDeskController::class, 'show'])->name('auth.helpDesk.show');
+    Route::get('/helpdesk/{ticket:id}', [HelpDeskController::class, 'show'])->name('auth.helpDesk.show');
 });
