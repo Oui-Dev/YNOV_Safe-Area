@@ -75,7 +75,6 @@ class User extends Authenticatable
         return $this->hasMany(Complain::class);
     }
 
-
     public function is_blocked() {
         if(!empty($this->blocked_at)){return true;} else {return false;}
     }
