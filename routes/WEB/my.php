@@ -22,6 +22,9 @@ Route::group([
     'middleware' => ['auth', 'permission:my_access|admin_access|root']
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
+    Route::get('/profil', [UserController::class, 'profil'])->name('auth.dashboard.profil');
+    Route::put('/profil', [UserController::class, 'editProfil'])->name('auth.dashboard.profil.update');
+    Route::put('/profil/password', [UserController::class, 'editPassword'])->name('auth.dashboard.profil.password');
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
     Route::get('/annuaire', [DashboardController::class, 'annuaire'])->name('auth.annuaire');
 
