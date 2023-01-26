@@ -87,6 +87,8 @@ const props = defineProps({
     },
 });
 
+console.log(props)
+
 const isAdmin = () => {
     return usePage().props.value.auth.user.permissions.some((e) => e.name === 'admin_access' || e.name === 'root');
 }
