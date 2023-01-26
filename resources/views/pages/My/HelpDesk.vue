@@ -91,7 +91,7 @@
 											class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
 											aria-describedby="message-max" />
 									</div>
-									<div v-if="form.errors.message && !form.message" class="form-error-field">Le champ
+									<div v-if="form.errors.message && !form.message" class="form-error-field">Le champs
 										message est obligatoire</div>
 								</div>
 								<div class="sm:col-span-2">
@@ -151,9 +151,6 @@ const submit = () => {
 		onSuccess: () => {
 			form.reset();
 
-		},
-		onError: () => { 
-			console.log(form.errors);
 		},
 	});
 };
