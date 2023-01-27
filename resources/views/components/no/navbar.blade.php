@@ -41,8 +41,8 @@
             <span class="material-icons" id="sidebarToggle">menu</span>
         </div>
 
-        <div class="absolute top-16 -mt-px right-0 z-10 w-screen max-w-lg">
-            <div class="overflow-hidden shadow-lg rounded-b-lg reduced border-t border-lockanda-gray" id="sidebar">
+        <div id="sidebar" class="reduced">
+            <div class="overflow-hidden shadow-lg rounded-b-lg border-t border-lockanda-gray">
                 <div class="relative grid gap-2 px-5 py-5 text-sm md:text-base">
                     <a href="{{ route('no.public.homepage') }}"
                         class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Accueil</a>
