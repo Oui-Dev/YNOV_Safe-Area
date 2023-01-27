@@ -58,7 +58,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     protected $encryptable = [
         'label',
     ];
@@ -97,5 +96,4 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     }
-
 }

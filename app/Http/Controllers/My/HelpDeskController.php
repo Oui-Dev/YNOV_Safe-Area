@@ -10,28 +10,23 @@ use App\Models\User;
 class HelpDeskController extends Controller
 {
 
-    public function list()
-    {
+    public function list() {
         return inertia('My/HelpDesk/List', [
-            'users' => User::all(),
             'tickets' => HelpDeskSupport::with('user')->paginate(10),
         ]);
     }
 
-    public function create()
-    {
+    public function create() {
         return inertia('My/HelpDesk/Add');
     }
 
-    public function show(HelpdeskSupport $ticket)
-    {
+    public function show(HelpdeskSupport $ticket) {
         return inertia('My/HelpDesk/Show', [
             'ticket' => $ticket,
         ]);
     }
 
-    public function store()
-    {
+    public function store() {
         $user = auth()->user();
         $data = request()->validate([
             'title' => ['required','string','max:255'],

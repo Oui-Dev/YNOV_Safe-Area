@@ -22,7 +22,7 @@ defineProps({
 });
 
 const actionHover = (action) => {
-    return action.hoverColor ?? 'hover:text-red-600';
+    return action.hoverColor ?? 'hover:text-safearea-red';
 }
 </script>
 

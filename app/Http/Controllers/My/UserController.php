@@ -17,9 +17,10 @@ class UserController extends Controller
 {
     public function annuaire() {
         $currentUser = auth()->user();
-        $users = $currentUser->hasAnyPermission(['admin_access', 'root'])
-            ? User::paginate(20)
-            : $currentUser->company->users()->paginate(20);
+        $users = $currentUser->hasRole('admin')
+            ? User::paginate(10)
+            : $currentUser->company->users()->paginate(10);
+
         return inertia('My/Annuaire', [
             'users' => $users,
         ]);
@@ -36,7 +37,7 @@ class UserController extends Controller
             'phone' => ['bail','required','max:20','min:10','regex:/^([0-9\s\-\+\(\)]*)$/'],
             'mail' => ['required','email:rfc,dns,spoof','max:255'],
             'mailpro' => ['required','email:rfc,dns,spoof','max:255'],
-            'identifiant' => ['required', 'string', 'max:255',Rule::unique('users')],
+            'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
             'sexe' => ["required", "int"],
         ]);
 

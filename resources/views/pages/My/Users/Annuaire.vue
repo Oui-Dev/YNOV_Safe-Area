@@ -78,7 +78,7 @@ import Pagination from '../../../components/dashboard/Pagination.vue';
 import { Link, usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { TrashIcon, PencilSquareIcon } from '@heroicons/vue/20/solid';
-
+import { computed } from 'vue';
 
 const props = defineProps({
     users: {
@@ -87,11 +87,7 @@ const props = defineProps({
     },
 });
 
-console.log(props)
-
-const isAdmin = () => {
-    return usePage().props.value.auth.user.permissions.some((e) => e.name === 'admin_access' || e.name === 'root');
-}
+const isAdmin = computed(() => usePage().props.auth.user.roles.some((e) => e === 'admin'));
 
 const isCurrentRef = (ref) => {
     return usePage().props.value.auth.user.reference === ref;
@@ -105,7 +101,6 @@ const deleteUser = (reference) => {
         onSuccess: () => {
             Inertia.reload({ only: ['users'] });
         }
-    }
-    );
+    });
 }
 </script>
