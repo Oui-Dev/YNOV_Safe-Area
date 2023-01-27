@@ -1,227 +1,165 @@
-<template>
-    <div>
-        <TransitionRoot as="template" :show="sidebarOpen">
-            <Dialog as="div" class="relative z-40 lg:hidden" @close="sidebarOpen = false">
-                <TransitionChild as="template" enter="transition-opacity ease-linear duration-300"
-                    enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300"
-                    leave-from="opacity-100" leave-to="opacity-0">
-                    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" />
-                </TransitionChild>
-
-                <div class="fixed inset-0 z-40 flex">
-                    <TransitionChild as="template" enter="transition ease-in-out duration-300 transform"
-                        enter-from="-translate-x-full" enter-to="translate-x-0"
-                        leave="transition ease-in-out duration-300 transform" leave-from="translate-x-0"
-                        leave-to="-translate-x-full">
-                        <DialogPanel
-                            class="relative flex w-full max-w-xs flex-1 flex-col bg-gradient-to-b from-safearea-red to-safearea-blue">
-                            <TransitionChild as="template" enter="ease-in-out duration-300" enter-from="opacity-0"
-                                enter-to="opacity-100" leave="ease-in-out duration-300" leave-from="opacity-100"
-                                leave-to="opacity-0">
-                                <div class="absolute top-0 right-0 -mr-12 pt-2">
-                                    <button type="button"
-                                        class="ml-1 flex h-10 w-10 items-center justify-center rounded-full"
-                                        @click="sidebarOpen = false">
-                                        <span class="sr-only">Close sidebar</span>
-                                        <XMarkIcon class="h-6 w-6 text-white" aria-hidden="true" />
-                                    </button>
-                                </div>
-                            </TransitionChild>
-                            <div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
-                                <div class="flex flex-shrink-0 items-center px-4">
-                                    <h1 class="text-white text-xl font-extrabold">Safe-Area</h1>
-                                </div>
-                                <nav class="mt-5 space-y-1 px-2">
-                                    <div v-for="item in navigation" :key="item.name">
-                                        <Link v-if="item.type === 'Link'" :href="route(item.href)"
-                                            :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']"
-                                            :aria-current="item.current ? 'page' : undefined">
-                                        <component :is="item.icon"
-                                            :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']"
-                                            aria-hidden="true" />
-                                        {{ item.name }}
-                                        </Link>
-                                        <a v-else :href="route(item.href)"
-                                            :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']"
-                                            :aria-current="item.current ? 'page' : undefined">
-                                            <component :is="item.icon"
-                                                :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']"
-                                                aria-hidden="true" />
-                                            {{ item.name }}
-                                        </a>
-                                    </div>
-                                </nav>
-                            </div>
-                            <div class="flex flex-shrink-0 border-t border-gray-200 p-4">
-                                <a href="#" class="group block flex-shrink-0">
-                                    <div class="flex items-center">
-                                        <div>
-                                            <img class="inline-block h-10 w-10 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                alt="" />
-                                        </div>
-                                        <div class="ml-3">
-                                            <p
-                                                class="text-sm font-medium text-safearea-light-grey group-hover:text-white">
-                                                {{ getUserName }}</p>
-                                            <p
-                                                class="text-xs font-medium text-safearea-light-grey group-hover:text-white">
-                                                View profile</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </DialogPanel>
-                    </TransitionChild>
-                    <div class="w-14 flex-shrink-0">
-                        <!-- Force sidebar to shrink to fit close icon -->
-                    </div>
-                </div>
-            </Dialog>
-        </TransitionRoot>
-
-        <!-- Static sidebar for desktop -->
-        <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
-            <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex min-h-0 flex-1 flex-col bg-gradient-to-b from-safearea-red to-safearea-blue">
-                <div class="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-                    <div class="flex flex-shrink-0 items-center px-4">
-                        <h1 class="text-white text-xl font-extrabold">Safe-Area</h1>
-                    </div>
-                    <nav class="mt-5 flex-1 space-y-1 px-2">
-                        <div v-for="item in navigation" :key="item.name">
-                            <Link v-if="item.type === 'Link'" :href="route(item.href)"
-                                :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']"
-                                :aria-current="item.current ? 'page' : undefined">
-                            <component :is="item.icon"
-                                :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']"
-                                aria-hidden="true" />
-                            {{ item.name }}
-                            </Link>
-                            <a v-else :href="route(item.href)"
-                                :class="[item.current ? 'bg-white text-black' : 'text-white hover:bg-safearea-grey', 'group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md']"
-                                :aria-current="item.current ? 'page' : undefined">
-                                <component :is="item.icon"
-                                    :class="[item.current ? 'text-black' : 'text-white', 'mr-4 h-6 w-6 flex-shrink-0']"
-                                    aria-hidden="true" />
-                                {{ item.name }}
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-                <div class="flex flex-shrink-0 border-t border-gray-200 p-4">
-                    <Link :href="route('my.auth.dashboard.profil')" class="group block w-full flex-shrink-0">
-                    <div class="flex items-center">
-                        <div>
-                            <img class="inline-block h-9 w-9 rounded-full"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="" />
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-safearea-light-grey group-hover:text-white">{{
-                                getUserName
-                            }}</p>
-                            <p class="text-xs font-medium text-safearea-light-grey group-hover:text-white">View profile
-                            </p>
-                        </div>
-                    </div>
-                    </Link>
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-1 flex-col lg:pl-64">
-            <div class="sticky top-0 z-10 bg-gray-100 pl-1 pt-1 sm:pl-3 sm:pt-3 lg:hidden">
-                <button type="button"
-                    class="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                    @click="sidebarOpen = true">
-                    <span class="sr-only">Open sidebar</span>
-                    <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-                </button>
-            </div>
-        </div>
-    </div>
-</template>
-
-<script>
-import { Link } from "@inertiajs/inertia-vue3";
+<script setup>
+import { computed } from 'vue';
+import Dropdown from './partials/Dropdown.vue';
+import DropdownLink from './partials/DropdownLink.vue';
+import DropdownMenu from './partials/DropdownMenu.vue';
+import { Link, usePage } from '@inertiajs/inertia-vue3';
+import {Disclosure, DisclosureButton, DisclosurePanel} from "@headlessui/vue";
 import {
-    Dialog,
-    DialogPanel,
-    TransitionChild,
-    TransitionRoot,
-} from '@headlessui/vue';
-import {
-    ClockIcon,
-    CreditCardIcon,
-    DocumentChartBarIcon,
-    ChatBubbleLeftRightIcon,
+    InformationCircleIcon,
+    UserPlusIcon,
+    EnvelopeIcon,
     HomeIcon,
-    ScaleIcon,
-    UserGroupIcon,
-    XMarkIcon,
+    UsersIcon,
     Bars3Icon,
-} from '@heroicons/vue/24/outline';
-export default {
-    components: {
-        Link,
-        Dialog,
-        DialogPanel,
-        TransitionChild,
-        TransitionRoot,
-        // Icons
-        Bars3Icon,
-        ClockIcon,
-        CreditCardIcon,
-        DocumentChartBarIcon,
-        ChatBubbleLeftRightIcon,
-        HomeIcon,
-        ScaleIcon,
-        UserGroupIcon,
-        XMarkIcon,
+    XMarkIcon
+} from "@heroicons/vue/24/outline";
+
+const myNavigation = [
+    {name: "Dashboard", href: "my.auth.dashboard.index"},
+    {name: "Annuaire", href: "my.auth.annuaire"},
+    {name: "Plaintes", href: "my.auth.helpDesk.add"},
+    {name: "Support", href: "my.auth.helpDesk.list"},
+    {name: "Retourner sur le site", href: "no.public.homepage", type: "a"},
+];
+const adminNavigation = [
+    {name: "Dashboard", href: "my.auth.dashboard.index"},
+    {
+        type: "dropdown",
+        name: "Gestion utilisateurs",
+        items: [
+            { name: 'Annuaire', description: 'Liste des utilisateurs.', href: 'my.auth.annuaire', icon: UsersIcon },
+            { name: 'Ajouts', description: 'Ajouter un utilisateur.', href: 'my.auth.users.create', icon: UserPlusIcon }
+        ]
     },
-    data() {
-        return {
-            myNavigation: [
-                // All my. routes will be type "Link" else it will be "a"
-                { name: 'Home', href: 'my.auth.dashboard.index', icon: HomeIcon, current: true, type: "Link" },
-                { name: 'Console', href: 'console.auth.dashboard.index', icon: UserGroupIcon, current: false, type: "a" },
-                { name: 'Annuaire', href: 'my.auth.annuaire', icon: DocumentChartBarIcon, current: false, type: "Link" },
-                { name: 'Help Desk', href: 'my.auth.helpDesk.list', icon: ChatBubbleLeftRightIcon, current: false, type: "Link" },
-                { name: 'Retourner sur le site', href: 'no.public.homepage', icon: DocumentChartBarIcon, current: false, type: "a" },
-            ],
-            adminNavigation: [
-                { name: 'ACTION ADMIN', href: 'my.auth.dashboard.index', icon: HomeIcon, current: false, type: "Link" },
-            ],
-            consoleNavigation: [
-                // All console. routes will be type "Link" else it will be "a"
-                { name: 'Home', href: 'console.auth.dashboard.index', icon: HomeIcon, current: true, type: "Link" },
-                { name: 'My', href: 'my.auth.dashboard.index', icon: UserGroupIcon, current: false, type: "a" },
-                { name: 'Retourner sur le site', href: 'no.public.homepage', icon: DocumentChartBarIcon, current: false, type: "a" },
-            ],
-            sidebarOpen: false,
-        }
+    {
+        type: "dropdown",
+        name: "Gestion des plaintes",
+        items: [
+            { name: 'Liste', description: 'Liste des plaintes.', href: 'my.auth.complains.list', icon: EnvelopeIcon }
+        ]
     },
-    computed: {
-        userPermission() {
-            return this.$page.props.auth.user.permissions[0].name;
-        },
-        currentHost() {
-            return window.location.host.slice(0, 8) === 'console.' ? 'console' : 'my';
-        },
-        navigation() {
-            let nav = this.currentHost === 'console' ? this.consoleNavigation : this.myNavigation;
-            if (this.currentHost === 'my' && (this.userPermission === 'admin_access' || this.userPermission === 'root')) {
-                nav = nav.concat(this.adminNavigation);
-            }
-            return nav;
-        },
-        getUserName() {
-            return this.$page.props.auth.user.firstname + ' ' + this.$page.props.auth.user.lastname;
-        }
+    {
+        type: "dropdown",
+        name: "Autres",
+        items: [
+            { name: 'Support', description: 'Liste des plaintes.', href: 'my.auth.helpDesk.list', icon: InformationCircleIcon },
+            { name: 'Retourner sur le site', description: 'Liste des plaintes.', href: 'no.public.homepage', icon: HomeIcon, type: "a" }
+        ]
     },
-};
+];
+
+const getUser = computed(() => usePage().props.value.auth.user);
+
+const ifUserHasRole = (role) => getUser.value.roles.some((e) => e === role);
+
+const getNavData = computed(() => {
+    if (ifUserHasRole('root')) {
+        return consoleNavigation;
+    } else if (ifUserHasRole('admin')) {
+        return adminNavigation;
+    } else {
+        return myNavigation;
+    }
+});
 </script>
 
-<style lang="scss" scoped>
+<template>
+    <Disclosure as="nav" class="border-b border-gray-200 bg-white" v-slot="{ open }">
+        <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+            <div class="flex h-16 justify-between">
+                <div class="flex items-center">
+                    <Link :href="route('my.auth.dashboard.index')" class="flex flex-row items-center gap-4 font-bold">
+                        <img src="../../../../resources/images/logo.webp" class="w-10" alt="Logo">Safe Area
+                    </Link>
+                    <div class="hidden lg:ml-10 lg:flex lg:space-x-8">
+                        <template v-for="item in getNavData" :key="item.name">
+                            <Link
+                                v-if="item.type !== 'dropdown'"
+                                :href="route(item.href)" as="a"
+                                :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 py-3 border-solid text-base font-medium']"
+                                :aria-current="item.current ? 'page' : undefined">
+                                {{ item.name }}
+                            </Link>
+                            <DropdownMenu v-else :title="item.name" :items="item.items" />
+                        </template>
+                    </div>
+                </div>
+                <div class="hidden lg:ml-6 lg:flex lg:items-center">
+                    <!-- Settings Dropdown -->
+                    <div class="ml-3 relative">
+                        <Dropdown align="right" width="48">
+                            <template #trigger>
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                        {{ getUser.lastname }} {{ getUser.firstname }}
 
+                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </template>
+
+                            <template #content>
+                                <DropdownLink :href="route('my.auth.dashboard.profil')">
+                                    Profil
+                                </DropdownLink>
+                                <DropdownLink :href="route('logout')" method="delete" as="button">
+                                    Déconnexion
+                                </DropdownLink>
+                            </template>
+                        </Dropdown>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center lg:hidden">
+                    <!-- Mobile menu button -->
+                    <DisclosureButton
+                        class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500">
+                        <span class="sr-only">Ouvrir le menu principal</span>
+                        <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+                        <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+                    </DisclosureButton>
+                </div>
+            </div>
+        </div>
+
+        <DisclosurePanel class="block lg:hidden">
+            <div class="space-y-1 pt-2 pb-3">
+                <template v-for="item in getNavData" :key="item.name">
+                    <DisclosureButton
+                        v-if="item.type !== 'dropdown'" as="a" :href="route(item.href)"
+                        :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent border-solid border-l-4 text-gray-700 block pl-3 pr-4 py-2 text-base font-medium']"
+                        :aria-current="item.current ? 'page' : undefined">{{ item.name }}
+                    </DisclosureButton>
+                    <template v-else v-for="subItem in item.items" :key="subItem.name">
+                        <DisclosureButton
+                            as="a" :href="route(subItem.href)"
+                            :class="[{'menu-active-item': route().current() === subItem.href}, 'border-transparent border-solid border-l-4 text-gray-700 block pl-3 pr-4 py-2 text-base font-medium']"
+                            :aria-current="subItem.current ? 'page' : undefined">{{ subItem.name }}
+                        </DisclosureButton>
+                    </template>
+                </template>
+            </div>
+            <div class="border-y border-gray-300 border-solid py-3 space-y-1">
+                <DisclosureButton
+                    method="delete" as="button" :href="route('logout')"
+                    class="block px-4 py-2 text-base font-medium text-gray-800">
+                    Deconnexion
+                </DisclosureButton>
+                <DisclosureButton
+                    as="a" :href="route('my.auth.dashboard.profil')"
+                    class="block px-4 py-2">
+                    <div class="text-base font-medium text-gray-800">{{ getUser.lastname }} {{ getUser.firstname }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ getUser.personal_email }}</div>
+                </DisclosureButton>
+            </div>
+        </DisclosurePanel>
+    </Disclosure>
+</template>
+
+<style lang="scss" scoped>
+    .menu-active-item {
+        @apply border-safearea-red text-gray-900;
+    }
 </style>
