@@ -23,4 +23,8 @@ class HelpdeskSupport extends Model
         'archived_at',
     ];
 
+    public function ticketOwner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

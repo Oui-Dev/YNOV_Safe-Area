@@ -15,16 +15,15 @@ return new class extends Migration
     {
         Schema::create('helpdesk_supports', function (Blueprint $table) {
             $table->id();
+            $table->foreign('user_id')->nullable()->constrained('users');
             $table->uuid('reference');
             $table->unsignedBigInteger('user_id');
             $table->enum('type',['incident', 'demande']);
             $table->enum('status',['nouveau', 'attribue', 'en cours', 'termine', 'clos'])->default('nouveau');
             $table->integer('emergency');
-            $table->text('title');
-            $table->longText('description');
-            $table->longText('file')->nullable();
-
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('title');
+            $table->text('description');
+            $table->string('file_url')->nullable();
 
             $table->timestamps();
             $table->timestamp('started_at')->nullable();

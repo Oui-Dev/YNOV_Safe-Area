@@ -6,8 +6,7 @@
 					<h2 class="sr-only">Créez un ticket de support</h2>
 					<div class="grid grid-cols-1 lg:grid-cols-3">
 						<!-- Contact information -->
-						<div
-							class="relative overflow-hidden bg-gradient-to-b from-safearea-red to-safearea-blue py-10 px-6 sm:px- xl:p-12 rounded-lg">
+						<div class="relative overflow-hidden bg-gradient-to-b from-safearea-red to-safearea-blue py-10 px-6 rounded-lg">
 							<div class="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
 								<svg class="absolute inset-0 h-full w-full" width="343" height="388" viewBox="0 0 343 388" fill="none"
 									preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -51,9 +50,8 @@
 								</svg>
 							</div>
 							<h1 class="text-2xl font-medium text-white">Bonjour, {{ currentUser.lastname }}</h1>
-							<p class="mt-6 max-w-3xl text-base text-indigo-50">Les données sont confidentielles. <br> Ne
-								partagez pas de données personnelles ou sensibles. <br> Nullam risus blandit ac aliquam
-								justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.</p>
+							<p class="mt-6 max-w-3xl text-base text-indigo-50">Les données sont confidentielles.</p>
+							<p class="mt-2 max-w-3xl text-base text-indigo-50">Ne partagez pas de données personnelles ou sensibles.</p>
 						</div>
 						<!-- Contact form -->
 						<div class="py-8 px-6 sm:px-10 lg:col-span-2 rounded-r-lg">
@@ -72,16 +70,15 @@
 										<span class="text-sm font-medium text-gray-900">Incident</span>
 									</SwitchLabel>
 								</SwitchGroup>
-								<div class="sm:col-span-2">
+								<div class="sm:col-span-2" :class="{ 'form-error-div': form.errors.title }">
 									<label for="title" class="block text-sm font-medium text-gray-900">Titre</label>
 									<div class="mt-1">
 										<input type="text" name="title" v-model="form.title" id="title"
 											class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
 									</div>
-									<div v-if="form.errors.title && !form.title" class="form-error-field"> Le champs
-										Titre est obligatoire </div>
+									<div v-if="form.errors.title" class="form-error-field"> {{ form.errors.title }} </div>
 								</div>
-								<div class="sm:col-span-2">
+								<div class="sm:col-span-2" :class="{ 'form-error-div': form.errors.message }">
 									<div class="flex justify-between">
 										<label for="message" class="block text-sm font-medium text-gray-900">Message</label>
 										<span id="message-max" class="text-sm text-gray-500">Max. 500 char.</span>
@@ -91,8 +88,7 @@
 											class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
 											aria-describedby="message-max" />
 									</div>
-									<div v-if="form.errors.message && !form.message" class="form-error-field">Le champs
-										message est obligatoire</div>
+									<div v-if="form.errors.message" class="form-error-field"> {{ form.errors.message }} </div>
 								</div>
 								<div class="sm:col-span-2">
 									<label class="block text-sm font-medium text-gray-900">Ajoutez un document</label>
@@ -115,23 +111,12 @@
 import DashboardLayout from "../../layouts/dashboard.vue";
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 import Dropzone from "../../components/dashboard/Dropzone.vue"; // Import the dropzone component
-import { useForm, usePage, visit } from "@inertiajs/inertia-vue3";
+import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import { computed, ref } from "vue";
 
 const currentUser = computed(() => usePage().props.value.auth.user);
 const isLoading = ref(false);
-let firstPart = (Math.random() * 46656) | 0;
-let secondPart = (Math.random() * 46656) | 0;
-firstPart = ("000" + firstPart.toString(36)).slice(-3);
-secondPart = ("000" + secondPart.toString(36)).slice(-3);
-const ticketNumber = firstPart + secondPart;
-
 const form = useForm({
-	reference : ticketNumber,
-	firstName: currentUser.value.firstname,
-	lastName: currentUser.value.lastname,
-	email: currentUser.value.professional_email,
-	phone: currentUser.value.phone,
 	type: false,
 	title: null,
 	message: null,
@@ -150,7 +135,9 @@ const submit = () => {
 		},
 		onSuccess: () => {
 			form.reset();
-
+		},
+		onError: (errors) => {
+			console.log(errors);
 		},
 	});
 };
@@ -162,9 +149,5 @@ const getFile = (file) => {
 <style lang="scss" scoped>
 button:disabled {
 	@apply bg-safearea-grey;
-}
-
-.form-error-field {
-	color: red;
 }
 </style>
