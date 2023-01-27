@@ -1,3 +1,51 @@
+<script setup>
+import DashboardLayout from "../../../layouts/dashboard.vue";
+import { ArrowTopRightOnSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import Pagination from '../../../components/dashboard/Pagination.vue';
+import { Link } from "@inertiajs/inertia-vue3";
+
+const props = defineProps({
+	tickets: {
+		type: Array,
+		required: true,
+	},
+	users: {
+		type: Array,
+		required: true,
+	},
+});
+
+function getTicketUser(ticket) {
+	if (!ticket.user) return "Utilisateur supprimé";
+	return ticket.user.lastname + " " + ticket.user.firstname;
+};
+
+function prettyDate(date) {
+	const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+	return new Date(date).toLocaleDateString('fr-FR', options);
+}
+
+function getStatus(ticket) {
+	switch (ticket.status) {
+		case "nouveau":
+			return 'bg-green-600';
+
+		case "attribue":
+		case "en cours":
+			return "bg-yellow-600";
+
+		case "termine":
+			return "bg-slate-600";
+
+		case "clos":
+			return "bg-gray-600";
+
+		default:
+			return "bg-green-600";
+	}
+}
+</script>
+
 <template>
 	<DashboardLayout>
 		<div class="px-4 pt-4 sm:px-6 lg:px-8">
@@ -68,57 +116,3 @@
 		<Pagination class="pt-5 border-t border-gray-200 flex items-center justify-center" :paginator="tickets" />
 	</DashboardLayout>
 </template>
-
-<script setup>
-import DashboardLayout from "../../layouts/dashboard.vue";
-import { ArrowTopRightOnSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
-import Pagination from '../../components/dashboard/Pagination.vue';
-import { Link } from "@inertiajs/inertia-vue3";
-
-const props = defineProps({
-	tickets: {
-		type: Array,
-		required: true,
-	},
-	users: {
-		type: Array,
-		required: true,
-	},
-});
-
-function getTicketUser(ticket) {
-	if (!ticket.user) {
-		return "Utilisateur supprimé";
-	}
-	return ticket.user.lastname + " " + ticket.user.firstname;
-};
-
-function prettyDate(date) {
-	const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-	return new Date(date).toLocaleDateString('fr-FR', options);
-}
-
-function getStatus(ticket) {
-	switch (ticket.status) {
-		case "nouveau":
-			return 'bg-green-600';
-
-		case "attribue":
-		case "en cours":
-			return "bg-yellow-600";
-
-		case "termine":
-			return "bg-slate-600";
-
-		case "clos":
-			return "bg-gray-600";
-
-		default:
-			return "bg-green-600";
-	}
-}
-
-</script>
-<style lang="scss" scoped>
-
-</style>

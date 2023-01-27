@@ -73,8 +73,8 @@
   
 
 <script setup>
-import dashboardVue from '../../layouts/dashboard.vue';
-import Pagination from '../../components/dashboard/Pagination.vue';
+import dashboardVue from '../../../layouts/dashboard.vue';
+import Pagination from '../../../components/dashboard/Pagination.vue';
 import { Link, usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { TrashIcon, PencilSquareIcon } from '@heroicons/vue/20/solid';

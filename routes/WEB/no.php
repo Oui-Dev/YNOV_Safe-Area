@@ -30,14 +30,21 @@ Route::group([
     Route::post('/newsletters', [NewsletterController::class, 'store'])->name('public.newsletters.store');
     Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('public.legal');
     Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
-    // To delete
-    Route::get('/maintenance', [StaticViewController::class, 'maintenance'])->name('public.maintenance');
-});
-Route::group([
-    'middleware' => 'guest'
-], function () {
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
-    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
+
+    Route::group([
+        'middleware' => 'guest'
+    ], function () {
+        Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('public.login');
+        Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('public.login.store');
+    });
+
+    Route::group([
+        'middleware' => 'auth'
+    ], function () {
+        Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('public.logout');
+    });
 });
 
-Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+// To delete
+Route::get('/maintenance', [StaticViewController::class, 'maintenance'])->name('public.maintenance');

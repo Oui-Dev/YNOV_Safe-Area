@@ -10,14 +10,4 @@ class DashboardController extends Controller
     public function index() {
         return inertia('My/Index');
     }
-
-    public function annuaire() {
-        $currentUser = auth()->user();
-        $users = $currentUser->hasAnyPermission(['admin_access', 'root'])
-            ? User::paginate(20)
-            : $currentUser->company->users()->paginate(20);
-        return inertia('My/Annuaire', [
-            'users' => $users,
-        ]);
-    }
 }

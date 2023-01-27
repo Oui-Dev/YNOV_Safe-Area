@@ -1,3 +1,39 @@
+<script setup>
+import DashboardLayout from "../../../layouts/dashboard.vue";
+import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
+import Dropzone from "../../../components/dashboard/Dropzone.vue"; // Import the dropzone component
+import { useForm, usePage } from "@inertiajs/inertia-vue3";
+import { computed, ref } from "vue";
+
+const currentUser = computed(() => usePage().props.value.auth.user);
+const isLoading = ref(false);
+const form = useForm({
+	type: false,
+	title: null,
+	message: null,
+	file: null,
+});
+
+const submit = () => {
+	form.post(route("my.auth.helpDesk.add.post"), {
+		onStart: () => {
+			form.clearErrors();
+			isLoading.value = true;
+		},
+		onFinish: () => {
+			isLoading.value = false;
+		},
+		onSuccess: () => {
+			form.reset();
+		}
+	});
+};
+
+const getFile = (file) => {
+	form.file = file;
+}
+</script>
+
 <template>
 	<DashboardLayout>
 		<div class="bg-white xl:flex xl:px-20 lg:flex lg:px-20 justify-center items-center h-screen">
@@ -107,47 +143,8 @@
 	</DashboardLayout>
 </template>
 
-<script setup>
-import DashboardLayout from "../../layouts/dashboard.vue";
-import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-import Dropzone from "../../components/dashboard/Dropzone.vue"; // Import the dropzone component
-import { useForm, usePage } from "@inertiajs/inertia-vue3";
-import { computed, ref } from "vue";
-
-const currentUser = computed(() => usePage().props.value.auth.user);
-const isLoading = ref(false);
-const form = useForm({
-	type: false,
-	title: null,
-	message: null,
-	file: null,
-});
-
-
-const submit = () => {
-	form.post(route("my.auth.helpDesk.add.post"), {
-		onStart: () => {
-			form.clearErrors();
-			isLoading.value = true;
-		},
-		onFinish: () => {
-			isLoading.value = false;
-		},
-		onSuccess: () => {
-			form.reset();
-		},
-		onError: (errors) => {
-			console.log(errors);
-		},
-	});
-};
-const getFile = (file) => {
-	form.file = file;
-}
-</script>
-
 <style lang="scss" scoped>
-button:disabled {
-	@apply bg-safearea-grey;
-}
+	button:disabled {
+		@apply bg-safearea-grey;
+	}
 </style>

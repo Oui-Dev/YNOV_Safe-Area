@@ -77,7 +77,7 @@ const getNavData = computed(() => {
                             <Link
                                 v-if="item.type !== 'dropdown'"
                                 :href="route(item.href)" as="a"
-                                :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 py-3 border-solid text-base font-medium']"
+                                :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 py-3 border-solid text-sm font-medium']"
                                 :aria-current="item.current ? 'page' : undefined">
                                 {{ item.name }}
                             </Link>
@@ -91,7 +91,7 @@ const getNavData = computed(() => {
                         <Dropdown align="right" width="48">
                             <template #trigger>
                                 <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-normal rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                         {{ getUser.lastname }} {{ getUser.firstname }}
 
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -105,7 +105,7 @@ const getNavData = computed(() => {
                                 <DropdownLink :href="route('my.auth.dashboard.profil')">
                                     Profil
                                 </DropdownLink>
-                                <DropdownLink :href="route('logout')" method="delete" as="button">
+                                <DropdownLink :href="route('no.public.logout')" type="a">
                                     Déconnexion
                                 </DropdownLink>
                             </template>
@@ -129,13 +129,13 @@ const getNavData = computed(() => {
                 <template v-for="item in getNavData" :key="item.name">
                     <DisclosureButton
                         v-if="item.type !== 'dropdown'" as="a" :href="route(item.href)"
-                        :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent border-solid border-l-4 text-gray-700 block pl-3 pr-4 py-2 text-base font-medium']"
+                        :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent border-solid border-l-4 text-gray-700 block pl-3 pr-4 py-2 text-sm font-medium']"
                         :aria-current="item.current ? 'page' : undefined">{{ item.name }}
                     </DisclosureButton>
                     <template v-else v-for="subItem in item.items" :key="subItem.name">
                         <DisclosureButton
                             as="a" :href="route(subItem.href)"
-                            :class="[{'menu-active-item': route().current() === subItem.href}, 'border-transparent border-solid border-l-4 text-gray-700 block pl-3 pr-4 py-2 text-base font-medium']"
+                            :class="[{'menu-active-item': route().current() === subItem.href}, 'border-transparent border-solid border-l-4 text-gray-700 block pl-3 pr-4 py-2 text-sm font-medium']"
                             :aria-current="subItem.current ? 'page' : undefined">{{ subItem.name }}
                         </DisclosureButton>
                     </template>
@@ -143,14 +143,14 @@ const getNavData = computed(() => {
             </div>
             <div class="border-y border-gray-300 border-solid py-3 space-y-1">
                 <DisclosureButton
-                    method="delete" as="button" :href="route('logout')"
-                    class="block px-4 py-2 text-base font-medium text-gray-800">
+                    as="a" :href="route('no.public.logout')"
+                    class="block px-4 py-2 text-sm font-medium text-gray-800">
                     Deconnexion
                 </DisclosureButton>
                 <DisclosureButton
                     as="a" :href="route('my.auth.dashboard.profil')"
                     class="block px-4 py-2">
-                    <div class="text-base font-medium text-gray-800">{{ getUser.lastname }} {{ getUser.firstname }}</div>
+                    <div class="text-sm font-medium text-gray-800">{{ getUser.lastname }} {{ getUser.firstname }}</div>
                     <div class="text-sm font-medium text-gray-500">{{ getUser.personal_email }}</div>
                 </DisclosureButton>
             </div>

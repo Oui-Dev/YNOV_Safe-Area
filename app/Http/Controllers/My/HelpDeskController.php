@@ -3,45 +3,36 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-use Inertia\Inertia;
+// use Illuminate\Support\Facades\Storage;
 use App\Models\HelpDeskSupport;
 use App\Models\User;
-// use Illuminate\Support\Facades\Storage;
 
 class HelpDeskController extends Controller
 {
 
     public function list()
     {
-        return Inertia::render(
-            'My/HelpDeskList',
-            [
-                'users' => User::all(),
-                'tickets' => HelpDeskSupport::with('user')->paginate(9),
-            ]
-        );
+        return inertia('My/HelpDesk/List', [
+            'users' => User::all(),
+            'tickets' => HelpDeskSupport::with('user')->paginate(10),
+        ]);
     }
 
     public function create()
     {
-        return Inertia::render(
-            'My/HelpDesk',
-        );
+        return inertia('My/HelpDesk/Add');
     }
 
     public function show(HelpdeskSupport $ticket)
     {
-        return inertia('My/HelpDeskShow', [
+        return inertia('My/HelpDesk/Show', [
             'ticket' => $ticket,
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @return \Illuminate\Http\Response
-     */
     public function store()
     {
+        $user = auth()->user();
         $data = request()->validate([
             'title' => ['required','string','max:255'],
             'message' => ['required','string','max:500'],
@@ -49,19 +40,12 @@ class HelpDeskController extends Controller
             'type' => ['boolean'],
         ]);
 
-        $user = auth()->user();
-
-        $firstPart = base_convert(mt_rand(0, 46656), 10, 36);
-        $secondPart = base_convert(mt_rand(0, 46656), 10, 36);
-        $firstPart = sprintf("%03s", $firstPart);
-        $secondPart = sprintf("%03s", $secondPart);
+        $firstPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
+        $secondPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
         $ticketRef = $firstPart . $secondPart;
         // $fileName = $ticketRef . '.' . $data['file']->extension();
         // $filePath = Storage::disk('s3')->put('helpdesk/', $data['file'], $fileName, 'private');
 
-        /**
-         * @var \App\Models\HelpDeskSupport $ticket
-         * */
         HelpDeskSupport::create([
             'reference' => $ticketRef,
             'user_id' => $user->id,
@@ -75,6 +59,7 @@ class HelpDeskController extends Controller
             'emergency' => 3,
             'file' => null // $data['$filePath'], //
         ]);
+
         return redirect()->route('my.auth.helpDesk.list')->with('toast', [
             'type' => 'success', 
             'message' => 'Votre ticket a bien été envoyé'

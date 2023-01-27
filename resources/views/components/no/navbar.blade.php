@@ -20,10 +20,9 @@
 
         <div class="button-side">
             @auth
-                <x-form action="{{ route('logout') }}" method="delete"
-                        class="block py-2 pr-4 pl-3 text-base hover:text-safearea-red">
-                    <button type="submit">Déconnexion</button>
-                </x-form>
+                <a href="{{ route('no.public.logout') }}" class="block py-2 pr-4 pl-3 text-base hover:text-safearea-red">
+                    Déconnexion
+                </a>
             @endauth
             <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button">Mon espace</a>
         </div>
@@ -55,10 +54,9 @@
                 </div>
                 <div class="px-5 pb-5 flex justify-around gap-5">
                     @auth
-                        <x-form action="{{ route('logout') }}" method="delete"
-                                class="block py-2 pr-4 pl-3 w-full text-center text-base">
-                            <button type="submit" class="bg-gradient-to-r from-safearea-red to-safearea-blue bg-clip-text text-transparent">Déconnexion</button>
-                        </x-form>
+                        <a href="{{ route('no.public.logout') }}" class="block py-2 pr-4 pl-3 w-full text-center text-base">
+                            <span type="submit" class="bg-gradient-to-r from-safearea-red to-safearea-blue bg-clip-text text-transparent">Déconnexion</span>
+                        </a>
                     @endauth
                     <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button w-full">Mon espace</a>
                 </div>

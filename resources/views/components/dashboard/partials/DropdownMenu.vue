@@ -17,7 +17,7 @@ const props = defineProps({
 
 <template>
     <Popover class="relative flex" v-slot="{ open }">
-        <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'border-transparent text-gray-500 hover:text-gray-700 inline-flex items-center border-b-2 text-base font-medium']">
+        <PopoverButton :class="[open ? 'text-gray-900' : 'text-gray-500', 'border-transparent text-gray-500 hover:text-gray-700 inline-flex items-center border-b-2 text-sm font-medium']">
             <span>{{ props.title }}</span>
             <ChevronDownIcon :class="[open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500']" aria-hidden="true" />
         </PopoverButton>
@@ -30,14 +30,14 @@ const props = defineProps({
                             <Link v-if="item.type !== 'a'" :href="item.href ? route(item.href) : '#'"  as="a" class="-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50">
                                 <component :is="item.icon" class="h-6 w-6 flex-shrink-0 text-safearea-red" aria-hidden="true" />
                                 <div class="ml-4">
-                                    <p class="text-base font-medium text-gray-900">{{ item.name }}</p>
+                                    <p class="text-sm font-medium text-gray-900">{{ item.name }}</p>
                                     <p v-if="item.description" class="mt-1 text-sm text-gray-500">{{ item.description }}</p>
                                 </div>
                             </Link>
                             <a v-else :href="item.href ? route(item.href) : '#'" class="-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50">
                                 <component :is="item.icon" class="h-6 w-6 flex-shrink-0 text-safearea-red" aria-hidden="true" />
                                 <div class="ml-4">
-                                    <p class="text-base font-medium text-gray-900">{{ item.name }}</p>
+                                    <p class="text-sm font-medium text-gray-900">{{ item.name }}</p>
                                     <p v-if="item.description" class="mt-1 text-sm text-gray-500">{{ item.description }}</p>
                                 </div>
                             </a>
