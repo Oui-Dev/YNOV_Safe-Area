@@ -14,7 +14,7 @@ class HelpdeskSupport extends Model
         'user_id',
         'title',
         'description',
-        'file',
+        'file_url',
         'type',
         'status',
         'emergency',

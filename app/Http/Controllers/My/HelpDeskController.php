@@ -45,7 +45,7 @@ class HelpDeskController extends Controller
         $data = request()->validate([
             'title' => ['required','string','max:255'],
             'message' => ['required','string','max:500'],
-            'file' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'file_url' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
             'type' => ['boolean'],
         ]);
 

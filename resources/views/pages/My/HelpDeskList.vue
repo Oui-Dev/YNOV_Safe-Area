@@ -90,7 +90,7 @@ function getTicketUser(ticket) {
 	if (!ticket.ticket_owner) {
 		return "Utilisateur supprimé";
 	}
-	return ticket.ticket_owner.lastname
+	return ticket.ticket_owner.lastname + " " + ticket.ticket_owner.firstname;
 };
 
 function prettyDate(date) {
