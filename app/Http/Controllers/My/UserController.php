@@ -21,7 +21,7 @@ class UserController extends Controller
             ? User::paginate(10)
             : $currentUser->company->users()->paginate(10);
 
-        return inertia('My/Annuaire', [
+        return inertia('My/Users/Annuaire', [
             'users' => $users,
         ]);
     }
