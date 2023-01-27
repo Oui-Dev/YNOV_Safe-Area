@@ -64,7 +64,7 @@ class User extends Authenticatable
     ];
 
     public function company() {
-        return $this->belongsTo(Company::class, 'compagny_id');
+        return $this->belongsTo(Company::class);
     }
 
     public function complains() {
@@ -73,6 +73,10 @@ class User extends Authenticatable
 
     public function assignedComplains() {
         return $this->hasMany(Complain::class);
+    }
+
+    public function helpdeskSupports() {
+        return $this->hasMany(HelpdeskSupport::class);
     }
 
 

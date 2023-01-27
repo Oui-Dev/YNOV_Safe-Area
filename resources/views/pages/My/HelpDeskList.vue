@@ -87,10 +87,10 @@ const props = defineProps({
 });
 
 function getTicketUser(ticket) {
-	if (!ticket.ticket_owner) {
+	if (!ticket.user) {
 		return "Utilisateur supprimé";
 	}
-	return ticket.ticket_owner.lastname + " " + ticket.ticket_owner.firstname;
+	return ticket.user.lastname + " " + ticket.user.firstname;
 };
 
 function prettyDate(date) {

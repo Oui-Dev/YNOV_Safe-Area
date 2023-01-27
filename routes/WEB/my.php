@@ -20,7 +20,7 @@ use App\Http\Controllers\My\UserController;
 
 Route::group([
     'as' => "my.",
-    'middleware' => ['auth', 'permission:my_access|admin_access|root']
+    'middleware' => ['auth', 'role:my|admin']
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
     Route::get('/profil', [UserController::class, 'profil'])->name('auth.dashboard.profil');
@@ -34,7 +34,7 @@ Route::group([
 
 Route::group([
     'as' => "my.",
-    'middleware' => ['auth', 'permission:admin_access|root']
+    'middleware' => ['auth', 'role:admin']
 ], function () {
     Route::get("/users/create", [UserController::class, 'create'])->name('auth.users.create');
     Route::post("/users/create", [UserController::class, 'store'])->name('auth.users.create.post');

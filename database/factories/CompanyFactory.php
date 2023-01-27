@@ -31,6 +31,6 @@ class CompanyFactory extends Factory
             'siret'=>fake()->unique()->ean13(),
             'email_verified_at'=>now(),
             'published_at'=>now(),
-            ];
+        ];
     }
 }

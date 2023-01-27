@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -17,13 +16,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CompanySeeder::class,
             RoleSeeder::class,
-            UserSeeder::class,
             VersionSeeder::class,
-            LicenceSeeder::class,
         ]);
-        Company::factory()->count(100)->create();
-        User::factory()->count(500)->create();
+
+        if(config('app.env') === 'local') {
+            Company::factory()->count(23)->create();
+            User::factory()->count(93)->create();
+
+            $this->call([
+                UserSeeder::class,
+            ]);
+        }
     }
 }
