@@ -44,17 +44,14 @@ function removeFile() {
 </script>
 
 <template>
-	<section :class="{ 'file-dropped': dropped, 'hover-dropzone': hovered }"
-		@dragenter.prevent="toggleHovered"
-		@dragleave.prevent="toggleHovered"
-		@dragover.prevent
-		@drop.prevent="drop"
-	>
+	<section :class="{ 'file-dropped': dropped, 'hover-dropzone': hovered }" @dragenter.prevent="toggleHovered"
+		@dragleave.prevent="toggleHovered" @dragover.prevent @drop.prevent="drop">
 		<div class="space-y-1 text-center h-24 justify-center content-center flex">
 			<div v-if="!dropzoneFile">
 				<component :is="icon" class="mx-auto h-12 w-12 text-gray-400" aria-hidden="true" />
 				<div class="flex text-sm mt-2 text-gray-600 justify-center">
-					<label for="file" class="relative cursor-pointer rounded-md m-0 bg-white font-medium text-safearea-blue focus-within:outline-none focus-within:ring-2 focus-within:ring-safearea-blue focus-within:ring-offset-2 hover:text-safearea-blue">
+					<label for="file"
+						class="relative cursor-pointer rounded-md m-0 bg-white font-medium text-safearea-blue focus-within:outline-none focus-within:ring-2 focus-within:ring-safearea-blue focus-within:ring-offset-2 hover:text-safearea-blue">
 						<span>Téléchargez un fichier</span>
 					</label>
 					<p class="pl-1 text-sm text-gray-500">ou glisser-déposer</p>
