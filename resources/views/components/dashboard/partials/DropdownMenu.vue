@@ -27,7 +27,7 @@ const props = defineProps({
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                     <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                         <template v-for="item in props.items" :key="item.name">
-                            <Link v-if="item.type !== 'a'" :href="item.href ? route(item.href) : '#'"  as="a" class="-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50">
+                            <Link v-if="item.as !== 'a'" :href="item.href ? route(item.href) : '#'"  as="a" class="-m-3 flex items-start rounded-lg p-3 transition duration-150 ease-in-out hover:bg-gray-50">
                                 <component :is="item.icon" class="h-6 w-6 flex-shrink-0 text-safearea-red" aria-hidden="true" />
                                 <div class="ml-4">
                                     <p class="text-sm font-medium text-gray-900">{{ item.name }}</p>

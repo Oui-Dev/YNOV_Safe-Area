@@ -23,8 +23,15 @@
                 <a href="{{ route('no.public.logout') }}" class="block py-2 pr-4 pl-3 text-base hover:text-safearea-red">
                     Déconnexion
                 </a>
+                @if (in_array('root', auth()->user()->roles->pluck('name')->toArray()))
+                    <a href="{{ route('console.auth.dashboard.index') }}" class="menu-button">Console</a>
+                @else
+                    <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button">Mon espace</a>
+                @endif
             @endauth
-            <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button">Mon espace</a>
+            @guest
+                <a href="{{ route('no.public.login') }}" class="menu-button">Connexion</a>
+            @endguest
         </div>
     </nav>
 

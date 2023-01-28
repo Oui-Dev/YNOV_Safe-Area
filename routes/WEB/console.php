@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Console\DashboardController;
+use App\Http\Controllers\My\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,10 @@ Route::group([
     'middleware' => ['auth', 'role:root']
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
+
+    Route::get('/profil', [ProfilController::class, 'profil'])->name('auth.dashboard.profil');
+    Route::put('/profil', [ProfilController::class, 'editProfil'])->name('auth.dashboard.profil.update');
+    Route::put('/profil/password', [ProfilController::class, 'editPassword'])->name('auth.dashboard.profil.password');
+
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
 });

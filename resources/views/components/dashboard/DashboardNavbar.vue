@@ -20,7 +20,7 @@ const myNavigation = [
     {name: "Annuaire", href: "my.auth.annuaire"},
     {name: "Plaintes", href: "my.auth.helpDesk.add"},
     {name: "Support", href: "my.auth.helpDesk.list"},
-    {name: "Retourner sur le site", href: "no.public.homepage", type: "a"},
+    {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
 ];
 const adminNavigation = [
     {name: "Dashboard", href: "my.auth.dashboard.index"},
@@ -44,9 +44,13 @@ const adminNavigation = [
         name: "Autres",
         items: [
             { name: 'Support', description: 'Liste des plaintes.', href: 'my.auth.helpDesk.list', icon: InformationCircleIcon },
-            { name: 'Retourner sur le site', description: 'Liste des plaintes.', href: 'no.public.homepage', icon: HomeIcon, type: "a" }
+            { name: 'Retourner sur le site', description: 'Liste des plaintes.', href: 'no.public.homepage', icon: HomeIcon, as: "a" }
         ]
     },
+];
+const consoleNavigation = [
+    {name: "Dashboard", href: "console.auth.dashboard.index"},
+    {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
 ];
 
 const getUser = computed(() => usePage().props.value.auth.user);
@@ -75,12 +79,15 @@ const getNavData = computed(() => {
                     <div class="hidden lg:ml-10 lg:flex lg:space-x-8">
                         <template v-for="item in getNavData" :key="item.name">
                             <Link
-                                v-if="item.type !== 'dropdown'"
+                                v-if="item.type !== 'dropdown' && item.as !== 'a'"
                                 :href="route(item.href)" as="a"
                                 :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 py-3 border-solid text-sm font-medium']"
                                 :aria-current="item.current ? 'page' : undefined">
                                 {{ item.name }}
                             </Link>
+                            <a v-else-if="item.type !== 'dropdown'" :href="route(item.href)" :class="[{'menu-active-item': route().current() === item.href}, 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 border-b-2 py-3 border-solid text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">
+                                {{ item.name }}
+                            </a>
                             <DropdownMenu v-else :title="item.name" :items="item.items" />
                         </template>
                     </div>
@@ -102,10 +109,10 @@ const getNavData = computed(() => {
                             </template>
 
                             <template #content>
-                                <DropdownLink :href="route('my.auth.dashboard.profil')">
+                                <DropdownLink :href="route((ifUserHasRole('root') ? 'console.' : 'my.') + 'auth.dashboard.profil')">
                                     Profil
                                 </DropdownLink>
-                                <DropdownLink :href="route('no.public.logout')" type="a">
+                                <DropdownLink :href="route('no.public.logout')" as="a">
                                     Déconnexion
                                 </DropdownLink>
                             </template>
