@@ -9,9 +9,9 @@ use App\Models\ComplainType;
 class ComplainsController extends Controller
 {
     public function create() {
-        $complainsTypeId = ComplainType::all();
+        $complainsTypes = ComplainType::all();
         return inertia('My/Complains/Create', [
-            'complainsTypeId' => $complainsTypeId
+            'complainsTypes' => $complainsTypes
         ]);
     }
     
