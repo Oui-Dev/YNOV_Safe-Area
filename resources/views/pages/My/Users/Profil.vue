@@ -47,7 +47,7 @@ function submitPassword() {
             <!-- Profil form -->
             <form @submit.prevent="submitProfil" class="h-auto w-auto m-auto flex flex-col justify-center items-center">
                 <div class="md:flex items-stretch">
-                    <Avatar :initials=getInitials()></Avatar>
+                    <Avatar :initials=getInitials></Avatar>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
