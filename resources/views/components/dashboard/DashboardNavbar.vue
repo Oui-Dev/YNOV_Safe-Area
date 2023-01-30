@@ -17,7 +17,7 @@ import {
 
 const myNavigation = [
     {name: "Dashboard", href: "my.auth.dashboard.index"},
-    {name: "Annuaire", href: "my.auth.annuaire"},
+    {name: "Annuaire", href: "my.auth.users.list"},
     {name: "Plaintes", href: "my.auth.helpDesk.add"},
     {name: "Support", href: "my.auth.helpDesk.list"},
     {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
@@ -28,7 +28,7 @@ const adminNavigation = [
         type: "dropdown",
         name: "Gestion utilisateurs",
         items: [
-            { name: 'Annuaire', description: 'Liste des utilisateurs.', href: 'my.auth.annuaire', icon: UsersIcon },
+            { name: 'Annuaire', description: 'Liste des utilisateurs.', href: 'my.auth.users.list', icon: UsersIcon },
             { name: 'Ajouts', description: 'Ajouter un utilisateur.', href: 'my.auth.users.create', icon: UserPlusIcon }
         ]
     },

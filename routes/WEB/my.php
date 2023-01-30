@@ -28,7 +28,7 @@ Route::group([
     Route::put('/profil', [ProfilController::class, 'editProfil'])->name('auth.dashboard.profil.update');
     Route::put('/profil/password', [ProfilController::class, 'editPassword'])->name('auth.dashboard.profil.password');
 
-    Route::get('/users/list', [UserController::class, 'list'])->name('auth.annuaire');
+    Route::get('/users/list', [UserController::class, 'list'])->name('auth.users.list');
 
     Route::get('/helpdesk/new', [HelpDeskController::class, 'create'])->name('auth.helpDesk.add');
     Route::post('/helpdesk/new', [HelpDeskController::class, 'store'])->name('auth.helpDesk.add.post');

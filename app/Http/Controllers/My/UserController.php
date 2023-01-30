@@ -53,7 +53,7 @@ class UserController extends Controller
         ]);
 
         //Mail::to($user->email)->send(new ConfirmEmail($user));
-        return redirect()->route('my.auth.annuaire')->with('toast', [
+        return redirect()->route('my.auth.users.list')->with('toast', [
             'type' => 'success',
             'message' => "L'utilisateur a bien été crée.",
         ]);
