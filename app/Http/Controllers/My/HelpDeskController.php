@@ -9,7 +9,6 @@ use App\Models\User;
 
 class HelpDeskController extends Controller
 {
-
     public function list() {
         return inertia('My/HelpDesk/List', [
             'tickets' => HelpDeskSupport::with('user')->paginate(10),

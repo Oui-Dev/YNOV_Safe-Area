@@ -93,8 +93,7 @@ const getFile = (file) => {
 				<!-- Contact form -->
 				<div class="py-8 px-6 sm:px-10 lg:col-span-2 rounded-r-lg">
 					<h3 class="text-xl font-medium text-gray-900">Créez un ticket de support</h3>
-					<form @submit.prevent="submit" method="POST"
-						class="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-8">
+					<form @submit.prevent="submit" class="mt-6">
 						<SwitchGroup as="div" class="flex items-center justify-end sm:col-span-2 w-full">
 							<SwitchLabel as="span" class="mr-3">
 								<span class="text-sm font-medium text-gray-900">Demande</span>
@@ -108,34 +107,25 @@ const getFile = (file) => {
 								<span class="text-sm font-medium text-gray-900">Incident</span>
 							</SwitchLabel>
 						</SwitchGroup>
-						<div class="sm:col-span-2" :class="{ 'form-error-div': form.errors.title }">
-							<label for="title" class="block text-sm font-medium text-gray-900">Titre</label>
-							<div class="mt-1">
-								<input type="text" name="title" v-model="form.title" id="title"
-									class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-							</div>
-							<div v-if="form.errors.title" class="form-error-field"> {{ form.errors.title }} </div>
+						<div :class="{ 'form-error-div': form.errors.title }">
+							<label for="title">Titre</label>
+							<input id="title" v-model="form.title" />
+							<div v-if="form.errors.title" class="form-error-field">{{ form.errors.title }}</div>
 						</div>
-						<div class="sm:col-span-2" :class="{ 'form-error-div': form.errors.message }">
-							<div class="flex justify-between">
-								<label for="message" class="block text-sm font-medium text-gray-900">Message</label>
-								<span id="message-max" class="text-sm text-gray-500">Max. 500 char.</span>
+						<div :class="['pt-2', { 'form-error-div': form.errors.message }]">
+							<label for="message">Description :</label>
+							<textarea v-model="form.message" rows="5" class="resize-none" id="message" aria-describedby="message-max"></textarea>
+							<div class="flex justify-between w-full">
+								<div v-if="form.errors.message" class="form-error-field">{{ form.errors.message }}</div>
+								<span id="message-max" class="text-right w-full text-sm text-gray-500">Max. 500 char.</span>
 							</div>
-							<div class="mt-1">
-								<textarea id="message" v-model="form.message" name="message" rows="4"
-									class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-									aria-describedby="message-max" />
-							</div>
-							<div v-if="form.errors.message" class="form-error-field"> {{ form.errors.message }} </div>
 						</div>
-						<div class="sm:col-span-2">
+						<div :class="{ 'form-error-div': form.errors.file }">
 							<label class="block text-sm font-medium text-gray-900">Ajoutez un document</label>
 							<Dropzone @file="getFile" />
+                        	<div v-if="form.errors.file" class="form-error-field">{{ form.errors.file }}</div>
 						</div>
-						<div class="sm:col-span-2 sm:flex sm:justify-end">
-							<button type="submit"
-								class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-safearea-blue px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Soumettre</button>
-						</div>
+						<button type="submit" class="btn-primary">Envoyer</button>
 					</form>
 				</div>
 			</div>
