@@ -60,7 +60,7 @@ const hasActions = computed(() => {
                 </table>
             </div>
             <div v-else class="text-center">
-                No values to display
+                Aucune donnée disponible
             </div>
         </div>
         <Pagination v-if="pagination" class="pt-2" :paginator="data" />
