@@ -5,17 +5,11 @@ const visible = ref(false);
 const timeout = ref(null);
 
 const props = defineProps({
-    toast: {
-        type: Object,
-        required: true,
-    },
-    popstate: {
-        type: Boolean,
-        required: false,
-    },
+    toast: Object,
+    popstate: Boolean,
 });
 
-watch(props.toast, () => {
+watch(props, () => {
     visible.value = true;
 
     if (timeout.value) {
