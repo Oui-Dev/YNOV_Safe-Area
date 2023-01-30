@@ -4,9 +4,7 @@ namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
 use App\Mail\ConfirmEmail;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -15,7 +13,7 @@ use Redirect;
 
 class UserController extends Controller
 {
-    public function annuaire() {
+    public function list() {
         $currentUser = auth()->user();
         $users = $currentUser->hasRole('admin')
             ? User::paginate(10)
