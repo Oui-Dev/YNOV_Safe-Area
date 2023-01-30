@@ -1,8 +1,38 @@
+<script setup>
+import { ref, watch } from 'vue';
+
+const visible = ref(false);
+const timeout = ref(null);
+
+const props = defineProps({
+    toast: {
+        type: Object,
+        required: true,
+    },
+    popstate: {
+        type: Boolean,
+        required: false,
+    },
+});
+
+watch(props.toast, () => {
+    visible.value = true;
+
+    if (timeout.value) {
+        clearTimeout(timeout.value);
+    }
+
+    timeout.value = setTimeout(() => {
+        visible.value = false;
+    }, 2500);
+}, { deep: true, immediate: true });
+</script>
+
 <template>
     <transition name="slide-fade">
         <div
-            class="absolute flex max-w-xs w-full mt-4 top-0 right-0 bg-white rounded shadow p-4 z-10"
             v-if="toast && visible && !popstate"
+            class="absolute flex max-w-xs w-full mt-4 top-0 right-0 bg-white rounded shadow p-4 z-10"
         >
             <div class="mr-2 items-center flex">
                 <svg
@@ -23,8 +53,8 @@
             <div class="flex-1 text-gray-800">{{ toast.message }}</div>
             <div class="ml-2">
                 <button
-                    class="align-top text-gray-500 hover:text-gray-700 focus:outline-none focus:text-safearea-red"
                     @click="visible = false"
+                    class="align-top text-gray-500 hover:text-gray-700 focus:outline-none focus:text-safearea-red"
                 >
                     <svg
                         class="w-6 h-6"
@@ -45,36 +75,6 @@
         </div>
     </transition>
 </template>
-
-<script>
-export default {
-    props: {
-        toast: Object,
-        popstate: Boolean,
-    },
-    data: () => ({
-        visible: false,
-        timeout: null,
-    }),
-    watch: {
-        toast: {
-            deep: true,
-            immediate: true,
-            handler() {
-                this.visible = true;
-
-                if (this.timeout) {
-                    clearTimeout(this.timeout);
-                }
-
-                this.timeout = setTimeout(() => {
-                    this.visible = false;
-                }, 2500);
-            },
-        },
-    }
-};
-</script>
 
 <style>
 /*
