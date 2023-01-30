@@ -17,8 +17,8 @@ const isAdmin = computed(() => usePage().props.value.auth.user.roles.some((e) =>
 
 const isCurrentRef = (user) => usePage().props.value.auth.user.reference === user.reference;
 
-function deleteUser(reference) {
-    Inertia.delete(route('my.auth.users.delete', { reference: reference }), {
+function deleteUser(user) {
+    Inertia.delete(route('my.auth.users.delete', { reference: user.reference }), {
         onBefore: () => {
             return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');
         },
@@ -47,7 +47,7 @@ function deleteUser(reference) {
             :data="users"
             :actions="[
                 { type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.users.edit', param: 'reference', icon: PencilSquareIcon, iconText: 'Modifier', condition: () => isAdmin },
-                { type: 'function', function: deleteUser, param: 'reference', icon: TrashIcon, iconText: 'Supprimer', condition: (ref) => (isAdmin && !isCurrentRef(ref)) },
+                { type: 'function', function: deleteUser, icon: TrashIcon, iconText: 'Supprimer', condition: (ref) => (isAdmin && !isCurrentRef(ref)) },
             ]"
             :pagination=true
         />

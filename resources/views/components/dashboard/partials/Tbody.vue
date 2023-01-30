@@ -39,7 +39,7 @@ const actionHover = (action) => {
                         <Link v-if="action.type === 'Link'" :href="route(action.routeName, item[action.param])" :as="action.as" :method="action.method" :class="actionHover(action)">
                             <component :is="action.icon" class="h-5 w-5 flex-shrink-0 self-center" />
                         </Link>
-                        <button v-else @click.prevent="action.function(item[action.param])" :class="actionHover(action)">
+                        <button v-else @click.prevent="action.function" :class="actionHover(action)">
                             <component :is="action.icon" class="h-5 w-5 flex-shrink-0 self-center" />
                         </button>
                     </div>
