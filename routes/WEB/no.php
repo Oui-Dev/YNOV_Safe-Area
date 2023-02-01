@@ -18,31 +18,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// No routes
 Route::group([
-    'as' => "no."
+    'as' => "no.public."
 ], function () {
-    Route::get('/', [StaticViewController::class, 'homepage'])->name('public.homepage');
-    Route::get('/prix', [StaticViewController::class, 'prices'])->name('public.prices');
-    Route::get('/application', [MobileAppController::class, 'create'])->name('public.mobileApp');
-    Route::get('/application/download/android', [MobileAppController::class, 'store'])->name('public.mobileApp.download.android');
-    Route::get('/contact', [ContactController::class, 'create'])->name('public.contact');
-    Route::post('/contact', [ContactController::class, 'store'])->name('public.contact.store');
-    Route::post('/newsletters', [NewsletterController::class, 'store'])->name('public.newsletters.store');
-    Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('public.legal');
-    Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('public.changelog');
+    Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
+    Route::get('/prix', [StaticViewController::class, 'prices'])->name('prices');
+    Route::get('/application', [MobileAppController::class, 'create'])->name('mobileApp');
+    Route::get('/application/download/android', [MobileAppController::class, 'store'])->name('mobileApp.download.android');
+    Route::get('/contact', [ContactController::class, 'create'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    Route::post('/newsletters', [NewsletterController::class, 'store'])->name('newsletters.store');
+    Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('legal');
+    Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('changelog');
 
+    // Login + Logout handling
     Route::group([
-        'middleware' => 'guest'
+        'middleware' => 'guest',
+        'controller' => AuthenticatedSessionController::class
     ], function () {
-        Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('public.login');
-        Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('public.login.store');
+        Route::get('login', 'create')->name('login');
+        Route::post('login', 'store')->name('login.store');
     });
 
-    Route::group([
-        'middleware' => 'auth'
-    ], function () {
-        Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('public.logout');
-    });
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout')->middleware('auth');
 });
 
 

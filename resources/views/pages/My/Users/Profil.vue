@@ -24,7 +24,7 @@ const form = useForm({
 const getInitials = computed(() => props.user.firstname[0] + props.user.lastname[0]);
 
 function submitProfil() {
-    form.put(route("my.auth.dashboard.profil.update"), {
+    form.put(route("my.auth.profil.update"), {
         onStart: () => {
             form.clearErrors();
         },
@@ -32,7 +32,7 @@ function submitProfil() {
 }
 
 function submitPassword() {
-    form.put(route("my.auth.dashboard.profil.password"), {
+    form.put(route("my.auth.profil.password"), {
         onStart: () => {
             form.clearErrors();
         },

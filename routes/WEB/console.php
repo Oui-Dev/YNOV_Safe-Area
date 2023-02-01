@@ -16,15 +16,22 @@ use App\Http\Controllers\My\ProfilController;
 |
 */
 
+// Console routes
 Route::group([
-    'as' => "console.",
+    'as' => "console.auth.",
     'middleware' => ['auth', 'role:root']
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-    Route::get('/profil', [ProfilController::class, 'profil'])->name('auth.dashboard.profil');
-    Route::put('/profil', [ProfilController::class, 'editProfil'])->name('auth.dashboard.profil.update');
-    Route::put('/profil/password', [ProfilController::class, 'editPassword'])->name('auth.dashboard.profil.password');
-
-    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
+    // Profile
+    Route::group([
+        'prefix' => 'profile',
+        'as' => 'profil.',
+        'controller' => ProfilController::class
+    ], function () {
+        Route::get('/', 'profil')->name('show');
+        Route::put('/', 'editProfil')->name('update');
+        Route::put('/password', 'editPassword')->name('password');
+    });
 });

@@ -109,7 +109,7 @@ const getNavData = computed(() => {
                             </template>
 
                             <template #content>
-                                <DropdownLink :href="route((ifUserHasRole('root') ? 'console.' : 'my.') + 'auth.dashboard.profil')">
+                                <DropdownLink :href="route((ifUserHasRole('root') ? 'console.' : 'my.') + 'auth.profil.show')">
                                     Profil
                                 </DropdownLink>
                                 <DropdownLink :href="route('no.public.logout')" as="a">
@@ -155,7 +155,7 @@ const getNavData = computed(() => {
                     Deconnexion
                 </DisclosureButton>
                 <DisclosureButton
-                    as="a" :href="route('my.auth.dashboard.profil')"
+                    as="a" :href="route('my.auth.profil.show')"
                     class="block px-4 py-2">
                     <div class="text-sm font-medium text-gray-800">{{ getUser.lastname }} {{ getUser.firstname }}</div>
                     <div class="text-sm font-medium text-gray-500">{{ getUser.personal_email }}</div>

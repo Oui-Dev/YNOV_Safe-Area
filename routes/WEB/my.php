@@ -18,36 +18,40 @@ use App\Http\Controllers\My\ProfilController;
 |
 */
 
+// My + Admin routes
 Route::group([
-    'as' => "my.",
+    'as' => "my.auth.",
     'middleware' => ['auth', 'role:my|admin']
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
 
-    Route::get('/profil', [ProfilController::class, 'profil'])->name('auth.dashboard.profil');
-    Route::put('/profil', [ProfilController::class, 'editProfil'])->name('auth.dashboard.profil.update');
-    Route::put('/profil/password', [ProfilController::class, 'editPassword'])->name('auth.dashboard.profil.password');
+    // Profile
+    Route::group([
+        'prefix' => 'profile',
+        'as' => 'profil.',
+        'controller' => ProfilController::class
+    ], function () {
+        Route::get('/', 'profil')->name('show');
+        Route::put('/', 'editProfil')->name('update');
+        Route::put('/password', 'editPassword')->name('password');
+    });
 
-    Route::get('/users/list', [UserController::class, 'list'])->name('auth.users.list');
-
-    Route::get('/helpdesk/new', [HelpDeskController::class, 'create'])->name('auth.helpDesk.add');
-    Route::post('/helpdesk/new', [HelpDeskController::class, 'store'])->name('auth.helpDesk.add.post');
+    // Helpdesk
+    Route::group([
+        'prefix' => 'helpDesk',
+        'as' => 'helpDesk.',
+        'controller' => HelpDeskController::class
+    ], function () {
+        Route::get('/new', 'create')->name('add');
+        Route::post('/new', 'store')->name('add.post');
+    });
 });
 
+// Admin routes
 Route::group([
-    'as' => "my.",
+    'as' => "my.auth",
     'middleware' => ['auth', 'role:admin']
 ], function () {
-    Route::get("/users/create", [UserController::class, 'create'])->name('auth.users.create');
-    Route::post("/users/create", [UserController::class, 'store'])->name('auth.users.create.post');
-    Route::get('/users/edit/{user:reference}', [UserController::class, 'edit'])->name('auth.users.edit');
-    Route::put('/users/edit/{user:reference}', [UserController::class, 'editPut'])->name('auth.users.edit.put');
-    Route::delete('/users/delete/{user:reference}', [UserController::class, 'delete'])->name('auth.users.delete');
-
-    Route::get('/complains',[ComplainsController::class , 'list'])->name('auth.complains.list');
-    Route::get('/complains/create',[ComplainsController::class , 'create'])->name('auth.complains.create');
-    Route::post('/complains/create', [ComplainsController::class, 'store'])-> name('auth.complains.create.post');
-    
-    Route::get('/helpdesk', [HelpDeskController::class, 'list'])->name('auth.helpDesk.list');
-    Route::get('/helpdesk/{ticket:id}', [HelpDeskController::class, 'show'])->name('auth.helpDesk.show');
+    require __DIR__ . '/admin.php';
 });
