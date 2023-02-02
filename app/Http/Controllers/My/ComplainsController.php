@@ -9,9 +9,9 @@ use App\Models\ComplainType;
 class ComplainsController extends Controller
 {
     public function create() {
-        $complainsTypeId = ComplainType::all();
+        $complainsTypes = ComplainType::all();
         return inertia('My/Complains/Create', [
-            'complainsTypeId' => $complainsTypeId
+            'complainsTypes' => $complainsTypes
         ]);
     }
     
@@ -46,7 +46,7 @@ class ComplainsController extends Controller
 
     
     public function list() {
-        $complains = Complain::with('user')->with('assignedUser')->paginate(20);
+        $complains = Complain::with('user')->with('assignedUser')->paginate(10);
         return inertia('My/Complains/List', [
             'complains' => $complains,
         ]);

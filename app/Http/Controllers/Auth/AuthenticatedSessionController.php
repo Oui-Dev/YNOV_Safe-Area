@@ -33,7 +33,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if(in_array('root', auth()->user()->roles->pluck('name')->toArray())) {
+            return redirect()->route('console.auth.dashboard.index');
+        } else {
+            return redirect()->route('my.auth.dashboard.index');
+        }
     }
 
 

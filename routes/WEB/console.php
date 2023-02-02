@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Console\DashboardController;
+use App\Http\Controllers\My\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,22 @@ use App\Http\Controllers\Console\DashboardController;
 |
 */
 
+// Console routes
 Route::group([
-    'as' => "console.",
-    'middleware' => ['auth', 'permission:root']
+    'as' => "console.auth.",
+    'middleware' => ['auth', 'role:root']
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
-    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+    // Profile
+    Route::group([
+        'prefix' => 'profile',
+        'as' => 'profil.',
+        'controller' => ProfilController::class
+    ], function () {
+        Route::get('/', 'profil')->name('show');
+        Route::put('/', 'editProfil')->name('update');
+        Route::put('/password', 'editPassword')->name('password');
+    });
 });

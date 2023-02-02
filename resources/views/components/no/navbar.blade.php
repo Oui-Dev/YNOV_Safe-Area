@@ -20,12 +20,18 @@
 
         <div class="button-side">
             @auth
-                <x-form action="{{ route('logout') }}" method="delete"
-                        class="block py-2 pr-4 pl-3 text-base hover:text-safearea-red">
-                    <button type="submit">Déconnexion</button>
-                </x-form>
+                <a href="{{ route('no.public.logout') }}" class="block py-2 pr-4 pl-3 text-base hover:text-safearea-red">
+                    Déconnexion
+                </a>
+                @if (in_array('root', auth()->user()->roles->pluck('name')->toArray()))
+                    <a href="{{ route('console.auth.dashboard.index') }}" class="menu-button">Console</a>
+                @else
+                    <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button">Mon espace</a>
+                @endif
             @endauth
-            <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button">Mon espace</a>
+            @guest
+                <a href="{{ route('no.public.login') }}" class="menu-button">Connexion</a>
+            @endguest
         </div>
     </nav>
 
@@ -41,8 +47,8 @@
             <span class="material-icons" id="sidebarToggle">menu</span>
         </div>
 
-        <div class="absolute top-16 -mt-px right-0 z-10 w-screen max-w-lg">
-            <div class="overflow-hidden shadow-lg rounded-b-lg reduced border-t border-lockanda-gray" id="sidebar">
+        <div id="sidebar" class="reduced">
+            <div class="overflow-hidden shadow-lg rounded-b-lg border-t border-lockanda-gray">
                 <div class="relative grid gap-2 px-5 py-5 text-sm md:text-base">
                     <a href="{{ route('no.public.homepage') }}"
                         class="{{ strpos(Route::currentRouteName(), 'no.public.homepage') !== false ? 'border-b-2 border-safearea-red' : '' }} w-fit py-2">Accueil</a>
@@ -55,10 +61,9 @@
                 </div>
                 <div class="px-5 pb-5 flex justify-around gap-5">
                     @auth
-                        <x-form action="{{ route('logout') }}" method="delete"
-                                class="block py-2 pr-4 pl-3 w-full text-center text-base">
-                            <button type="submit" class="bg-gradient-to-r from-safearea-red to-safearea-blue bg-clip-text text-transparent">Déconnexion</button>
-                        </x-form>
+                        <a href="{{ route('no.public.logout') }}" class="block py-2 pr-4 pl-3 w-full text-center text-base">
+                            <span type="submit" class="bg-gradient-to-r from-safearea-red to-safearea-blue bg-clip-text text-transparent">Déconnexion</span>
+                        </a>
                     @endauth
                     <a href="{{ route('my.auth.dashboard.index') }}" class="menu-button w-full">Mon espace</a>
                 </div>

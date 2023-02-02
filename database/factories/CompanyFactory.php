@@ -2,10 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -31,6 +28,6 @@ class CompanyFactory extends Factory
             'siret'=>fake()->unique()->ean13(),
             'email_verified_at'=>now(),
             'published_at'=>now(),
-            ];
+        ];
     }
 }
