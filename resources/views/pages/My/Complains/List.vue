@@ -1,14 +1,21 @@
 <script setup>
 import DashboardLayout from '../../../layouts/dashboard.vue';
-import { ArrowTopRightOnSquareIcon } from "@heroicons/vue/24/outline";
 import Table from '../../../components/dashboard/Table.vue';
+import { TrashIcon,PencilIcon } from "@heroicons/vue/24/outline";
+import {  usePage } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
+import { computed } from 'vue';
 
+// const currentuser = computed(() => usePage().props.value.auth.user);
 const props = defineProps({
     complains: {
         type: Object,
         required: true,
     }
 });
+
+const isAdmin = computed(() => usePage().props.value.auth.user.roles.some((e) => e === 'admin'));
+const isUser = computed(() => usePage().props.value.auth.user.roles.some((e) => e === 'my'));
 
 const getUser = (complain) => {
 	return complain.user.lastname + " " + complain.user.firstname;
@@ -18,6 +25,20 @@ const getTitle = (complain) => {
 	const strLength = 30;
 	return complain.title.substring(0, strLength) + (complain.title.length > strLength ? "..." : "");
 };
+
+function deleteUser(complain) {
+    Inertia.put(route('my.auth.complains.delete', {id: complain.id}), {}, {
+        onBefore: () => {
+            return confirm('Êtes-vous sûr de vouloir supprimer cette plainte ?');
+        }
+    });
+}
+	
+// Inertia.post(route('emailAccounts.add.generic.review', emailAccount.id), {}, {
+//         preserveScroll: true,
+//         onStart: () => isLoading.value = true,
+//         onFinish: () => isLoading.value = false,
+//     });
 
 const getAssignedUser = (complain) => {
     return complain.assigned_user
@@ -55,19 +76,30 @@ function getStatus(complain) {
 	}
 }
 </script>
-
 <template>
     <DashboardLayout>
 		<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
 			<h1 class="text-xl font-bold text-gray-900">Plaintes</h1>
 		</div>
 
-        <Table
-            :tableTitles="['Dépositaire', 'Titre', 'Assignée à', 'Urgence', 'Status']"
-            :tableKeys="[{function: getUser}, {function: getTitle}, {function: getAssignedUser}, {function: getEmergency}, {function: getStatus}]"
+		<!-- display admin -->
+        <Table v-if="isAdmin"
+			:tableTitles="['Dépositaire' , 'Titre', 'Assignée à', 'Urgence', 'Status']"
+			:tableKeys="[{function: getUser}, {function: getTitle}, {function: getAssignedUser}, {function: getEmergency}, {function: getStatus}]"
+			:data="complains"
+			:actions="[
+				{ type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.complains.list', param: 'id', icon: PencilIcon, iconText: 'Détails'},
+			]"
+            :pagination=true
+		/>
+		<!-- display user -->
+		<Table v-if="isUser"
+            :tableTitles="['Titre', 'Assignée à', 'Status']"
+            :tableKeys="[{function: getTitle}, {function: getAssignedUser}, {function: getStatus}]"
             :data="complains"
             :actions="[
-                // { type: 'Link', as: 'a', method: 'GET', routeName: '#', param: 'id', icon: ArrowTopRightOnSquareIcon, iconText: 'Détails' },
+                { type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.complains.list', param: 'id', icon: PencilIcon, iconText: 'Détails'},
+				{ type: 'function', function: deleteUser, icon: TrashIcon, iconText: 'Supprimer' },
             ]"
             :pagination=true
         />

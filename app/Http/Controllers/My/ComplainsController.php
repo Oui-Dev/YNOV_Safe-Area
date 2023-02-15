@@ -43,12 +43,33 @@ class ComplainsController extends Controller
             'message' => 'Votre plainte a bien été envoyé.'
         ]);
     }
-
-    
     public function list() {
-        $complains = Complain::with('user')->with('assignedUser')->paginate(10);
+        $user = auth()->user();
+        $complains = $user->hasrole("admin")
+            ? Complain::select('*')
+            : $user->complains();
+        
+        $complains = $tmpComplains->with('user')->with('assignedUser')->where('deleted_at', NULL)->paginate(10);
+
         return inertia('My/Complains/List', [
             'complains' => $complains,
         ]);
     }
+    // public function list() {
+    //     $complains = Complain::with('user')->with('assignedUser')->where('deleted_at', NULL)->paginate(20);
+    //     return inertia('My/Complains/List', [
+    //         'complains' => $complains,
+    //     ]);
+    // }
+
+    public function delete(Complain $complain) {
+        $complain->deleted_at=now();
+        $complain->save();
+        return redirect()->route('my.auth.complains.list')->with('toast', [
+            'type' => 'success',
+            'message' => "Plainte supprimée avec succès",
+        ]);
+    }
+
+
 }
