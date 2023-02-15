@@ -5,8 +5,8 @@
         <h2 class="mt-6 mb-6 text-3xl font-bold tracking-tight text-gray-900">Historique des versions</h2>
         <div class="flow-root w-1/2 max-w-3xl">
             <ul role="list" class="-mb-8">
-                @foreach ($versions->reverse() as $version)
-                    <li :key="{{ $version->id }}">
+                @foreach ($versions as $version)
+                    <li :key="{{ $version['id'] }}">
                         <div class="relative pb-8">
                             @if (!$loop->last)
                                 <span class="absolute top-5 left-5 -ml-[5px] h-full w-0.5 bg-gray-200"
@@ -27,14 +27,14 @@
                                     <div>
                                         <p class="font-medium text-gray-900">
                                             Version
-                                            {{ $version->generation }}.{{ $version->revision }}.{{ $version->correction }} ({{ $version->name }})
+                                            {{ $version["generation"] }}.{{ $version["revision"] }}.{{ $version["correction"] }} ({{ $version["name"] }})
 
                                         </p>
-                                        <p class="text-sm text-gray-500">{{ $version->changelog }}</p>
+                                        <p class="text-sm text-gray-500">{{ $version["changelog"] }}</p>
                                     </div>
                                     <div class="whitespace-nowrap text-left text-sm text-gray-500">
                                         <time
-                                            datetime="event.datetime">{{ Carbon\Carbon::parse($version->created_at)->format('d/m/Y') }}</time>
+                                            datetime="event.datetime">{{ Carbon\Carbon::parse($version["created_at"])->format('d/m/Y') }}</time>
                                         @if ($version->is_updated())
                                             <span
                                                 class="text-xs text-gray-400 whitespace-pre-line">{{ "\n(modifié)" }}</span>

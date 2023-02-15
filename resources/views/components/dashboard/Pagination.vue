@@ -1,3 +1,24 @@
+<script setup>
+import {Link} from "@inertiajs/inertia-vue3";
+
+const props = defineProps({
+    paginator: {
+        type: Object,
+        required: true,
+    },
+});
+
+const isDisplayed = (key, link) => {
+    return key > 0 && key < props.paginator.links.length - 1 && !link.active;
+};
+
+const isDisabled = (key) => {
+    return (props.paginator.current_page - 1 === 0 && key === 0)
+        || (props.paginator.current_page === props.paginator.last_page
+        && key === props.paginator.links.length - 1);
+};
+</script>
+
 <template>
     <div v-if="paginator.links.length > 3">
         <div class="flex flex-wrap gap-1 p-1 justify-end">
@@ -14,30 +35,6 @@
         </div>
     </div>
 </template>
-
-<script>
-import {Link} from "@inertiajs/inertia-vue3";
-
-export default {
-    components: {
-        Link,
-    },
-    props: {
-        paginator: {
-            type: Object,
-            required: true,
-        },
-    },
-    methods: {
-        isDisplayed(key, link) {
-            return key > 0 && key < this.paginator.links.length - 1 && !link.active;
-        },
-        isDisabled(key) {
-            return (this.paginator.current_page - 1 === 0 && key === 0) || (this.paginator.current_page === this.paginator.last_page && key === this.paginator.links.length - 1);
-        },
-    },
-};
-</script>
 
 <style lang="scss" scoped>
     .disabled {

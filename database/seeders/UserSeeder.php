@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Company;
-use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Ramsey\Uuid\Uuid;
@@ -19,11 +17,25 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $id = User::create([
+        $root = User::create([
             'reference'=>Uuid::uuid4(),
             'sex'=>0,
-            'firstname'=>'Super',
-            'lastname'=>'Utilisateur',
+            'firstname'=>'Utilisateur',
+            'lastname'=>'Root',
+            'personal_email'=>'hackenathon.systems@gmail.com',
+            'professional_email'=>'hackenathon.systems@gmail.com',
+            'personal_email_verified_at'=>now(),
+            'professional_email_verified_at'=>now(),
+            'phone'=>'0102030405',
+            'identifiant'=>'root',
+            'password'=>Hash::make('Azerty@123'),
+        ]);
+
+        $admin = User::create([
+            'reference'=>Uuid::uuid4(),
+            'sex'=>0,
+            'firstname'=>'Utilisateur',
+            'lastname'=>'Admin',
             'personal_email'=>'hackenathon.systems@gmail.com',
             'professional_email'=>'hackenathon.systems@gmail.com',
             'personal_email_verified_at'=>now(),
@@ -32,27 +44,29 @@ class UserSeeder extends Seeder
             'company_id'=>Company::first()->id,
             'identifiant'=>'admin',
             'password'=>Hash::make('Azerty@123'),
-        ])->id;
+        ]);
 
-       $user = User::find($id);
-       $user->givePermissionTo('root');
-
-        $id = User::create([
+        $user = User::create([
             'reference'=>Uuid::uuid4(),
             'sex'=>1,
-            'firstname'=>'Simple',
-            'lastname'=>'Utilisateur',
+            'firstname'=>'Utilisateur',
+            'lastname'=>'My',
             'personal_email'=>'safearea.app@gmail.com',
             'professional_email'=>'safearea.app@gmail.com',
             'personal_email_verified_at'=>now(),
             'professional_email_verified_at'=>now(),
             'phone'=>'0102030406',
             'company_id'=>Company::first()->id,
-            'identifiant'=>'client',
+            'identifiant'=>'user',
             'password'=>Hash::make('Azerty@123'),
-        ])->id;
+        ]);
 
-        $user = User::find($id);
-        $user->givePermissionTo('my_access');
+        $root->assignRole('root');
+        $admin->assignRole('admin');
+        $user->assignRole('my');
+
+        $root->save();
+        $admin->save();
+        $user->save();
     }
 }

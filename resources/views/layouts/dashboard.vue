@@ -1,30 +1,19 @@
-<template>
-    <section class="min-h-screen">
-        <Toast :toast="$page.props.toast" :popstate="$page.props.popstate" />
-        <DashboardNavbar />
-        <main>
-            <div class="page-container min-h-screen lg:pl-64">
-                <slot />
-            </div>
-        </main>
-    </section>
-</template>
-
-<script>
+<script setup>
 import DashboardNavbar from "../components/dashboard/DashboardNavbar.vue";
 import Toast from "../components/dashboard/Toast.vue";
+import { usePage } from '@inertiajs/inertia-vue3';
+import { computed } from 'vue';
 
-export default {
-    components: {
-        DashboardNavbar,
-        Toast,
-    },
-    props: {
-        pageName: String,
-    }
-};
+const toastProps = computed(() => usePage().props.value.toast);
+const popstate = computed(() => usePage().props.value.popstate);
 </script>
 
-<style lang="scss">
-
-</style>
+<template>
+    <main class="min-h-screen">
+        <Toast :toast="toastProps" :popstate="popstate" />
+        <DashboardNavbar />
+        <section class="max-w-7xl mx-auto p-4 md:p-6 lg:p-8">
+            <slot />
+        </section>
+    </main>
+</template>

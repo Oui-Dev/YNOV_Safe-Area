@@ -95,7 +95,7 @@
                 </tr>
 
                 <tr>
-                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Accès à la <a href="{{route('login')}}">plateforme MY</a></th>
+                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Accès à la <a href="{{route('no.public.login')}}">plateforme MY</a></th>
 
                     <td class="py-5 px-6">
                         <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ESolution\DBEncryption\Traits\EncryptedAttribute;
 
 class Company extends Model
 {
-    use HasFactory, EncryptedAttribute;
+    use HasFactory;
 
     protected $fillable = [
         'id',
@@ -31,7 +30,4 @@ class Company extends Model
     public function users() {
         return $this->hasMany(User::class);
     }
-
-    protected $encryptable = [
-    ];
 }
