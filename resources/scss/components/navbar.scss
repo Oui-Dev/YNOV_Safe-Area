@@ -1,5 +1,5 @@
 #navbar {
-    @apply sticky top-0 w-full z-10 bg-white text-black z-10;
+    @apply sticky top-0 w-full z-10 bg-white text-black;
 
     nav {
         @apply justify-between items-center max-w-7xl h-16 mx-auto px-4 md:px-10;
@@ -41,14 +41,12 @@
         }
 
         #sidebar {
-            @apply bg-white;
-            opacity: 1;
+            @apply bg-white opacity-100 absolute top-16 -mt-px right-0 z-10 w-screen max-w-lg;
             pointer-events: all;
             transition: opacity 400ms ease 0ms;
 
             &.reduced {
-                opacity: 0;
-                pointer-events: none;
+                @apply opacity-0 pointer-events-none;
                 transition: opacity 400ms ease 0ms;
             }
         }

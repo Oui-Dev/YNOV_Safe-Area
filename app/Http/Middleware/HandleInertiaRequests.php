@@ -42,12 +42,13 @@ class HandleInertiaRequests extends Middleware
                 return [
                     'user' => $request->user() ? [
                         'id' => $request->user()->id,
+                        'reference' => $request->user()->reference,
                         'firstname' => $request->user()->firstname,
                         'lastname' => $request->user()->lastname,
-                        'email' => $request->user()->email,
-                        'reference' => $request->user()->reference,
+                        'personal_email' => $request->user()->personal_email,
+                        'profesional_email' => $request->user()->profesional_email,
+                        'phone' => $request->user()->phone,
                         'roles' => $request->user()->getRoleNames(),
-                        'permissions' => $request->user()->getAllPermissions(),
                     ] : null,
                 ];
             },

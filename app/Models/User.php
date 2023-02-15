@@ -58,13 +58,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     protected $encryptable = [
         'label',
     ];
 
     public function company() {
-        return $this->belongsTo(Company::class, 'compagny_id');
+        return $this->belongsTo(Company::class);
     }
 
     public function complains() {
@@ -74,6 +73,11 @@ class User extends Authenticatable
     public function assignedComplains() {
         return $this->hasMany(Complain::class);
     }
+
+    public function helpdeskSupports() {
+        return $this->hasMany(HelpdeskSupport::class);
+    }
+
 
     public function is_blocked() {
         if(!empty($this->blocked_at)){return true;} else {return false;}
@@ -92,5 +96,4 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     }
-
 }

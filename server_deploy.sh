@@ -28,7 +28,7 @@ echo "Deploying application ..."
     npm run build
 
     # Reload PHP to update opcache
-    service php8.1-fpm reload
+    echo $1 | sudo -S service php8.2-fpm reload
 # Exit maintenance mode
 php artisan up
 
