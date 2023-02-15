@@ -67,14 +67,14 @@ cc.run({
             cookie_table: [
               {
                 col1: "cc_cookie",
-                col2: ".safearea.ml",
+                col2: ".safearea.fr",
                 col3: "1 an",
                 col4: "Cookie de sauvegarde des préférences de cookies",
                 is_regex: true
               },
               {
                 col1: "XSRF-TOKEN",
-                col2: "safearea.ml",
+                col2: "safearea.fr",
                 col3: "2 heures",
                 col4: "Token de session",
                 is_regex: true

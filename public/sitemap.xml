@@ -6,37 +6,32 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
     <url>
-        <loc>http://safearea.ml/</loc>
+        <loc>https://safearea.fr/</loc>
         <lastmod>2022-10-28T10:26:20+00:00</lastmod>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>http://safearea.ml/fonctionnalites</loc>
+        <loc>https://safearea.fr/prices</loc>
         <lastmod>2022-10-28T10:26:20+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>http://safearea.ml/prix</loc>
+        <loc>https://safearea.fr/contact</loc>
         <lastmod>2022-10-28T10:26:20+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>http://safearea.ml/contact</loc>
+        <loc>https://safearea.fr/login</loc>
         <lastmod>2022-10-28T10:26:20+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>http://safearea.ml/login</loc>
+        <loc>https://safearea.fr/changelog</loc>
         <lastmod>2022-10-28T10:26:20+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>http://safearea.ml/changelog</loc>
-        <lastmod>2022-10-28T10:26:20+00:00</lastmod>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>http://safearea.ml/mentions-legales</loc>
+        <loc>https://safearea.fr/policy</loc>
         <lastmod>2022-10-28T10:26:20+00:00</lastmod>
         <priority>0.80</priority>
     </url>

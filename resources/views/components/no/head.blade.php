@@ -9,7 +9,7 @@
 
 <meta property="og:title" content="Safe Area @yield('title')">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.safearea.ml">
+<meta property="og:url" content="https://safearea.fr">
 <meta property="og:description" content="Safe Area, votre application entreprise SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs, en respect avec vos données">
 <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
 <meta property="og:image" content="{{Vite::asset('resources/images/logo.webp')}}">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="safearea.ml">
+<meta name="twitter:site" content="safearea.fr">
 <meta name="twitter:title" content="Safe Area @yield('title')">
 <meta name="twitter:description" content="Safe Area, votre application entreprise SAAS sans compromis, pour gérer la sécurité de l'environnement de vos collaborateurs, en respect avec vos données">
 <meta name="twitter:creator" content="@SafeAreaOff">
@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-<link rel="alternate" href="http://safearea.ml/" hreflang="x-default" />
+<link rel="alternate" href="https://safearea.fr/" hreflang="x-default" />
 <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
 <script src="https://flowbite.com/docs/flowbite.js"></script>
