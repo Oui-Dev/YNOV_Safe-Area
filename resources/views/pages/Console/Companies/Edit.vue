@@ -11,7 +11,9 @@ const props = defineProps({
 
 const form = useForm({
     name: props.company.name,
-    address_id: props.company.address_id,
+    address: props.company.address,
+    city: props.company.city,
+    zip_code: props.company.zip_code,
     siret: props.company.siret,
     siren: props.company.siren,
     phone: props.company.phone,
@@ -19,7 +21,7 @@ const form = useForm({
 })
 
 const submit = () => {
-    form.put(route('console.auth.companies.edit.put', { reference: props.company.reference }), {
+    form.put(route('console.auth.companies.edit.put', { reference: props.company.id }), {
         onStart: () => form.clearErrors(),
     });
 }
@@ -36,10 +38,20 @@ const submit = () => {
                         <input id="lastname" v-model="form.name" />
                         <div v-if="form.errors.name" class="form-error-field">{{ form.errors.name }}</div>
                     </div>
-                    <div :class="{ 'form-error-div': form.errors.address_id }">
-                        <label for="Address">Adresse</label>
-                        <input id="Address" v-model="form.address_id" />
-                        <div v-if="form.errors.address_id" class="form-error-field">{{ form.errors.address_id }}</div>
+                    <div :class="{ 'form-error-div': form.errors.address }">
+                        <label for="address">Adresse</label>
+                        <input id="address" v-model="form.address" />
+                        <div v-if="form.errors.address" class="form-error-field">{{ form.errors.address }}</div>
+                    </div>
+                    <div :class="{ 'form-error-div': form.errors.city }">
+                        <label for="city">Ville</label>
+                        <input id="city" v-model="form.city" />
+                        <div v-if="form.errors.city" class="form-error-field">{{ form.errors.city }}</div>
+                    </div>
+                    <div :class="{ 'form-error-div': form.errors.zip_code }">
+                        <label for="zip_code">Code postal</label>
+                        <input id="zip_code" v-model="form.zip_code" />
+                        <div v-if="form.errors.zip_code" class="form-error-field">{{ form.errors.zip_code }}</div>
                     </div>
                     <div :class="{ 'form-error-div': form.errors.siret }">
                         <label for="siret">Siret :</label>

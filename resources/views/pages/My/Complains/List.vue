@@ -18,6 +18,7 @@ const isAdmin = computed(() => usePage().props.value.auth.user.roles.some((e) =>
 const isUser = computed(() => usePage().props.value.auth.user.roles.some((e) => e === 'my'));
 
 const getUser = (complain) => {
+	if(!complain.user) return "Anonyme";
 	return complain.user.lastname + " " + complain.user.firstname;
 };
 

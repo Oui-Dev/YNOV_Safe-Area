@@ -22,27 +22,24 @@ class CompanyController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'address_id' => ['required', 'string', 'max:255'],
-            'city_id' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string', 'max:255'],
+            'zip_code' => ['required', 'string', 'max:255'],
             'siret' => ['required', 'string', 'max:255'],
             'siren' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255'],
         ]);
 
-        $firstPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
-        $secondPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
-        $companyRef = $firstPart . $secondPart;
-
         Company::create([
             'name' => $data['name'],
-            'address_id' => $data['address_id'],
-            'city_id' => $data['city_id'],
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'zip_code' => $data['zip_code'],
             'siret' => $data['siret'],
             'siren' => $data['siren'],
             'phone' => $data['phone'],
             'email' => $data['email'],
-            'reference' => $companyRef,
         ]);
 
         return redirect()->route('console.auth.companies.list')->with('toast', [
@@ -60,7 +57,9 @@ class CompanyController extends Controller
     public function editPut(Company $company) {
         $data = request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'address_id' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string', 'max:255'],
+            'zip_code' => ['required', 'string', 'max:255'],
             'siret' => ['required', 'string', 'max:255'],
             'siren' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
@@ -69,7 +68,9 @@ class CompanyController extends Controller
 
         $company->update([
             'name' => $data['name'],
-            'address_id' => $data['address_id'],
+            'address' => $data['address'],
+            'city' => $data['city'],
+            'zip_code' => $data['zip_code'],
             'siret' => $data['siret'],
             'siren' => $data['siren'],
             'phone' => $data['phone'],

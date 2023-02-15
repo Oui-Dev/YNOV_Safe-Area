@@ -43,8 +43,8 @@ Route::group([
         Route::get('/', 'list')->name('list');
         Route::get('/create', 'create')->name('create');
         Route::post('/create', 'store')->name('create.post');
-        Route::get('/edit/{company:reference}', 'edit')->name('edit');
-        Route::put('/edit/{company:reference}', 'editPut')->name('edit.put');
-        Route::delete('/delete/{company:reference}', 'delete')->name('delete');
+        Route::get('/edit/{company}', 'edit')->name('edit');
+        Route::put('/edit/{company}', 'editPut')->name('edit.put');
+        Route::delete('/delete/{company}', 'delete')->name('delete');
     });
 });

@@ -4,8 +4,9 @@ import { useForm } from "@inertiajs/inertia-vue3";
 
 const form = useForm({
     name: null,
-    address_id: null,
-    city_id: null,
+    address: null,
+    city: null,
+    zip_code: null,
     siret: null,
     siren: null,
     phone: null,
@@ -30,15 +31,20 @@ function submit() {
                         <input id="name" v-model="form.name" />
                         <div v-if="form.errors.name" class="form-error-field">{{form.errors.name }}</div>
                     </div>
-                    <div :class="{'form-error-div': form.errors.address_id}">
+                    <div :class="{'form-error-div': form.errors.address}">
                         <label for="address">Adresse :</label>
-                        <input id="address" v-model="form.address_id" />
-                        <div v-if="form.errors.address_id" class="form-error-field">{{form.errors.address }}</div>
+                        <input id="address" v-model="form.address" />
+                        <div v-if="form.errors.address" class="form-error-field">{{form.errors.address }}</div>
                     </div>
-                    <div :class="{'form-error-div': form.errors.city_id}">
+                    <div :class="{'form-error-div': form.errors.city}">
                         <label for="city">Ville :</label>
-                        <input id="city" v-model="form.city_id" />
-                        <div v-if="form.errors.city_id" class="form-error-field">{{form.errors.city_id }}</div>
+                        <input id="city" v-model="form.city" />
+                        <div v-if="form.errors.city" class="form-error-field">{{form.errors.city }}</div>
+                    </div>
+                    <div :class="{'form-error-div': form.errors.zip_code}">
+                        <label for="zip_code">Code postal :</label>
+                        <input id="zip_code" v-model="form.zip_code" />
+                        <div v-if="form.errors.zip_code" class="form-error-field">{{form.errors.zip_code }}</div>
                     </div>
                     <div :class="{'form-error-div': form.errors.siret}">
                         <label for="phone">Siret :</label>

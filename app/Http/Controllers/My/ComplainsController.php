@@ -49,18 +49,33 @@ class ComplainsController extends Controller
             ? Complain::select('*')
             : $user->complains();
         
-        $complains = $tmpComplains->with('user')->with('assignedUser')->where('deleted_at', NULL)->paginate(10);
+        $complains = $complains->with('assignedUser')->where('deleted_at', NULL)->get();
+        $complains = $complains->map(function($complain) {
+            if(!$complain->is_anonymous) {
+                $complain->load('user');
+            } else {
+                $complain->user_id = null;
+            }
+            return $complain;
+        });
+
+        $page = request()->get('page', 1);
+        $complains = $complains->toArray();
+        $complains = new \Illuminate\Pagination\LengthAwarePaginator(
+            array_slice($complains, ($page - 1) * 10, 10),
+            count($complains),
+            10,
+            $page,
+            [
+                'path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(),
+                'pageName' => 'page',
+            ]
+        );
 
         return inertia('My/Complains/List', [
             'complains' => $complains,
         ]);
     }
-    // public function list() {
-    //     $complains = Complain::with('user')->with('assignedUser')->where('deleted_at', NULL)->paginate(20);
-    //     return inertia('My/Complains/List', [
-    //         'complains' => $complains,
-    //     ]);
-    // }
 
     public function delete(Complain $complain) {
         $complain->deleted_at=now();
