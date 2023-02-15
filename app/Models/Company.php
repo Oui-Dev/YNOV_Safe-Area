@@ -27,7 +27,8 @@ class Company extends Model
         'updated_at',
     ];
 
-    public function users() {
+    public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(User::class);
     }
 }

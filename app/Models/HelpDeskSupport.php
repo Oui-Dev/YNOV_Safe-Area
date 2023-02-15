@@ -23,7 +23,7 @@ class HelpdeskSupport extends Model
         'archived_at',
     ];
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
         return $this->belongsTo(User::class);
     }

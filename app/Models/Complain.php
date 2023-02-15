@@ -25,15 +25,18 @@ class Complain extends Model
         'deleted_at',
     ];
 
-    public function complainType() {
+    public function complainType(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
         return $this->belongsTo(ComplainType::class);
     }
 
-    public function user() {
+    public function user(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function assignedUser() {
+    public function assignedUser(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
         return $this->belongsTo(User::class, 'assigned_to');
     }
 }
