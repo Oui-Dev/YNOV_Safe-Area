@@ -15,16 +15,17 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->uuid('reference')->unique();
             $table->string('name')->unique();
-            $table->text('address_id');
-            $table->text('city_id');
+            $table->text('address');
+            $table->string('city');
+            $table->string('zip_code');
             $table->string('siren')->unique();
             $table->string('siret')->unique();
             $table->string('phone')->unique();
             $table->string('email')->unique();
-            $table->unsignedBigInteger('user_id')->nullable(); //Society owner
-            $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedBigInteger('user_id')
+                ->onDelete('cascade')
+                ->nullable(); //Society owner
             $table->timestamp('published_at')->nullable();
             $table->timestamp('archived_at')->nullable();
             $table->timestamps();

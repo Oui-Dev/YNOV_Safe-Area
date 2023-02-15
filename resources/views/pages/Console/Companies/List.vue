@@ -7,11 +7,10 @@ import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
     companies: {
-        type: Array,
+        type: Object,
         required: true
     }
 });
-
 
 function deleteCompany(company) {
     Inertia.delete(route('console.auth.companies.delete', { reference: company.reference }), {
@@ -23,34 +22,30 @@ function deleteCompany(company) {
         }
     });
 }
-
-
 </script>
 
 <template>
     <DashboardLayout>
-        <div class="px-4 mt-3 sm:px-6 lg:px-8">
-            <Link :href="route('console.auth.companies.create')"
-                class="float-right items-center rounded-md border border-transparent bg-safearea-blue px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
-            Ajouter une entreprise</Link>
-            <div class="sm:flex sm:items-center">
-                <div class="sm:flex-auto">
-                    <h1 class="text-xl font-semibold text-gray-900">Entreprises</h1>
-                </div>
-            </div>
+		<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+			<h1 class="text-xl font-bold text-gray-900">Entreprises</h1>
+			<Link :href="route('console.auth.companies.create')"
+				class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2"
+			>
+				<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
+				<span>Ajouter une entreprise</span>
+			</Link>
+		</div>
 
-            <Table 
-                :tableTitles="['Nom', 'Adresse',  'Siret', 'Siren', 'Téléphone', 'Email']"
-                :tableKeys="['name', 'address_id', 'siret', 'siren', 'phone', 'email']"
-                :data="companies"
-                :actions="[
-                    {type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.companies.edit', param: 'reference', icon: PencilSquareIcon, iconText: 'Modifier'},
-                    {type: 'function', function: deleteCompany, icon: TrashIcon, iconText: 'Supprimer' }
-                ]"
-                :pagination=true
-            />
-
-        </div>
+        <Table 
+            :tableTitles="['Nom', 'Adresse',  'Siret', 'Siren', 'Téléphone', 'Email']"
+            :tableKeys="['name', 'address_id', 'siret', 'siren', 'phone', 'email']"
+            :data="companies"
+            :actions="[
+                {type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.companies.edit', param: 'reference', icon: PencilSquareIcon, iconText: 'Modifier'},
+                {type: 'function', function: deleteCompany, icon: TrashIcon, iconText: 'Supprimer' }
+            ]"
+            :pagination=true
+        />
     </DashboardLayout>
 </template>
 

@@ -20,9 +20,7 @@ const form = useForm({
 
 const submit = () => {
     form.put(route('console.auth.companies.edit.put', { reference: props.company.reference }), {
-        onStart: () => {
-            form.clearErrors();
-        }
+        onStart: () => form.clearErrors(),
     });
 }
 </script>

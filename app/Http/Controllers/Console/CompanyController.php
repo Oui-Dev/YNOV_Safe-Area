@@ -7,9 +7,16 @@ use App\Models\Company;
 
 class CompanyController extends Controller
 {
-    public function create()
-    {
-        return Inertia('Console/Companies/Create');
+    public function list() {
+        $companies = Company::paginate(10);
+
+        return inertia('Console/Companies/List', [
+            'companies' => $companies,
+        ]);
+    }
+
+    public function create() {
+        return Inertia('Console/Companies/Add');
     }
 
     public function store() {
@@ -36,19 +43,11 @@ class CompanyController extends Controller
             'phone' => $data['phone'],
             'email' => $data['email'],
             'reference' => $companyRef,
-            
         ]);
 
         return redirect()->route('console.auth.companies.list')->with('toast', [
             'type' => 'success',
             'message' => "L'entreprise a bien été crée.",
-        ]);
-    }
-
-    public function list() {
-        $companies = Company::paginate(20);
-        return inertia('Console/Companies/List', [
-            'companies' => $companies,
         ]);
     }
 
@@ -76,8 +75,6 @@ class CompanyController extends Controller
             'phone' => $data['phone'],
             'email' => $data['email'],
         ]);
-
-        $company->save();
 
         return redirect()->route('console.auth.companies.list')->with('toast', [
             'type' => 'success',
