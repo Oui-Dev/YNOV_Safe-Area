@@ -52,7 +52,7 @@ Route::group([
 
 // Admin routes
 Route::group([
-    'as' => "my.auth",
+    'as' => "my.auth.",
     'middleware' => ['auth', 'role:admin']
 ], function () {
     require __DIR__ . '/admin.php';
