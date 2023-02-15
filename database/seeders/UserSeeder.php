@@ -41,7 +41,6 @@ class UserSeeder extends Seeder
             'personal_email_verified_at'=>now(),
             'professional_email_verified_at'=>now(),
             'phone'=>'0102030405',
-            'company_id'=>Company::first()->id,
             'identifiant'=>'admin',
             'password'=>Hash::make('Azerty@123'),
         ]);
@@ -56,10 +55,15 @@ class UserSeeder extends Seeder
             'personal_email_verified_at'=>now(),
             'professional_email_verified_at'=>now(),
             'phone'=>'0102030406',
-            'company_id'=>Company::first()->id,
             'identifiant'=>'user',
             'password'=>Hash::make('Azerty@123'),
         ]);
+
+        Company::factory()->create(['owner_id'=>$admin->id]);
+        $company = Company::first();
+
+        $admin->company_id = $company->id;
+        $user->company_id = $company->id;
 
         $root->assignRole('root');
         $admin->assignRole('admin');
