@@ -34,12 +34,14 @@ Route::group([
         Route::put('/password', 'editPassword')->name('password');
     });
 
+    // Companies
     Route::group([
-        'as' => "company.",
-        'middleware' => ['auth', 'permission:root']
+        'prefix' => 'companies',
+        'as' => "companies.",
+        'controller' => CompanyController::class,
     ], function () {
-        Route::get('companies', [CompanyController::class, 'list'])->name('auth.companies.list');
-        Route::get('companies/create', [CompanyController::class, 'create'])->name('auth.companies.create');
-        Route::post('companies/create', [CompanyController::class, 'store'])->name('auth.companies.create.post');
+        Route::get('/', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('create.post');
     });
 });
