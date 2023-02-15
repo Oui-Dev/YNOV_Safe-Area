@@ -4,7 +4,7 @@ set -e
 echo "Deploying application ..."
 
 # Enter maintenance mode
-(echo $1 | sudo -S php artisan down) || true
+( echo $1 | sudo -S php artisan down ) || true
     # Update codebase
     echo $1 | sudo -S git reset --hard
     git pull origin prod
