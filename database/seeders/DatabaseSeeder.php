@@ -23,13 +23,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         if(config('app.env') === 'local') {
-            Company::factory()->count(23)->create();
-
             $this->call([
                 UserSeeder::class,
                 ComplainTypeSeeder::class,
             ]);
 
+            Company::factory()->count(23)->create();
             User::factory()->count(93)->create();
             Complain::factory()->count(42)->create();
             HelpDeskSupport::factory()->count(13)->create();

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,6 +27,7 @@ class CompanyFactory extends Factory
             'siren'=>fake()->unique()->ean8(),
             'siret'=>fake()->unique()->ean13(),
             'published_at'=>now(),
+            'owner_id'=>User::find(1)->id,
         ];
     }
 }

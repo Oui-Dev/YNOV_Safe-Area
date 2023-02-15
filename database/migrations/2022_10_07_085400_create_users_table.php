@@ -33,6 +33,13 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies');
         });
+
+        Schema::table('companies', function (Blueprint $table) {
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+        });
     }
 
     /**
@@ -42,6 +49,11 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('companies', function (Blueprint $table) {
+            $table->dropForeign(['owner_id']);
+            $table->dropColumn('owner_id');
+        });
+
         Schema::dropIfExists('users');
     }
 };

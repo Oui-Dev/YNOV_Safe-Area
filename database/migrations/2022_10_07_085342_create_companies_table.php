@@ -23,9 +23,6 @@ return new class extends Migration
             $table->string('siret')->unique();
             $table->string('phone')->unique();
             $table->string('email')->unique();
-            $table->foreignId('owner_id')
-                ->constrained('users')
-                ->onDelete('cascade');
             $table->timestamp('published_at')->nullable();
             $table->timestamp('archived_at')->nullable();
             $table->timestamps();
