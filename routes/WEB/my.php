@@ -25,7 +25,20 @@ Route::group([
 ], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
+    // Route::get('/complains/list',[ComplainsController::class , 'list'])->name('complains.list');
+    // Route::put('/complains/delete/{complain}', [ComplainsController::class, 'delete'])->name('complains.delete');
 
+
+    //complain
+    Route::group([
+        'prefix' => 'complains' , 
+        'as' => 'complains.',
+        'controller' => ComplainsController::class
+    ], function () {
+        Route::put('/delete/{complain}', [ComplainsController::class, 'delete'])->name('delete');
+        Route::get('/list',[ComplainsController::class , 'list'])->name('list');
+        }
+    );
     // Profile
     Route::group([
         'prefix' => 'profile',
@@ -36,7 +49,6 @@ Route::group([
         Route::put('/', 'editProfil')->name('update');
         Route::put('/password', 'editPassword')->name('password');
     });
-
     // Helpdesk
     Route::group([
         'prefix' => 'helpDesk',
@@ -47,6 +59,7 @@ Route::group([
         Route::post('/new', 'store')->name('add.post');
     });
 });
+
 
 // Admin routes
 Route::group([

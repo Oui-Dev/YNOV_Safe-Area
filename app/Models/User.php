@@ -62,24 +62,33 @@ class User extends Authenticatable
         'label',
     ];
 
-    public function company() {
+    public function company(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
         return $this->belongsTo(Company::class);
     }
 
-    public function complains() {
+    public function companyOwner(): \Illuminate\Database\Eloquent\Relations\hasOne
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    public function complains(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
         return $this->hasMany(Complain::class);
     }
 
-    public function assignedComplains() {
+    public function assignedComplains(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
         return $this->hasMany(Complain::class);
     }
 
-    public function helpdeskSupports() {
+    public function helpdeskSupports(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
         return $this->hasMany(HelpdeskSupport::class);
     }
 
 
-    public function is_blocked() {
+    public function is_blocked(){
         if(!empty($this->blocked_at)){return true;} else {return false;}
     }
     public function is_archived() {
@@ -91,6 +100,7 @@ class User extends Authenticatable
     public function is_professional_email_verified() {
         if(!empty($this->professional_email_verified_at)){return true;} else {return false;}
     }
+    
 
     public function setPasswordAttribute($password)
     {

@@ -11,23 +11,28 @@ class Company extends Model
 
     protected $fillable = [
         'id',
-        'reference',
         'name',
-        'address_id',
-        'city_id',
+        'address',
+        'city',
+        'zip_code',
         'siren',
         'siret',
         'email',
         'phone',
-        'email_verified_at',
-        'user_owner',
+        'owner_id',
         'published_at',
         'archived_at',
         'created_at',
         'updated_at',
     ];
 
-    public function users() {
+    public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(User::class);
+    }
+
+    public function owner(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }
