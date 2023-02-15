@@ -23,13 +23,13 @@ Route::group([
     'as' => "no.public."
 ], function () {
     Route::get('/', [StaticViewController::class, 'homepage'])->name('homepage');
-    Route::get('/prix', [StaticViewController::class, 'prices'])->name('prices');
-    Route::get('/application', [MobileAppController::class, 'create'])->name('mobileApp');
-    Route::get('/application/download/android', [MobileAppController::class, 'store'])->name('mobileApp.download.android');
+    Route::get('/prices', [StaticViewController::class, 'prices'])->name('prices');
+    Route::get('/app', [MobileAppController::class, 'create'])->name('mobileApp');
+    Route::get('/app/download/android', [MobileAppController::class, 'store'])->name('mobileApp.download.android');
     Route::get('/contact', [ContactController::class, 'create'])->name('contact');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
     Route::post('/newsletters', [NewsletterController::class, 'store'])->name('newsletters.store');
-    Route::get('/mentions-legales', [StaticViewController::class, 'showLegal'])->name('legal');
+    Route::get('/policy', [StaticViewController::class, 'showLegal'])->name('legal');
     Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('changelog');
 
     // Login + Logout handling
