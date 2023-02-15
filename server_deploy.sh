@@ -6,7 +6,7 @@ echo "Deploying application ..."
 # Enter maintenance mode
 (php artisan down) || true
     # Update codebase
-    git reset --hard
+    echo $1 | sudo -S git reset --hard
     git pull origin prod
     npm install
 
@@ -28,7 +28,7 @@ echo "Deploying application ..."
     npm run build
 
     # Reload PHP to update opcache
-    service php8.2-fpm reload
+    echo $1 | sudo -S service php8.2-fpm reload
 # Exit maintenance mode
 php artisan up
 
