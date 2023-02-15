@@ -19,9 +19,29 @@ class HelpDeskController extends Controller
         return inertia('My/HelpDesk/Add');
     }
 
+    public function update(HelpdeskSupport $ticket) {
+        $data = request()->validate([
+            // 'status' => ['required','boolean'],
+            'assigned_to' => ['required','integer'],
+        ]);
+
+        $ticket->update([
+            // 'status' => $data['status'],
+            'assigned_to' => $data['assigned_to'],
+        ]);
+    }
+
     public function show(HelpdeskSupport $ticket) {
-        return inertia('My/HelpDesk/Show', [
+        return inertia('Console/HelpDesk/Show', [
             'ticket' => $ticket::with('user')->find($ticket->id),
+            'users' => User::role('root')->get(),
+            'statuses' => [
+                ['id' => 0, 'name' => 'nouveau'],
+                ['id' => 1, 'name' => 'en cours'],
+                ['id' => 2, 'name' => 'atribue'],
+                ['id' => 3, 'name' => 'termine'],
+                ['id' => 4, 'name' => 'clos'],
+            ],
         ]);
     }
 

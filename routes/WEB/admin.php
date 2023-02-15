@@ -47,5 +47,4 @@ Route::group([
     'controller' => HelpDeskController::class
 ], function () {
     Route::get('/', 'list')->name('list');
-    Route::get('/{ticket:id}', 'show')->name('show');
 });

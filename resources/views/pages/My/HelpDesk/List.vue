@@ -1,8 +1,9 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import { ArrowTopRightOnSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
 import Table from '../../../components/dashboard/Table.vue';
-import { Link } from '@inertiajs/inertia-vue3';
+import { computed } from 'vue';
+import { ArrowTopRightOnSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import { Link, usePage } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
 	tickets: {
@@ -10,6 +11,8 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const isRoot = computed(() => usePage().props.value.auth.user.roles.some((role) => role === 'root'));
 
 const getUser = (ticket) => {
 	if (!ticket.user) return "Utilisateur supprimé";
@@ -56,7 +59,8 @@ function getStatus(ticket) {
 	<DashboardLayout>
 		<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
 			<h1 class="text-xl font-bold text-gray-900">Tickets de support</h1>
-			<Link :href="route('my.auth.helpDesk.add')"
+			<Link v-if="!isRoot" 
+				:href="route('my.auth.helpDesk.add')"
 				class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2"
 			>
 				<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
@@ -69,7 +73,7 @@ function getStatus(ticket) {
 			:tableKeys="['reference', {function: getDate}, {function: getSubject}, {function: getUser}, {function: getType}, {function: getStatus}]"
 			:data="tickets"
 			:actions="[
-				{ type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.helpDesk.show', param: 'id', icon: ArrowTopRightOnSquareIcon, iconText: 'Détails' },
+	{ type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.helpDesk.show', param: 'id', icon: ArrowTopRightOnSquareIcon, iconText: 'Détails', condition: () => isRoot },
 			]"
 			:pagination=true
 		/>
