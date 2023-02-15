@@ -23,11 +23,22 @@ Route::group([
     'as' => "my.auth.",
     'middleware' => ['auth', 'role:my|admin']
 ], function () {
-    Route::put('/complains/list/delete/{complain:id}', [ComplainsController::class, 'delete'])->name('auth.complains.list.delete');
-    Route::get('/complains/list',[ComplainsController::class , 'list'])->name('auth.complains.list');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
+    // Route::get('/complains/list',[ComplainsController::class , 'list'])->name('complains.list');
+    // Route::put('/complains/delete/{complain}', [ComplainsController::class, 'delete'])->name('complains.delete');
 
+
+    //complain
+    Route::group([
+        'prefix' => 'complains' , 
+        'as' => 'complains.',
+        'controller' => ComplainsController::class
+    ], function () {
+        Route::put('/delete/{complain}', [ComplainsController::class, 'delete'])->name('delete');
+        Route::get('/list',[ComplainsController::class , 'list'])->name('list');
+        }
+    );
     // Profile
     Route::group([
         'prefix' => 'profile',
