@@ -14,4 +14,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: 'cd ../../var/www/safe-area-web && sh ./server_deploy.sh' ${{ secrets.SSH_PASSWORD }}
+          script: 'cd ../../var/www/safe-area-web && sh ./server_deploy.sh ${{ secrets.SSH_PASSWORD }}'
