@@ -68,7 +68,7 @@ export default {
      },
      methods: {
          submit() {
-             this.form.post(route('console.auth.companies.post'), {
+             this.form.post(route('console.auth.companies.create.post'), {
                 onStart: () => this.form.reset('submitting'),
              });
          }
