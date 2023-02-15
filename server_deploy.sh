@@ -4,9 +4,9 @@ set -e
 echo "Deploying application ..."
 
 # Enter maintenance mode
-( echo $1 | sudo -S php artisan down ) || true
+(php artisan down ) || true
     # Update codebase
-    echo $1 | sudo -S git reset --hard
+    git reset --hard
     git pull origin prod
     npm install
 
@@ -27,6 +27,6 @@ echo "Deploying application ..."
     # Reload PHP to update opcache
     echo $1 | sudo -S service php8.2-fpm reload
 # Exit maintenance mode
-echo $1 | sudo -S php artisan up
+php artisan up
 
 echo "Application deployed!"
