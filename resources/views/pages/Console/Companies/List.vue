@@ -3,6 +3,7 @@ import { TrashIcon, PencilSquareIcon, PlusIcon } from "@heroicons/vue/24/outline
 import { Link } from '@inertiajs/inertia-vue3';
 import Table from '../../../components/dashboard/Table.vue';
 import DashboardLayout from '../../../layouts/dashboard.vue';
+import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
     companies: {
@@ -10,6 +11,18 @@ const props = defineProps({
         required: true
     }
 });
+
+
+function deleteCompany(company) {
+    Inertia.delete(route('console.auth.companies.delete', { reference: company.reference }), {
+        onBefore: () => {
+            return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');
+        },
+        onSuccess: () => {
+            Inertia.reload({ only: ['companies'] });
+        }
+    });
+}
 
 
 </script>
@@ -31,7 +44,8 @@ const props = defineProps({
                 :tableKeys="['name', 'address_id', 'siret', 'siren', 'phone', 'email']"
                 :data="companies"
                 :actions="[
-                    {type : 'Link', as: 'a', method: 'GET', routeName: 'console.auth.companies.edit', param: 'reference', icon: PencilSquareIcon, iconText: 'Modifier'}
+                    {type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.companies.edit', param: 'reference', icon: PencilSquareIcon, iconText: 'Modifier'},
+                    {type: 'function', function: deleteCompany, icon: TrashIcon, iconText: 'Supprimer' }
                 ]"
                 :pagination=true
             />

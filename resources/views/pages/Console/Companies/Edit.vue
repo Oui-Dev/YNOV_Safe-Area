@@ -9,8 +9,6 @@ const props = defineProps({
     },
 });
 
-console.log(props.company);
-
 const form = useForm({
     name: props.company.name,
     address_id: props.company.address_id,
