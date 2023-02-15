@@ -87,10 +87,10 @@ class CompanyController extends Controller
 
     public function delete(Company $company) {
         $company->delete();
+
         return redirect()->back()->with('toast', [
             'type' => 'success',
             'message' => "L'entreprise a bien été supprimé.",
         ]);
     }
-
 }
