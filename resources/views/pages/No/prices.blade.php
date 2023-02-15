@@ -32,8 +32,9 @@
                             <div>
                                 <p>
                                     <span class="text-4xl font-bold tracking-tight text-gray-900">19 €</span>
-                                    <span class="text-base font-medium text-gray-500">/mois + prix utilisateurs</span>
+                                    <span class="text-base font-medium text-gray-500">/mois</span>
                                 </p>
+                                <p class="text-base font-normal text-gray-500">+ prix utilisateurs</p>
                                 <p class="mt-4 text-sm text-gray-500">Utile pour les TPE ayant besoins de l'essentiel</p>
                             </div>
                         </div>
@@ -44,8 +45,9 @@
                             <div>
                                 <p>
                                     <span class="text-4xl font-bold tracking-tight text-gray-900">39 €</span>
-                                    <span class="text-base font-medium text-gray-500">/mois + prix utilisateurs</span>
+                                    <span class="text-base font-medium text-gray-500">/mois</span>
                                 </p>
+                                <p class="text-base font-normal text-gray-500">+ prix utilisateurs</p>
                                 <p class="mt-4 text-sm text-gray-500">Idéale pour les PME, avec une gestion améliorée</p>
                             </div>
                         </div>
@@ -56,8 +58,9 @@
                             <div>
                                 <p>
                                     <span class="text-4xl font-bold tracking-tight text-gray-900">59 €</span>
-                                    <span class="text-base font-medium text-gray-500">/mois + prix utilisateurs</span>
+                                    <span class="text-base font-medium text-gray-500">/mois</span>
                                 </p>
+                                <p class="text-base font-normal text-gray-500">+ prix utilisateurs</p>
                                 <p class="mt-4 text-sm text-gray-500">Pour les grandes entreprises, avec une gestion détaillée</p>
                             </div>
                         </div>
