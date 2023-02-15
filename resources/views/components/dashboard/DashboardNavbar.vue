@@ -51,6 +51,10 @@ const adminNavigation = [
 const consoleNavigation = [
     {name: "Dashboard", href: "console.auth.dashboard.index"},
     {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
+    {type: "dropdown", name: "Entreprises", items: [
+        {name: "Liste", description: "Liste des entreprises.", href: "console.auth.companies.list", icon: Bars3Icon},
+        {name: "Ajout", description: "Ajouter une entreprise.", href: "console.auth.companies.create", icon: UserPlusIcon},
+    ]},
 ];
 
 const getUser = computed(() => usePage().props.value.auth.user);
