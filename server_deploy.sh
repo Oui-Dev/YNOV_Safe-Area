@@ -4,7 +4,7 @@ set -e
 echo "Deploying application ..."
 
 # Enter maintenance mode
-(php artisan down) || true
+(echo $1 | sudo -S php artisan down) || true
     # Update codebase
     echo $1 | sudo -S git reset --hard
     git pull origin prod
@@ -15,21 +15,18 @@ echo "Deploying application ..."
 
     # Migrate database
     php artisan migrate --force
-    php artisan optimize:clear
+    php artisan optimize
 
     php artisan ziggy:generate
 
     # Note: If you're using queue workers, this is the place to restart them.
     # ...
 
-    # Clear cache
-    php artisan optimize
-
     npm run build
 
     # Reload PHP to update opcache
     echo $1 | sudo -S service php8.2-fpm reload
 # Exit maintenance mode
-php artisan up
+echo $1 | sudo -S php artisan up
 
 echo "Application deployed!"
