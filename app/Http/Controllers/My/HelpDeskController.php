@@ -21,7 +21,7 @@ class HelpDeskController extends Controller
 
     public function show(HelpdeskSupport $ticket) {
         return inertia('My/HelpDesk/Show', [
-            'ticket' => $ticket,
+            'ticket' => $ticket::with('user')->find($ticket->id),
         ]);
     }
 
