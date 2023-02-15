@@ -8,8 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Mail\ConfirmEmail;
 use App\Models\User;
 use Illuminate\Support\Str;
-use Redirect;
-
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -25,7 +24,10 @@ class UserController extends Controller
     }
 
     public function create() {
-        return inertia('My/Users/Create');
+        $roles = Role::all();
+        return inertia('My/Users/Create', [
+            'roles' => $roles,
+        ]);
     }
 
     public function store() {
@@ -101,4 +103,6 @@ class UserController extends Controller
             'message' => "L'utilisateur a bien été supprimé.",
         ]);
     }
+
+    
 }

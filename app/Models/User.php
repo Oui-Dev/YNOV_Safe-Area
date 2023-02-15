@@ -82,7 +82,6 @@ class User extends Authenticatable
         return $this->hasMany(HelpdeskSupport::class);
     }
 
-
     public function is_blocked(){
         if(!empty($this->blocked_at)){return true;} else {return false;}
     }
