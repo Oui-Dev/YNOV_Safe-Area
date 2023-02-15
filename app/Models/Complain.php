@@ -13,8 +13,8 @@ class Complain extends Model
         'title',
         'content',
         'screen_url',
-        'status',
-        'urgency',
+        'status_id',
+        'is_urgent',
         'user_id',
         'user_reference',
         'complain_type_id',
@@ -38,5 +38,10 @@ class Complain extends Model
     public function assignedUser(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
         return $this->belongsTo(User::class, 'assigned_to');
+    }
+
+    public function status(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTo(Status::class);
     }
 }

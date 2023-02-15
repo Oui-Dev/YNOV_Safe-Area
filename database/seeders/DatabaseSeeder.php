@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             VersionSeeder::class,
+            StatusSeeder::class,
         ]);
 
         if(config('app.env') === 'local') {
