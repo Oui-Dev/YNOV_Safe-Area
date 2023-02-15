@@ -3,7 +3,7 @@ import DashboardLayout from '../../../layouts/dashboard.vue';
 import { ArrowTopRightOnSquareIcon } from "@heroicons/vue/24/outline";
 import Table from '../../../components/dashboard/Table.vue';
 
-const currentuser = computed(() => usePage().props.value.auth.user);
+// const currentuser = computed(() => usePage().props.value.auth.user);
 const props = defineProps({
     complains: {
         type: Object,

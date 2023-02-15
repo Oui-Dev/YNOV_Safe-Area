@@ -46,13 +46,20 @@ class ComplainsController extends Controller
     }
 
     
-    public function list() {
-        $user = auth()->user();
-        $complains = $user->hasPermissionTo("admin_access")
-            ? Complain::select('*')
-            : $user->complains();
+    // public function list() {
+    //     $user = auth()->user();
+    //     $complains = $user->hasrol("admin_access")
+    //         ? Complain::select('*')
+    //         : $user->complains();
 
-        $complains = $complains->with('user')->with('assignedUser')->where('deleted_at', NULL)->paginate(20);
+    //     $complains = $complains->with('user')->with('assignedUser')->where('deleted_at', NULL)->paginate(20);
+    //     return inertia('My/Complains/List', [
+    //         'complains' => $complains,
+    //     ]);
+    // }
+
+    public function list() {
+        $complains = Complain::with('user')->with('assignedUser')->paginate(20);
         return inertia('My/Complains/List', [
             'complains' => $complains,
         ]);
