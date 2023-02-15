@@ -18,8 +18,7 @@
         "maatwebsite/excel": "^3.1",
         "sentry/sentry-laravel": "^3.1",
         "spatie/laravel-permission": "^5.5",
-        "tightenco/ziggy": "^1.5",
-      "ext-http": "*"
+        "tightenco/ziggy": "^1.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
