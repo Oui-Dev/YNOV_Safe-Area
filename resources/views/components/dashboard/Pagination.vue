@@ -24,7 +24,7 @@ const isDisabled = (key) => {
         <div class="flex flex-wrap gap-1 p-1 justify-end">
             <template v-for="(link, key) in paginator.links" :key="`link-${key}`">
                 <Link
-                class="bg-white px-4 py-3 text-sm leading-4 border rounded" :href="link.url" v-html="link.label"
+                class="px-4 py-3 text-sm leading-4 border rounded" :href="link.url" v-html="link.label"
                 :class="{
                     'bg-safearea-blue text-white': link.active,
                     'hover:text-safearea-red': !link.active,
