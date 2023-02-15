@@ -14,7 +14,8 @@ class ComplainType extends Model
         'slug'
     ];
 
-    public function complains() {
+    public function complains(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
         return $this->hasMany(Complain::class);
     }
 }

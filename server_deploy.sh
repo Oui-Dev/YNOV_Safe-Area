@@ -4,7 +4,7 @@ set -e
 echo "Deploying application ..."
 
 # Enter maintenance mode
-(php artisan down) || true
+(php artisan down ) || true
     # Update codebase
     git reset --hard
     git pull origin prod
@@ -15,15 +15,12 @@ echo "Deploying application ..."
 
     # Migrate database
     php artisan migrate --force
-    php artisan optimize:clear
+    php artisan optimize
 
     php artisan ziggy:generate
 
     # Note: If you're using queue workers, this is the place to restart them.
     # ...
-
-    # Clear cache
-    php artisan optimize
 
     npm run build
 
@@ -32,4 +29,4 @@ echo "Deploying application ..."
 # Exit maintenance mode
 php artisan up
 
-echo "Application deployed!"
+echo "Application deployed !"
