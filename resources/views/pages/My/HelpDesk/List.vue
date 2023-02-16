@@ -1,4 +1,5 @@
 <script setup>
+
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import Table from '../../../components/dashboard/Table.vue';
 import { computed } from 'vue';
@@ -7,6 +8,10 @@ import { Link, usePage } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
 	tickets: {
+		type: Object,
+		required: true,
+	},
+	statuses: {
 		type: Object,
 		required: true,
 	},
@@ -38,20 +43,8 @@ function getType(ticket) {
 }
 
 function getStatus(ticket) {
-	switch (ticket.status) {
-		case "nouveau":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' title='Nouveau' />";
-		case "attribue":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-blue-600' title='Attribué' />";
-		case "en cours":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-yellow-600' title='En cours' />";
-		case "termine":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-slate-600' title='Terminé' />";
-		case "clos":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-gray-600' title='Clos' />";
-		default:
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' title='Nouveau' />";
-	}
+	const status = props.statuses.find((status) => status.id === ticket.status_id);
+	return ("<div class='h-4 w-4 rounded-full mx-auto "+status.color+"' title='"+status.name+"'/>");
 }
 </script>
 
@@ -59,7 +52,7 @@ function getStatus(ticket) {
 	<DashboardLayout>
 		<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
 			<h1 class="text-xl font-bold text-gray-900">Tickets de support</h1>
-			<Link v-if="!isRoot" 
+			<Link v-if="!isRoot"
 				:href="route('my.auth.helpDesk.add')"
 				class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2"
 			>

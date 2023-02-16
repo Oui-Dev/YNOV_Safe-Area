@@ -5,6 +5,7 @@ namespace App\Http\Controllers\My;
 use App\Http\Controllers\Controller;
 // use Illuminate\Support\Facades\Storage;
 use App\Models\HelpDeskSupport;
+use App\Models\Status;
 use App\Models\User;
 
 class HelpDeskController extends Controller
@@ -12,6 +13,7 @@ class HelpDeskController extends Controller
     public function list() {
         return inertia('My/HelpDesk/List', [
             'tickets' => HelpDeskSupport::with('user')->paginate(10),
+            'statuses' => Status::all(),
         ]);
     }
 
@@ -35,13 +37,6 @@ class HelpDeskController extends Controller
         return inertia('Console/HelpDesk/Show', [
             'ticket' => $ticket::with('user')->find($ticket->id),
             'users' => User::role('root')->get(),
-            'statuses' => [
-                ['id' => 0, 'name' => 'nouveau'],
-                ['id' => 1, 'name' => 'en cours'],
-                ['id' => 2, 'name' => 'atribue'],
-                ['id' => 3, 'name' => 'termine'],
-                ['id' => 4, 'name' => 'clos'],
-            ],
         ]);
     }
 
@@ -70,12 +65,13 @@ class HelpDeskController extends Controller
             'title' => $data['title'],
             'description' => $data['message'],
             'type' => $data['type'] ? 'incident' : 'demande',
-            'emergency' => 3,
-            'file' => null // $data['$filePath'], //
+            'file' => null, // $data['$filePath'], //
+            'is_urgent' => false,
+            'status_id' => 1,
         ]);
 
         return redirect()->route('my.auth.helpDesk.list')->with('toast', [
-            'type' => 'success', 
+            'type' => 'success',
             'message' => 'Votre ticket a bien été envoyé'
         ]);
     }
