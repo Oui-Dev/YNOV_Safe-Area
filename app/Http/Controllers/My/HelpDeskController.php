@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HelpDeskSupport;
 use App\Models\Status;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 class HelpDeskController extends Controller
 {
@@ -42,6 +43,18 @@ class HelpDeskController extends Controller
             'ticket' => $ticket::with('user')->find($ticket->id),
             'users' => User::role('root')->get(),
             'statuses' => Status::all(),
+        ]);
+    }
+
+    public function delete(HelpdeskSupport $ticket) {
+        $url = url()->previous();
+        $parsedUrl = parse_url($url);
+        $host = explode('.', $parsedUrl['host']);
+        $route = $host[0] . '.auth.helpDesk.list';
+        $ticket->delete();
+        return redirect()->route($route)->with('toast', [
+            'type' => 'success',
+            'message' => 'Ticket supprimé'
         ]);
     }
 

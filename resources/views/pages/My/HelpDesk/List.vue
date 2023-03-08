@@ -3,8 +3,9 @@
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import Table from '../../../components/dashboard/Table.vue';
 import { computed } from 'vue';
-import { ArrowTopRightOnSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import { ArrowTopRightOnSquareIcon, PlusIcon, TrashIcon } from "@heroicons/vue/24/outline";
 import { Link, usePage } from '@inertiajs/inertia-vue3';
+import { Inertia } from "@inertiajs/inertia";
 
 const props = defineProps({
 	tickets: {
@@ -16,6 +17,9 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const host = window.location.host
+const subdomain = host.split('.')[0]
 
 const isRoot = computed(() => usePage().props.value.auth.user.roles.some((role) => role === 'root'));
 
@@ -46,6 +50,13 @@ function getStatus(ticket) {
 	const status = props.statuses.find((status) => status.id === ticket.status_id);
 	return ("<div class='h-4 w-4 rounded-full mx-auto "+status.color+"' title='"+status.name+"'/>");
 }
+
+function deleteHelpdesk(ticket) {
+	if (confirm('Êtes-vous sûr de vouloir supprimer ce ticket ?')) {
+		Inertia.delete(route(subdomain+'.auth.helpDesk.delete', {id: ticket.id}), {}, {});
+	}
+}
+
 </script>
 
 <template>
@@ -66,7 +77,8 @@ function getStatus(ticket) {
 			:tableKeys="['reference', {function: getDate}, {function: getSubject}, {function: getUser}, {function: getType}, {function: getStatus}]"
 			:data="tickets"
 			:actions="[
-	{ type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.helpDesk.show', param: 'id', icon: ArrowTopRightOnSquareIcon, iconText: 'Détails', condition: () => isRoot },
+				{ type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.helpDesk.show', param: 'id', icon: ArrowTopRightOnSquareIcon, iconText: 'Détails', condition: () => isRoot },
+				{ type: 'function', function: deleteHelpdesk, icon: TrashIcon, iconText: 'Supprimer' },
 			]"
 			:pagination=true
 		/>

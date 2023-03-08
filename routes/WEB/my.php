@@ -28,7 +28,7 @@ Route::group([
 
     // Complain
     Route::group([
-        'prefix' => 'complains' , 
+        'prefix' => 'complains' ,
         'as' => 'complains.',
         'controller' => ComplainsController::class
     ], function () {
@@ -54,6 +54,7 @@ Route::group([
     ], function () {
         Route::get('/new', 'create')->name('add');
         Route::post('/new', 'store')->name('add.post');
+        Route::delete('/{ticket:id}', 'delete')->name('delete');
     });
 });
 

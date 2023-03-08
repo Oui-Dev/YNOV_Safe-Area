@@ -21,7 +21,6 @@ const props = defineProps({
     }
 });
 
-const statuses = ref(props.statuses).value;
 const selectedStatus = ref(props.ticket.status_id);
 const isUrgent = ref(props.ticket.is_urgent === 1 ? true : false);
 
@@ -52,12 +51,12 @@ const getCreatedDate = (ticket) => {
 }
 
 const getStatusName = () => {
-    const status = statuses.find(status => status.id === selectedStatus.value);
+    const status = props.statuses.find(status => status.id === selectedStatus.value);
     return status.name;
 }
 
 const getStatusColor = () => {
-    const status = statuses.find(status => status.id === selectedStatus.value);
+    const status = props.statuses.find(status => status.id === selectedStatus.value);
     return status.color;
 }
 
@@ -107,7 +106,7 @@ const getStatusColor = () => {
                                             leave-to-class="opacity-0">
                                     <ListboxOptions class="absolute z-10 mt-1 max-h-56 w-full sm:w-1/2 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                                         <ListboxOption as="template"
-                                                       v-for="status in statuses"
+                                                       v-for="status in props.statuses"
                                                        :key="status.id"
                                                        :value="status.id"
                                                        v-slot="{ active, selected }">
