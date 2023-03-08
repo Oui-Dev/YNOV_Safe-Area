@@ -20,7 +20,7 @@ import {
 const myNavigation = [
     {name: "Dashboard", href: "my.auth.dashboard.index"},
     {name: "Annuaire", href: "my.auth.users.list"},
-    // {name: "Plaintes", href: "my.auth.complains.list"},
+    {name: "Plaintes", href: "my.auth.complains.list"},
     {name: "Support", href: "my.auth.helpDesk.add"},
     {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
 ];
