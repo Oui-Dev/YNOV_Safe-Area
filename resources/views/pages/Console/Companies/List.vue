@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 function deleteCompany(company) {
-    Inertia.delete(route('console.auth.companies.delete', { reference: company.reference }), {
+    Inertia.delete(route('console.auth.companies.delete', company.id), {
         onBefore: () => {
             return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');
         },
