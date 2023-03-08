@@ -20,8 +20,6 @@ const props = defineProps({
         required: true,
     }
 });
-console.log('urgent', props.ticket.is_urgent);
-console.log("ticket:", props.ticket);
 
 const statuses = ref(props.statuses).value;
 const selectedStatus = ref(props.ticket.status_id);
@@ -90,20 +88,18 @@ const getStatusColor = () => {
                         <dd class="mt-1 text-sm text-gray-900 capitalize">{{ ticket.type }}</dd>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <Listbox as="div"
-                                 v-model="selectedStatus">
+                        <Listbox as="div" v-model="selectedStatus">
                             <ListboxLabel class="block text-sm font-medium text-gray-500">Status</ListboxLabel>
                             <div class="relative mt-1">
                                 <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-safearea-blue focus:outline-none focus:ring-1 focus:ring-safeborder-safearea-blue sm:text-sm">
                                     <div class="flex items-center justify-start gap-4">
                                         <div class="h-4 w-4 rounded-full"
-                                             :class="getStatusColor()"
-                                             :title="getStatusName()" />
+                                            :class="getStatusColor()"
+                                            :title="getStatusName()" />
                                         <span class="block truncate">{{ getStatusName() }}</span>
                                     </div>
                                     <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                        <ChevronUpDownIcon class="h-5 w-5 text-gray-400"
-                                                           aria-hidden="true" />
+                                        <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
                                     </span>
                                 </ListboxButton>
                                 <transition leave-active-class="transition ease-in duration-100"
@@ -118,15 +114,14 @@ const getStatusColor = () => {
                                             <li :class="[active ? 'text-white bg-safearea-blue' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
                                                 <div class="flex items-center justify-start gap-4">
                                                     <div class="h-4 w-4 rounded-full"
-                                                         :class="status.color"
-                                                         :title="status.name" />
+                                                        :class="status.color"
+                                                        :title="status.name" />
                                                     <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
                                                           class="capitalize">{{ status.name }}</span>
                                                 </div>
                                                 <span v-if="selected"
-                                                      :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
-                                                    <CheckIcon class="h-5 w-5"
-                                                               aria-hidden="true" />
+                                                    :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
+                                                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
                                                 </span>
                                             </li>
                                         </ListboxOption>
@@ -137,13 +132,11 @@ const getStatusColor = () => {
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <dt class="text-sm font-medium text-gray-500">Prioritaire ?</dt>
-                        <SwitchGroup as="div"
-                                     class="flex items-start justify-start mt-2">
+                        <SwitchGroup as="div" class="flex items-start justify-start mt-2">
                             <Switch type="checkbox"
                                     v-model="isUrgent"
                                     :class="[isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
-                                <span aria-hidden="true"
-                                      :class="[isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                                <span aria-hidden="true" :class="[isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
                             </Switch>
                         </SwitchGroup>
                     </div>
@@ -162,13 +155,11 @@ const getStatusColor = () => {
                                 class="divide-y divide-gray-200 rounded-md border border-gray-200">
                                 <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
                                     <div class="flex w-0 flex-1 items-center">
-                                        <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400"
-                                                       aria-hidden="true" />
+                                        <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                                         <span class="ml-2 w-0 flex-1 truncate">screenshot.png</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                        <a href="#"
-                                           class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
+                                        <a href="#" class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
                                     </div>
                                 </li>
                             </ul>
