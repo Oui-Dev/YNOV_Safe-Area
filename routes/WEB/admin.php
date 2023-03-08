@@ -35,7 +35,6 @@ Route::group([
     'as' => 'complains.',
     'controller' => ComplainsController::class
 ], function () {
-    Route::get('/', 'list')->name('list');
     Route::get('/create', 'create')->name('create');
     Route::post('/create', 'store')-> name('create.post');
 });
