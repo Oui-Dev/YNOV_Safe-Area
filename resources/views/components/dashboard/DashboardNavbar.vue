@@ -12,6 +12,8 @@ import {
     HomeIcon,
     UsersIcon,
     Bars3Icon,
+    BuildingOffice2Icon,
+    SquaresPlusIcon,
     XMarkIcon
 } from "@heroicons/vue/24/outline";
 
@@ -50,6 +52,14 @@ const adminNavigation = [
 ];
 const consoleNavigation = [
     {name: "Dashboard", href: "console.auth.dashboard.index"},
+    {
+        type: "dropdown",
+        name: "Entreprises",
+        items: [
+            { name: "Liste", description: "Liste des entreprises.", href: "console.auth.companies.list", icon: BuildingOffice2Icon },
+            { name: "Ajout", description: "Ajouter une entreprise.", href: "console.auth.companies.create", icon: SquaresPlusIcon },
+        ]
+    },
     {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
 ];
 

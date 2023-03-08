@@ -16,8 +16,8 @@ class HelpdeskSupport extends Model
         'description',
         'file_url',
         'type',
-        'status',
-        'emergency',
+        'status_id',
+        'is_urgent',
         'started_at',
         'closed_at',
         'archived_at',
@@ -26,5 +26,10 @@ class HelpdeskSupport extends Model
     public function user(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function status(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTo(Status::class);
     }
 }

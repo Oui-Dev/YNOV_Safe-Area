@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->belongsTo(Company::class);
     }
 
+    public function companyOwner(): \Illuminate\Database\Eloquent\Relations\hasOne
+    {
+        return $this->hasOne(Company::class);
+    }
+
     public function complains(): \Illuminate\Database\Eloquent\Relations\hasMany
     {
         return $this->hasMany(Complain::class);

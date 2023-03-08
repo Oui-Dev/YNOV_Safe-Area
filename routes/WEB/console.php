@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Console\DashboardController;
-use App\Http\Controllers\My\ProfilController;
+use App\Http\Controllers\Console\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,6 @@ use App\Http\Controllers\My\ProfilController;
 |
 */
 
-// Console routes
 Route::group([
     'as' => "console.auth.",
     'middleware' => ['auth', 'role:root']
@@ -33,5 +32,19 @@ Route::group([
         Route::get('/', 'profil')->name('show');
         Route::put('/', 'editProfil')->name('update');
         Route::put('/password', 'editPassword')->name('password');
+    });
+
+    // Companies
+    Route::group([
+        'prefix' => 'companies',
+        'as' => "companies.",
+        'controller' => CompanyController::class,
+    ], function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('create.post');
+        Route::get('/edit/{company}', 'edit')->name('edit');
+        Route::put('/edit/{company}', 'editPut')->name('edit.put');
+        Route::delete('/delete/{company}', 'delete')->name('delete');
     });
 });
