@@ -8,7 +8,6 @@ use Illuminate\Validation\Rule;
 use App\Mail\ConfirmEmail;
 use App\Models\User;
 use Illuminate\Support\Str;
-use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
