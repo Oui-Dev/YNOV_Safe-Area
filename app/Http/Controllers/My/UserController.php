@@ -100,7 +100,5 @@ class UserController extends Controller
             'type' => 'success',
             'message' => "L'utilisateur a bien été supprimé.",
         ]);
-    }
-
-    
+    }    
 }
