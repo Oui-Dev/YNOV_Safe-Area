@@ -78,7 +78,7 @@ function getStatus(complain) {
 			:tableKeys="[{function: getUser}, {function: getTitle}, {function: getAssignedUser}, {function: getEmergency}, {function: getStatus}]"
 			:data="complains"
 			:actions="[
-				{ type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.complains.list', param: 'id', icon: PencilIcon, iconText: 'Détails'},
+				{ type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.complains.edit', param: 'id', icon: PencilIcon, iconText: 'Détails'},
 			]"
             :pagination=true
 		/>
