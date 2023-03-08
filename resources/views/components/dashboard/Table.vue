@@ -1,7 +1,7 @@
 <script setup>
 import {onMounted} from "@vue/runtime-core";
 import Pagination from "./Pagination.vue";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import Thead from "./partials/Thead.vue";
 import Tbody from "./partials/Tbody.vue";
 
@@ -41,6 +41,10 @@ onMounted(() => {
 
     newData.value = props.pagination ? props.data.data : props.data;
 });
+
+watch(() => props.data, (newVal) => {
+    newData.value = props.pagination ? newVal.data : newVal;
+}, { deep: true });
 
 const hasData = computed(() => {
     return newData.value.length > 0;
