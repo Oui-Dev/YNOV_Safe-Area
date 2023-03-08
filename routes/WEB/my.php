@@ -48,10 +48,11 @@ Route::group([
     });
     // Helpdesk
     Route::group([
-        'prefix' => 'helpDesk',
-        'as' => 'helpDesk.',
+        'prefix' => 'helpdesk',
+        'as' => 'helpdesk.',
         'controller' => HelpDeskController::class
     ], function () {
+        Route::get('/', 'list')->name('list');
         Route::get('/new', 'create')->name('add');
         Route::post('/new', 'store')->name('add.post');
         Route::delete('/{ticket:id}', 'delete')->name('delete');

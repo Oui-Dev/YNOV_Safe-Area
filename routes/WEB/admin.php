@@ -36,14 +36,5 @@ Route::group([
     'controller' => ComplainsController::class
 ], function () {
     Route::get('/create', 'create')->name('create');
-    Route::post('/create', 'store')-> name('create.post');
-});
-
-// Helpdesk
-Route::group([
-    'prefix' => 'helpdesk',
-    'as' => 'helpDesk.',
-    'controller' => HelpDeskController::class
-], function () {
-    Route::get('/', 'list')->name('list');
+    Route::post('/create', 'store')->name('create.post');
 });

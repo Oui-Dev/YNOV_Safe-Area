@@ -7,13 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Models\HelpDeskSupport;
 use App\Models\Status;
 use App\Models\User;
-use Illuminate\Support\Facades\Route;
 
 class HelpDeskController extends Controller
 {
     public function list() {
+        $user = auth()->user();
+        $tickets = $user->hasRole('root')
+            ? HelpDeskSupport::with('user')->paginate(10)
+            : HelpDeskSupport::where('user_id', $user->id)->with('user')->paginate(10);
+
         return inertia('My/HelpDesk/List', [
-            'tickets' => HelpDeskSupport::with('user')->paginate(10),
+            'tickets' => $tickets,
             'statuses' => Status::all(),
         ]);
     }
@@ -32,7 +36,7 @@ class HelpDeskController extends Controller
         $ticket->is_urgent = $data['is_urgent'];
         $ticket->save();
 
-        return redirect()->route('console.auth.helpDesk.show', $ticket->id)->with('toast', [
+        return redirect()->route('console.auth.helpdesk.show', $ticket->id)->with('toast', [
             'type' => 'success',
             'message' => 'Ticket mis à jour'
         ]);
@@ -50,7 +54,8 @@ class HelpDeskController extends Controller
         $url = url()->previous();
         $parsedUrl = parse_url($url);
         $host = explode('.', $parsedUrl['host']);
-        $route = $host[0] . '.auth.helpDesk.list';
+        $route = $host[0] . '.auth.helpdesk.list';
+
         $ticket->delete();
         return redirect()->route($route)->with('toast', [
             'type' => 'success',
@@ -88,7 +93,7 @@ class HelpDeskController extends Controller
             'status_id' => 1,
         ]);
 
-        return redirect()->route('my.auth.helpDesk.list')->with('toast', [
+        return redirect()->route('my.auth.helpdesk.list')->with('toast', [
             'type' => 'success',
             'message' => 'Votre ticket a bien été envoyé'
         ]);
