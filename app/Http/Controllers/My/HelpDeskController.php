@@ -23,13 +23,17 @@ class HelpDeskController extends Controller
 
     public function update(HelpdeskSupport $ticket) {
         $data = request()->validate([
-            // 'status' => ['required','boolean'],
-            'assigned_to' => ['required','integer'],
+            'status' => ['required'],
+            'is_urgent' => ['boolean'],
         ]);
 
-        $ticket->update([
-            // 'status' => $data['status'],
-            'assigned_to' => $data['assigned_to'],
+        $ticket->status_id = $data['status'];
+        $ticket->is_urgent = $data['is_urgent'];
+        $ticket->save();
+
+        return redirect()->route('console.auth.helpDesk.show', $ticket->id)->with('toast', [
+            'type' => 'success',
+            'message' => 'Ticket mis à jour'
         ]);
     }
 
@@ -37,6 +41,7 @@ class HelpDeskController extends Controller
         return inertia('Console/HelpDesk/Show', [
             'ticket' => $ticket::with('user')->find($ticket->id),
             'users' => User::role('root')->get(),
+            'statuses' => Status::all(),
         ]);
     }
 
