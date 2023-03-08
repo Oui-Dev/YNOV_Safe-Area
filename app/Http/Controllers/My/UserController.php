@@ -8,16 +8,12 @@ use Illuminate\Validation\Rule;
 use App\Mail\ConfirmEmail;
 use App\Models\User;
 use Illuminate\Support\Str;
-use Redirect;
-
 
 class UserController extends Controller
 {
     public function list() {
         $currentUser = auth()->user();
-        $users = $currentUser->hasRole('admin')
-            ? User::paginate(10)
-            : $currentUser->company->users()->paginate(10);
+        $users = $currentUser->company->users()->paginate(10);
 
         return inertia('My/Users/List', [
             'users' => $users,
@@ -25,7 +21,10 @@ class UserController extends Controller
     }
 
     public function create() {
-        return inertia('My/Users/Create');
+        $roles = ['admin', 'my'];
+        return inertia('My/Users/Create', [
+            'roles' => $roles,
+        ]);
     }
 
     public function store() {
@@ -35,8 +34,9 @@ class UserController extends Controller
             'phone' => ['bail','required','max:20','min:10','regex:/^([0-9\s\-\+\(\)]*)$/'],
             'mail' => ['required','email:rfc,dns,spoof','max:255'],
             'mailpro' => ['required','email:rfc,dns,spoof','max:255'],
-            'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
             'sexe' => ["required", "int"],
+            'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
+            'userRole' => ['required', 'string', 'max:255', Rule::in(['admin', 'my'])],
         ]);
 
         $user = User::create([
@@ -51,6 +51,8 @@ class UserController extends Controller
             'identifiant' => $data['identifiant'],
             'reference' => Str::uuid(),
         ]);
+        $user->assignRole($data['userRole']);
+        $user->save();
 
         //Mail::to($user->email)->send(new ConfirmEmail($user));
         return redirect()->route('my.auth.users.list')->with('toast', [
@@ -100,5 +102,5 @@ class UserController extends Controller
             'type' => 'success',
             'message' => "L'utilisateur a bien été supprimé.",
         ]);
-    }
+    }    
 }
