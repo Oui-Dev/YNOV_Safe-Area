@@ -1,8 +1,8 @@
 <script setup>
 import DashboardLayout from '../../../layouts/dashboard.vue';
 import Table from '../../../components/dashboard/Table.vue';
-import { TrashIcon,PencilIcon } from "@heroicons/vue/24/outline";
-import {  usePage } from '@inertiajs/inertia-vue3';
+import { TrashIcon,PencilIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import { Link, usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { computed } from 'vue';
 
@@ -34,12 +34,6 @@ function deleteUser(complain) {
         }
     });
 }
-	
-// Inertia.post(route('emailAccounts.add.generic.review', emailAccount.id), {}, {
-//         preserveScroll: true,
-//         onStart: () => isLoading.value = true,
-//         onFinish: () => isLoading.value = false,
-//     });
 
 const getAssignedUser = (complain) => {
     return complain.assigned_user
@@ -70,7 +64,14 @@ function getStatus(complain) {
     <DashboardLayout>
 		<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
 			<h1 class="text-xl font-bold text-gray-900">Plaintes</h1>
+			<Link v-if="isUser" :href="route('my.auth.complains.create')"
+				class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2"
+			>
+				<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
+				<span>Déposer une plainte</span>
+			</Link>
 		</div>
+
 
 		<!-- display admin -->
         <Table v-if="isAdmin"
