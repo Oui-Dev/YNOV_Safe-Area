@@ -14,9 +14,7 @@ class UserController extends Controller
 {
     public function list() {
         $currentUser = auth()->user();
-        $users = $currentUser->hasRole('admin')
-            ? User::paginate(10)
-            : $currentUser->company->users()->paginate(10);
+        $users = $currentUser->company->users()->paginate(10);
 
         return inertia('My/Users/List', [
             'users' => $users,
