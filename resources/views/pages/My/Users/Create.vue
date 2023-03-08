@@ -24,7 +24,6 @@ const props = defineProps({
 });
 
 function submit() {
-    console.log(selected);
     form.post(route("my.auth.users.create.post"), {
         onStart: () => {
             form.clearErrors();
