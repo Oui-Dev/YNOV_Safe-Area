@@ -18,13 +18,14 @@ const form = useForm({
     siren: props.company.siren,
     phone: props.company.phone,
     email: props.company.email,
-})
+});
 
 const submit = () => {
-    form.put(route('console.auth.companies.edit.put', { reference: props.company.id }), {
+    form.put(route('console.auth.companies.edit.put', { company: props.company.id }), {
         onStart: () => form.clearErrors(),
     });
 }
+
 </script>
 
 <template>
