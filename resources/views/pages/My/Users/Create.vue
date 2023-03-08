@@ -23,8 +23,6 @@ const props = defineProps({
     }
 });
 
-console.log(props.roles);
-
 function submit() {
     console.log(selected);
     form.post(route("my.auth.users.create.post"), {

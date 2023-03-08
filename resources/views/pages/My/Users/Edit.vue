@@ -13,7 +13,6 @@ const props = defineProps({
     }
 });
 
-console.log(roles);
 
 const form = useForm({
     lastname: props.user.lastname,
