@@ -33,7 +33,7 @@ Route::group([
         'controller' => ComplainsController::class
     ], function () {
         Route::put('/delete/{complain}', 'delete')->name('delete');
-        Route::get('/list', 'list')->name('list');
+        Route::get('/', 'list')->name('list');
         }
     );
     // Profile
