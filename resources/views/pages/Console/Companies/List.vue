@@ -12,8 +12,6 @@ const props = defineProps({
     }
 });
 
-console.log(props.companies)
-
 function deleteCompany(company) {
     Inertia.delete(route('console.auth.companies.delete', { reference: company.reference }), {
         onBefore: () => {
