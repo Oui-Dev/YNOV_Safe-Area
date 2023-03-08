@@ -27,10 +27,10 @@ return new class extends Migration
             $table->string('screen_url')->nullable();
             $table->string('status')->default('new');
             $table->integer('urgency')->default(0);
-            $table->foreignId('user_id')->constrained('users')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->string('user_reference');
             $table->foreignId('complain_type_id')->constrained('complain_types');
-            $table->foreignId('assigned_to')->nullable()->constrained('users');
+            $table->foreignId('assigned_to')->nullable()->constrained('users')->nullOnDelete();
             $table->boolean('is_anonymous')->default(false);
             $table->timestamp('viewed_at')->nullable();
             $table->timestamp('closed_at')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration
         Schema::create('complain_chats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('complain_id')->constrained('complains')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
             $table->text('content');
             $table->string('screen_url')->nullable();
             $table->timestamps();

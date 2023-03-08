@@ -49,7 +49,7 @@ class ComplainsController extends Controller
             ? Complain::select('*')
             : $user->complains();
         
-        $complains = $complains->with('assignedUser')->where('deleted_at', NULL)->get();
+        $complains = $complains->with('assignedUser')->with('status')->where('deleted_at', NULL)->get();
         $complains = $complains->map(function($complain) {
             if(!$complain->is_anonymous) {
                 $complain->load('user');
