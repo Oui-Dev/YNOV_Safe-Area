@@ -21,7 +21,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.put(route('console.auth.companies.edit.put', { company: props.company.id }), {
+    form.put(route('console.auth.companies.edit.put',  props.company.id ), {
         onStart: () => form.clearErrors(),
     });
 }
