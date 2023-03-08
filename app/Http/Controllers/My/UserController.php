@@ -35,8 +35,9 @@ class UserController extends Controller
             'phone' => ['bail','required','max:20','min:10','regex:/^([0-9\s\-\+\(\)]*)$/'],
             'mail' => ['required','email:rfc,dns,spoof','max:255'],
             'mailpro' => ['required','email:rfc,dns,spoof','max:255'],
-            'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
             'sexe' => ["required", "int"],
+            'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
+            'userRole' => ['required', 'string', 'max:255', Rule::in(['admin', 'my'])],
         ]);
 
         $user = User::create([
@@ -51,6 +52,8 @@ class UserController extends Controller
             'identifiant' => $data['identifiant'],
             'reference' => Str::uuid(),
         ]);
+        $user->assignRole($data['userRole']);
+        $user->save();
 
         //Mail::to($user->email)->send(new ConfirmEmail($user));
         return redirect()->route('my.auth.users.list')->with('toast', [

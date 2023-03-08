@@ -1,12 +1,9 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-import { ref } from 'vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { defineProps} from 'vue'
-
-const selected = ref(props.roles[1]);
 
 const form = useForm({
     lastname: null,
@@ -16,7 +13,7 @@ const form = useForm({
     mailpro: null,
     sexe: null,
     identifiant: null,
-    selected: selected.value,
+    userRole: props.roles[0],
 });
 
 const props = defineProps({
@@ -34,7 +31,6 @@ function submit() {
     });
 }
 </script>
-
 
 <template>
     <DashboardLayout>
@@ -67,13 +63,13 @@ function submit() {
                         <input type="email" id="mailpro" v-model="form.mailpro" />
                         <div v-if="form.errors.mailpro" class="form-error-field">{{ form.errors.mailpro }}</div>
                     </div>
-                    <Listbox as="div" v-model="selected">
+                    <Listbox as="div" v-model="form.userRole">
                         <ListboxLabel class="block text-sm font-medium text-gray-700"> Role : </ListboxLabel>
                         <div class="relative mt-1">
                             <ListboxButton 
                                 class="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-safearea-blue focus:outline-none focus:ring-1 focus:ring-safeborder-safearea-blue sm:text-sm">
                                 <span class="flex items-center">
-                                    <span class="ml-1 block truncate">{{ selected }}</span>
+                                    <span class="ml-1 block truncate">{{ form.userRole }}</span>
                                 </span>
                                 <span class="pointer-events-none absolute inset-y-0 right-0 ml-1 flex items-center pr-2">
                                     <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -83,7 +79,7 @@ function submit() {
                                 leave-to-class="opacity-0">
                                 <ListboxOptions
                                     class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                                    <ListboxOption as="template" v-for=" role in props.roles " :key="role.id" :value="role"
+                                    <ListboxOption as="template" v-for="role in props.roles" :key="role.id" :value="role"
                                         v-slot="{ active, selected }">
                                         <li
                                             :class="[active ? 'text-white bg-safearea-blue' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
