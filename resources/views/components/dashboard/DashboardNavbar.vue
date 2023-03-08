@@ -60,7 +60,14 @@ const consoleNavigation = [
             { name: "Ajout", description: "Ajouter une entreprise.", href: "console.auth.companies.create", icon: SquaresPlusIcon },
         ]
     },
-    {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
+    {
+        type: "dropdown",
+        name: "Autres",
+        items: [
+            { name: 'Support', description: 'Support technique.', href: 'console.auth.helpDesk.list', icon: InformationCircleIcon },
+            { name: 'Retourner sur le site', description: 'Retourner à la page d\'acceuil.', href: 'no.public.homepage', icon: HomeIcon, as: "a" }
+        ]
+    },
 ];
 
 const getUser = computed(() => usePage().props.value.auth.user);
