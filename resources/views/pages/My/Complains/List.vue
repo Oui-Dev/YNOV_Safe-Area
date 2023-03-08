@@ -61,21 +61,10 @@ function getEmergency(complain) {
 }
 
 function getStatus(complain) {
-	switch (complain.status) {
-		case "nouveau":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' title='Nouveau' />";
-		case "attribue":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-blue-600' title='Attribué' />";
-		case "en cours":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-yellow-600' title='En cours' />";
-		case "termine":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-slate-600' title='Terminé' />";
-		case "clos":
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-gray-600' title='Clos' />";
-		default:
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' title='Nouveau' />";
-	}
+	return "<div class='h-4 w-4 rounded-full mx-auto " + complain.status.color + " ' title=' " + complain.status.name + "' />";
 }
+
+
 </script>
 <template>
     <DashboardLayout>

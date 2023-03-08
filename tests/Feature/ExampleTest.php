@@ -49,21 +49,15 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_minio_server()
-    {
-        $response = $this->get('http://minio.safearea.ml/login');
-        $response->assertStatus(404);
-    }
-
-    public function test_graphana_server()
-    {
-        $response = $this->get('http://graphana.safearea.ml');
-        $response->assertStatus(404);
-    }
+    // public function test_graphana_server()
+    // {
+    //     $response = $this->get('http://graphana.safearea.ml');
+    //     $response->assertStatus(404);
+    // }
 
     public function test_matomo_server()
     {
-        $response = $this->get('http://matomo.safearea.ml');
+        $response = $this->get('https://matomo.safearea.fr');
         $response->assertStatus(404);
     }
 }

@@ -16,7 +16,7 @@ class FileService
 
     public function __construct()
     {
-        $this->fs = Storage::disk('minio');
+        $this->fs = Storage::disk('local');
     }
 
     public function get(string $path)
