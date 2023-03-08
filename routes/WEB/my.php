@@ -32,6 +32,8 @@ Route::group([
         'as' => 'complains.',
         'controller' => ComplainsController::class
     ], function () {
+        Route::get('/create', 'create')->middleware('role:my')->name('create');
+        Route::post('/create', 'store')->middleware('role:my')->name('create.post');
         Route::put('/delete/{complain}', 'delete')->middleware('role:my')->name('delete');
         Route::get('/', 'list')->name('list');
     });

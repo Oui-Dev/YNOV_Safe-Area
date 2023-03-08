@@ -35,8 +35,6 @@ Route::group([
     'as' => 'complains.',
     'controller' => ComplainsController::class
 ], function () {
-    Route::get('/create', 'create')->name('create');
-    Route::post('/create', 'store')-> name('create.post');
     Route::put('/{complain:id}', 'update')->name('edit.post');
     Route::get('/{complain:id}', 'edit')->name('edit');
 });
