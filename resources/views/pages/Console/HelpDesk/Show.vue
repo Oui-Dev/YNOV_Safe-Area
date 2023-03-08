@@ -25,18 +25,21 @@ const selectedStatus = ref(props.ticket.status_id);
 const isUrgent = ref(props.ticket.is_urgent === 1 ? true : false);
 
 watch(() => selectedStatus.value, (value) => {
-    Inertia.put(route('console.auth.helpDesk.update', props.ticket.id), {
-        preserveScroll: true,
+    Inertia.put(route('console.auth.helpdesk.update', props.ticket.id), {
+
         status: value,
         is_urgent: isUrgent.value ? 1 : 0
+    },{
+        preserveScroll: true
     });
 });
 
 watch(() => isUrgent.value, (value) => {
-    Inertia.put(route('console.auth.helpDesk.update', props.ticket.id), {
-        preserveScroll: true,
+    Inertia.put(route('console.auth.helpdesk.update', props.ticket.id), {
         status: selectedStatus.value,
         is_urgent: value ? 1 : 0
+    },{
+        preserveScroll: true
     });
 });
 
@@ -64,7 +67,7 @@ const getStatusColor = () => {
 
 <template>
     <DashboardLayout>
-        <Link :href="route('console.auth.helpDesk.list')"
+        <Link :href="route('console.auth.helpdesk.list')"
               class="flex flex-row gap-1 text-safearea-blue hover:text-safearea-red mb-2">
         <ArrowLongLeftIcon class="h-6 w-6 " />Retour</Link>
         <div class="overflow-hidden bg-white shadow sm:rounded-lg">
