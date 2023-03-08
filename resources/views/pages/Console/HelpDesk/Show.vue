@@ -29,7 +29,7 @@ watch(() => selectedStatus.value, (value) => {
 
         status: value,
         is_urgent: isUrgent.value ? 1 : 0
-    },{
+    }, {
         preserveScroll: true
     });
 });
@@ -38,7 +38,7 @@ watch(() => isUrgent.value, (value) => {
     Inertia.put(route('console.auth.helpdesk.update', props.ticket.id), {
         status: selectedStatus.value,
         is_urgent: value ? 1 : 0
-    },{
+    }, {
         preserveScroll: true
     });
 });
@@ -86,8 +86,20 @@ const getStatusColor = () => {
                         <dd class="mt-1 text-sm text-gray-900">{{ ticket.user.professional_email }}</dd>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <dt class="text-sm font-medium text-gray-500">Type</dt>
-                        <dd class="mt-1 text-sm text-gray-900 capitalize">{{ ticket.type }}</dd>
+                        <dt class="text-sm font-medium text-gray-500">Adresse Mail</dt>
+                        <SwitchGroup as="div" class="flex items-center justify-start mt-2">
+                            <SwitchLabel as="span" class="mr-3">
+                                <span class="text-sm font-medium text-gray-900">Demande</span>
+                            </SwitchLabel>
+                            <Switch type="checkbox"
+                                    v-model="ticket.type"
+                                    :class="[ticket.type ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
+                                <span aria-hidden="true" :class="[ticket.type ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                            </Switch>
+                            <SwitchLabel as="span" class="ml-3">
+                                <span class="text-sm font-medium text-gray-900">Incident</span>
+                            </SwitchLabel>
+                        </SwitchGroup>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <Listbox as="div" v-model="selectedStatus">
@@ -101,7 +113,8 @@ const getStatusColor = () => {
                                         <span class="block truncate">{{ getStatusName() }}</span>
                                     </div>
                                     <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                        <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                        <ChevronUpDownIcon class="h-5 w-5 text-gray-400"
+                                                           aria-hidden="true" />
                                     </span>
                                 </ListboxButton>
                                 <transition leave-active-class="transition ease-in duration-100"
@@ -121,8 +134,7 @@ const getStatusColor = () => {
                                                     <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
                                                           class="capitalize">{{ status.name }}</span>
                                                 </div>
-                                                <span v-if="selected"
-                                                    :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
+                                                <span v-if="selected" :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
                                                     <CheckIcon class="h-5 w-5" aria-hidden="true" />
                                                 </span>
                                             </li>
@@ -134,11 +146,13 @@ const getStatusColor = () => {
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <dt class="text-sm font-medium text-gray-500">Prioritaire ?</dt>
-                        <SwitchGroup as="div" class="flex items-start justify-start mt-2">
+                        <SwitchGroup as="div"
+                                     class="flex items-start justify-start mt-2">
                             <Switch type="checkbox"
                                     v-model="isUrgent"
                                     :class="[isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
-                                <span aria-hidden="true" :class="[isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                                <span aria-hidden="true"
+                                      :class="[isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
                             </Switch>
                         </SwitchGroup>
                     </div>
@@ -157,18 +171,19 @@ const getStatusColor = () => {
                                 class="divide-y divide-gray-200 rounded-md border border-gray-200">
                                 <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
                                     <div class="flex w-0 flex-1 items-center">
-                                        <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+                                        <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400"
+                                                       aria-hidden="true" />
                                         <span class="ml-2 w-0 flex-1 truncate">screenshot.png</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                        <a href="#" class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
+                                        <a href="#"
+                                           class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
                                     </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </div>
-                </dl>
-            </div>
+                            </li>
+                        </ul>
+                    </dd>
+                </div>
+            </dl>
         </div>
-    </DashboardLayout>
-</template>
+    </div>
+</DashboardLayout></template>
