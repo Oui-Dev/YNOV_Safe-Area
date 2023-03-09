@@ -20,7 +20,6 @@ const props = defineProps({
 
 const host = window.location.host
 const subdomain = host.split('.')[0]
-
 const isRoot = computed(() => usePage().props.value.auth.user.roles.some((role) => role === 'root'));
 
 const getUser = (ticket) => {
