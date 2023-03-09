@@ -1,6 +1,6 @@
 <script setup>
 import { Link } from "@inertiajs/inertia-vue3";
-import { ref, watch } from 'vue'
+import { ref, watch, reactive  } from 'vue'
 import { PaperClipIcon, ArrowLongLeftIcon, CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions, Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 import DashboardLayout from "../../../layouts/dashboard.vue";
@@ -21,27 +21,22 @@ const props = defineProps({
     }
 });
 
-const selectedStatus = ref(props.ticket.status_id);
-const isUrgent = ref(props.ticket.is_urgent === 1 ? true : false);
-
-watch(() => selectedStatus.value, (value) => {
-    Inertia.put(route('console.auth.helpdesk.update', props.ticket.id), {
-
-        status: value,
-        is_urgent: isUrgent.value ? 1 : 0
-    }, {
-        preserveScroll: true
-    });
+const form = reactive({
+  selectedStatus: props.ticket.status_id,
+  isUrgent: props.ticket.is_urgent === 1,
+  type: props.ticket.type === 'incident',
 });
 
-watch(() => isUrgent.value, (value) => {
-    Inertia.put(route('console.auth.helpdesk.update', props.ticket.id), {
-        status: selectedStatus.value,
-        is_urgent: value ? 1 : 0
-    }, {
-        preserveScroll: true
-    });
+watch([() => form.selectedStatus, () => form.isUrgent, () => form.type], ([status, isUrgent, type]) => {
+  Inertia.put(route('console.auth.helpdesk.update', props.ticket.id), {
+    status,
+    is_urgent: isUrgent ? 1 : 0,
+    type: type ? 'incident' : 'demande',
+  }, {
+    preserveScroll: true,
+  });
 });
+
 
 const getUser = (ticket) => {
     if (!ticket.user) return "Utilisateur supprimé";
@@ -54,12 +49,12 @@ const getCreatedDate = (ticket) => {
 }
 
 const getStatusName = () => {
-    const status = props.statuses.find(status => status.id === selectedStatus.value);
+    const status = props.statuses.find(status => status.id === form.selectedStatus);
     return status.name;
 }
 
 const getStatusColor = () => {
-    const status = props.statuses.find(status => status.id === selectedStatus.value);
+    const status = props.statuses.find(status => status.id === form.selectedStatus);
     return status.color;
 }
 
@@ -86,23 +81,23 @@ const getStatusColor = () => {
                         <dd class="mt-1 text-sm text-gray-900">{{ ticket.user.professional_email }}</dd>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <dt class="text-sm font-medium text-gray-500">Adresse Mail</dt>
+                        <dt class="text-sm font-medium text-gray-500">Type</dt>
                         <SwitchGroup as="div" class="flex items-center justify-start mt-2">
                             <SwitchLabel as="span" class="mr-3">
-                                <span class="text-sm font-medium text-gray-900">Demande</span>
+                                <span class="text-sm text-gray-900">Demande</span>
                             </SwitchLabel>
                             <Switch type="checkbox"
-                                    v-model="ticket.type"
-                                    :class="[ticket.type ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
-                                <span aria-hidden="true" :class="[ticket.type ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                                    v-model="form.type"
+                                    :class="[form.type ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
+                                <span aria-hidden="true" :class="[form.type ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
                             </Switch>
                             <SwitchLabel as="span" class="ml-3">
-                                <span class="text-sm font-medium text-gray-900">Incident</span>
+                                <span class="text-sm text-gray-900">Incident</span>
                             </SwitchLabel>
                         </SwitchGroup>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <Listbox as="div" v-model="selectedStatus">
+                        <Listbox as="div" v-model="form.selectedStatus">
                             <ListboxLabel class="block text-sm font-medium text-gray-500">Status</ListboxLabel>
                             <div class="relative mt-1">
                                 <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-safearea-blue focus:outline-none focus:ring-1 focus:ring-safeborder-safearea-blue sm:text-sm">
@@ -145,17 +140,23 @@ const getStatusColor = () => {
                         </Listbox>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <dt class="text-sm font-medium text-gray-500">Prioritaire ?</dt>
-                        <SwitchGroup as="div"
-                                     class="flex items-start justify-start mt-2">
-                            <Switch type="checkbox"
-                                    v-model="isUrgent"
-                                    :class="[isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
-                                <span aria-hidden="true"
-                                      :class="[isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
-                            </Switch>
-                        </SwitchGroup>
-                    </div>
+                            <dt class="text-sm font-medium text-gray-500">Priorité</dt>
+                            <SwitchGroup as="div"
+                                         class="flex items-start justify-start mt-2">
+                                         <SwitchLabel as="span" class="mr-3">
+                                    <span class="text-sm text-gray-900">Standard</span>
+                                </SwitchLabel>
+                                <Switch type="checkbox"
+                                        v-model="form.isUrgent"
+                                        :class="[form.isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
+                                    <span aria-hidden="true"
+                                          :class="[form.isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                                </Switch>
+                                <SwitchLabel as="span" class="ml-3">
+                                    <span class="text-sm text-gray-900">Urgente</span>
+                                </SwitchLabel>
+                            </SwitchGroup>
+                        </div>
                     <div class="sm:col-span-2">
                         <dt class="text-sm font-medium text-gray-500">Sujet</dt>
                         <dd class="mt-1 text-sm text-gray-900 capitalize">{{ ticket.title }}</dd>

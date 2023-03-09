@@ -29,11 +29,13 @@ class HelpDeskController extends Controller
     public function update(HelpdeskSupport $ticket) {
         $data = request()->validate([
             'status' => ['required'],
-            'is_urgent' => ['boolean'],
+            'is_urgent' => ['required', 'boolean'],
+            'type' => ['required'],
         ]);
 
         $ticket->status_id = $data['status'];
         $ticket->is_urgent = $data['is_urgent'];
+        $ticket->type = $data['type'];
         $ticket->save();
 
         return redirect()->route('console.auth.helpdesk.show', $ticket->id)->with('toast', [
