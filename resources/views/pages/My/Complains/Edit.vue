@@ -13,6 +13,10 @@ const props = defineProps({
     admins: {
         type: Object,
         required: true
+    },
+    complainType: {
+        type: Object,
+        required: true
     }
 });
 
@@ -22,19 +26,30 @@ const getDate = (props) => {
 }
 
 const assignedTo = ref(props.complain.status_id);
-const isUrgent = ref(props.complain.urgency === 1 ? true : false);
+const isUrgent = ref(props.complain.is_urgent === 1 ? true : false);
+const typeComplain = ref(props.complain.complain_type_id);
 
 watch(() => assignedTo.value, (value) => {
     Inertia.put(route('my.auth.complains.edit.post', props.complain.id), {
         assigned_to: value,
         is_urgent: props.complain.is_urgent,
+        complain_type_id: props.complain.complain_type_id ?? '',
     }, { preserveScroll: true });
 });
-console.log(props.complain);
+
 watch(() => isUrgent.value, (value) => {
     Inertia.put(route('my.auth.complains.edit.post', props.complain.id), {
         is_urgent: value ? 1 : 0,
         assigned_to: props.complain.assigned_to ?? '',
+        complain_type_id: props.complain.complain_type_id ?? '',
+    },{ preserveScroll: true });
+});
+
+watch(() => typeComplain.value, (value) => {
+    Inertia.put(route('my.auth.complains.edit.post', props.complain.id), {
+        complain_type_id: value,
+        assigned_to: props.complain.assigned_to ?? '',
+        is_urgent: props.complain.is_urgent,
     },{ preserveScroll: true });
 });
 </script>
@@ -66,11 +81,14 @@ watch(() => isUrgent.value, (value) => {
             </div>            
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Type</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ props.complain.complain_type.name }}</dd>
+                <select v-model="typeComplain" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>Choose a type</option>
+                    <option v-for="(complainType, key) in props.complainType" :value="complainType.id">{{ complainType.name }}</option>
+                </select>
             </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Assigné à</dt>
-                <select v-model="assignedTo" id="admin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select v-model="assignedTo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a admin</option>
                     <option v-for="(admin, key) in props.admins" :value="admin.id">{{ admin.firstname+' '+admin.lastname }}</option>
                 </select>

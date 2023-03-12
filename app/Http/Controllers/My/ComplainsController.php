@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Complain;
 use App\Models\ComplainType;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 
 class ComplainsController extends Controller
@@ -91,24 +92,29 @@ class ComplainsController extends Controller
     public function edit(Complain $complain) {
         $complain = $complain->load('user','complainType','status');
         $admins = User::role('admin')->get();
+        $complainType = DB::table('complain_types')->get();
+
         return inertia('My/Complains/Edit', [
             'complain' => $complain,
-            'admins' => $admins
+            'admins' => $admins,
+            'complainType' => $complainType
         ]);
     }
 
     public function update(Complain $complain){
         $data = request()->validate([
             'is_urgent' => ["boolean"],
-            'assigned_to' => ["nullable", "integer"]
+            'assigned_to' => ["nullable", "integer"],
+            'complain_type_id' => ["nullable", "integer"]
         ]);
 
         $complain->update([
             'is_urgent' => $data['is_urgent'],
-            'assigned_to' => $data['assigned_to']
+            'assigned_to' => $data['assigned_to'],
+            'complain_type_id' => $data['complain_type_id']
         ]);
 
-        return redirect()->route('my.auth.complains.list')->with('toast', [
+        return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
             'type' => 'success',
             'message' => "La plainte a bien été modifiée.",
         ]);
