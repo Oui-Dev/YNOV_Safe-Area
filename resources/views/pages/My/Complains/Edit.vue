@@ -25,7 +25,7 @@ const getDate = (props) => {
     return new Date(props.complain.created_at).toLocaleDateString('fr-FR', options);
 }
 
-const assignedTo = ref(props.complain.status_id);
+const assignedTo = ref(props.complain.assigned_to);
 const isUrgent = ref(props.complain.is_urgent === 1 ? true : false);
 const typeComplain = ref(props.complain.complain_type_id);
 
@@ -58,7 +58,7 @@ watch(() => typeComplain.value, (value) => {
     <DashboardLayout>
         <div class="overflow-hidden bg-white shadow sm:rounded-lg">
         <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg font-medium leading-6 text-gray-900">Ticket : </h3>
+            <h3 class="text-lg font-medium leading-6 text-gray-900">Plainte : </h3>
             <p class="mt-1 max-w-2xl text-sm text-gray-500">Créé le {{ getDate(props) }}</p>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
@@ -81,15 +81,13 @@ watch(() => typeComplain.value, (value) => {
             </div>            
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Type</dt>
-                <select v-model="typeComplain" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a type</option>
+                <select v-model="typeComplain" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option v-for="(complainType, key) in props.complainType" :value="complainType.id">{{ complainType.name }}</option>
                 </select>
             </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Assigné à</dt>
-                <select v-model="assignedTo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a admin</option>
+                <select v-model="assignedTo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option v-for="(admin, key) in props.admins" :value="admin.id">{{ admin.firstname+' '+admin.lastname }}</option>
                 </select>
             </div>
