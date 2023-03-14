@@ -57,7 +57,7 @@ class ExampleTest extends TestCase
 
     public function test_matomo_server()
     {
-        $response = $this->get('https://matomo.safearea.fr');
+        $response = $this->get('https://analytics.safearea.fr');
         $response->assertStatus(404);
     }
 }

@@ -91,7 +91,7 @@ cc.run({
             cookie_table: [
               {
                 col1: "^_pk_id, ^_pk_ses",
-                col2: "matomo.safearea.ml",
+                col2: "analytics.safearea.fr",
                 col3: "1 an",
                 col4: "Matomo analytics",
                 is_regex: true

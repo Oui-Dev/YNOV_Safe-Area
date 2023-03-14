@@ -32,14 +32,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap">
 
 <link rel="alternate" href="https://safearea.fr/" hreflang="x-default" />
+<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
 <!-- Matomo -->
-<script type="text/plain" data-cookiecategory="analytics"> var _paq = window._paq = window._paq || []; /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ _paq.push(["setDocumentTitle", document.domain + "/" + document.title]); _paq.push(["setCookieDomain", "*.safearea.ml"]); _paq.push(["setDomains", ["*.safearea.ml"]]); _paq.push(['trackPageView']); _paq.push(['enableLinkTracking']); (function() { var u="//matomo.safearea.ml/"; _paq.push(['setTrackerUrl', u+'matomo.php']); _paq.push(['setSiteId', '1']); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s); })(); </script> <noscript><p><img src="//matomo.safearea.ml/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript> <!-- End Matomo Code -->
-
-<noscript>
-    <img referrerpolicy="no-referrer-when-downgrade" src="http://matomo.safearea.ml/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" />
-</noscript>
-<!-- End Matomo -->
+<script type="text/plain" data-cookiecategory="analytics">
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+    var u="//analytics.safearea.fr/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
 
 <!-- Scripts -->
 @vite(['resources/scss/app.scss', 'resources/js/app.js'])
