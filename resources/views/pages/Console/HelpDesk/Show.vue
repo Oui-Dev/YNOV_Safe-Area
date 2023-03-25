@@ -15,7 +15,6 @@ const props = defineProps({
         required: true,
     }
 });
-console.log("props:", props);
 
 const form = useForm({
     status: props.ticket.status_id,
