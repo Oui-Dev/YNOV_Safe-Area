@@ -1,17 +1,12 @@
 <script setup>
-import { Link } from "@inertiajs/inertia-vue3";
-import { watch, reactive } from 'vue'
-import { PaperClipIcon, ArrowLongLeftIcon, CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
-import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions, Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
+import { Link, useForm } from "@inertiajs/inertia-vue3";
+import { watch } from 'vue';
+import { PaperClipIcon, ArrowLongLeftIcon, CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid';
+import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions, Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue';
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import { Inertia } from "@inertiajs/inertia";
 
 const props = defineProps({
     ticket: {
-        type: Object,
-        required: true,
-    },
-    users: {
         type: Object,
         required: true,
     },
@@ -20,22 +15,31 @@ const props = defineProps({
         required: true,
     }
 });
+console.log("props:", props);
 
-const form = reactive({
-    selectedStatus: props.ticket.status_id,
-    isUrgent: props.ticket.is_urgent === 1,
+const form = useForm({
+    status: props.ticket.status_id,
+    is_urgent: props.ticket.is_urgent === 1,
     type: props.ticket.type === 'incident',
 });
 
-watch([() => form.selectedStatus, () => form.isUrgent, () => form.type], ([status, isUrgent, type]) => {
-    Inertia.put(route('console.auth.helpdesk.update', props.ticket.id), {
-        status,
-        is_urgent: isUrgent ? 1 : 0,
-        type: type ? 'incident' : 'demande',
-    }, {
-        preserveScroll: true,
-    });
-});
+//this is bad
+let stop = false;
+watch(form, () => {
+    if (stop) return;
+    if (form.status === props.ticket.status_id && form.is_urgent === (props.ticket.is_urgent === 1) && form.type === (props.ticket.type === 'incident')) return;
+    stop = true;
+        form.put(route('console.auth.helpdesk.update', props.ticket.id), {
+            onSuccess: () => {
+                console.log('HEY SUCCESS !!!!!');
+                stop = false;
+            },
+            onError: (e) => {
+                console.log('HEY ERROR !!!!!', e);
+                stop = false;
+            }
+        });
+}, { deep: true });
 
 const getUser = (ticket) => {
     if (!ticket.user) return "Utilisateur supprimé";
@@ -48,12 +52,12 @@ const getCreatedDate = (ticket) => {
 }
 
 const getStatusName = () => {
-    const status = props.statuses.find(status => status.id === form.selectedStatus);
+    const status = props.statuses.find(s => s.id === form.status);
     return status.name;
 }
 
 const getStatusColor = () => {
-    const status = props.statuses.find(status => status.id === form.selectedStatus);
+    const status = props.statuses.find(s => s.id === form.status);
     return status.color;
 }
 
@@ -81,25 +85,30 @@ const getStatusColor = () => {
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <dt class="text-sm font-medium text-gray-500">Type</dt>
-                        <SwitchGroup as="div" class="flex items-center justify-start mt-2">
-                            <SwitchLabel as="span" class="mr-3">
+                        <SwitchGroup as="div"
+                                     class="flex items-center justify-start mt-2">
+                            <SwitchLabel as="span"
+                                         class="mr-3">
                                 <span class="text-sm text-gray-900">Demande</span>
                             </SwitchLabel>
                             <Switch type="checkbox"
                                     v-model="form.type"
-                                    :class="[form.type ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
-                                <span aria-hidden="true" :class="[form.type ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                                    :class="[form.type ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out']">
+                                <span aria-hidden="true"
+                                      :class="[form.type ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
                             </Switch>
-                            <SwitchLabel as="span" class="ml-3">
+                            <SwitchLabel as="span"
+                                         class="ml-3">
                                 <span class="text-sm text-gray-900">Incident</span>
                             </SwitchLabel>
                         </SwitchGroup>
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <Listbox as="div" v-model="form.selectedStatus">
+                        <Listbox as="div"
+                                 v-model="form.status">
                             <ListboxLabel class="block text-sm font-medium text-gray-500">Status</ListboxLabel>
                             <div class="relative mt-1">
-                                <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-safearea-blue focus:outline-none focus:ring-1 focus:ring-safeborder-safearea-blue sm:text-sm">
+                                <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm sm:text-sm">
                                     <div class="flex items-center justify-start gap-4">
                                         <div class="h-4 w-4 rounded-full"
                                              :class="getStatusColor()"
@@ -107,13 +116,14 @@ const getStatusColor = () => {
                                         <span class="block truncate">{{ getStatusName() }}</span>
                                     </div>
                                     <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                        <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                        <ChevronUpDownIcon class="h-5 w-5 text-gray-400"
+                                                           aria-hidden="true" />
                                     </span>
                                 </ListboxButton>
                                 <transition leave-active-class="transition ease-in duration-100"
                                             leave-from-class="opacity-100"
                                             leave-to-class="opacity-0">
-                                    <ListboxOptions class="absolute z-10 mt-1 max-h-56 w-full sm:w-1/2 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                    <ListboxOptions class="absolute z-10 mt-1 max-h-56 w-full sm:w-1/2 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm">
                                         <ListboxOption as="template"
                                                        v-for="status in props.statuses"
                                                        :key="status.id"
@@ -127,8 +137,10 @@ const getStatusColor = () => {
                                                     <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
                                                           class="capitalize">{{ status.name }}</span>
                                                 </div>
-                                                <span v-if="selected" :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
-                                                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                                                <span v-if="selected"
+                                                      :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
+                                                    <CheckIcon class="h-5 w-5"
+                                                               aria-hidden="true" />
                                                 </span>
                                             </li>
                                         </ListboxOption>
@@ -139,16 +151,20 @@ const getStatusColor = () => {
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <dt class="text-sm font-medium text-gray-500">Priorité</dt>
-                        <SwitchGroup as="div" class="flex items-start justify-start mt-2">
-                            <SwitchLabel as="span" class="mr-3">
+                        <SwitchGroup as="div"
+                                     class="flex items-start justify-start mt-2">
+                            <SwitchLabel as="span"
+                                         class="mr-3">
                                 <span class="text-sm text-gray-900">Standard</span>
                             </SwitchLabel>
                             <Switch type="checkbox"
-                                    v-model="form.isUrgent"
-                                    :class="[form.isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
-                                <span aria-hidden="true" :class="[form.isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                                    v-model="form.is_urgent"
+                                    :class="[form.is_urgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out']">
+                                <span aria-hidden="true"
+                                      :class="[form.is_urgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
                             </Switch>
-                            <SwitchLabel as="span" class="ml-3">
+                            <SwitchLabel as="span"
+                                         class="ml-3">
                                 <span class="text-sm text-gray-900">Urgente</span>
                             </SwitchLabel>
                         </SwitchGroup>
@@ -173,14 +189,14 @@ const getStatusColor = () => {
                                         <span class="ml-2 w-0 flex-1 truncate">screenshot.png</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                        <a href="#" class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </div>
-                </dl>
-            </div>
+                                    <a href="#"
+                                       class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </dd>
+                </div>
+            </dl>
         </div>
-    </DashboardLayout>
-</template>
+    </div>
+</DashboardLayout></template>

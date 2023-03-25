@@ -18,8 +18,7 @@ const props = defineProps({
 	},
 });
 
-const host = window.location.host
-const subdomain = host.split('.')[0]
+const subdomain = computed(() => usePage().props.value.routeName.split('.')[0]);
 const isRoot = computed(() => usePage().props.value.auth.user.roles.some((role) => role === 'root'));
 
 const getUser = (ticket) => {
@@ -52,10 +51,9 @@ function getStatus(ticket) {
 
 function deleteHelpdesk(ticket) {
 	if (confirm('Êtes-vous sûr de vouloir supprimer ce ticket ?')) {
-		Inertia.delete(route(subdomain+'.auth.helpdesk.delete', {id: ticket.id}), {}, {});
+		Inertia.delete(route(subdomain.value+'.auth.helpdesk.delete', {id: ticket.id}));
 	}
 }
-
 </script>
 
 <template>

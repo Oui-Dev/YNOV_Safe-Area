@@ -14,7 +14,7 @@ class HelpDeskController extends Controller
         $user = auth()->user();
         $tickets = $user->hasRole('root')
             ? HelpDeskSupport::with('user')->paginate(10)
-            : HelpDeskSupport::where('user_id', $user->id)->with('user')->paginate(10);
+            : $user->helpdeskSupports()->paginate(10);
 
         return inertia('My/HelpDesk/List', [
             'tickets' => $tickets,
@@ -29,10 +29,11 @@ class HelpDeskController extends Controller
     public function update(HelpdeskSupport $ticket) {
         $data = request()->validate([
             'status' => ['required'],
-            'is_urgent' => ['required', 'boolean'],
+            'is_urgent' => ['required'],
             'type' => ['required'],
         ]);
-
+        $data['is_urgent'] = $data['is_urgent'] == 'true' ? 1 : 0;
+        $data['type'] = $data['type'] == 'ture' ? 'incident' : 'demande';
         $ticket->status_id = $data['status'];
         $ticket->is_urgent = $data['is_urgent'];
         $ticket->type = $data['type'];
@@ -46,8 +47,7 @@ class HelpDeskController extends Controller
 
     public function show(HelpdeskSupport $ticket) {
         return inertia('Console/HelpDesk/Show', [
-            'ticket' => $ticket::with('user')->find($ticket->id),
-            'users' => User::role('root')->get(),
+            'ticket' => $ticket->load('user'),
             'statuses' => Status::all(),
         ]);
     }
