@@ -92,12 +92,11 @@ class ComplainsController extends Controller
     public function edit(Complain $complain) {
         $complain = $complain->load('user','complainType','status');
         $admins = User::role('admin')->get();
-        $complainType = DB::table('complain_types')->get();
-
+        $complainTypes = ComplainType::all();
         return inertia('My/Complains/Edit', [
             'complain' => $complain,
             'admins' => $admins,
-            'complainType' => $complainType
+            'complainTypes' => $complainTypes
         ]);
     }
 
