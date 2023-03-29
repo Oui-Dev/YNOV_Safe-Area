@@ -123,4 +123,18 @@ class ComplainsController extends Controller
             'message' => "Plainte supprimée avec succès",
         ]);
     }
+
+    public function showAnonym(Complain $complain) {
+        if($complain->is_anonymous == 1 && $complain->identity_request == 0){
+            $complain->identity_request = 1;
+        }
+
+        if($complain->save()){
+            // TODO: send mail
+            return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
+                'type' => 'success',
+                'message' => "La demande pour lever l'anonymat a bien été effectué",
+            ]);
+        }
+    }
 }
