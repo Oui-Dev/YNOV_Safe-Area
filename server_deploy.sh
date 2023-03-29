@@ -11,6 +11,7 @@ echo "Deploying application ..."
     npm install
 
     # Install dependencies based on lock file
+    composer config --no-plugins allow-plugins.php-http/discovery false
     composer install --no-interaction --prefer-dist --optimize-autoloader
 
     # Migrate database
