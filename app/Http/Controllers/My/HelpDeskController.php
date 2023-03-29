@@ -80,8 +80,8 @@ class HelpDeskController extends Controller
 
         if (request()->hasFile('file')) {
             $file = request()->file('file');
-            // put file in storage
-            $filePath = Storage::disk('public')->put('helpdesk', $file);
+            $fileName = $file->getClientOriginalName();
+            $filePath = Storage::disk('local')->putFileAs('helpdesk', $file, $fileName);
         }
 
         HelpdeskSupport::create([
@@ -94,7 +94,7 @@ class HelpDeskController extends Controller
             'title' => $data['title'],
             'description' => $data['message'],
             'type' => $data['type'] ? 'incident' : 'demande',
-            'file' => $filePath ?? null,
+            'file_url' => $filePath ?? null,
             'is_urgent' => false,
             'status_id' => 1,
         ]);
@@ -103,5 +103,9 @@ class HelpDeskController extends Controller
             'type' => 'success',
             'message' => 'Votre ticket a bien été envoyé'
         ]);
+    }
+
+    public function download(HelpdeskSupport $ticket) {
+        return Storage::download($ticket->file_url);
     }
 }

@@ -47,6 +47,13 @@ const getStatusColor = () => {
     return status.color;
 }
 
+const getFileNameFromPath = () => {
+    const path = props.ticket.file_url;
+    if (!path) return null;
+    console.log('path', path);
+    return path.split('/').pop();
+}
+
 </script>
 
 <template>
@@ -162,7 +169,8 @@ const getStatusColor = () => {
                         <dt class="text-sm font-medium text-gray-500">Message</dt>
                         <dd class="mt-1 text-sm text-gray-900">{{ ticket.description }}</dd>
                     </div>
-                    <div class="sm:col-span-2">
+                    <div v-if="ticket.file_url"
+                         class="sm:col-span-2">
                         <dt class="text-sm font-medium text-gray-500">Pièces jointes</dt>
                         <dd class="mt-1 text-sm text-gray-900">
                             <ul role="list"
@@ -171,10 +179,10 @@ const getStatusColor = () => {
                                     <div class="flex w-0 flex-1 items-center">
                                         <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400"
                                                        aria-hidden="true" />
-                                        <span class="ml-2 w-0 flex-1 truncate">screenshot.png</span>
+                                        <span class="ml-2 w-0 flex-1 truncate">{{ getFileNameFromPath() }}</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                        <a href="#"
+                                        <a :href="route('console.auth.helpdesk.download', { id: ticket.id })"
                                            class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
                                     </div>
                                 </li>
