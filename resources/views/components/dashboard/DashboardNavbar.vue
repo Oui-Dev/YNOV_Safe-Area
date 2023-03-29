@@ -60,6 +60,7 @@ const consoleNavigation = [
             { name: "Ajout", description: "Ajouter une entreprise.", href: "console.auth.companies.create", icon: SquaresPlusIcon },
         ]
     },
+    {name: "Changelog", href: "console.auth.changelog.list"},
     {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
 ];
 

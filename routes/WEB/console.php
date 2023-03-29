@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Console\DashboardController;
 use App\Http\Controllers\Console\CompanyController;
+use App\Http\Controllers\Console\ChangelogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,18 @@ Route::group([
         Route::get('/edit/{company}', 'edit')->name('edit');
         Route::put('/edit/{company}', 'editPut')->name('edit.put');
         Route::delete('/delete/{company}', 'delete')->name('delete');
+    });
+
+    Route::group([
+        'prefix' => 'changelog',
+        'as' => 'changelog.',
+        'controller' => ChangelogController::class,
+    ], function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('create.post');
+        Route::get('/edit/{version}', 'edit')->name('edit');
+        Route::put('/edit/{version}', 'editPut')->name('edit.put');
+        Route::delete('/delete/{version}', 'delete')->name('delete');
     });
 });
