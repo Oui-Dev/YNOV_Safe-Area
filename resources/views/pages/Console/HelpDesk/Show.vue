@@ -1,6 +1,6 @@
 <script setup>
 import { Link, useForm } from "@inertiajs/inertia-vue3";
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
 import { PaperClipIcon, ArrowLongLeftIcon, CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions, Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue';
 import DashboardLayout from "../../../layouts/dashboard.vue";
@@ -21,23 +21,18 @@ const form = useForm({
     is_urgent: props.ticket.is_urgent === 1,
     type: props.ticket.type === 'incident',
 });
+const computedForm = computed(() => form.data());
 
 //this is bad
-let stop = false;
-watch(form, () => {
-    if (stop) return;
-    if (form.status === props.ticket.status_id && form.is_urgent === (props.ticket.is_urgent === 1) && form.type === (props.ticket.type === 'incident')) return;
-    stop = true;
-        form.put(route('console.auth.helpdesk.update', props.ticket.id), {
-            onSuccess: () => {
-                console.log('HEY SUCCESS !!!!!');
-                stop = false;
-            },
-            onError: (e) => {
-                console.log('HEY ERROR !!!!!', e);
-                stop = false;
-            }
-        });
+watch(computedForm, () => {
+    form.put(route('console.auth.helpdesk.update', props.ticket.id), {
+        onSuccess: () => {
+            console.log('HEY SUCCESS !!!!!');
+        },
+        onError: (e) => {
+            console.log('HEY ERROR !!!!!', e);
+        }
+    });
 }, { deep: true });
 
 const getUser = (ticket) => {
@@ -130,8 +125,7 @@ const getStatusColor = () => {
                                                        v-slot="{ active, selected }">
                                             <li :class="[active ? 'text-white bg-safearea-blue' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
                                                 <div class="flex items-center justify-start gap-4">
-                                                    <div class="h-4 w-4 rounded-full"
-                                                         :class="status.color"
+                                                    <div :class="['h-4 w-4 rounded-full', status.color]"
                                                          :title="status.name" />
                                                     <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
                                                           class="capitalize">{{ status.name }}</span>
