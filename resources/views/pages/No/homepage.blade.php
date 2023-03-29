@@ -277,28 +277,24 @@
                     <div class="mx-auto space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
                         <h2 class="text-center py-4">Notre équipe</h2>
                     </div>
-                    <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
-                        <x-team-card name="Kévin BLAISE"
+                    <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-6 lg:gap-x-8">
+                        <x-team-card name="Kévin BLAISE" class="lg:col-span-2"
                             role="Chef de projet / Expert web"
                             img="resources/images/team/kevin_blaise.webp"
                             linkedin="https://www.linkedin.com/in/k%C3%A9vin-blaise/"/>
-                        <x-team-card name="Petru OLTEAN"
+                        <x-team-card name="Petru OLTEAN" class="lg:col-span-2"
                             role="Conseiller / Développeur web"
                             img="resources/images/team/petru_oltean.webp"
                             linkedin="https://www.linkedin.com/in/petru-oltean-7308a4171/"/>
-                        <x-team-card name="Maxime LARROZE-F."
-                            role="Superviseur"
-                            img="resources/images/team/maxime_larroze.webp"
-                            linkedin="https://www.linkedin.com/in/maxime-larroze-francezat-09714614b/"/>
-                        <x-team-card name="Léo CORRE"
+                        <x-team-card name="Léo CORRE" class="lg:col-span-2"
                             role="Développeur web"
                             img="resources/images/team/leo_corre.webp"
                             linkedin="https://www.linkedin.com/in/lcorre/"/>
-                        <x-team-card name="Evan MARCEL"
+                        <x-team-card name="Evan MARCEL" class="lg:col-span-3"
                             role="Développeur web"
                             img="resources/images/team/evan_marcel.webp"
                             linkedin="https://www.linkedin.com/in/evan-marcel-178a64171/"/>
-                        <x-team-card name="Jules Besson"
+                        <x-team-card name="Jules Besson" class="sm:col-span-2 lg:col-span-3"
                             role="Développeur web"
                             img="resources/images/team/default.webp"
                             linkedin="#"/>

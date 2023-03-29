@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             VersionSeeder::class,
             StatusSeeder::class,
+            ComplainTypeSeeder::class,
         ]);
 
         if(config('app.env') === 'local') {
             $this->call([
                 UserSeeder::class,
-                ComplainTypeSeeder::class,
             ]);
 
             Company::factory()->count(23)->create();
