@@ -14,7 +14,7 @@ class HelpDeskController extends Controller
         $user = auth()->user();
         $tickets = $user->hasRole('root')
             ? HelpDeskSupport::with('user')->paginate(10)
-            : $user->helpdeskSupports()->paginate(10);
+            : $user->helpDeskSupports()->paginate(10);
 
         return inertia('My/HelpDesk/List', [
             'tickets' => $tickets,
