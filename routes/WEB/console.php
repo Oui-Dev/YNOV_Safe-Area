@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Console\DashboardController;
 use App\Http\Controllers\Console\CompanyController;
 use App\Http\Controllers\Console\ChangelogController;
-use App\Http\Controllers\My\HelpDeskController;
+use App\Http\Controllers\My\HelpdeskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ Route::group([
     Route::group([
         'prefix' => 'helpdesk',
         'as' => 'helpdesk.',
-        'controller' => HelpDeskController::class
+        'controller' => HelpdeskController::class
     ],function () {
         Route::get('/', 'list')->name('list');
         Route::get('/{ticket:id}', 'show')->name('show');

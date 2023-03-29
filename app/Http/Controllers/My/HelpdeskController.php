@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\HelpdeskSupport;
 use App\Models\Status;
 
-class HelpDeskController extends Controller
+class HelpdeskController extends Controller
 {
     public function list() {
         $user = auth()->user();
