@@ -15,13 +15,13 @@ const props = defineProps({
 const form = useForm({
     title: null,
     content: null,
-    screen_url: null,
+    file_url: null,
     is_anonymous: false,
     complain_type_id: null,
 });
 
 const getFile = (file) => {
-    form.screen_url = file;
+    form.file_url = file;
 }
 
 function submit() {
@@ -50,7 +50,7 @@ function submit() {
                         <div v-if="form.errors.content" class="form-error-field">{{ form.errors.content }}</div>
                     </div>
                     <div :class="{ 'form-error-div': form.errors.content }">
-                        <label for="url">Lien vers une pièce jointe :</label>
+                        <label for="url">Ajoutez un document :</label>
                         <Dropzone @file="getFile"></Dropzone>
                         <div v-if="form.errors.content" class="form-error-field">{{ form.errors.content }}</div>
                     </div>

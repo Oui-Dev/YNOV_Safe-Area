@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\HelpdeskSupport;
 use App\Models\Status;
-use App\Models\User;
 
 class HelpDeskController extends Controller
 {

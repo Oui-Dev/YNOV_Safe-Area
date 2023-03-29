@@ -35,6 +35,14 @@ const getDate = (props) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     return new Date(props.complain.created_at).toLocaleDateString('fr-FR', options);
 }
+
+const getFileNameFromPath = () => {
+    const path = props.complain.file_url;
+    if (!path) return null;
+    console.log('path', path);
+    return path.split('/').pop();
+}
+
 </script>
 
 <template>
@@ -61,7 +69,7 @@ const getDate = (props) => {
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Sujet</dt>
                 <dd class="mt-1 text-sm text-gray-900">{{ props.complain.title }}</dd>
-            </div>            
+            </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Type</dt>
                 <select v-model="form.complain_type_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 p-2.5">
@@ -109,7 +117,7 @@ const getDate = (props) => {
                     <li class="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
                     <div class="flex w-0 flex-1 items-center">
                         <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                        <span class="ml-2 w-0 flex-1 truncate">coverletter_back_end_developer.pdf</span>
+                        <span class="ml-2 w-0 flex-1 truncate">{{ getFileNameFromPath }}</span>
                     </div>
                     <div class="ml-4 flex-shrink-0">
                         <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>

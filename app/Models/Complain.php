@@ -12,7 +12,7 @@ class Complain extends Model
     protected $fillable = [
         'title',
         'content',
-        'screen_url',
+        'file_url',
         'status_id',
         'is_urgent',
         'user_id',
