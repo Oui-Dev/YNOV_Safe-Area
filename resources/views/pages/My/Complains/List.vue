@@ -57,9 +57,8 @@ function getEmergency(complain) {
 function getStatus(complain) {
 	return "<div class='h-4 w-4 rounded-full mx-auto " + complain.status.color + " ' title=' " + complain.status.name + "' />";
 }
-
-
 </script>
+
 <template>
     <DashboardLayout>
 		<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
