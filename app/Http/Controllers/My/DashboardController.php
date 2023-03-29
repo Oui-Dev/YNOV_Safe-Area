@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\Complain;
 
 class DashboardController extends Controller
@@ -14,7 +13,14 @@ class DashboardController extends Controller
             ? Complain::select('*')
             : $user->complains();
         
-        $complains = $complains->with('assignedUser')->with('status')->where('deleted_at', NULL)->get();
+        $complains = $complains
+            ->with('assignedUser')->with('status')
+            ->where('deleted_at', NULL)
+            ->where('assigned_to', NULL)
+            ->where('status_id', 1)
+            ->orderBy('created_at', 'desc')
+            ->take(6)->get();
+
         $complains = $complains->map(function($complain) {
             if(!$complain->is_anonymous) {
                 $complain->load('user');
@@ -24,21 +30,22 @@ class DashboardController extends Controller
             return $complain;
         });
 
-        $page = request()->get('page', 1);
-        $complains = $complains->toArray();
-        $complains = new \Illuminate\Pagination\LengthAwarePaginator(
-            array_slice($complains, ($page - 1) * 10, 10),
-            count($complains),
-            10,
-            $page,
-            [
-                'path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(),
-                'pageName' => 'page',
-            ]
-        );
+        $stats = [
+            'totalUsers' => $user->company->users()->count(),
+            'totalComplains' => $user->company->users()->with('complains')->get()->sum(function($user) {
+                return $user->complains->count();
+            }),
+            'totalNotAssignedComplains' => $user->company->users()->with('complains')->get()->sum(function($user) {
+                return $user->complains->where('assigned_to', NULL)->where('status_id', 1)->count();
+            }),
+        ];
+
+        $lastComplain = $complains->pop();
 
         return inertia('My/Index', [
             'complains' => $complains,
+            'stats' => $stats,
+            'lastComplain' => $lastComplain,
         ]);
     }
 }
