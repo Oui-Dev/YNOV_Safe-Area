@@ -72,6 +72,7 @@ class ComplainsController extends Controller
             'user_reference' => auth()->user()->reference,
             'title' => $data['title'],
             'content' => $data['content'],
+            'status_id' => 1,
             'file_url' => $filePath ?? null,
             'is_anonymous' => $data['is_anonymous'],
             'complain_type_id' => $data['complain_type_id'],
