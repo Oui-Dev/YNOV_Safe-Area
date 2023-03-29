@@ -62,8 +62,7 @@ function deleteHelpdesk(ticket) {
 			<h1 class="text-xl font-bold text-gray-900">Tickets de support</h1>
 			<Link v-if="!isRoot"
 				:href="route('my.auth.helpdesk.add')"
-				class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2"
-			>
+				class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2">
 				<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
 				<span>Nouveau Ticket</span>
 			</Link>
