@@ -23,8 +23,8 @@ class ComplainTypeSeeder extends Seeder
             'slug' => 'discrimination',
         ]);
         ComplainType::create([
-            'name' => 'Pression',
-            'slug' => 'pression',
+            'name' => 'Autres',
+            'slug' => 'autres',
         ]);
     }
 }
