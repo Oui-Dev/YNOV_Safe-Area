@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Models\HelpDeskSupport;
 use App\Models\Status;
 use App\Models\User;
@@ -77,8 +77,12 @@ class HelpDeskController extends Controller
         $firstPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
         $secondPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
         $ticketRef = $firstPart . $secondPart;
-        // $fileName = $ticketRef . '.' . $data['file']->extension();
-        // $filePath = Storage::disk('s3')->put('helpdesk/', $data['file'], $fileName, 'private');
+
+        if (request()->hasFile('file_url')) {
+            $file = request()->file('file_url');
+            $filePath = $file->store('helpdesk', 'public');
+        }
+        dd($filePath);
 
         HelpDeskSupport::create([
             'reference' => $ticketRef,
