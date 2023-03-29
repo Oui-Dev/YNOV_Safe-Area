@@ -23,16 +23,8 @@ const form = useForm({
 });
 const computedForm = computed(() => form.data());
 
-//this is bad
 watch(computedForm, () => {
-    form.put(route('console.auth.helpdesk.update', props.ticket.id), {
-        onSuccess: () => {
-            console.log('HEY SUCCESS !!!!!');
-        },
-        onError: (e) => {
-            console.log('HEY ERROR !!!!!', e);
-        }
-    });
+    form.put(route('console.auth.helpdesk.update', props.ticket.id));
 }, { deep: true });
 
 const getUser = (ticket) => {
@@ -182,14 +174,15 @@ const getStatusColor = () => {
                                         <span class="ml-2 w-0 flex-1 truncate">screenshot.png</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                    <a href="#"
-                                       class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </dd>
-                </div>
-            </dl>
+                                        <a href="#"
+                                           class="font-medium text-safearea-blue hover:text-safearea-red">Télécharger</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
         </div>
-    </div>
-</DashboardLayout></template>
+    </DashboardLayout>
+</template>
