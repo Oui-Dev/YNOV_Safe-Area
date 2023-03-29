@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Models\HelpdeskSupport;
 use App\Models\Status;
 use App\Models\User;
@@ -70,7 +70,7 @@ class HelpDeskController extends Controller
         $data = request()->validate([
             'title' => ['required','string','max:255'],
             'message' => ['required','string','max:500'],
-            'file_url' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'file' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
             'type' => ['boolean'],
         ]);
 
@@ -78,11 +78,11 @@ class HelpDeskController extends Controller
         $secondPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
         $ticketRef = $firstPart . $secondPart;
 
-        if (request()->hasFile('file_url')) {
-            $file = request()->file('file_url');
-            $filePath = $file->store('helpdesk', 'public');
+        if (request()->hasFile('file')) {
+            $file = request()->file('file');
+            // put file in storage
+            $filePath = Storage::disk('public')->put('helpdesk', $file);
         }
-        dd($filePath);
 
         HelpdeskSupport::create([
             'reference' => $ticketRef,
@@ -94,7 +94,7 @@ class HelpDeskController extends Controller
             'title' => $data['title'],
             'description' => $data['message'],
             'type' => $data['type'] ? 'incident' : 'demande',
-            'file' => null, // $data['$filePath'], //
+            'file' => $filePath ?? null,
             'is_urgent' => false,
             'status_id' => 1,
         ]);
