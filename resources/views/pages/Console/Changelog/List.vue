@@ -1,9 +1,8 @@
 <script setup>
-import { TrashIcon, PencilSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import {PencilSquareIcon, PlusIcon } from "@heroicons/vue/24/outline";
 import { Link } from '@inertiajs/inertia-vue3';
 import Table from '../../../components/dashboard/Table.vue';
 import DashboardLayout from '../../../layouts/dashboard.vue';
-import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
     versions: {
