@@ -7,7 +7,12 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    roles: {
+        type: Array,
+        required: true,
+    }
 });
+
 
 const form = useForm({
     lastname: props.user.lastname,
@@ -44,15 +49,15 @@ const submit = () => {
                         <input id="firstname" v-model="form.firstname" />
                         <div v-if="form.errors.firstname" class="form-error-field">{{ form.errors.firstname }}</div>
                     </div>
-                    <div :class="{ 'form-error-div': form.errors.mail }">
-                        <label for="mail">Mail :</label>
-                        <input type="email" id="mail" v-model="form.mail" />
-                        <div v-if="form.errors.mail" class="form-error-field">{{ form.errors.mail }}</div>
-                    </div>
                     <div :class="{ 'form-error-div': form.errors.phone }">
                         <label for="phone">Numéro de téléphone :</label>
                         <input id="phone" v-model="form.phone" />
                         <div v-if="form.errors.phone" class="form-error-field">{{ form.errors.phone }}</div>
+                    </div>
+                    <div :class="{ 'form-error-div': form.errors.mail }">
+                        <label for="mail">Mail :</label>
+                        <input type="email" id="mail" v-model="form.mail" />
+                        <div v-if="form.errors.mail" class="form-error-field">{{ form.errors.mail }}</div>
                     </div>
                     <div :class="{ 'form-error-div': form.errors.mailpro }">
                         <label for="mailpro">Mail professionel :</label>
