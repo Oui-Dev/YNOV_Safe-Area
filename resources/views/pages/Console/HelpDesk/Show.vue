@@ -23,6 +23,23 @@ const form = useForm({
 });
 const computedForm = computed(() => form.data());
 
+const getStatusName = computed(() => {
+    const status = props.statuses.find(s => s.id === form.status);
+    return status.name;
+});
+
+const getStatusColor = computed(() => {
+    const status = props.statuses.find(s => s.id === form.status);
+    return status.color;
+});
+
+const getFileNameFromPath = computed(() => {
+    const path = props.ticket.file_url;
+    if (!path) return null;
+    console.log('path', path);
+    return path.split('/').pop();
+});
+
 watch(computedForm, () => {
     form.put(route('console.auth.helpdesk.update', props.ticket.id));
 }, { deep: true });
@@ -36,24 +53,6 @@ const getCreatedDate = (ticket) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     return new Date(ticket.created_at).toLocaleDateString('fr-FR', options);
 }
-
-const getStatusName = () => {
-    const status = props.statuses.find(s => s.id === form.status);
-    return status.name;
-}
-
-const getStatusColor = () => {
-    const status = props.statuses.find(s => s.id === form.status);
-    return status.color;
-}
-
-const getFileNameFromPath = () => {
-    const path = props.ticket.file_url;
-    if (!path) return null;
-    console.log('path', path);
-    return path.split('/').pop();
-}
-
 </script>
 
 <template>
@@ -104,9 +103,9 @@ const getFileNameFromPath = () => {
                                 <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm sm:text-sm">
                                     <div class="flex items-center justify-start gap-4">
                                         <div class="h-4 w-4 rounded-full"
-                                             :class="getStatusColor()"
-                                             :title="getStatusName()" />
-                                        <span class="block truncate">{{ getStatusName() }}</span>
+                                             :class="getStatusColor"
+                                             :title="getStatusName" />
+                                        <span class="block truncate">{{ getStatusName }}</span>
                                     </div>
                                     <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                                         <ChevronUpDownIcon class="h-5 w-5 text-gray-400"
@@ -179,7 +178,7 @@ const getFileNameFromPath = () => {
                                     <div class="flex w-0 flex-1 items-center">
                                         <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400"
                                                        aria-hidden="true" />
-                                        <span class="ml-2 w-0 flex-1 truncate">{{ getFileNameFromPath() }}</span>
+                                        <span class="ml-2 w-0 flex-1 truncate">{{ getFileNameFromPath }}</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
                                         <a :href="route('console.auth.helpdesk.download', { id: ticket.id })"

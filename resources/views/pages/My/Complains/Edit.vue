@@ -27,6 +27,13 @@ const form = useForm({
 });
 const computedForm = computed(() => form.data());
 
+const getFileNameFromPath = computed(() => {
+    const path = props.complain.file_url;
+    if (!path) return null;
+    console.log('path', path);
+    return path.split('/').pop();
+});
+
 watch(computedForm, () => {
     form.put(route('my.auth.complains.edit.post', props.complain.id));
 }, { deep: true });
@@ -35,14 +42,6 @@ const getDate = (props) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     return new Date(props.complain.created_at).toLocaleDateString('fr-FR', options);
 }
-
-const getFileNameFromPath = () => {
-    const path = props.complain.file_url;
-    if (!path) return null;
-    console.log('path', path);
-    return path.split('/').pop();
-}
-
 </script>
 
 <template>
@@ -115,11 +114,11 @@ const getFileNameFromPath = () => {
                                     <div class="flex w-0 flex-1 items-center">
                                         <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400"
                                                        aria-hidden="true" />
-                                        <span class="ml-2 w-0 flex-1 truncate">{{ getFileNameFromPath() }}</span>
+                                        <span class="ml-2 w-0 flex-1 truncate">{{ getFileNameFromPath }}</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
                                         <a :href="route('my.auth.complains.download', props.complain)"
-                                           class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                                           class="font-medium text-indigo-600 hover:text-indigo-500">Télécharger</a>
                                     </div>
                                 </li>
                             </ul>
