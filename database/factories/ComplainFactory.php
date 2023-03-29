@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Status;
 use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class ComplainFactory extends Factory
         $user = User::find(random_int(1, 20));
 
         return [
+            'reference'=>substr(Uuid::uuid4()->toString(), 0, 6),
             'title'=>fake()->sentence(),
             'content'=>fake()->sentence(),
             'user_id'=>$user->id,
