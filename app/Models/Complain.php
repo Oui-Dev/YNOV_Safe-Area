@@ -20,6 +20,7 @@ class Complain extends Model
         'complain_type_id',
         'assigned_to',
         'is_anonymous',
+        'identity_request',
         'viewed_at',
         'closed_at',
         'deleted_at',
