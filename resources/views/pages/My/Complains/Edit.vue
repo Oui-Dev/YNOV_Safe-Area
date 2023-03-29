@@ -1,9 +1,9 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import { PaperClipIcon } from '@heroicons/vue/20/solid'
+import { PaperClipIcon } from '@heroicons/vue/20/solid';
 import { SwitchGroup , Switch } from "@headlessui/vue";
-import { ref, watch } from 'vue'
-import { Inertia } from "@inertiajs/inertia";
+import { computed, watch } from 'vue';
+import { useForm } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
     complain: {
@@ -20,38 +20,21 @@ const props = defineProps({
     }
 });
 
+const form = useForm({
+    assigned_to: props.complain.assigned_to,
+    is_urgent: props.complain.is_urgent === 1,
+    complain_type_id: props.complain.complain_type_id,
+});
+const computedForm = computed(() => form.data());
+
+watch(computedForm, () => {
+    form.put(route('my.auth.complains.edit.post', props.complain.id));
+}, { deep: true });
+
 const getDate = (props) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     return new Date(props.complain.created_at).toLocaleDateString('fr-FR', options);
 }
-
-const assignedTo = ref(props.complain.assigned_to);
-const isUrgent = ref(props.complain.is_urgent === 1 ? true : false);
-const typeComplain = ref(props.complain.complain_type_id);
-
-watch(() => assignedTo.value, (value) => {
-    Inertia.put(route('my.auth.complains.edit.post', props.complain.id), {
-        assigned_to: value,
-        is_urgent: props.complain.is_urgent,
-        complain_type_id: props.complain.complain_type_id ?? '',
-    }, { preserveScroll: true });
-});
-
-watch(() => isUrgent.value, (value) => {
-    Inertia.put(route('my.auth.complains.edit.post', props.complain.id), {
-        is_urgent: value ? 1 : 0,
-        assigned_to: props.complain.assigned_to ?? '',
-        complain_type_id: props.complain.complain_type_id ?? '',
-    },{ preserveScroll: true });
-});
-
-watch(() => typeComplain.value, (value) => {
-    Inertia.put(route('my.auth.complains.edit.post', props.complain.id), {
-        complain_type_id: value,
-        assigned_to: props.complain.assigned_to ?? '',
-        is_urgent: props.complain.is_urgent,
-    },{ preserveScroll: true });
-});
 </script>
 
 <template>
@@ -65,7 +48,7 @@ watch(() => typeComplain.value, (value) => {
             <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Demandeur</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ props.complain.user.firstname+' '+props.complain.user.lastname }}</dd>
+                <dd class="mt-1 text-sm text-gray-900">{{ props.complain.user.firstname + ' ' + props.complain.user.lastname }}</dd>
             </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Adresse-mail </dt>
@@ -81,23 +64,28 @@ watch(() => typeComplain.value, (value) => {
             </div>            
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Type</dt>
-                <select v-model="typeComplain" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 p-2.5">
-                    <option v-for="(complainTypes, key) in props.complainTypes" :value="complainTypes.id">{{ complainTypes.name }}</option>
+                <select v-model="form.complain_type_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 p-2.5">
+                    <option v-for="(complainTypes, index) in props.complainTypes" :key="index" :value="complainTypes.id">
+                        {{ complainTypes.name }}
+                    </option>
                 </select>
             </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Assigné à</dt>
-                <select v-model="assignedTo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-1/2 p-2.5">
-                    <option v-for="(admin, key) in props.admins" :value="admin.id">{{ admin.firstname+' '+admin.lastname }}</option>
+                <select v-model="form.assigned_to" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 p-2.5">
+                    <option :value="null">Non assigné</option>
+                    <option v-for="(admin, index) in props.admins" :key="index" :value="admin.id">
+                        {{ admin.firstname + ' ' + admin.lastname }}
+                    </option>
                 </select>
             </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Prioritaire</dt>
                 <SwitchGroup as="div" class="flex items-start justify-start mt-2">
                     <Switch type="checkbox"
-                            v-model="isUrgent"
-                            :class="[isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out']">
-                        <span aria-hidden="true" :class="[isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
+                            v-model="form.is_urgent"
+                            :class="[form.is_urgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out']">
+                        <span aria-hidden="true" :class="[form.is_urgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
                     </Switch>
                 </SwitchGroup>
             </div>
