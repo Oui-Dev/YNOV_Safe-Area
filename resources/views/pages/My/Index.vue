@@ -125,7 +125,7 @@ const isAnonymous = () => {
 
                     <div>
                         <h2 class="mt-8 text-lg  font-medium leading-6 text-gray-900">Dernière plainte</h2>
-                        <div class="flex flex-row w-auto gap-5">
+                        <div class="flex flex-row w-auto gap-8">
                             <div class="mt-2 w-2/4">
                                 <div class="relative cursor-default overflow-hidden rounded-lg bg-white shadow">
                                     <div v-if="isUrgent()"
@@ -185,9 +185,9 @@ const isAnonymous = () => {
                             <div class="mt-2 w-2/4">
                                 <div class="cursor-default overflow-hidden rounded-lg bg-white shadow">
                                     <div class="flex items-center p-5">
-                                        <div class="mr-5 w-0 flex gap-20 flex-1">
-                                            <div>
-                                                <div class="text-lg font-medium text-gray-900">Dépositaire</div>
+                                    
+                                            <div class="w-auto">
+                                                <div class="text-lg font-medium text-gray-900">Message :</div>
                                                 <div class="text-sm font-medium text-gray-500">{{ }}</div>
                                             </div>
                                             <div>
@@ -199,7 +199,7 @@ const isAnonymous = () => {
                                                 <div class="text-sm font-medium text-gray-500">{{ }}
                                                 </div>
                                             </div>
-                                        </div>
+            
                                     </div>
                                 </div>
                             </div>
