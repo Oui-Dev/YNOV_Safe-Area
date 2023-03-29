@@ -82,9 +82,9 @@ class User extends Authenticatable
         return $this->hasMany(Complain::class);
     }
 
-    public function helpDeskSupports(): \Illuminate\Database\Eloquent\Relations\hasMany
+    public function helpdeskSupports(): \Illuminate\Database\Eloquent\Relations\hasMany
     {
-        return $this->hasMany(HelpDeskSupport::class);
+        return $this->hasMany(HelpdeskSupport::class);
     }
 
     public function is_blocked(){
