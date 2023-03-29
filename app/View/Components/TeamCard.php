@@ -10,6 +10,7 @@ class TeamCard extends Component
     public $role;
     public $img;
     public $linkedin;
+    public $class;
 
     /**
      * Create a new component instance.
@@ -17,11 +18,12 @@ class TeamCard extends Component
      * @param string $name, $role, $img, $linkedin
      * @return void
      */
-    public function __construct($name, $role, $img, $linkedin) {
+    public function __construct($name, $role, $img, $linkedin, $class = '') {
         $this->name = $name;
         $this->role = $role;
         $this->img = $img;
         $this->linkedin = $linkedin;
+        $this->class = $class;
     }
 
     /**

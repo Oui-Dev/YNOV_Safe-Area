@@ -1,5 +1,5 @@
-<li>
-    <div class="space-y-4">
+<li class="{{ $class }}">
+    <div class="space-y-4 max-w-xs mx-auto">
         <div class="aspect-w-3 aspect-h-2">
             <img class="rounded-lg object-cover shadow-lg" src="{{Vite::asset($img)}}" alt="{{ 'Photo '.$name }}">
         </div>
