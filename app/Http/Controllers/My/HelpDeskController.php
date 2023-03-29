@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
-use App\Models\HelpDeskSupport;
+// use Illuminate\Support\Facades\Storage;
+use App\Models\HelpdeskSupport;
 use App\Models\Status;
 use App\Models\User;
 
@@ -13,7 +13,7 @@ class HelpDeskController extends Controller
     public function list() {
         $user = auth()->user();
         $tickets = $user->hasRole('root')
-            ? HelpDeskSupport::with('user')->paginate(10)
+            ? HelpdeskSupport::with('user')->paginate(10)
             : $user->helpdeskSupports()->paginate(10);
 
         return inertia('My/HelpDesk/List', [
@@ -84,7 +84,7 @@ class HelpDeskController extends Controller
         }
         dd($filePath);
 
-        HelpDeskSupport::create([
+        HelpdeskSupport::create([
             'reference' => $ticketRef,
             'user_id' => $user->id,
             'firstname' => $user->firstName,
