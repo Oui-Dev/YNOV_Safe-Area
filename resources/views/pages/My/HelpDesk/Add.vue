@@ -15,7 +15,7 @@ const form = useForm({
 });
 
 const submit = () => {
-	form.post(route("my.auth.helpDesk.add.post"), {
+	form.post(route("my.auth.helpdesk.add.post"), {
 		onStart: () => {
 			form.clearErrors();
 			isLoading.value = true;

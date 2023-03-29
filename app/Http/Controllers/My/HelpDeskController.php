@@ -5,13 +5,20 @@ namespace App\Http\Controllers\My;
 use App\Http\Controllers\Controller;
 // use Illuminate\Support\Facades\Storage;
 use App\Models\HelpDeskSupport;
+use App\Models\Status;
 use App\Models\User;
 
 class HelpDeskController extends Controller
 {
     public function list() {
+        $user = auth()->user();
+        $tickets = $user->hasRole('root')
+            ? HelpDeskSupport::with('user')->paginate(10)
+            : $user->helpdeskSupports()->paginate(10);
+
         return inertia('My/HelpDesk/List', [
-            'tickets' => HelpDeskSupport::with('user')->paginate(10),
+            'tickets' => $tickets,
+            'statuses' => Status::all(),
         ]);
     }
 
@@ -19,9 +26,42 @@ class HelpDeskController extends Controller
         return inertia('My/HelpDesk/Add');
     }
 
+    public function update(HelpdeskSupport $ticket) {
+        $data = request()->validate([
+            'status' => ['required'],
+            'is_urgent' => ['required'],
+            'type' => ['required'],
+        ]);
+        $data['is_urgent'] = $data['is_urgent'] == 'true' ? 1 : 0;
+        $data['type'] = $data['type'] == 'ture' ? 'incident' : 'demande';
+        $ticket->status_id = $data['status'];
+        $ticket->is_urgent = $data['is_urgent'];
+        $ticket->type = $data['type'];
+        $ticket->save();
+
+        return redirect()->route('console.auth.helpdesk.show', $ticket->id)->with('toast', [
+            'type' => 'success',
+            'message' => 'Ticket mis à jour'
+        ]);
+    }
+
     public function show(HelpdeskSupport $ticket) {
-        return inertia('My/HelpDesk/Show', [
-            'ticket' => $ticket,
+        return inertia('Console/HelpDesk/Show', [
+            'ticket' => $ticket->load('user'),
+            'statuses' => Status::all(),
+        ]);
+    }
+
+    public function delete(HelpdeskSupport $ticket) {
+        $url = url()->previous();
+        $parsedUrl = parse_url($url);
+        $host = explode('.', $parsedUrl['host']);
+        $route = $host[0] . '.auth.helpdesk.list';
+
+        $ticket->delete();
+        return redirect()->route($route)->with('toast', [
+            'type' => 'success',
+            'message' => 'Ticket supprimé'
         ]);
     }
 
@@ -50,12 +90,13 @@ class HelpDeskController extends Controller
             'title' => $data['title'],
             'description' => $data['message'],
             'type' => $data['type'] ? 'incident' : 'demande',
-            'emergency' => 3,
-            'file' => null // $data['$filePath'], //
+            'file' => null, // $data['$filePath'], //
+            'is_urgent' => false,
+            'status_id' => 1,
         ]);
 
-        return redirect()->route('my.auth.helpDesk.list')->with('toast', [
-            'type' => 'success', 
+        return redirect()->route('my.auth.helpdesk.list')->with('toast', [
+            'type' => 'success',
             'message' => 'Votre ticket a bien été envoyé'
         ]);
     }
