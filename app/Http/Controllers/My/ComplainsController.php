@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Complain;
 use App\Models\ComplainType;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
-
 
 class ComplainsController extends Controller
 {

@@ -81,7 +81,7 @@ watch(() => typeComplain.value, (value) => {
             </div>            
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Type</dt>
-                <select v-model="typeComplain" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-1/2 p-2.5">
+                <select v-model="typeComplain" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 p-2.5">
                     <option v-for="(complainTypes, key) in props.complainTypes" :value="complainTypes.id">{{ complainTypes.name }}</option>
                 </select>
             </div>
@@ -96,7 +96,7 @@ watch(() => typeComplain.value, (value) => {
                 <SwitchGroup as="div" class="flex items-start justify-start mt-2">
                     <Switch type="checkbox"
                             v-model="isUrgent"
-                            :class="[isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none']">
+                            :class="[isUrgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out']">
                         <span aria-hidden="true" :class="[isUrgent ? 'translate-x-5' : 'translate-x-0', 'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out']" />
                     </Switch>
                 </SwitchGroup>
