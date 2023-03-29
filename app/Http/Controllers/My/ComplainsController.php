@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Complain;
 use App\Models\ComplainType;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class ComplainsController extends Controller
 {
@@ -14,7 +15,7 @@ class ComplainsController extends Controller
         $complains = $user->hasrole("admin")
             ? Complain::select('*')
             : $user->complains();
-        
+
         $complains = $complains->with('assignedUser')->with('status')->where('deleted_at', NULL)->get();
         $complains = $complains->map(function($complain) {
             if(!$complain->is_anonymous) {
@@ -49,32 +50,42 @@ class ComplainsController extends Controller
             'complainsTypes' => $complainsTypes
         ]);
     }
-    
+
 
     public function store() {
         $data = request()->validate([
             'title' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string', 'max:1000'],
-            //'screen_url' => ['string', 'max:1000'],
+            'file_url' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
             'is_anonymous' => ['boolean'],
             'complain_type_id' => ['required', 'int']
         ]);
 
+        $firstPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
+        $secondPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
+        $complainRef = $firstPart . $secondPart;
+
+        if (request()->hasFile('file_url')) {
+            $file = request()->file('file_url');
+            $fileName = $file->getClientOriginalName();
+            $filePath = Storage::disk('local')->putFileAs('complains', $file, $fileName);
+        }
+
         Complain::create([
             'user_id' => auth()->user()->id,
             'user_reference' => auth()->user()->reference,
+            'reference' => $complainRef,
             'title' => $data['title'],
             'content' => $data['content'],
             'status_id' => 1,
-            //'screen_url' => $data['screen_url'],
-            'screen_url' => 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+            'file_url' => $filePath ?? null,
             'is_anonymous' => $data['is_anonymous'],
             'complain_type_id' => $data['complain_type_id'],
             'assigned_to' => null
         ]);
 
         return redirect()->route('my.auth.complains.list')->with('toast', [
-            'type' => 'success', 
+            'type' => 'success',
             'message' => 'Votre plainte a bien été envoyé.'
         ]);
     }
@@ -116,5 +127,10 @@ class ComplainsController extends Controller
             'type' => 'success',
             'message' => "Plainte supprimée avec succès",
         ]);
+    }
+
+    public function download(Complain $complain)
+    {
+        return Storage::download($complain->file_url);
     }
 }

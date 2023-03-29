@@ -46,6 +46,7 @@ Route::group([
         Route::get('/{ticket:id}', 'show')->name('show');
         Route::put('/{ticket:id}', 'update')->name('update');
         Route::delete('/{ticket:id}', 'delete')->name('delete');
+        Route::get('/download/{ticket:id}', 'download')->name('download');
     });
 
     // Companies
