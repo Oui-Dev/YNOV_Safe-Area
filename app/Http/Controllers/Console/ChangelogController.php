@@ -22,10 +22,10 @@ class ChangelogController extends Controller
     public function store() {
         $data = request()->validate([
             'name' => ['required', 'string',  'max:255'],
-            'generation' => ['required', 'integer', 'max:255'],
-            'correction' => ['required', 'integer', 'max:255'],
-            'revision' => ['required', 'integer', 'max:255'],
-            'changelog' => ['required', 'string', 'max:255'],
+            'generation' => ['required', 'integer'],
+            'correction' => ['required', 'integer'],
+            'revision' => ['required', 'integer'],
+            'changelog' => ['required', 'string'],
         ]);
 
         Version::create([
@@ -51,10 +51,10 @@ class ChangelogController extends Controller
     public function editPut(Version $version) {
         $data = request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'generation' => ['required', 'integer', 'max:255'],
-            'correction' => ['required', 'integer', 'max:255'],
-            'revision' => ['required', 'integer', 'max:255'],
-            'changelog' => ['string','max:255'],
+            'generation' => ['required', 'integer'],
+            'correction' => ['required', 'integer'],
+            'revision' => ['required', 'integer'],
+            'changelog' => ['string'],
         ]);
 
         $version->update([
@@ -69,14 +69,5 @@ class ChangelogController extends Controller
             'type' => 'success',
             'message' => "La version a bien été modifiée.",
         ]);
-    }
-
-    public function delete(Version $version) {
-        $version->delete();
-
-        return redirect()->route('console.auth.changelog.list')->with('toast', [
-            'type' => 'success',
-            'message' => "La version a bien été supprimée.",
-        ]);	
     }
 }

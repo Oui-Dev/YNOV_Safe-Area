@@ -41,9 +41,7 @@ function deleteVersion(version) {
             :tableKeys="['name', 'generation', 'correction', 'revision', 'changelog']"
             :data="versions"
             :actions="[
-                // TODO: view more btn
                 {type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.changelog.edit', param: 'id', icon: PencilSquareIcon, iconText: 'Modifier'},
-                {type: 'function', function: deleteVersion, icon: TrashIcon, iconText: 'Supprimer' }
             ]"
             :pagination=true
         />

@@ -59,6 +59,5 @@ Route::group([
         Route::post('/create', 'store')->name('create.post');
         Route::get('/edit/{version}', 'edit')->name('edit');
         Route::put('/edit/{version}', 'editPut')->name('edit.put');
-        Route::delete('/delete/{version}', 'delete')->name('delete');
     });
 });
