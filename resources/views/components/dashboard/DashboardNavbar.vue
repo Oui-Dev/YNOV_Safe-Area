@@ -65,6 +65,7 @@ const consoleNavigation = [
         name: "Autres",
         items: [
             { name: 'Support', description: 'Support technique.', href: 'console.auth.helpdesk.list', icon: InformationCircleIcon },
+            { name: 'Changelog', description: 'Gérer les versions du site.', href: 'console.auth.changelog.list' },
             { name: 'Retourner sur le site', description: 'Retourner à la page d\'acceuil.', href: 'no.public.homepage', icon: HomeIcon, as: "a" }
         ]
     },
