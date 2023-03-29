@@ -88,7 +88,7 @@ class CompanyController extends Controller
 
         return redirect()->back()->with('toast', [
             'type' => 'success',
-            'message' => "L'entreprise a bien été supprimé.",
+            'message' => "L'entreprise a bien été supprimée.",
         ]);
     }
 }

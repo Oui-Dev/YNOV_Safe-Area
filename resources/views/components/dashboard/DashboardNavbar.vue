@@ -7,6 +7,7 @@ import { Link, usePage } from '@inertiajs/inertia-vue3';
 import {Disclosure, DisclosureButton, DisclosurePanel} from "@headlessui/vue";
 import {
     InformationCircleIcon,
+    ClockIcon,
     UserPlusIcon,
     EnvelopeIcon,
     HomeIcon,
@@ -14,14 +15,14 @@ import {
     Bars3Icon,
     BuildingOffice2Icon,
     SquaresPlusIcon,
-    XMarkIcon
+    XMarkIcon,
 } from "@heroicons/vue/24/outline";
 
 const myNavigation = [
     {name: "Dashboard", href: "my.auth.dashboard.index"},
     {name: "Annuaire", href: "my.auth.users.list"},
     {name: "Plaintes", href: "my.auth.complains.list"},
-    {name: "Support", href: "my.auth.helpDesk.add"},
+    {name: "Support", href: "my.auth.helpdesk.add"},
     {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
 ];
 const adminNavigation = [
@@ -45,7 +46,7 @@ const adminNavigation = [
         type: "dropdown",
         name: "Autres",
         items: [
-            { name: 'Support', description: 'Support technique.', href: 'my.auth.helpDesk.list', icon: InformationCircleIcon },
+            { name: 'Support', description: 'Support technique.', href: 'my.auth.helpdesk.list', icon: InformationCircleIcon },
             { name: 'Retourner sur le site', description: 'Retourner à la page d\'acceuil.', href: 'no.public.homepage', icon: HomeIcon, as: "a" }
         ]
     },
@@ -60,7 +61,15 @@ const consoleNavigation = [
             { name: "Ajout", description: "Ajouter une entreprise.", href: "console.auth.companies.create", icon: SquaresPlusIcon },
         ]
     },
-    {name: "Retourner sur le site", href: "no.public.homepage", as: "a"},
+    {
+        type: "dropdown",
+        name: "Autres",
+        items: [
+            { name: 'Support', description: 'Support technique.', href: 'console.auth.helpdesk.list', icon: InformationCircleIcon },
+            { name: 'Changelog', description: 'Gérer les versions du site.', href: 'console.auth.changelog.list', icon: ClockIcon },
+            { name: 'Retourner sur le site', description: 'Retourner à la page d\'acceuil.', href: 'no.public.homepage', icon: HomeIcon, as: "a" }
+        ]
+    },
 ];
 
 const getUser = computed(() => usePage().props.value.auth.user);

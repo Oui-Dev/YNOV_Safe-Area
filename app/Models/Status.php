@@ -20,8 +20,8 @@ class Status extends Model
         return $this->hasMany(Complain::class);
     }
 
-    public function helpDeskSupports(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function helpdeskSupports(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(HelpDeskSupport::class);
+        return $this->hasMany(HelpdeskSupport::class);
     }
 }
