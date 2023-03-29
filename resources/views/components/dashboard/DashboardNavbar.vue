@@ -7,6 +7,7 @@ import { Link, usePage } from '@inertiajs/inertia-vue3';
 import {Disclosure, DisclosureButton, DisclosurePanel} from "@headlessui/vue";
 import {
     InformationCircleIcon,
+    ClockIcon,
     UserPlusIcon,
     EnvelopeIcon,
     HomeIcon,
@@ -14,7 +15,7 @@ import {
     Bars3Icon,
     BuildingOffice2Icon,
     SquaresPlusIcon,
-    XMarkIcon
+    XMarkIcon,
 } from "@heroicons/vue/24/outline";
 
 const myNavigation = [
@@ -65,7 +66,7 @@ const consoleNavigation = [
         name: "Autres",
         items: [
             { name: 'Support', description: 'Support technique.', href: 'console.auth.helpdesk.list', icon: InformationCircleIcon },
-            { name: 'Changelog', description: 'Gérer les versions du site.', href: 'console.auth.changelog.list' },
+            { name: 'Changelog', description: 'Gérer les versions du site.', href: 'console.auth.changelog.list', icon: ClockIcon },
             { name: 'Retourner sur le site', description: 'Retourner à la page d\'acceuil.', href: 'no.public.homepage', icon: HomeIcon, as: "a" }
         ]
     },

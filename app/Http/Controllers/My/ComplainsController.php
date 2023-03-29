@@ -65,6 +65,7 @@ class ComplainsController extends Controller
             'user_reference' => auth()->user()->reference,
             'title' => $data['title'],
             'content' => $data['content'],
+            'status_id' => 1,
             //'screen_url' => $data['screen_url'],
             'screen_url' => 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
             'is_anonymous' => $data['is_anonymous'],

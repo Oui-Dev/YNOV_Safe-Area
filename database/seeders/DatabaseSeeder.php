@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Company;
 use App\Models\User;
 use App\Models\Complain;
-use App\Models\HelpDeskSupport;
+use App\Models\HelpdeskSupport;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,18 +21,18 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             VersionSeeder::class,
             StatusSeeder::class,
+            ComplainTypeSeeder::class,
         ]);
 
         if(config('app.env') === 'local') {
             $this->call([
                 UserSeeder::class,
-                ComplainTypeSeeder::class,
             ]);
 
             Company::factory()->count(23)->create();
             User::factory()->count(93)->create();
             Complain::factory()->count(42)->create();
-            HelpDeskSupport::factory()->count(13)->create();
+            HelpdeskSupport::factory()->count(13)->create();
         }
     }
 }
