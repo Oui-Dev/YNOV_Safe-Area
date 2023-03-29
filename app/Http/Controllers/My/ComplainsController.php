@@ -61,6 +61,10 @@ class ComplainsController extends Controller
             'complain_type_id' => ['required', 'int']
         ]);
 
+        $firstPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
+        $secondPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
+        $complainRef = $firstPart . $secondPart;
+
         if (request()->hasFile('file_url')) {
             $file = request()->file('file_url');
             $fileName = $file->getClientOriginalName();
@@ -70,6 +74,7 @@ class ComplainsController extends Controller
         Complain::create([
             'user_id' => auth()->user()->id,
             'user_reference' => auth()->user()->reference,
+            'reference' => $complainRef,
             'title' => $data['title'],
             'content' => $data['content'],
             'status_id' => 1,
@@ -126,5 +131,6 @@ class ComplainsController extends Controller
 
     public function download(Complain $complain)
     {
+        return Storage::download($complain->file_url);
     }
 }
