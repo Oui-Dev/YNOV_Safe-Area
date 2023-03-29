@@ -3,7 +3,7 @@ import { ref } from "vue";
 import DashboardLayout from "../../layouts/dashboard.vue";
 import Table from "../../components/dashboard/Table.vue";
 import StatsCard from "../../components/dashboard/StatsCard.vue";
-import { RectangleStackIcon, ExclamationTriangleIcon, ChartBarIcon, BuildingOfficeIcon, CheckCircleIcon } from '@heroicons/vue/24/outline';
+import { ExclamationCircleIcon, ExclamationTriangleIcon, BuildingOfficeIcon, CheckCircleIcon, UserIcon, DocumentTextIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
     complains: {
@@ -21,32 +21,45 @@ const props = defineProps({
 });
 
 const statsCardsData = ref([
-    { title: "Total utilisateurs", value: props.stats.totalUsers, icon: RectangleStackIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.users.list" },
-    { title: "Total plaintes", value: props.stats.totalComplains, icon: ExclamationTriangleIcon, iconBg: "bg-red-500", clickable: true, path: "my.auth.complains.list" },
-    { title: "Nouvelles plaintes", value: props.stats.totalNotAssignedComplains, icon: ChartBarIcon, clickable: true, path: "my.auth.complains.list" },
+    { title: "Total utilisateurs", value: props.stats.totalUsers, icon: UserIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.users.list" },
+    { title: "Total plaintes", value: props.stats.totalComplains, icon: DocumentTextIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.complains.list" },
+    { title: "Nouvelles plaintes", value: props.stats.totalNotAssignedComplains, icon: ExclamationCircleIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.complains.list" },
 ]);
 
 const getUser = (complain) => {
-	if(!complain.user) return "Anonyme";
-	return complain.user.lastname + " " + complain.user.firstname;
+    if (!complain.user) return "Anonyme";
+    return complain.user.lastname + " " + complain.user.firstname;
 };
 
 const getTitle = (complain) => {
-	const strLength = 60;
-	return complain.title.substring(0, strLength) + (complain.title.length > strLength ? "..." : "");
+    const strLength = 60;
+    return complain.title.substring(0, strLength) + (complain.title.length > strLength ? "..." : "");
 };
 
-function getEmergency(complain) {
-	switch (complain.urgency) {
-		case '0':
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' />";
-		case '1':
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-yellow-600' />";
-		case '2':
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-red-600' />";
-		default:
-			return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' />";
-	}
+const getContent = (content) => {
+    const strLength = 150;
+    return content.substring(0, strLength) + (content.length > strLength ? "..." : "");
+};
+
+const getEmergency = (complain) => {
+    switch (complain.urgency) {
+        case '0':
+            return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' />";
+        case '1':
+            return "<div class='h-4 w-4 rounded-full mx-auto bg-yellow-600' />";
+        case '2':
+            return "<div class='h-4 w-4 rounded-full mx-auto bg-red-600' />";
+        default:
+            return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' />";
+    }
+}
+
+const isUrgent = () => {
+    return props.lastComplain.is_urgent ? true : false;
+}
+
+const isAnonymous = () => {
+    return props.lastComplain.is_anonymous ? true : false;
 }
 </script>
 
@@ -74,8 +87,7 @@ function getEmergency(complain) {
                                     </div>
                                     <dl class="mt-6 flex flex-col sm:ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
                                         <dt class="sr-only">Company</dt>
-                                        <dd
-                                            class="flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6">
+                                        <dd class="flex items-center text-sm font-medium capitalize text-gray-500 sm:mr-6">
                                             <BuildingOfficeIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                                                 aria-hidden="true" />
                                             Duke street studio
@@ -105,9 +117,92 @@ function getEmergency(complain) {
                 <div class="mt-8">
                     <!-- Card -->
                     <div>
-                        <h2 class="text-lg font-medium leading-6 text-gray-900">Overview</h2>
+                        <h2 class="text-lg font-medium leading-6 text-gray-900">Vue globale</h2>
                         <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                             <StatsCard v-for="(card, index) in statsCardsData" :key="index" v-bind="card" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="mt-8 text-lg  font-medium leading-6 text-gray-900">Dernière plainte</h2>
+                        <div class="flex flex-row w-auto gap-5">
+                            <div class="mt-2 w-2/4">
+                                <div class="relative cursor-default overflow-hidden rounded-lg bg-white shadow">
+                                    <div v-if="isUrgent()"
+                                        class="absolute w-10 h-10 top-0 right-0 flex justify-center items-center rounded text-white p-2 bg-red-600">
+                                        <ExclamationTriangleIcon />
+                                    </div>
+                                    <div class="flex flex-col gap-4 p-5">
+                                        <div class="flex-col flex gap-6 flex-1">
+                                            <div class="w-auto">
+                                                <div class="flex flex-row items-center gap-2">
+                                                    <div class="text-lg font-medium text-gray-900">Référence : </div>
+                                                    <div class="text-lg font-medium text-gray-500">{{ props.lastComplain.reference }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="w-auto flex flex-row gap-3">
+                                                <div v-if="!isAnonymous()" class="w-1/2 flex flex-col gap-5">
+                                                    <div class="flex flex-row items-center gap-1">
+                                                        <div class="text-sm font-medium text-gray-900">Nom : </div>
+                                                        <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.lastname }}</div>
+                                                    </div>
+                                                    <div class="flex flex-row items-center gap-1">
+                                                        <div class="text-sm font-medium text-gray-900">Prénom : </div>
+                                                        <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.firstname }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex flex-row items-center gap-1">
+                                                        <div class="text-sm font-medium text-gray-900">Email personnel :
+                                                        </div>
+                                                        <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.professional_email }}</div>
+                                                    </div>
+                                                </div>
+                                                <div v-else class="w-1/2 flex flex-col gap-5">
+                                                    <div class="flex flex-row items-center gap-1">
+                                                        <div class="text-sm font-medium text-gray-900">Nom : </div>
+                                                        <div class="text-sm font-medium text-gray-500">Anonyme</div>
+                                                    </div>
+                                                    <div class="flex flex-row items-center gap-1">
+                                                        <div class="text-sm font-medium text-gray-900">Prénom : </div>
+                                                        <div class="text-sm font-medium text-gray-500">Anonyme</div>
+                                                    </div>
+                                                    <div class="flex flex-row items-center gap-1">
+                                                        <div class="text-sm font-medium text-gray-900">Email personnel :</div>
+                                                        <div class="text-sm font-medium text-gray-500">Anonyme</div>
+                                                    </div>
+                                                </div>
+                                                <div class="h-auto w-px bg-gray-400"></div>
+                                                <div class="w-1/2 flex gap-3 flex-col">
+                                                    <div class="text-base font-medium text-gray-800 truncate">{{ props.lastComplain.title }}</div>
+                                                    <div class="text-sm font-normal text-gray-800">{{ getContent(props.lastComplain.content) }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 w-2/4">
+                                <div class="cursor-default overflow-hidden rounded-lg bg-white shadow">
+                                    <div class="flex items-center p-5">
+                                        <div class="mr-5 w-0 flex gap-20 flex-1">
+                                            <div>
+                                                <div class="text-lg font-medium text-gray-900">Dépositaire</div>
+                                                <div class="text-sm font-medium text-gray-500">{{ }}</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-lg font-medium text-gray-900">Titre</div>
+                                                <div class="text-sm font-medium text-gray-500">{{ }}</div>
+                                            </div>
+                                            <div>
+                                                <div class="text-lg font-medium text-gray-900">Référence</div>
+                                                <div class="text-sm font-medium text-gray-500">{{ }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -115,14 +210,10 @@ function getEmergency(complain) {
                         Recent activity
                     </h2>
 
-                    <Table 
-                        :tableTitles="['Dépositaire', 'Titre', 'Urgence']"
+                    <Table :tableTitles="['Dépositaire', 'Titre', 'Urgence']"
                         :tableKeys="[{ function: getUser }, { function: getTitle }, { function: getEmergency }]"
-                        :data="complains" 
-                        :pagination=false 
-                    />
+                        :data="complains" :pagination=false />
                 </div>
             </main>
-        </div>
-    </DashboardLayout>
-</template>
+    </div>
+</DashboardLayout></template>
