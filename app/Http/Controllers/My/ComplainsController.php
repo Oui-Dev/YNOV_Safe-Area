@@ -79,7 +79,14 @@ class ComplainsController extends Controller
     }
 
     public function edit(Complain $complain) {
-        $complain = $complain->load('user','complainType','status');
+        $complain = $complain->load('complainType','status');
+
+        if(!$complain->is_anonymous) {
+            $complain->load('user');
+        } else {
+            $complain->user_id = null;
+        }
+
         $admins = User::role('admin')->get();
         $complainTypes = ComplainType::all();
         return inertia('My/Complains/Edit', [

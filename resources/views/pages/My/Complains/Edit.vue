@@ -35,6 +35,16 @@ const getDate = (props) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     return new Date(props.complain.created_at).toLocaleDateString('fr-FR', options);
 }
+
+const getUser = (complain) => {
+	if(!complain.user) return "Anonyme";
+	return complain.user.lastname + " " + complain.user.firstname;
+};
+
+const getMail = (complain) => {
+	if(!complain.user) return "Anonyme";
+	return complain.user.professional_email;
+};
 </script>
 
 <template>
@@ -48,11 +58,11 @@ const getDate = (props) => {
             <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Demandeur</dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ props.complain.user.firstname + ' ' + props.complain.user.lastname }}</dd>
+                <dd class="mt-1 text-sm text-gray-900">{{ getUser(props.complain) }}</dd>
             </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Adresse-mail </dt>
-                <dd class="mt-1 text-sm text-gray-900">{{ props.complain.user.professional_email }}</dd>
+                <dd class="mt-1 text-sm text-gray-900">{{ getMail(props.complain) }}</dd>
             </div>
             <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Status</dt>
