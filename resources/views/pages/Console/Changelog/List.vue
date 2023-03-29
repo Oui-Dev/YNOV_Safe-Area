@@ -11,17 +11,6 @@ const props = defineProps({
         required: true
     }
 });
-
-function deleteVersion(version) {
-    Inertia.delete(route('console.auth.changelog.delete', version.id), {
-        onBefore: () => {
-            return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');
-        },
-        onSuccess: () => {
-            Inertia.reload({ only: ['versions'] });
-        }
-    });
-}
 </script>
 
 <template>
