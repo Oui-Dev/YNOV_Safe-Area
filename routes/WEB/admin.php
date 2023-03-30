@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\My\HelpDeskController;
+use App\Http\Controllers\My\HelpdeskController;
 use App\Http\Controllers\My\ComplainsController;
 use App\Http\Controllers\My\UserController;
 
@@ -37,12 +37,13 @@ Route::group([
 ], function () {
     Route::put('/{complain:id}', 'update')->name('edit.post');
     Route::get('/{complain:id}', 'edit')->name('edit');
+    Route::get('/download/{complain:id}', 'download')->name('download');
 });
 // Helpdesk
 Route::group([
     'prefix' => 'helpdesk',
     'as' => 'helpdesk.',
-    'controller' => HelpDeskController::class
+    'controller' => HelpdeskController::class
 ], function () {
     Route::get('/{ticket:id}', 'show')->name('show');
 });

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\My\DashboardController;
-use App\Http\Controllers\My\HelpDeskController;
+use App\Http\Controllers\My\HelpdeskController;
 use App\Http\Controllers\My\ComplainsController;
 use App\Http\Controllers\My\UserController;
 use App\Http\Controllers\My\ProfilController;
@@ -51,7 +51,7 @@ Route::group([
     Route::group([
         'prefix' => 'helpdesk',
         'as' => 'helpdesk.',
-        'controller' => HelpDeskController::class
+        'controller' => HelpdeskController::class
     ], function () {
         Route::get('/', 'list')->name('list');
         Route::get('/new', 'create')->name('add');
