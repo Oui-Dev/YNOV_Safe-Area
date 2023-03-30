@@ -10,9 +10,10 @@ class Complain extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reference',
         'title',
         'content',
-        'screen_url',
+        'file_url',
         'status_id',
         'is_urgent',
         'user_id',

@@ -57,42 +57,39 @@ function getEmergency(complain) {
 function getStatus(complain) {
 	return "<div class='h-4 w-4 rounded-full mx-auto " + complain.status.color + " ' title=' " + complain.status.name + "' />";
 }
-
-
 </script>
+
 <template>
     <DashboardLayout>
-		<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-			<h1 class="text-xl font-bold text-gray-900">Plaintes</h1>
-			<Link v-if="isUser" :href="route('my.auth.complains.create')"
-				class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2"
-			>
-				<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
-				<span>Déposer une plainte</span>
-			</Link>
-		</div>
+			<div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+				<h1 class="text-xl font-bold text-gray-900">Plaintes</h1>
+				<Link v-if="isUser" :href="route('my.auth.complains.create')"
+					class="flex justify-center rounded-md bg-safearea-blue px-3 py-1 text-white shadow-sm hover:bg-indigo-700 gap-2"
+				>
+					<PlusIcon class="h-6 w-6 mx-auto"></PlusIcon>
+					<span>Déposer une plainte</span>
+				</Link>
+			</div>
 
-
-		<!-- display admin -->
-        <Table v-if="isAdmin"
-			:tableTitles="['Dépositaire' , 'Titre', 'Assignée à', 'Urgence', 'Status']"
-			:tableKeys="[{function: getUser}, {function: getTitle}, {function: getAssignedUser}, {function: getEmergency}, {function: getStatus}]"
-			:data="complains"
-			:actions="[
-				{ type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.complains.edit', param: 'id', icon: PencilIcon, iconText: 'Détails'},
-			]"
-            :pagination=true
-		/>
-		<!-- display user -->
-		<Table v-if="isUser"
-            :tableTitles="['Titre', 'Assignée à', 'Status']"
-            :tableKeys="[{function: getTitle}, {function: getAssignedUser}, {function: getStatus}]"
-            :data="complains"
-            :actions="[
-                { type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.complains.list', param: 'id', icon: PencilIcon, iconText: 'Détails'},
-				{ type: 'function', function: deleteUser, icon: TrashIcon, iconText: 'Supprimer' },
-            ]"
-            :pagination=true
-        />
+			<!-- display admin -->
+			<Table v-if="isAdmin"
+				:tableTitles="['Dépositaire' , 'Titre', 'Assignée à', 'Urgence', 'Status']"
+				:tableKeys="[{function: getUser}, {function: getTitle}, {function: getAssignedUser}, {function: getEmergency}, {function: getStatus}]"
+				:data="complains"
+				:actions="[
+					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.edit', param: 'id', icon: PencilIcon, iconText: 'Détails'},
+				]"
+				:pagination=true
+			/>
+			<!-- display user -->
+			<Table v-if="isUser"
+				:tableTitles="['Titre', 'Assignée à', 'Status']"
+				:tableKeys="[{function: getTitle}, {function: getAssignedUser}, {function: getStatus}]"
+				:data="complains"
+				:actions="[
+					{ type: 'function', function: deleteUser, icon: TrashIcon, iconText: 'Supprimer' },
+				]"
+				:pagination=true
+			/>
     </DashboardLayout>
 </template>

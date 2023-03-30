@@ -9,7 +9,7 @@ use Ramsey\Uuid\Uuid;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Company>
  */
-class HelpDeskSupportFactory extends Factory
+class HelpdeskSupportFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage;
 use App\Models\HelpdeskSupport;
 use App\Models\Status;
-use App\Models\User;
 
-class HelpDeskController extends Controller
+class HelpdeskController extends Controller
 {
     public function list() {
         $user = auth()->user();
@@ -70,15 +69,19 @@ class HelpDeskController extends Controller
         $data = request()->validate([
             'title' => ['required','string','max:255'],
             'message' => ['required','string','max:500'],
-            'file_url' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
+            'file' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg','max:2048'],
             'type' => ['boolean'],
         ]);
 
         $firstPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
         $secondPart = sprintf("%03s", base_convert(mt_rand(0, 46656), 10, 36));
         $ticketRef = $firstPart . $secondPart;
-        // $fileName = $ticketRef . '.' . $data['file']->extension();
-        // $filePath = Storage::disk('s3')->put('helpdesk/', $data['file'], $fileName, 'private');
+
+        if (request()->hasFile('file')) {
+            $file = request()->file('file');
+            $fileName = $file->getClientOriginalName();
+            $filePath = Storage::disk('local')->putFileAs('helpdesk', $file, $fileName);
+        }
 
         HelpdeskSupport::create([
             'reference' => $ticketRef,
@@ -90,7 +93,7 @@ class HelpDeskController extends Controller
             'title' => $data['title'],
             'description' => $data['message'],
             'type' => $data['type'] ? 'incident' : 'demande',
-            'file' => null, // $data['$filePath'], //
+            'file_url' => $filePath ?? null,
             'is_urgent' => false,
             'status_id' => 1,
         ]);
@@ -99,5 +102,9 @@ class HelpDeskController extends Controller
             'type' => 'success',
             'message' => 'Votre ticket a bien été envoyé'
         ]);
+    }
+
+    public function download(HelpdeskSupport $ticket) {
+        return Storage::download($ticket->file_url);
     }
 }
