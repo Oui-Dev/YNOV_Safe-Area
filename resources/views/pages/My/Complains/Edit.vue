@@ -51,19 +51,21 @@ const getMail = (complain) => {
 <template>
     <DashboardLayout>
         <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg font-medium leading-6 text-gray-900">Plainte : </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">Créé le {{ getDate(props) }}</p>
-            <div class="w-auto flex justify-center md:justify-end">
-                <span v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 1" class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-3 py-2 rounded">Demande effectuée</span>
+        <div class="flex gap-2 flex-col md:flex-row md:justify-between px-4 py-5 sm:px-6">
+            <div>
+                <h3 class="text-lg font-medium leading-6 text-gray-900">Plainte : </h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Créé le {{ getDate(props) }}</p>
+            </div>
+
+            <div class="w-auto flex justify-start md:justify-center">
+                <span v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 1" class="bg-blue-100 h-8 text-blue-800 text-xs font-medium mr-2 px-3 py-2 rounded">Demande effectuée</span>
                 
                 <Link v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 0" method="post" :href="route('my.auth.complains.anonymity', {complain: props.complain})"
-				class="flex justify-center md:w-44 rounded-md bg-safearea-blue p-0.5 mt-2 text-white shadow-sm hover:bg-indigo-700 gap-2"
+				class="flex justify-center h-7 md:w-44 rounded-md bg-safearea-blue p-0.5 mt-2 text-white shadow-sm hover:bg-indigo-700 gap-2"
 			>
 				<EyeIcon class="h-6 w-6"></EyeIcon>
 				<span>Lever l'anonymat</span>
 			</Link>
-
             </div>
         </div>
         <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
