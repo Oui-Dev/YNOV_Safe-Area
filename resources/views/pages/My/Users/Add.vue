@@ -12,7 +12,7 @@ const form = useForm({
     firstname: "",
     phone: "",
     mailpro: "",
-    sexe: "0",
+    sex: "0",
     identifiant: "",
     userRole: props.roles[0],
 });
@@ -89,13 +89,13 @@ function submit() {
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
                     <Input v-model="form.identifiant" :error="form.errors?.identifiant" title="Identifiant" />
-                    <div :class="{ 'form-error-div': form.errors.sexe }" class="pt-3">
-                        <label for="sexe">Sexe :</label>
-                        <select id="sexe" v-model="form.sexe">
+                    <div :class="{ 'form-error-div': form.errors.sex }" class="pt-3">
+                        <label for="sex">Sexe :</label>
+                        <select id="sex" v-model="form.sex">
                             <option value="0">Homme</option>
                             <option value="1">Femme</option>
                         </select>
-                        <div v-if="form.errors.sexe" class="form-error-field">{{ form.errors.sexe }}</div>
+                        <div v-if="form.errors.sex" class="form-error-field">{{ form.errors.sex }}</div>
                     </div>
                 </div>
                 <button type="submit" class="btn primary sm mt-8">Enregistrer les informations</button>

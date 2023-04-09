@@ -62,8 +62,12 @@ class UserController extends Controller
     }
 
     public function edit(User $user) {
+        $roles = ['admin', 'my'];
+        $user->roles = $user->getRoleNames();
+        
         return inertia('My/Users/Edit', [
             'user' => $user,
+            'roles' => $roles,
         ]);
     }
 
