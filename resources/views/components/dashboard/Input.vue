@@ -63,7 +63,7 @@ const updatePasswordState = () => {
             :disabled="disabled"
             @input="updateValue"
         >
-        <span class="absolute bottom-0 right-4 -translate-y-1/2" @click.prevent="updatePasswordState">
+        <span class="absolute top-[74px] right-4 -translate-y-1/2" @click.prevent="updatePasswordState">
             <EyeIcon v-if="type === 'password' && inputType === 'password'"/>
             <EyeSlashIcon v-else-if="type === 'password' && inputType === 'text'"/>
         </span>
