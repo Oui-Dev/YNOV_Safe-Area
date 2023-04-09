@@ -91,7 +91,14 @@ class ComplainsController extends Controller
     }
 
     public function edit(Complain $complain) {
-        $complain = $complain->load('user','complainType','status');
+        $complain = $complain->load('complainType','status');
+
+        if(!$complain->is_anonymous) {
+            $complain->load('user');
+        } else {
+            $complain->user_id = null;
+        }
+
         $admins = User::role('admin')->get();
         $complainTypes = ComplainType::all();
         return inertia('My/Complains/Edit', [
@@ -132,5 +139,19 @@ class ComplainsController extends Controller
     public function download(Complain $complain)
     {
         return Storage::download($complain->file_url);
+    }
+
+    public function showAnonym(Complain $complain) {
+        if($complain->is_anonymous == 1 && $complain->identity_request == 0){
+            $complain->identity_request = 1;
+        }
+
+        if($complain->save()){
+            // TODO: send mail
+            return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
+                'type' => 'success',
+                'message' => "La demande pour lever l'anonymat a bien été effectué",
+            ]);
+        }
     }
 }
