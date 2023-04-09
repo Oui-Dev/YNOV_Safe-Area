@@ -1,12 +1,14 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
+import CardForm from "../../../components/dashboard/CardForm.vue";
+import Input from "../../../components/dashboard/Input.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 const form = useForm({
-    name: null,
-    generation: null,
-    correction: null,
-    revision: null,
+    name: "",
+    generation: "",
+    correction: "",
+    revision: "",
     changelog: null,
 });
 
@@ -19,38 +21,30 @@ function submit() {
 
 <template>
     <DashboardLayout>
-        <div class="flex justify-center">
-            <div class="max-w-s">
-                <h1>Nouvelle version</h1>
-                <form @submit.prevent="submit" class="mt-8">
-                    <div :class="{'form-error-div': form.errors.name}">
-                        <label for="name">Nom :</label>
-                        <input id="name" v-model="form.name" />
-                        <div v-if="form.errors.name" class="form-error-field">{{form.errors.name }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.generation}">
-                        <label for="generation">Générations :</label>
-                        <input id="generation" v-model="form.generation" />
-                        <div v-if="form.errors.generation" class="form-error-field">{{form.errors.generation }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.correction}">
-                        <label for="correction">Correction :</label>
-                        <input id="correction" v-model="form.correction" />
-                        <div v-if="form.errors.correction" class="form-error-field">{{form.errors.correction }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.revision}">
-                        <label for="revision">Révision :</label>
-                        <input id="revision" v-model="form.revision" />
-                        <div v-if="form.errors.revision" class="form-error-field">{{form.errors.revision }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.changelog}">
-                        <label for="changelog">Changelog :</label>
-                        <input id="changelog" v-model="form.changelog"/>
-                        <div v-if="form.errors.changelog" class="form-error-field">{{form.errors.changelog }}</div>
-                    </div>
-                    <button type="submit" class="btn-primary">Enregistrer les informations</button>
-                </form>
-            </div>
-        </div>
+        <CardForm
+			card-title="Changelog"
+			card-description="Dans cette section vous pouvez ajouter une nouvelle version de la platforme."
+			form-title="Ajouter une nouvelle version"
+		>
+            <form @submit.prevent="submit">
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+				    <Input v-model="form.name" :error="form.errors?.name" title="Nom" />
+				    <Input v-model="form.generation" :error="form.errors?.generation" title="Générations" />
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+                    <Input v-model="form.correction" :error="form.errors?.correction" title="Correction" />
+                    <Input v-model="form.revision" :error="form.errors?.revision" title="Révision" />
+                </div>
+				<div :class="['pt-3', { 'form-error-div': form.errors.changelog }]">
+					<label for="changelog">Description :</label>
+					<textarea v-model="form.changelog" rows="5" class="resize-none" id="changelog" aria-describedby="changelog-max"></textarea>
+					<div class="flex justify-between w-full">
+						<div v-if="form.errors.changelog" class="form-error-field">{{ form.errors.changelog }}</div>
+						<span id="changelog-max" class="text-right w-full text-sm text-gray-500">Max. 500 char.</span>
+					</div>
+				</div>
+                <button type="submit" class="btn primary sm mt-8">Enregistrer les informations</button>
+            </form>
+		</CardForm>
     </DashboardLayout>
 </template>

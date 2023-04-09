@@ -1,6 +1,6 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import Avatar from "../../../components/Avatar.vue";
+import Avatar from "../../../components/dashboard/Avatar.vue";
 import { useForm } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue';
 
@@ -74,7 +74,7 @@ function submitPassword() {
                 </div>
 
                 <div class="col-span-2 text-center">
-                    <button type="submit" class="btn-primary font-bold">
+                    <button type="submit" class="btn primary sm font-bold">
                         Enregistrer les informations
                     </button>
                 </div>
@@ -101,7 +101,7 @@ function submitPassword() {
                 </div>
 
                 <div class="col-span-2 text-center">
-                    <button type="submit" class="btn-primary font-bold">
+                    <button type="submit" class="btn primary sm font-bold">
                         Enregistrer un nouveau mot de passe
                     </button>
                 </div>

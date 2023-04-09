@@ -55,7 +55,7 @@ const submit = () => {
                         <input id="changelog" v-model="form.siret" />
                         <div v-if="form.errors.changelog" class="form-error-field">{{ form.errors.changelog }}</div>
                     </div>
-                    <button type="submit" class="btn-primary">Enregistrer les informations</button>
+                    <button type="submit" class="btn primary sm">Enregistrer les informations</button>
                 </form>
             </div>
         </div>

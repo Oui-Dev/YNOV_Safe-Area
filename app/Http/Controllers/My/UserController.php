@@ -22,7 +22,7 @@ class UserController extends Controller
 
     public function create() {
         $roles = ['admin', 'my'];
-        return inertia('My/Users/Create', [
+        return inertia('My/Users/Add', [
             'roles' => $roles,
         ]);
     }

@@ -46,7 +46,7 @@ class ComplainsController extends Controller
 
     public function create() {
         $complainsTypes = ComplainType::all();
-        return inertia('My/Complains/Create', [
+        return inertia('My/Complains/Add', [
             'complainsTypes' => $complainsTypes
         ]);
     }

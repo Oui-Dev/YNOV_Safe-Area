@@ -77,7 +77,7 @@ const submit = () => {
                         </select>
                         <div v-if="form.errors.sexe" class="form-error-field">{{ form.errors.sexe }}</div>
                     </div>
-                    <button type="submit" class="btn-primary">Enregistrer les informations</button>
+                    <button type="submit" class="btn primary sm">Enregistrer les informations</button>
                 </form>
             </div>
         </div>

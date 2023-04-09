@@ -74,7 +74,7 @@ const submit = () => {
                         <input type="email" id="email" v-model="form.email" />
                         <div v-if="form.errors.email" class="form-error-field">{{ form.errors.email }}</div>
                     </div>
-                    <button type="submit" class="btn-primary">Enregistrer les informations</button>
+                    <button type="submit" class="btn primary sm">Enregistrer les informations</button>
                 </form>
             </div>
         </div>
