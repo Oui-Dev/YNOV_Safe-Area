@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import DashboardLayout from "../../layouts/dashboard.vue";
 import Table from "../../components/dashboard/Table.vue";
 import StatsCard from "../../components/dashboard/StatsCard.vue";
@@ -25,6 +25,9 @@ const statsCardsData = ref([
     { title: "Total plaintes", value: props.stats.totalComplains, icon: DocumentTextIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.complains.list" },
     { title: "Nouvelles plaintes", value: props.stats.totalNotAssignedComplains, icon: ExclamationCircleIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.complains.list" },
 ]);
+
+const isUrgent = computed(() => props.lastComplain.is_urgent ? true : false );
+const isAnonymous = computed(() => props.lastComplain.is_anonymous ? true : false );
 
 const getUser = (complain) => {
     if (!complain.user) return "Anonyme";
@@ -53,14 +56,6 @@ const getEmergency = (complain) => {
             return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' />";
     }
 }
-
-const isUrgent = () => {
-    return props.lastComplain.is_urgent ? true : false;
-}
-
-const isAnonymous = () => {
-    return props.lastComplain.is_anonymous ? true : false;
-}
 </script>
 
 <template>
@@ -77,7 +72,7 @@ const isAnonymous = () => {
             <div class="flex flex-row w-auto gap-8 mt-4">
                 <div class="mt-2 w-2/4">
                     <div class="relative cursor-default overflow-hidden rounded-lg bg-white shadow">
-                        <div v-if="isUrgent()"
+                        <div v-if="isUrgent"
                             class="absolute w-10 h-10 top-0 right-0 flex justify-center items-center rounded text-white p-2 bg-red-600">
                             <ExclamationTriangleIcon />
                         </div>
@@ -90,7 +85,21 @@ const isAnonymous = () => {
                                     </div>
                                 </div>
                                 <div class="w-auto flex flex-row gap-3">
-                                    <div v-if="!isAnonymous()" class="w-1/2 flex flex-col gap-5">
+                                    <div v-if="isAnonymous" class="w-1/2 flex flex-col gap-5">
+                                        <div class="flex flex-row items-center gap-1">
+                                            <div class="text-sm font-medium text-gray-900">Nom : </div>
+                                            <div class="text-sm font-medium text-gray-500">Anonyme</div>
+                                        </div>
+                                        <div class="flex flex-row items-center gap-1">
+                                            <div class="text-sm font-medium text-gray-900">Prénom : </div>
+                                            <div class="text-sm font-medium text-gray-500">Anonyme</div>
+                                        </div>
+                                        <div class="flex flex-col gap-1">
+                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
+                                            <div class="text-sm font-medium text-gray-500">Anonyme</div>
+                                        </div>
+                                    </div>
+                                    <div v-else class="w-1/2 flex flex-col gap-5">
                                         <div class="flex flex-row items-center gap-1">
                                             <div class="text-sm font-medium text-gray-900">Nom : </div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.lastname }}</div>
@@ -102,20 +111,6 @@ const isAnonymous = () => {
                                         <div class="flex flex-col gap-1">
                                             <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.professional_email }}</div>
-                                        </div>
-                                    </div>
-                                    <div v-else class="w-1/2 flex flex-col gap-5">
-                                        <div class="flex flex-row items-center gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Nom : </div>
-                                            <div class="text-sm font-medium text-gray-500">Anonyme</div>
-                                        </div>
-                                        <div class="flex flex-row items-center gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Prénom : </div>
-                                            <div class="text-sm font-medium text-gray-500">Anonyme</div>
-                                        </div>
-                                        <div class="flex flex-col gap-1">
-                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
-                                            <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                     </div>
                                     <div class="h-auto w-px bg-gray-400"></div>
