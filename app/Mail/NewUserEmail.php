@@ -31,7 +31,7 @@ class NewUserEmail extends Mailable
      * @return $this
      */
     public function build(){
-        return $this->subject('You\'re Dogger account has been created !')
+        return $this->subject('Votre compte SafeArea a été créé !')
             ->view('emails.newUser')
             ->with([
                 'identifiant' => $this->user->identifiant,
