@@ -70,8 +70,8 @@ const getEmergency = (complain) => {
         <section class="mt-8">
             <h2>Dernière plainte</h2>
             <div class="flex flex-row w-auto gap-8 mt-4">
-                <div class="mt-2 w-2/4">
-                    <div class="relative cursor-default overflow-hidden rounded-lg bg-white shadow">
+                <div class="mt-2 w-1/2">
+                    <div v-if="lastComplain" class="relative cursor-default overflow-hidden rounded-lg bg-white shadow">
                         <div v-if="isUrgent"
                             class="absolute w-10 h-10 top-0 right-0 flex justify-center items-center rounded text-white p-2 bg-red-600">
                             <ExclamationTriangleIcon />
@@ -122,9 +122,12 @@ const getEmergency = (complain) => {
                             </div>
                         </div>
                     </div>
+                    <div v-else>
+                        Aucune données
+                    </div>
                 </div>
 
-                <div class="mt-2 w-2/4">
+                <div class="mt-2 w-1/2">
                     <div class="cursor-default overflow-hidden rounded-lg bg-white shadow">
                         <div class="flex items-center p-5">
                             <div class="w-auto">
