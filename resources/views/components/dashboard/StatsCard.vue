@@ -37,7 +37,7 @@ const bgIconClass = computed(() => {
 </script>
 
 <template>
-    <Link :href="path" :class="[clickable ? 'hover:bg-gray-50' : 'cursor-default', 'overflow-hidden rounded-lg bg-white shadow']">
+    <Link :href="route(path)" :class="[clickable ? 'hover:bg-gray-50' : 'cursor-default', 'overflow-hidden rounded-lg bg-white shadow']">
         <div class="flex items-center p-5">
             <div class="mr-5 w-0 flex-1">
                 <dl>

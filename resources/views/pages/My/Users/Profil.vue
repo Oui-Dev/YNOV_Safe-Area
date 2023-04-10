@@ -1,7 +1,8 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import Avatar from "../../../components/Avatar.vue";
-import { useForm } from '@inertiajs/inertia-vue3';
+import Avatar from "../../../components/dashboard/Avatar.vue";
+import Input from "../../../components/dashboard/Input.vue";
+import { useForm, usePage } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -16,15 +17,17 @@ const form = useForm({
     firstname: props.user.firstname,
     emailperso: props.user.personal_email,
     emailpro: props.user.professional_email,
-    old_password: null,
-    password: null,
-    password_confirmation: null
+    old_password: "",
+    password: "",
+    password_confirmation: ""
 });
 
+const isRoot = computed(() => usePage().props.value.auth.user.roles.some((e) => e === 'root'));
 const getInitials = computed(() => props.user.firstname[0] + props.user.lastname[0]);
+const routePrefix = isRoot.value ? 'console.' : 'my.';
 
 function submitProfil() {
-    form.put(route("my.auth.profil.update"), {
+    form.put(route(routePrefix + "auth.profil.update"), {
         onStart: () => {
             form.clearErrors();
         },
@@ -32,7 +35,7 @@ function submitProfil() {
 }
 
 function submitPassword() {
-    form.put(route("my.auth.profil.password"), {
+    form.put(route(routePrefix + "auth.profil.password"), {
         onStart: () => {
             form.clearErrors();
         },
@@ -42,77 +45,54 @@ function submitPassword() {
 
 <template>
     <DashboardLayout>
-        <section class="max-w-2xl mx-auto">
-            <h2 class="text-safearea-grey text-center">Mon Profil</h2>
-            <div class="flex justify-center mt-6">
+        <section class="max-w-5xl mx-auto">
+            <div class="flex flex-col-reverse md:flex-row items-center gap-6">
                 <Avatar :initials=getInitials></Avatar>
+                <h2 class="text-safearea-grey text-center text-4xl">Mon Profil</h2>
             </div>
+
             <!-- Profil form -->
-            <form @submit.prevent="submitProfil" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
-                <div :class="{'form-error-div': form.errors.firstname}">
-                    <label for="firstname">Prénom<span>*</span></label>
-                    <input v-model="form.firstname" type="text" id="firstname" placeholder="Jane" />
-                    <div v-if="form.errors.firstname" class="form-error-field">{{ form.errors.firstname }}</div>
-                </div>
+            <div class="profile-card mt-8">
+                <h3>Mes informations personnelles</h3>
+                <form @submit.prevent="submitProfil">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <Input v-model="form.firstname" :error="form.errors?.firstname" title="Prénom" />
+                        <Input v-model="form.lastname" :error="form.errors?.lastname" title="Nom" />
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <Input v-model="form.emailpro" :error="form.errors?.emailpro" title="Email Pro" type="email" />
+                        <Input v-model="form.emailperso" :error="form.errors?.emailperso" title="Email Perso" type="email" />
+                    </div>
 
-                <div :class="{'form-error-div': form.errors.lastname}">
-                    <label for="lastname">Nom<span>*</span></label>
-                    <input v-model="form.lastname" type="text" id="lastname" placeholder="Smith" />
-                    <div v-if="form.errors.lastname" class="form-error-field">{{ form.errors.lastname }}</div>
-                </div>
-
-                <div :class="{ 'form-error-div': form.errors.emailpro }">
-                    <label for="email">Email Pro <span>*</span></label>
-                    <input v-model="form.emailpro" type="email" id="emailpro" placeholder="you@example.com" />
-                    <div v-if="form.errors.emailpro" class="form-error-field">{{ form.errors.emailpro }}</div>
-                </div>
-
-                <div :class="{ 'form-error-div': form.errors.emailperso }">
-                    <label for="email">Email Perso</label>
-                    <input v-model="form.emailperso" type="email" id="emailperso" placeholder="you@example.com" />
-                    <div v-if="form.errors.emailperso" class="form-error-field">{{ form.errors.emailperso }}</div>
-                </div>
-
-                <div class="col-span-2 text-center">
-                    <button type="submit" class="btn-primary font-bold">
-                        Enregistrer les informations
-                    </button>
-                </div>
-            </form>
+                    <button type="submit" class="btn primary sm mt-8">Modifier</button>
+                </form>
+            </div>
 
             <!-- Password form -->
-            <form @submit.prevent="submitPassword" class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
-                <div :class="[{ 'form-error-div': form.errors.old_password }, 'col-span-2']">
-                    <label for="password"> Mot de passe actuel<span>*</span></label>
-                    <input v-model="form.old_password" id="old_password" type="password" />
-                    <div v-if="form.errors.old_password" class="form-error-field">{{ form.errors.old_password }}</div>
-                </div>
+            <div class="profile-card mt-8">
+                <h3>Modifier mon mot de passe</h3>
+                <form @submit.prevent="submitPassword">
+                    <Input v-model="form.old_password" :error="form.errors?.old_password" title="Mot de passe actuel" type="password" />
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <Input v-model="form.password" :error="form.errors?.password" title="Nouveau mot de passe" type="password" />
+                        <Input v-model="form.password_confirmation" :error="form.errors?.password_confirmation" title="Confirmation du mot de passe" type="password" />
+                    </div>
 
-                <div :class="{ 'form-error-div': form.errors.password }">
-                    <label for="password">Nouveau mot de passe <span>*</span></label>
-                    <input v-model="form.password" id="password" type="password" />
-                    <div v-if="form.errors.password" class="form-error-field">{{ form.errors.password }}</div>
-                </div>
-
-                <div :class="{ 'form-error-div': form.errors.password_confirmation }">
-                    <label for="password">Confirmation mot de passe <span>*</span></label>
-                    <input v-model="form.password_confirmation" id="password_confirmation" type="password" />
-                    <div v-if="form.errors.password_confirmation" class="form-error-field">{{ form.errors.password_confirmation }}</div>
-                </div>
-
-                <div class="col-span-2 text-center">
-                    <button type="submit" class="btn-primary font-bold">
-                        Enregistrer un nouveau mot de passe
+                    <button type="submit" class="btn primary sm mt-8">
+                        Modifier mon mot de passe
                     </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </section>
     </DashboardLayout>
 </template>
 
 <style lang="scss" scoped>
-label > span {
-    padding-left: 2px;
-    color: red;
+.profile-card {
+    @apply rounded-lg shadow-sm bg-white p-5 border border-safearea-light-grey;
+
+    h3 {
+        @apply text-safearea-grey text-xl font-bold mb-2;
+    }
 }
 </style>

@@ -1,18 +1,19 @@
 <script setup>
-import DashboardLayout from "../../../layouts/dashboard.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
-import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
-import { defineProps} from 'vue'
+import DashboardLayout from "../../../layouts/dashboard.vue";
+import CardForm from "../../../components/dashboard/CardForm.vue";
+import Input from "../../../components/dashboard/Input.vue";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
+import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from "@headlessui/vue";
 
 const form = useForm({
-    lastname: null,
-    mail: null,
-    firstname: null,
-    phone: null,
-    mailpro: null,
-    sexe: null,
-    identifiant: null,
+    lastname: "",
+    mail: "",
+    firstname: "",
+    phone: "",
+    mailpro: "",
+    sex: "0",
+    identifiant: "",
     userRole: props.roles[0],
 });
 
@@ -34,36 +35,23 @@ function submit() {
 
 <template>
     <DashboardLayout>
-        <div class="flex justify-center">
-            <div class="max-w-s">
-                <h1>Nouvel utilisateur</h1>
-                <form @submit.prevent="submit" class="mt-8">
-                    <div :class="{ 'form-error-div': form.errors.lastname }">
-                        <label for="lastname">Nom :</label>
-                        <input id="lastname" v-model="form.lastname" />
-                        <div v-if="form.errors.lastname" class="form-error-field">{{ form.errors.lastname }}</div>
-                    </div>
-                    <div :class="{ 'form-error-div': form.errors.firstname }">
-                        <label for="firstname">Prenom :</label>
-                        <input id="firstname" v-model="form.firstname" />
-                        <div v-if="form.errors.firstname" class="form-error-field">{{ form.errors.firstname }}</div>
-                    </div>
-                    <div :class="{ 'form-error-div': form.errors.phone }">
-                        <label for="phone">Numéro de téléphone :</label>
-                        <input id="phone" v-model="form.phone" />
-                        <div v-if="form.errors.phone" class="form-error-field">{{ form.errors.phone }}</div>
-                    </div>
-                    <div :class="{ 'form-error-div': form.errors.mail }">
-                        <label for="mail">Mail :</label>
-                        <input type="email" id="mail" v-model="form.mail" />
-                        <div v-if="form.errors.mail" class="form-error-field">{{ form.errors.mail }}</div>
-                    </div>
-                    <div :class="{ 'form-error-div': form.errors.mailpro }">
-                        <label for="mailpro">Mail professionel :</label>
-                        <input type="email" id="mailpro" v-model="form.mailpro" />
-                        <div v-if="form.errors.mailpro" class="form-error-field">{{ form.errors.mailpro }}</div>
-                    </div>
-                    <Listbox as="div" v-model="form.userRole">
+        <CardForm
+			card-title="Utilisateurs"
+			card-description="Dans cette section, vous pouvez ajouter un nouvel utilisateur à votre entreprise."
+			form-title="Ajouter un nouvel utilisateur"
+		>
+            <form @submit.prevent="submit">
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+                    <Input v-model="form.firstname" :error="form.errors?.firstname" title="Prenom" />
+				    <Input v-model="form.lastname" :error="form.errors?.lastname" title="Nom" />
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+				    <Input v-model="form.phone" :error="form.errors?.phone" title="Téléphone" type="tel" />
+				    <Input v-model="form.mail" :error="form.errors?.mail" title="Email" type="email" />
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+                    <Input v-model="form.mailpro" :error="form.errors?.mailpro" title="Email professionnel" type="email" />
+                    <Listbox as="div" v-model="form.userRole" class="pt-3">
                         <ListboxLabel class="block text-sm font-medium text-gray-700"> Role : </ListboxLabel>
                         <div class="relative mt-1">
                             <ListboxButton 
@@ -98,22 +86,20 @@ function submit() {
                             </transition>
                         </div>
                     </Listbox>
-                    <div :class="{ 'form-error-div': form.errors.identifiant }">
-                        <label for="identifiant">identifiant :</label>
-                        <input id="identifiant" v-model="form.identifiant" />
-                        <div v-if="form.errors.identifiant" class="form-error-field">{{ form.errors.identifiant }}</div>
-                    </div>
-                    <div :class="{ 'form-error-div': form.errors.sexe }">
-                        <label for="sexe">Sexe :</label>
-                        <select id="sexe" v-model="form.sexe">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+                    <Input v-model="form.identifiant" :error="form.errors?.identifiant" title="Identifiant" />
+                    <div :class="{ 'form-error-div': form.errors.sex }" class="pt-3">
+                        <label for="sex">Sexe :</label>
+                        <select id="sex" v-model="form.sex">
                             <option value="0">Homme</option>
                             <option value="1">Femme</option>
                         </select>
-                        <div v-if="form.errors.sexe" class="form-error-field">{{ form.errors.sexe }}</div>
+                        <div v-if="form.errors.sex" class="form-error-field">{{ form.errors.sex }}</div>
                     </div>
-                    <button type="submit" class="btn-primary">Enregistrer les informations</button>
-                </form>
-            </div>
-        </div>
+                </div>
+                <button type="submit" class="btn primary sm mt-8">Enregistrer les informations</button>
+            </form>
+		</CardForm>
     </DashboardLayout>
 </template>
