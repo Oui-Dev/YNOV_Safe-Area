@@ -34,13 +34,13 @@ class ProfilController extends Controller
         ]);
 
         if($user->save()){
-            return redirect()->route('my.auth.profil.show')->with('toast', [
+            return redirect()->back()->with('toast', [
                 'type' => 'success',
                 'message' => 'Enregistrer avec succès.',
             ]);
         }
         else{
-            return Redirect::route('my.auth.profil.show')->with('toast', [
+            return redirect()->back()->with('toast', [
                 'type' => 'error',
                 'message' => 'Erreur lors de l\'enregistrement.',
             ]);
@@ -60,7 +60,7 @@ class ProfilController extends Controller
         ]);
 
         if(!Hash::check($data['old_password'], $user->password)) {
-            return Redirect::route('my.auth.profil.show')->with('toast', [
+            return redirect()->back()->with('toast', [
                 'type' => 'error',
                 'message' => 'Ancien mot de passe incorrect',
             ]);
@@ -68,13 +68,13 @@ class ProfilController extends Controller
         
         $user->password = $data['password'];
         if($user->save()){
-            return redirect()->route('my.auth.profil.show')->with('toast', [
+            return redirect()->back()->with('toast', [
                 'type' => 'success',
                 'message' => 'Enregistrer avec succès.',
             ]);
         }
         else{
-            return Redirect::route('my.auth.profil.show')->with('toast', [
+            return redirect()->back()->with('toast', [
                 'type' => 'error',
                 'message' => 'Erreur lors de l\'enregistrement.',
             ]);

@@ -97,12 +97,10 @@ const isAnonymous = () => {
                                         </div>
                                         <div class="flex flex-row items-center gap-1">
                                             <div class="text-sm font-medium text-gray-900">Prénom : </div>
-                                            <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.firstname }}
-                                            </div>
+                                            <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.firstname }}</div>
                                         </div>
-                                        <div class="flex flex-row items-center gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Email personnel :
-                                            </div>
+                                        <div class="flex flex-col gap-1">
+                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.professional_email }}</div>
                                         </div>
                                     </div>
@@ -115,8 +113,8 @@ const isAnonymous = () => {
                                             <div class="text-sm font-medium text-gray-900">Prénom : </div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
-                                        <div class="flex flex-row items-center gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Email personnel :</div>
+                                        <div class="flex flex-col gap-1">
+                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                     </div>
@@ -153,7 +151,7 @@ const isAnonymous = () => {
         </section>
 
         <section class="mt-8">
-            <h2>Recent activity</h2>
+            <h2>Activité récente</h2>
             <Table
                 :tableTitles="['Dépositaire', 'Titre', 'Urgence']"
                 :tableKeys="[{ function: getUser }, { function: getTitle }, { function: getEmergency }]"

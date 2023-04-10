@@ -2,7 +2,7 @@
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import Avatar from "../../../components/dashboard/Avatar.vue";
 import Input from "../../../components/dashboard/Input.vue";
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm, usePage } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -22,10 +22,12 @@ const form = useForm({
     password_confirmation: ""
 });
 
+const isRoot = computed(() => usePage().props.value.auth.user.roles.some((e) => e === 'root'));
 const getInitials = computed(() => props.user.firstname[0] + props.user.lastname[0]);
+const routePrefix = isRoot.value ? 'console.' : 'my.';
 
 function submitProfil() {
-    form.put(route("my.auth.profil.update"), {
+    form.put(route(routePrefix + "auth.profil.update"), {
         onStart: () => {
             form.clearErrors();
         },
@@ -33,7 +35,7 @@ function submitProfil() {
 }
 
 function submitPassword() {
-    form.put(route("my.auth.profil.password"), {
+    form.put(route(routePrefix + "auth.profil.password"), {
         onStart: () => {
             form.clearErrors();
         },
