@@ -1,16 +1,18 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
+import CardForm from "../../../components/dashboard/CardForm.vue";
+import Input from "../../../components/dashboard/Input.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
 const form = useForm({
-    name: null,
-    address: null,
-    city: null,
-    zip_code: null,
-    siret: null,
-    siren: null,
-    phone: null,
-    email: null
+    name: "",
+    address: "",
+    city: "",
+    zip_code: "",
+    siret: "",
+    siren: "",
+    phone: "",
+    email: ""
 });
 
 function submit() {
@@ -22,53 +24,30 @@ function submit() {
 
 <template>
     <DashboardLayout>
-        <div class="flex justify-center">
-            <div class="max-w-s">
-                <h1>Nouvelle entreprise</h1>
-                <form @submit.prevent="submit" class="mt-8">
-                    <div :class="{'form-error-div': form.errors.name}">
-                        <label for="name">Nom :</label>
-                        <input id="name" v-model="form.name" />
-                        <div v-if="form.errors.name" class="form-error-field">{{form.errors.name }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.address}">
-                        <label for="address">Adresse :</label>
-                        <input id="address" v-model="form.address" />
-                        <div v-if="form.errors.address" class="form-error-field">{{form.errors.address }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.city}">
-                        <label for="city">Ville :</label>
-                        <input id="city" v-model="form.city" />
-                        <div v-if="form.errors.city" class="form-error-field">{{form.errors.city }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.zip_code}">
-                        <label for="zip_code">Code postal :</label>
-                        <input id="zip_code" v-model="form.zip_code" />
-                        <div v-if="form.errors.zip_code" class="form-error-field">{{form.errors.zip_code }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.siret}">
-                        <label for="phone">Siret :</label>
-                        <input id="phone" v-model="form.siret"/>
-                        <div v-if="form.errors.siret" class="form-error-field">{{form.errors.siret }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.siren}">
-                        <label for="mailpro">Siren :</label>
-                        <input  id="mailpro" v-model="form.siren" />
-                        <div v-if="form.errors.siren" class="form-error-field">{{form.errors.siren }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.phone}">
-                        <label for="identifiant">Téléphone :</label>
-                        <input type="phone" id="identifiant" v-model="form.phone"/>
-                        <div v-if="form.errors.phone" class="form-error-field">{{form.errors.phone }}</div>
-                    </div>
-                    <div :class="{'form-error-div': form.errors.email}">
-                        <label for="identifiant">Email :</label>
-                        <input type="email" id="identifiant"  v-model="form.email"/>
-                        <div v-if="form.errors.email" class="form-error-field">{{form.errors.email }}</div>
-                    </div>
-                    <button type="submit" class="btn-primary">Enregistrer les informations</button>
-                </form>
-            </div>
-        </div>
+        <CardForm
+			card-title="Entreprises"
+			card-description="Dans cette section vous pouvez ajouter une nouvelle entreprise."
+			form-title="Ajouter une nouvelle entreprise"
+		>
+            <form @submit.prevent="submit">
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+				    <Input v-model="form.name" :error="form.errors?.name" title="Nom" />
+				    <Input v-model="form.address" :error="form.errors?.address" title="Adresse" />
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+				    <Input v-model="form.city" :error="form.errors?.city" title="Ville" />
+				    <Input v-model="form.zip_code" :error="form.errors?.zip_code" title="Code postal" />
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+				    <Input v-model="form.siret" :error="form.errors?.siret" title="Siret" />
+				    <Input v-model="form.siren" :error="form.errors?.siren" title="Siren" />
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+				    <Input v-model="form.phone" :error="form.errors?.phone" title="Téléphone" type="tel" />
+				    <Input v-model="form.email" :error="form.errors?.email" title="Email" type="email" />
+                </div>
+                <button type="submit" class="btn primary sm mt-8">Enregistrer les informations</button>
+            </form>
+		</CardForm>
     </DashboardLayout>
 </template>

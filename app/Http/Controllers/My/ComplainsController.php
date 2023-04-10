@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-use App\Models\Complain;
-use App\Models\ComplainType;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\IdentityRequestMail;
+use App\Models\ComplainType;
+use App\Models\Complain;
+use App\Models\User;
 
 class ComplainsController extends Controller
 {
@@ -46,7 +48,7 @@ class ComplainsController extends Controller
 
     public function create() {
         $complainsTypes = ComplainType::all();
-        return inertia('My/Complains/Create', [
+        return inertia('My/Complains/Add', [
             'complainsTypes' => $complainsTypes
         ]);
     }
@@ -91,7 +93,14 @@ class ComplainsController extends Controller
     }
 
     public function edit(Complain $complain) {
-        $complain = $complain->load('user','complainType','status');
+        $complain = $complain->load('complainType','status');
+
+        if(!$complain->is_anonymous) {
+            $complain->load('user');
+        } else {
+            $complain->user_id = null;
+        }
+
         $admins = User::role('admin')->get();
         $complainTypes = ComplainType::all();
         return inertia('My/Complains/Edit', [
@@ -132,5 +141,20 @@ class ComplainsController extends Controller
     public function download(Complain $complain)
     {
         return Storage::download($complain->file_url);
+    }
+
+    public function showAnonym(Complain $complain) {
+        if($complain->is_anonymous == 1 && $complain->identity_request == 0){
+            $complain->identity_request = 1;
+        }
+
+        if($complain->save()){
+            Mail::to($complain->user->professional_email)->send(new IdentityRequestMail($complain));
+
+            return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
+                'type' => 'success',
+                'message' => "La demande pour lever l'anonymat a bien été effectué",
+            ]);
+        }
     }
 }

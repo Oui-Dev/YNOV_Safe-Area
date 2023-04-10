@@ -6,6 +6,7 @@ use App\Http\Controllers\Console\DashboardController;
 use App\Http\Controllers\Console\CompanyController;
 use App\Http\Controllers\Console\ChangelogController;
 use App\Http\Controllers\My\HelpdeskController;
+use App\Http\Controllers\My\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
