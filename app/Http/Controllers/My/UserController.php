@@ -5,7 +5,7 @@ namespace App\Http\Controllers\My;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
-use App\Mail\ConfirmEmail;
+use App\Mail\NewUserEmail;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -38,10 +38,11 @@ class UserController extends Controller
             'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
             'userRole' => ['required', 'string', 'max:255', Rule::in(['admin', 'my'])],
         ]);
+        $password = Str::random(30);
 
         $user = User::create([
             'company_id' => Auth()->user()->company_id,
-            'password' => Str::random(30),
+            'password' => $password,
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'phone' => $data['phone'],
@@ -54,7 +55,8 @@ class UserController extends Controller
         $user->assignRole($data['userRole']);
         $user->save();
 
-        //Mail::to($user->email)->send(new ConfirmEmail($user));
+        Mail::to($user->email)->send(new NewUserEmail($user, $password));
+
         return redirect()->route('my.auth.users.list')->with('toast', [
             'type' => 'success',
             'message' => "L'utilisateur a bien été crée.",

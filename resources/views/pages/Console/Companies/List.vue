@@ -41,7 +41,6 @@ function deleteCompany(company) {
             :tableKeys="['name', 'city', 'phone', 'email']"
             :data="companies"
             :actions="[
-                // TODO: view more btn
                 {type: 'Link', as: 'a', method: 'GET', routeName: 'console.auth.companies.edit', param: 'id', icon: PencilSquareIcon, iconText: 'Modifier'},
                 {type: 'function', function: deleteCompany, icon: TrashIcon, iconText: 'Supprimer' }
             ]"

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
-use App\Models\Complain;
-use App\Models\ComplainType;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\IdentityRequestMail;
+use App\Models\ComplainType;
+use App\Models\Complain;
+use App\Models\User;
 
 class ComplainsController extends Controller
 {
@@ -147,7 +149,8 @@ class ComplainsController extends Controller
         }
 
         if($complain->save()){
-            // TODO: send mail
+            Mail::to($complain->user->professional_email)->send(new IdentityRequestMail($complain));
+
             return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
                 'type' => 'success',
                 'message' => "La demande pour lever l'anonymat a bien été effectué",
