@@ -14,6 +14,14 @@ class StaticViewController extends Controller
         return view('pages/No/homepage');
     }
 
+    public function cgu()
+    {
+        return view('pages/No/cgu');
+    }
+
+    public function termofservice() {
+        return view('pages/No/termofservice');
+    }
     // Prices page
     public function prices()
     {
