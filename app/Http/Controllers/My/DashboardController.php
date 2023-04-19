@@ -53,13 +53,13 @@ class DashboardController extends Controller
                 $query->where('company_id', $user->company_id);
             });
         })->orderBy('created_at', 'desc')->first();
-
-        dd($complainChat);
+        $complainChat->load('complain');
 
         return inertia('My/Index', [
             'complains' => $complains,
             'stats' => $stats,
             'lastComplain' => $lastComplain,
+            'complainChat' => $complainChat,
         ]);
     }
 }
