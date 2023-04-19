@@ -39,9 +39,8 @@ const getTitle = (complain) => {
     return complain.title.substring(0, strLength) + (complain.title.length > strLength ? "..." : "");
 };
 
-const getContent = (content) => {
-    const strLength = 150;
-    return content.substring(0, strLength) + (content.length > strLength ? "..." : "");
+const getContent = (content, size = 150) => {
+    return content.substring(0, size) + (content.length > size ? "..." : "");
 };
 
 const getEmergency = (complain) => {
@@ -69,46 +68,46 @@ const getEmergency = (complain) => {
 
         <section class="mt-8">
             <h2>Dernière plainte</h2>
-            <div class="flex flex-row w-auto gap-8 mt-4">
-                <div class="mt-2 w-1/2">
-                    <div v-if="lastComplain" class="relative cursor-default overflow-hidden rounded-lg bg-white shadow">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+                <div class="mt-2">
+                    <div v-if="lastComplain" class="relative rounded-lg bg-white shadow h-full">
                         <div v-if="isUrgent"
                             class="absolute w-10 h-10 top-0 right-0 flex justify-center items-center rounded text-white p-2 bg-red-600">
                             <ExclamationTriangleIcon />
                         </div>
                         <div class="flex flex-col gap-4 p-5">
-                            <div class="flex-col flex gap-6 flex-1">
+                            <div class="flex-col flex gap-6">
                                 <div class="w-auto">
                                     <div class="flex flex-row items-center gap-2">
                                         <div class="text-lg font-medium text-gray-900">Référence : </div>
                                         <div class="text-lg font-medium text-gray-500">{{ props.lastComplain.reference }}</div>
                                     </div>
                                 </div>
-                                <div class="w-auto flex flex-row gap-3">
+                                <div class="w-auto flex md:flex-row sm:flex-col gap-3">
                                     <div v-if="isAnonymous" class="w-1/2 flex flex-col gap-5">
                                         <div class="flex flex-row items-center gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Nom : </div>
+                                            <div class="whitespace-wrap text-sm font-medium text-gray-900">Nom : </div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                         <div class="flex flex-row items-center gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Prénom : </div>
+                                            <div class="whitespace-wrap text-sm font-medium text-gray-900">Prénom : </div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                         <div class="flex flex-col gap-1">
-                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
+                                            <div class="whitespace-wrap text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                     </div>
                                     <div v-else class="w-1/2 flex flex-col gap-5">
                                         <div class="flex flex-row items-center gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Nom : </div>
+                                            <div class="whitespace-wrap text-sm font-medium text-gray-900">Nom : </div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.lastname }}</div>
                                         </div>
-                                        <div class="flex flex-row items-center gap-1">
+                                        <div class="whitespace-wrap flex flex-row items-center gap-1">
                                             <div class="text-sm font-medium text-gray-900">Prénom : </div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.firstname }}</div>
                                         </div>
-                                        <div class="flex flex-col gap-1">
+                                        <div class="whitespace-wrap flex flex-col gap-1">
                                             <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.professional_email }}</div>
                                         </div>
@@ -127,21 +126,15 @@ const getEmergency = (complain) => {
                     </div>
                 </div>
 
-                <div class="mt-2 w-1/2">
-                    <div class="cursor-default overflow-hidden rounded-lg bg-white shadow">
-                        <div class="flex items-center p-5">
-                            <div class="w-auto">
-                                <div class="text-lg font-medium text-gray-900">Message :</div>
+                <div class="mt-2">
+                    <div class="rounded-lg bg-white shadow h-full">
+                        <div class="flex flex-col gap-5 p-5">
+                            <div class="w-auto flex flex-row items-center gap-1">
+                                <div class="text-lg font-medium text-gray-900">Référence :</div>
                                 <div class="text-sm font-medium text-gray-500">{{ }}</div>
                             </div>
-                            <div>
-                                <div class="text-lg font-medium text-gray-900">Titre</div>
-                                <div class="text-sm font-medium text-gray-500">{{ }}</div>
-                            </div>
-                            <div>
-                                <div class="text-lg font-medium text-gray-900">Référence</div>
-                                <div class="text-sm font-medium text-gray-500">{{ }}</div>
-                            </div>
+                            <div class="text-sm font-medium text-gray-900">{{ getContent("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas fugiat atque") }}</div>
+                            <div class="text-sm font-medium text-gray-500">{{ getContent("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas fugiat atque dicta? Molestiae, aliquid reiciendis deleniti reprehenderit, dolore sapiente veritatis molestias consequuntur accusamus, cumque doloremque cupiditate magnam optio possimus eaque?", 300) }}</div>
                         </div>
                     </div>
                 </div>
