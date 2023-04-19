@@ -16,8 +16,6 @@ const props = defineProps({
     },
 })
 
-console.log('props.messages', props.messages, props.canReply);
-
 function isMyMessage(messageUserId) {
     return messageUserId === currentUser.value.id;
 }
@@ -43,6 +41,10 @@ const currentUser = computed(() => usePage().props.value.auth.user);
 </script>
 <template>
     <div class="w-full max-h-[64vh] flex flex-col flex-1 overflow bg-slate-50 pt-2 overflow-y-auto px-4">
+        <div v-if="props.messages.length === 0 "
+            class="text-gray-300 w-full h-14 flex justify-center items-center text-xl" >
+            <span>Aucun Message</span>
+        </div>
         <div v-for="(message, index) in props.messages">
             <div v-if="compareDates(message.created_at, messages[index-1]?.created_at)" class="text-center text-gray-500 text-sm mb-2">
                 {{ datePrettyfier(message.created_at) }}
