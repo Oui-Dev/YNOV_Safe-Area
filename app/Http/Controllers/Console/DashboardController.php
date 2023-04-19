@@ -3,13 +3,26 @@
 namespace App\Http\Controllers\Console;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Complain;
+use App\Models\Company;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
     public function index() {
+        $companies = Company::orderBy('created_at', 'desc')
+            ->take(6)->get();
+        
+
+        $stats = [
+            'totalUsers' => User::count(),
+            'totalComplains' => Complain::count(),
+            'totalCompany' => Company::count(),
+        ];
+
         return inertia('Console/Index', [
-            'pageName' => 'Dashboard',
+            'stats' => $stats,
+            'companies' => $companies,
         ]);
     }
 }
