@@ -1,7 +1,7 @@
 <script setup>
 import DashboardLayout from '../../../layouts/dashboard.vue';
 import Table from '../../../components/dashboard/Table.vue';
-import { TrashIcon,PencilIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import { TrashIcon,PencilIcon, PlusIcon, ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/vue/24/outline";
 import { Link, usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { computed } from 'vue';
@@ -77,7 +77,8 @@ function getStatus(complain) {
 				:tableKeys="[{function: getUser}, {function: getTitle}, {function: getAssignedUser}, {function: getEmergency}, {function: getStatus}]"
 				:data="complains"
 				:actions="[
-					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.edit', param: 'id', icon: PencilIcon, iconText: 'Détails'},
+					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.edit', param: 'reference', icon: PencilIcon, iconText: 'Détails'},
+					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.chat', param: 'reference', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Répondre'},
 				]"
 				:pagination=true
 			/>

@@ -31,12 +31,11 @@ const computedForm = computed(() => form.data());
 const getFileNameFromPath = computed(() => {
     const path = props.complain.file_url;
     if (!path) return null;
-    console.log('path', path);
     return path.split('/').pop();
 });
 
 watch(computedForm, () => {
-    form.put(route('my.auth.complains.edit.post', props.complain.id));
+    form.put(route('my.auth.complains.edit.post', props.complain.reference));
 }, { deep: true });
 
 const getDate = (props) => {

@@ -90,19 +90,26 @@ class User extends Authenticatable
     public function is_blocked(){
         if(!empty($this->blocked_at)){return true;} else {return false;}
     }
+
     public function is_archived() {
         if(!empty($this->archived_at)){return true;} else {return false;}
     }
+
     public function is_personal_email_verified() {
         if(!empty($this->personal_email_verified_at)){return true;} else {return false;}
     }
+
     public function is_professional_email_verified() {
         if(!empty($this->professional_email_verified_at)){return true;} else {return false;}
     }
-    
 
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
+    }
+
+    public function complaintChats(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
+        return $this->hasMany(ComplainChat::class);
     }
 }
