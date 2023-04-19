@@ -48,7 +48,11 @@ class DashboardController extends Controller
 
         $lastComplain = $complains->pop();
 
-        $complainChat = ComplainChat::orderBy('created_at', 'desc')->first();
+        $complainChat = ComplainChat::select('*')->whereHas('complain', function($query) use ($user) {
+            $query->whereHas('user', function($query) use ($user) {
+                $query->where('company_id', $user->company_id);
+            });
+        })->orderBy('created_at', 'desc')->first();
 
         dd($complainChat);
 
