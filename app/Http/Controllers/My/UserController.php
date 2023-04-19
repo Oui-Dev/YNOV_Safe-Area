@@ -34,7 +34,7 @@ class UserController extends Controller
             'phone' => ['bail','required','max:20','min:10','regex:/^([0-9\s\-\+\(\)]*)$/'],
             'mail' => ['required','email:rfc,dns,spoof','max:255'],
             'mailpro' => ['required','email:rfc,dns,spoof','max:255'],
-            'sexe' => ["required", "int"],
+            'sex' => ["required", "int"],
             'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
             'userRole' => ['required', 'string', 'max:255', Rule::in(['admin', 'my'])],
         ]);
