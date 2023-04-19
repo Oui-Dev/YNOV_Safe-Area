@@ -17,6 +17,7 @@ const props = defineProps({
 })
 
 function isMyMessage(messageUserId) {
+    console.log('messageUserId', messageUserId, currentUser.value.id);
     return messageUserId === currentUser.value.id;
 }
 
@@ -34,6 +35,10 @@ function compareDates(date1, date2) {
         return true;
     }
     return new Date(date1).getDate() !== new Date(date2).getDate();
+}
+
+function sendMessage() {
+    console.log('send message');
 }
 
 const currentUser = computed(() => usePage().props.value.auth.user);
@@ -63,9 +68,11 @@ const currentUser = computed(() => usePage().props.value.auth.user);
         <input
             class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             type="text"
-            disabled=props.canReply
+            :disabled="!props.canReply"
+            v-on:keyup.enter="sendMessage()"
             />
         <PaperAirplaneIcon
+            @click="sendMessage()"
             :class="props.canReply ? 'hover:text-safearea-blue cursor-pointer' : 'cursor-not-allowed'"
             class="h-10 w-10 pr-3"/>
         </div>
