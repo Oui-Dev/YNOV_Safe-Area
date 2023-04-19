@@ -130,6 +130,7 @@ class ComplainsController extends Controller
 
     public function chat (Complain $complain) {
         $chats = $complain->complainChats;
+        $complain->load('status');
 
         if(!$complain->is_anonymous) {
             $complain->load('user');

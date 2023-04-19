@@ -17,6 +17,11 @@ const getDate = (props) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
   return new Date(props.complain.created_at).toLocaleDateString('fr-FR', options);
 }
+
+const canReply = (status) => {
+  return !(status.slug === 'clos' || status.slug === 'termine' || status.slug === 'annule')
+}
+
 </script>
 
 <template>
@@ -29,6 +34,7 @@ const getDate = (props) => {
         </div>
       </div>
       <ChatRoom :messages="props.chats"
+                :canReply="canReply(props.complain.status)"
        />
     </div>
   </DashboardLayout>

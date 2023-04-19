@@ -16,7 +16,7 @@ const props = defineProps({
     },
 })
 
-console.log('props.messages', props.messages);
+console.log('props.messages', props.messages, props.canReply);
 
 function isMyMessage(messageUserId) {
     return messageUserId === currentUser.value.id;
@@ -60,8 +60,12 @@ const currentUser = computed(() => usePage().props.value.auth.user);
     <div class="w-full flex items-center justify-center gap-1 m-2">
         <input
             class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-            type="text"/>
-        <PaperAirplaneIcon class="h-10 w-10 pr-3 cursor-pointer hover:text-safearea-blue"/>
+            type="text"
+            disabled=props.canReply
+            />
+        <PaperAirplaneIcon
+            :class="props.canReply ? 'hover:text-safearea-blue cursor-pointer' : 'cursor-not-allowed'"
+            class="h-10 w-10 pr-3"/>
         </div>
 
 </template>

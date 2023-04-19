@@ -89,6 +89,7 @@ function getStatus(complain) {
 				:data="complains"
 				:actions="[
 					{ type: 'function', function: deleteUser, icon: TrashIcon, iconText: 'Supprimer' },
+					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.chat', param: 'reference', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Répondre'},
 				]"
 				:pagination=true
 			/>

@@ -39,7 +39,6 @@ Route::group([
     Route::get('/{complain:reference}', 'edit')->name('edit');
     Route::get('/download/{complain:reference}', 'download')->name('download');
     Route::post('/{complain:id}', 'showAnonym')->name('anonymity');
-    Route::get('/chat/{complain:reference}', 'chat')->name('chat');
 });
 // Helpdesk
 Route::group([
