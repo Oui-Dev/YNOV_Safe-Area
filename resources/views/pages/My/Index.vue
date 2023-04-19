@@ -86,29 +86,29 @@ const getEmergency = (complain) => {
                                 <div class="w-auto flex md:flex-row sm:flex-col gap-3">
                                     <div v-if="isAnonymous" class="w-1/2 flex flex-col gap-5">
                                         <div class="flex flex-row items-center gap-1">
-                                            <div class="whitespace-wrap text-sm font-medium text-gray-900">Nom : </div>
+                                            <div class="text-sm font-medium text-gray-900">Nom : </div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                         <div class="flex flex-row items-center gap-1">
-                                            <div class="whitespace-wrap text-sm font-medium text-gray-900">Prénom : </div>
+                                            <div class="text-sm font-medium text-gray-900">Prénom : </div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                         <div class="flex flex-col gap-1">
-                                            <div class="whitespace-wrap text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
+                                            <div class="text-sm font-medium text-gray-900">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                     </div>
                                     <div v-else class="w-1/2 flex flex-col gap-5">
                                         <div class="flex flex-row items-center gap-1">
-                                            <div class="whitespace-wrap text-sm font-medium text-gray-900">Nom : </div>
+                                            <div class="text-sm font-medium text-gray-900">Nom : </div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.lastname }}</div>
                                         </div>
-                                        <div class="whitespace-wrap flex flex-row items-center gap-1">
+                                        <div class="flex flex-row items-center gap-1">
                                             <div class="text-sm font-medium text-gray-900">Prénom : </div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.firstname }}</div>
                                         </div>
-                                        <div class="whitespace-wrap flex flex-col gap-1">
-                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
+                                        <div class="flex flex-col gap-1">
+                                            <div class="text-sm font-medium text-gray-900">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.professional_email }}</div>
                                         </div>
                                     </div>

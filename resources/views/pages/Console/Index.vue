@@ -17,8 +17,8 @@ const props = defineProps({
 });
 
 const statsCardsData = ref([
-    { title: "Total utilisateurs", value: props.stats.totalUsers, icon: UserIcon, iconBg: "bg-blue-500", clickable: false },
-    { title: "Total plaintes", value: props.stats.totalComplains, icon: DocumentTextIcon, iconBg: "bg-blue-500", clickable: false },
+    { title: "Total utilisateurs", value: props.stats.totalUsers, icon: UserIcon, iconBg: "bg-blue-500" },
+    { title: "Total plaintes", value: props.stats.totalComplains, icon: DocumentTextIcon, iconBg: "bg-blue-500" },
     { title: "Total entreprises", value: props.stats.totalCompany, icon: BuildingOffice2Icon, iconBg: "bg-blue-500", clickable: true, path: "console.auth.companies.list" },
 ]);
 </script>
@@ -33,7 +33,7 @@ const statsCardsData = ref([
         </section>
 
         <section class="mt-8">
-            <h2>Entreprise récentes</h2>
+            <h2>Dernières entreprises ajoutées</h2>
             <Table
                 :tableTitles="['Nom', 'Adresse', 'Ville', 'Code postal']"
                 :tableKeys="['name', 'address', 'city', 'zip_code']"
