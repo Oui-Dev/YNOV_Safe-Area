@@ -78,7 +78,7 @@ function getStatus(complain) {
 				:data="complains"
 				:actions="[
 					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.edit', param: 'reference', icon: PencilIcon, iconText: 'Détails'},
-					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.edit', param: 'id', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Répondre'},
+					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.chat', param: 'reference', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Répondre'},
 				]"
 				:pagination=true
 			/>

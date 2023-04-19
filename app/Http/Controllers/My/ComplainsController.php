@@ -128,6 +128,33 @@ class ComplainsController extends Controller
         ]);
     }
 
+    public function chat (Complain $complain) {
+        $chats = $complain->complainChats;
+
+        if(!$complain->is_anonymous) {
+            $complain->load('user');
+            $chats = $chats->map(function($chat) {
+                $chat->load('user');
+                return $chat;
+            });
+        } else {
+            $chats = $chats->map(function($chat) use ($complain) {
+                if($chat->user_id == $complain->user_id) {
+                    $chat->user_id = null;
+                } else {
+                    $chat->load('user');
+                }
+                return $chat;
+            });
+            $complain->user_id = null;
+        }
+
+        return inertia('My/Complains/Chat', [
+            'complain' => $complain,
+            'chats' => $chats
+        ]);
+    }
+
     public function delete(Complain $complain) {
         $complain->deleted_at=now();
         $complain->save();
