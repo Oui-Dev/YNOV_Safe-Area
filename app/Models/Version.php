@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ESolution\DBEncryption\Traits\EncryptedAttribute;
 
 class Version extends Model
 {
-    use HasFactory, EncryptedAttribute;
+    use HasFactory;
 
     protected $fillable = [
         'id',
@@ -22,19 +21,15 @@ class Version extends Model
         'updated_at',
     ];
 
-    public function is_archived()
-    {if(empty($this->archived_at)){return false;} else {return true;}}
-
-    public function is_updated()
-    {if($this->updated_at != $this->created_at){return true;} else {return false;}}
-
-    static public function active()
-    {
-        return Version::where('archived_at',null)->first();
+    public function is_archived() {
+        return !empty($this->archived_at);
     }
 
-    protected $encryptable = [
-        'name',
-        'changelog',
-    ];
+    public function is_updated() {
+        return $this->updated_at !== $this->created_at;
+    }
+
+    static public function active() {
+        return Version::where('archived_at', null)->first();
+    }
 }

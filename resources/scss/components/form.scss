@@ -1,21 +1,9 @@
-input, textarea,
-input[type='password'],
-input[type='number'],
-input[type='email'],
-input[type='phone'],
-input[type='text'],
-input[type='url'],
-select {
-    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-safearea-red focus:ring-safearea-red sm:text-sm border py-3 px-3;
-}
-
 form {
     label {
         @apply block mb-2 mt-3 text-sm font-medium text-gray-900;
     }
-
-    .btn-primary {
-        @apply rounded-md bg-gradient-to-r text-white from-safearea-red to-safearea-blue p-2 mt-6 text-white;
+    textarea, select {
+        @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-safearea-red focus:ring-safearea-red sm:text-sm border py-3 px-3;
     }
 
     .form-error-div {
@@ -24,10 +12,44 @@ form {
         }
 
         input:not(.vs__search), textarea, select, .v-select {
-            @apply border-red-500;
+            @apply border-red-500 text-red-500;
         }
     }
     .form-error-field {
         @apply text-red-500 text-sm font-normal mt-1;
+    }
+}
+
+.btn {
+    @apply rounded-xl text-base font-bold px-8 py-3 text-center;
+
+    &.primary {
+        @apply bg-safearea-blue text-white hover:opacity-90;
+    }
+    &.secondary {
+        @apply bg-black text-white hover:bg-opacity-75;
+    }
+    &.generic {
+        @apply border border-gray-300 bg-white text-black hover:bg-gray-200;
+    }
+    &.warning {
+        @apply bg-safearea-red hover:bg-red-700;
+    }
+
+    &:disabled {
+        @apply cursor-not-allowed bg-gray-300 text-gray-700;
+    }
+    &.xl {
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+    &.sm {
+        padding: 13px 24px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    &.xs {
+        @apply text-xs rounded-full;
+        padding: 8px 17px;
     }
 }

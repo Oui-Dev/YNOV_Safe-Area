@@ -34,7 +34,7 @@ class StaticViewController extends Controller
     // Changelog
     public function changelog()
     {
-        $versions = Version::get();
+        $versions = Version::orderBy('id', 'DESC')->get();
         return view('pages/No/changelog', ['versions' => $versions]);
     }
 }

@@ -4,41 +4,35 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ESolution\DBEncryption\Traits\EncryptedAttribute;
 
 class Company extends Model
 {
-    use HasFactory, EncryptedAttribute;
+    use HasFactory;
 
     protected $fillable = [
         'id',
-        'reference',
         'name',
-        'address_id',
-        'city_id',
+        'address',
+        'city',
+        'zip_code',
         'siren',
         'siret',
         'email',
         'phone',
-        'email_verified_at',
-        'user_owner',
+        'owner_id',
         'published_at',
         'archived_at',
         'created_at',
         'updated_at',
     ];
 
-    public function users() {
+    public function users(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany(User::class);
     }
 
-    protected $encryptable = [
-        'name',
-        'address_id',
-        'city_id',
-        'siren',
-        'siret',
-        'email',
-        'phone',
-    ];
+    public function owner(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
 }

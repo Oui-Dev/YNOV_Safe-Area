@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Newsletter extends Model
 {
     use HasFactory, EncryptedAttribute;
+    
     protected $fillable = [
         'id',
         'email',

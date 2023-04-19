@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('company_id')->nullable();
             $table->string('identifiant')->unique();
             $table->string('password');
             $table->uuid('reference')->unique();
@@ -27,11 +26,18 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->timestamp('personal_email_verified_at')->nullable()->default(null);
             $table->timestamp('professional_email_verified_at')->nullable()->default(null);
+            $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade');
             $table->timestamp('archived_at')->nullable()->default(null);
             $table->timestamp('blocked_at')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('company_id')->references('id')->on('companies');
+        });
+
+        Schema::table('companies', function (Blueprint $table) {
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 
@@ -42,6 +48,11 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('companies', function (Blueprint $table) {
+            $table->dropForeign(['owner_id']);
+            $table->dropColumn('owner_id');
+        });
+
         Schema::dropIfExists('users');
     }
 };

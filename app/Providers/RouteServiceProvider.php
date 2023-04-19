@@ -30,25 +30,25 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
 
-            // Routes for landing pages => safearea.ml
+            // Routes for landing pages => safearea.fr
             Route::domain(config('app.domain'))
                 ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/WEB/no.php'));
 
-            // Routes for client => my.safearea.ml
+            // Routes for client => my.safearea.fr
             Route::domain('my.' . config('app.domain'))
                 ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/WEB/my.php'));
 
-            // Routes for Console => console.safearea.ml
+            // Routes for Console => console.safearea.fr
             Route::domain('console.' . config('app.domain'))
                 ->middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/WEB/console.php'));
 
-            // Routes for API => api.safearea.ml
+            // Routes for API => api.safearea.fr
             Route::domain('api.' . config('app.domain'))
                 ->middleware('api')
                 ->prefix('/v1')

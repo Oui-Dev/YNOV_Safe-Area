@@ -1,8 +1,8 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
-import {ZiggyVue} from "ziggy";
-import {Ziggy} from "./ziggy";
+import { ZiggyVue } from "ziggy";
+import { Ziggy } from "./ziggy";
 
 // Cookie consent
 import { cc } from "./cc";

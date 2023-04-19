@@ -3,7 +3,7 @@
 @section('content')
 <div class="bg-white mt-8">
     <!-- Comparison table -->
-    <div class="mx-auto max-w-2xl bg-white py-8 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="mx-auto max-w-2xl bg-white py-8 sm:py-12 sm:px-6 lg:max-w-6xl lg:px-8">
         <div class="hidden lg:block">
             <table class="h-px w-full table-fixed">
                 <caption class="sr-only">
@@ -32,8 +32,9 @@
                             <div>
                                 <p>
                                     <span class="text-4xl font-bold tracking-tight text-gray-900">19 €</span>
-                                    <span class="text-base font-medium text-gray-500">/mois + prix utilisateurs</span>
+                                    <span class="text-base font-medium text-gray-500">/mois</span>
                                 </p>
+                                <p class="text-base font-normal text-gray-500">+ prix utilisateurs</p>
                                 <p class="mt-4 text-sm text-gray-500">Utile pour les TPE ayant besoins de l'essentiel</p>
                             </div>
                         </div>
@@ -44,8 +45,9 @@
                             <div>
                                 <p>
                                     <span class="text-4xl font-bold tracking-tight text-gray-900">39 €</span>
-                                    <span class="text-base font-medium text-gray-500">/mois + prix utilisateurs</span>
+                                    <span class="text-base font-medium text-gray-500">/mois</span>
                                 </p>
+                                <p class="text-base font-normal text-gray-500">+ prix utilisateurs</p>
                                 <p class="mt-4 text-sm text-gray-500">Idéale pour les PME, avec une gestion améliorée</p>
                             </div>
                         </div>
@@ -56,8 +58,9 @@
                             <div>
                                 <p>
                                     <span class="text-4xl font-bold tracking-tight text-gray-900">59 €</span>
-                                    <span class="text-base font-medium text-gray-500">/mois + prix utilisateurs</span>
+                                    <span class="text-base font-medium text-gray-500">/mois</span>
                                 </p>
+                                <p class="text-base font-normal text-gray-500">+ prix utilisateurs</p>
                                 <p class="mt-4 text-sm text-gray-500">Pour les grandes entreprises, avec une gestion détaillée</p>
                             </div>
                         </div>
@@ -95,7 +98,7 @@
                 </tr>
 
                 <tr>
-                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Accès à la <a href="{{route('login')}}">plateforme MY</a></th>
+                    <th class="py-5 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">Accès à la <a href="{{route('no.public.login')}}">plateforme MY</a></th>
 
                     <td class="py-5 px-6">
                         <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -447,15 +450,15 @@
                         <th class="sr-only" scope="row">Choose your plan</th>
 
                         <td class="px-6 pt-5">
-                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Choisir cette offre</a>
+                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:bg-safearea-red">Choisir cette offre</a>
                         </td>
         
                         <td class="px-6 pt-5">
-                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Choisir cette offre</a>
+                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:bg-safearea-red">Choisir cette offre</a>
                         </td>
         
                         <td class="px-6 pt-5">
-                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:to-safearea-blue">Choisir cette offre</a>
+                            <a href="#" class="block w-full rounded-md border border-transparent bg-safearea-grey py-2 text-center text-sm font-semibold text-white shadow hover:bg-safearea-red">Choisir cette offre</a>
                         </td>
                     </tr>
                 </tfoot>

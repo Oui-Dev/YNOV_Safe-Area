@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Complain;
+use App\Models\HelpdeskSupport;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,13 +18,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            CompanySeeder::class,
             RoleSeeder::class,
-            UserSeeder::class,
             VersionSeeder::class,
-            LicenceSeeder::class,
+            StatusSeeder::class,
+            ComplainTypeSeeder::class,
         ]);
-        Company::factory()->count(500)->create();
-        User::factory()->count(1000)->create();
+
+        if(config('app.env') === 'local') {
+            $this->call([
+                UserSeeder::class,
+            ]);
+
+            Company::factory()->count(23)->create();
+            User::factory()->count(93)->create();
+            Complain::factory()->count(42)->create();
+            HelpdeskSupport::factory()->count(13)->create();
+        }
     }
 }

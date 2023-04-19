@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
@@ -10,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use ESolution\DBEncryption\Traits\EncryptedAttribute;
 use Spatie\Permission\Traits\HasRoles;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class User extends Authenticatable
 {
@@ -62,11 +62,32 @@ class User extends Authenticatable
         'label',
     ];
 
-    public function company() {
-        return $this->belongsTo(Company::class, 'compagny_id');
+    public function company(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 
-    public function is_blocked() {
+    public function companyOwner(): \Illuminate\Database\Eloquent\Relations\hasOne
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    public function complains(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
+        return $this->hasMany(Complain::class);
+    }
+
+    public function assignedComplains(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
+        return $this->hasMany(Complain::class);
+    }
+
+    public function helpdeskSupports(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
+        return $this->hasMany(HelpdeskSupport::class);
+    }
+
+    public function is_blocked(){
         if(!empty($this->blocked_at)){return true;} else {return false;}
     }
     public function is_archived() {
@@ -78,10 +99,10 @@ class User extends Authenticatable
     public function is_professional_email_verified() {
         if(!empty($this->professional_email_verified_at)){return true;} else {return false;}
     }
+    
 
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     }
-
 }

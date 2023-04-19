@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\My\DashboardController;
+use App\Http\Controllers\My\HelpdeskController;
+use App\Http\Controllers\My\ComplainsController;
 use App\Http\Controllers\My\UserController;
+use App\Http\Controllers\My\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +18,53 @@ use App\Http\Controllers\My\UserController;
 |
 */
 
+// My + Admin routes
 Route::group([
-    'as' => "my.",
-    'middleware' => ['auth', 'permission:my_access|admin_access|root']
+    'as' => "my.auth.",
+    'middleware' => ['auth', 'role:my|admin']
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
-    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
-    Route::get("/users/create", [UserController::class, 'create'])-> name('auth.users.create');
-    Route::post("/users/create", [UserController::class, 'store'])-> name('auth.users.create.post');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
+
+    // Complain
+    Route::group([
+        'prefix' => 'complains' ,
+        'as' => 'complains.',
+        'controller' => ComplainsController::class
+    ], function () {
+        Route::get('/create', 'create')->middleware('role:my')->name('create');
+        Route::post('/create', 'store')->middleware('role:my')->name('create.post');
+        Route::put('/delete/{complain}', 'delete')->middleware('role:my')->name('delete');
+        Route::get('/', 'list')->name('list');
+    });
+    // Profile
+    Route::group([
+        'prefix' => 'profile',
+        'as' => 'profil.',
+        'controller' => ProfilController::class
+    ], function () {
+        Route::get('/', 'profil')->name('show');
+        Route::put('/', 'editProfil')->name('update');
+        Route::put('/password', 'editPassword')->name('password');
+    });
+    // Helpdesk
+    Route::group([
+        'prefix' => 'helpdesk',
+        'as' => 'helpdesk.',
+        'controller' => HelpdeskController::class
+    ], function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/new', 'create')->name('add');
+        Route::post('/new', 'store')->name('add.post');
+        Route::delete('/{ticket:id}', 'delete')->name('delete');
+    });
+});
+
+
+// Admin routes
+Route::group([
+    'as' => "my.auth.",
+    'middleware' => ['auth', 'role:admin']
+], function () {
+    require __DIR__ . '/admin.php';
 });

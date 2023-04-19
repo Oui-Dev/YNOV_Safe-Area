@@ -3,6 +3,10 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Console\DashboardController;
+use App\Http\Controllers\Console\CompanyController;
+use App\Http\Controllers\Console\ChangelogController;
+use App\Http\Controllers\My\HelpdeskController;
+use App\Http\Controllers\My\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +20,59 @@ use App\Http\Controllers\Console\DashboardController;
 */
 
 Route::group([
-    'as' => "console.",
-    'middleware' => ['auth', 'permission:root']
+    'as' => "console.auth.",
+    'middleware' => ['auth', 'role:root']
 ], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('auth.dashboard.index');
-    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('auth.logout');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+    // Profile
+    Route::group([
+        'prefix' => 'profile',
+        'as' => 'profil.',
+        'controller' => ProfilController::class
+    ], function () {
+        Route::get('/', 'profil')->name('show');
+        Route::put('/', 'editProfil')->name('update');
+        Route::put('/password', 'editPassword')->name('password');
+    });
+
+    // Helpdesk
+    Route::group([
+        'prefix' => 'helpdesk',
+        'as' => 'helpdesk.',
+        'controller' => HelpdeskController::class
+    ],function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/{ticket:id}', 'show')->name('show');
+        Route::put('/{ticket:id}', 'update')->name('update');
+        Route::delete('/{ticket:id}', 'delete')->name('delete');
+        Route::get('/download/{ticket:id}', 'download')->name('download');
+    });
+
+    // Companies
+    Route::group([
+        'prefix' => 'companies',
+        'as' => "companies.",
+        'controller' => CompanyController::class,
+    ], function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('create.post');
+        Route::get('/edit/{company}', 'edit')->name('edit');
+        Route::put('/edit/{company}', 'editPut')->name('edit.put');
+        Route::delete('/delete/{company}', 'delete')->name('delete');
+    });
+
+    Route::group([
+        'prefix' => 'changelog',
+        'as' => 'changelog.',
+        'controller' => ChangelogController::class,
+    ], function () {
+        Route::get('/', 'list')->name('list');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('create.post');
+        Route::get('/edit/{version}', 'edit')->name('edit');
+        Route::put('/edit/{version}', 'editPut')->name('edit.put');
+    });
 });
