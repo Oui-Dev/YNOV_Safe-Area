@@ -4,6 +4,7 @@ import Pagination from "./Pagination.vue";
 import { ref, computed, watch } from "vue";
 import Thead from "./partials/Thead.vue";
 import Tbody from "./partials/Tbody.vue";
+import Li from "./partials/Li.vue";
 
 const props = defineProps({
     tableTitles: {
@@ -55,7 +56,18 @@ const hasActions = computed(() => {
 </script>
 
 <template>
-    <section>
+    <!-- Table (smallest breakpoint only) -->
+    <section class="shadow rounded-lg md:hidden">
+        <ul class="mt-6 mb-2 divide-y divide-gray-200 shadow rounded-lg md:hidden overflow-auto" :style="{ maxHeight: '71vh' }">
+            <Li v-if="hasData" :data="newData" :tableTitles="tableTitles" :tableKeys="tableKeys" :hasActions="hasActions" :actions="actions" />
+            <li v-else class="text-center py-3">
+                Aucune donnée disponible
+            </li>
+        </ul>
+    </section>
+
+    <!-- Table (medium breakpoint and up) -->
+    <section class="hidden md:block">
         <div class="inline-block min-w-full mt-8">
             <div v-if="hasData" class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-300">
@@ -67,6 +79,8 @@ const hasActions = computed(() => {
                 Aucune donnée disponible
             </div>
         </div>
-        <Pagination v-if="pagination" class="pt-2" :paginator="data" />
     </section>
+
+    <!-- Pagination -->
+    <Pagination v-if="pagination" class="pt-2" :paginator="data" />
 </template>
