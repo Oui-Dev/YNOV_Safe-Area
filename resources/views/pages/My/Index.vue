@@ -18,7 +18,13 @@ const props = defineProps({
         type: Object,
         required: true
     },
+    complainChat: {
+        type: Object,
+        required: true
+    }
 });
+
+console.log(props.complainChat)
 
 const statsCardsData = ref([
     { title: "Total utilisateurs", value: props.stats.totalUsers, icon: UserIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.users.list" },

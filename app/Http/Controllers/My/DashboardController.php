@@ -4,6 +4,7 @@ namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
 use App\Models\Complain;
+use App\Models\ComplainChat;
 
 class DashboardController extends Controller
 {
@@ -46,6 +47,10 @@ class DashboardController extends Controller
         ];
 
         $lastComplain = $complains->pop();
+
+        $complainChat = ComplainChat::orderBy('created_at', 'desc')->first();
+
+        dd($complainChat);
 
         return inertia('My/Index', [
             'complains' => $complains,
