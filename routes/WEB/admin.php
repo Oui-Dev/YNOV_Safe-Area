@@ -35,9 +35,9 @@ Route::group([
     'as' => 'complains.',
     'controller' => ComplainsController::class
 ], function () {
-    Route::put('/{complain:id}', 'update')->name('edit.post');
-    Route::get('/{complain:id}', 'edit')->name('edit');
-    Route::get('/download/{complain:id}', 'download')->name('download');
+    Route::put('/{complain:reference}', 'update')->name('edit.post');
+    Route::get('/{complain:reference}', 'edit')->name('edit');
+    Route::get('/download/{complain:reference}', 'download')->name('download');
     Route::post('/{complain:id}', 'showAnonym')->name('anonymity');
 });
 // Helpdesk

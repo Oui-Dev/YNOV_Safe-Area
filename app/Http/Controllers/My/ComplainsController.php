@@ -53,7 +53,6 @@ class ComplainsController extends Controller
         ]);
     }
 
-
     public function store() {
         $data = request()->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -123,7 +122,7 @@ class ComplainsController extends Controller
             'complain_type_id' => $data['complain_type_id']
         ]);
 
-        return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
+        return redirect()->route('my.auth.complains.edit', $complain->reference)->with('toast', [
             'type' => 'success',
             'message' => "La plainte a bien été modifiée.",
         ]);
@@ -151,7 +150,7 @@ class ComplainsController extends Controller
         if($complain->save()){
             Mail::to($complain->user->professional_email)->send(new IdentityRequestMail($complain));
 
-            return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
+            return redirect()->route('my.auth.complains.edit', $complain->reference)->with('toast', [
                 'type' => 'success',
                 'message' => "La demande pour lever l'anonymat a bien été effectué",
             ]);
