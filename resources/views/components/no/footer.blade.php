@@ -24,7 +24,7 @@
                     <h3 class="text-base font-medium text-gray-900">Support</h3>
                     <ul role="list" class="mt-4 space-y-4">
                         <li>
-                            <a href="#">Tickets</a>
+                            <a href="{{route('no.public.contact')}}">Tickets</a>
                         </li>
                         <li>
                             <a href="{{route('no.public.changelog')}}">Changelog</a>
@@ -35,7 +35,7 @@
                     <h3 class="text-base font-medium text-gray-900">Informations légales</h3>
                     <ul role="list" class="mt-4 space-y-4">
                         <li>
-                            <a href="#">Politique de confidentialité</a>
+                            <a href="{{route('no.public.termofservice')}}">Politique de confidentialité</a>
                         </li>
                         <li>
                             <a href="#" data-cc="c-settings">Politique de cookies</a>
@@ -44,7 +44,7 @@
                             <a href="{{route('no.public.legal')}}">Mentions Légales</a>
                         </li>
                         <li>
-                            <a href="#">Conditions générales d’utilisation</a>
+                            <a href="{{route('no.public.cgu')}}">Conditions générales d’utilisation</a>
                         </li>
                         <li>
                             <a href="/sitemap.xml" class="sr-only">Sitemap</a>
