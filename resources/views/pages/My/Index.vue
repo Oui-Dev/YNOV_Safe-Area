@@ -94,7 +94,7 @@ const getEmergency = (complain) => {
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                         <div class="flex flex-col gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Email personnel :</div>
+                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">Anonyme</div>
                                         </div>
                                     </div>
@@ -108,7 +108,7 @@ const getEmergency = (complain) => {
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.firstname }}</div>
                                         </div>
                                         <div class="flex flex-col gap-1">
-                                            <div class="text-sm font-medium text-gray-900">Email personnel :</div>
+                                            <div class="text-sm font-medium text-gray-900 whitespace-nowrap">Email personnel :</div>
                                             <div class="text-sm font-medium text-gray-500">{{ props.lastComplain.user.professional_email }}</div>
                                         </div>
                                     </div>
