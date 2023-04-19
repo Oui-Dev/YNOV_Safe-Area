@@ -38,7 +38,9 @@ Route::group([
     Route::put('/{complain:id}', 'update')->name('edit.post');
     Route::get('/{complain:id}', 'edit')->name('edit');
     Route::get('/download/{complain:id}', 'download')->name('download');
-    Route::post('/{complain:id}', 'showAnonym')->name('anonymity');
+    Route::post('/{complain:reference}', 'showAnonym')->name('anonymity');
+    Route::get('/confirm/{token:token}', 'confirmAnonym')->name('confirm.anonym');
+    Route::post('/confirm/{token:token}', 'updateAnonym')->name('update.anonym');
 });
 // Helpdesk
 Route::group([

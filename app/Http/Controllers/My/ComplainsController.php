@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\IdentityRequestMail;
 use App\Models\ComplainType;
 use App\Models\Complain;
+use App\Models\Token;
 use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class ComplainsController extends Controller
 {
@@ -149,12 +152,60 @@ class ComplainsController extends Controller
         }
 
         if($complain->save()){
-            Mail::to($complain->user->professional_email)->send(new IdentityRequestMail($complain));
+
+            $token = Token::create([
+                'email' => $complain->user->professional_email,
+                'token' => Str::uuid().'--'.$complain->reference,
+            ]);
+
+            Mail::to($complain->user->professional_email)->send(new IdentityRequestMail($complain,$token->token));
 
             return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
                 'type' => 'success',
                 'message' => "La demande pour lever l'anonymat a bien été effectué",
             ]);
         }
+    }
+
+    public function confirmAnonym(Token $token)
+    {
+        return inertia('My/Complains/Confirm', [
+            'token' => $token
+        ]);
+    }
+
+    public function updateAnonym(Token $token){
+        $answer = request()->answer;
+        $anonymous = request()->is_anonymous;
+        $reference = substr($token->token, strpos($token->token, "--")+2); 
+        $complain = Complain::where('reference', $reference)->first();
+
+        if($anonymous == false && $answer == 'accept'){
+            throw ValidationException::withMessages([
+                'is_anonymous' => 'Vous devez accepter la condition pour pouvoir lever l\'anonymat.',
+            ]);
+        } elseif ($anonymous == true && $answer == 'accept'){
+            $complain->is_anonymous = 0;
+
+            Token::where('token', $token->token)->delete();
+            if($complain->save()){
+                return redirect()->route('my.auth.complains.list')->with('toast', [
+                    'type' => 'success',
+                    'message' => "La plainte n'est plus anonyme",
+                ]);
+            }
+        }
+
+        if($answer == 'reject'){
+            $complain->identity_request = 0;
+            Token::where('token', $token->token)->delete();
+            if($complain->save()){
+                return redirect()->route('my.auth.complains.list')->with('toast', [
+                    'type' => 'success',
+                    'message' => "La plainte reste anonyme.",
+                ]);
+            }
+        }
+        return ;
     }
 }
