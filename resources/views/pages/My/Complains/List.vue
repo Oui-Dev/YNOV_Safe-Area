@@ -6,7 +6,6 @@ import { Link, usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { computed } from 'vue';
 
-// const currentuser = computed(() => usePage().props.value.auth.user);
 const props = defineProps({
     complains: {
         type: Object,
@@ -78,7 +77,7 @@ function getStatus(complain) {
 				:data="complains"
 				:actions="[
 					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.edit', param: 'reference', icon: PencilIcon, iconText: 'Détails'},
-					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.chat', param: 'reference', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Répondre'},
+					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.chat', param: 'reference', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Conversation'},
 				]"
 				:pagination=true
 			/>
@@ -89,7 +88,7 @@ function getStatus(complain) {
 				:data="complains"
 				:actions="[
 					{ type: 'function', function: deleteUser, icon: TrashIcon, iconText: 'Supprimer' },
-					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.chat', param: 'reference', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Répondre'},
+					{ type: 'Link', method: 'GET', routeName: 'my.auth.complains.chat', param: 'reference', icon: ChatBubbleOvalLeftEllipsisIcon, iconText: 'Conversation'},
 				]"
 				:pagination=true
 			/>

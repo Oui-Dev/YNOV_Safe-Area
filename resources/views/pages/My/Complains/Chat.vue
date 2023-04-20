@@ -36,7 +36,6 @@ const getDate = (props) => {
 const canReply = (status) => {
   return !(status.slug === 'clos' || status.slug === 'termine' || status.slug === 'annule')
 }
-
 </script>
 
 <template>

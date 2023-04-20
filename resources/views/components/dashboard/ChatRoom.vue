@@ -72,14 +72,12 @@ const currentUser = computed(() => usePage().props.value.auth.user);
             v-on:keyup.enter="sendMessage()"
             :disabled="!props.canReply"
             v-model="reply"
-
             />
         <PaperAirplaneIcon
             @click="sendMessage()"
             :class="props.canReply ? 'hover:text-safearea-blue cursor-pointer' : 'cursor-not-allowed'"
             class="h-10 w-10 pr-3"/>
         </div>
-
 </template>
 
 <style scoped>
