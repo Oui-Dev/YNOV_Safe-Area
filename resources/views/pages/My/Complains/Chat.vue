@@ -1,6 +1,7 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import ChatRoom from "../../../components/dashboard/ChatRoom.vue";
+import { useForm } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
   complain: {
@@ -12,6 +13,20 @@ const props = defineProps({
     required: true
   },
 });
+
+const form = useForm({
+  content: null,
+});
+
+const getReply = (reply) => {
+  console.log('reply', reply);
+  form.content = reply;
+  form.post(route('my.auth.complains.chat.post', props.complain.reference), {
+    onSuccess: () => {
+      form.reset();
+    }
+  });
+}
 
 const getDate = (props) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
@@ -35,6 +50,7 @@ const canReply = (status) => {
       </div>
       <ChatRoom :messages="props.chats"
                 :canReply="canReply(props.complain.status)"
+                @reply="getReply"
        />
     </div>
   </DashboardLayout>

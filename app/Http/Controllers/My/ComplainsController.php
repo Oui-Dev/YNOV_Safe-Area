@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\IdentityRequestMail;
 use App\Models\ComplainType;
 use App\Models\Complain;
+use App\Models\ComplainChat;
 use App\Models\User;
 
 class ComplainsController extends Controller
@@ -132,7 +133,7 @@ class ComplainsController extends Controller
         $chats = $complain->complainChats;
         $complain->load('status');
 
-        if(!$complain->is_anonymous) {
+        if(!$complain->is_anonymous || $complain->user_id == auth()->user()->id) {
             $complain->load('user');
             $chats = $chats->map(function($chat) {
                 $chat->load('user');
@@ -153,6 +154,25 @@ class ComplainsController extends Controller
         return inertia('My/Complains/Chat', [
             'complain' => $complain,
             'chats' => $chats
+        ]);
+    }
+
+    public function sendChat(Complain $complain) {
+        $data = request()->validate([
+            'content' => ['required', 'string', 'max:1000'],
+        ]);
+
+        $complainChat = ComplainChat::create([
+            'complain_id' => $complain->id,
+            'user_id' => auth()->user()->id,
+            'content' => $data['content']
+        ]);
+
+        $complainChat->load('user');
+
+        return redirect()->route('my.auth.complains.chat', $complain->reference)->with('toast', [
+            'type' => 'success',
+            'message' => "Votre message a bien été envoyé.",
         ]);
     }
 

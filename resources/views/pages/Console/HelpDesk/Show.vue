@@ -36,7 +36,6 @@ const getStatusColor = computed(() => {
 const getFileNameFromPath = computed(() => {
     const path = props.ticket.file_url;
     if (!path) return null;
-    console.log('path', path);
     return path.split('/').pop();
 });
 

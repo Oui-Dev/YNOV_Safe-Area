@@ -1,9 +1,9 @@
 <script setup>
 import { usePage } from '@inertiajs/inertia-vue3';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { PaperAirplaneIcon } from '@heroicons/vue/24/solid';
 
-
+const emits = defineEmits(['reply']);
 const props = defineProps({
     messages: {
         type: Object,
@@ -15,14 +15,14 @@ const props = defineProps({
         default: true
     },
 })
+const reply = ref("");
 
 function isMyMessage(messageUserId) {
-    console.log('messageUserId', messageUserId, currentUser.value.id);
     return messageUserId === currentUser.value.id;
 }
 
 function getUserName(message) {
-    return message.user?.firstname ?? "Anonyme"
+    return message.user ? `${message.user.firstname + ' ' + message.user.lastname}` : "Anonyme"
 }
 
 function datePrettyfier(date) {
@@ -38,7 +38,8 @@ function compareDates(date1, date2) {
 }
 
 function sendMessage() {
-    console.log('send message');
+    emits('reply', reply.value);
+    reply.value = "";
 }
 
 const currentUser = computed(() => usePage().props.value.auth.user);
@@ -68,8 +69,10 @@ const currentUser = computed(() => usePage().props.value.auth.user);
         <input
             class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             type="text"
-            :disabled="!props.canReply"
             v-on:keyup.enter="sendMessage()"
+            :disabled="!props.canReply"
+            v-model="reply"
+
             />
         <PaperAirplaneIcon
             @click="sendMessage()"
@@ -81,6 +84,6 @@ const currentUser = computed(() => usePage().props.value.auth.user);
 
 <style scoped>
 .message{
-    @apply w-96 max-w-full min-h-fit py-2 px-4 rounded-xl mb-6 text-white;
+    @apply w-96 max-w-full min-h-fit py-2 px-4 rounded-xl mb-6 text-white break-words;
 }
 </style>
