@@ -2,6 +2,7 @@
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import CardForm from "../../../components/dashboard/CardForm.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
+import { computed } from "vue";
 
 
 const props = defineProps({
@@ -38,7 +39,7 @@ function submit(state) {
         <div :class="{ 'form-error-div': form.errors.is_anonymous }" class="flex flex-col h-6">
             <div>
                 <input v-model="form.is_anonymous" id="confirmAnonym" name="confirmAnonym" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600 mr-2" />
-                <label class="text-xs">En confirmant j'accepte que la plainte {{ getRef(token.token) }} ne sera plus anonyme</label>
+                <label class="text-xs">En confirmant j'accepte que la plainte {{ getRef }} ne sera plus anonyme</label>
             </div>
             <div v-if="form.errors.is_anonymous" class="form-error-field text-red-500 text-sm">{{ form.errors.is_anonymous }}</div>
         </div>

@@ -11,6 +11,7 @@ use App\Models\Complain;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 
 class ComplainsController extends Controller
@@ -199,7 +200,9 @@ class ComplainsController extends Controller
         $anonymRequest = Token::where('token', '=', $token->token)->first();
 
         $data = request()->validate([
-            'answer' => ['required', 'string', 'max:255'],
+            'answer' => ['required',
+            Rule::in(['accept', 'reject']),
+        ],
             'is_anonymous' => ['boolean'],
         ]);
 
@@ -221,8 +224,7 @@ class ComplainsController extends Controller
                     ]);
                 }
             }
-
-            else ($data['answer'] == 'reject') {
+            else {
                 $complain->identity_request = 0;
                 Token::where('token', $token->token)->delete();
                 if ($complain->save()) {
