@@ -168,8 +168,6 @@ class ComplainsController extends Controller
             'content' => $data['content']
         ]);
 
-        $complainChat->load('user');
-
         return redirect()->route('my.auth.complains.chat', $complain->reference)->with('toast', [
             'type' => 'success',
             'message' => "Votre message a bien été envoyé.",

@@ -14,8 +14,6 @@ class ComplainChat extends Model
         'user_id',
         'content',
         'screen_url',
-        'created_at',
-        'updated_at',
     ];
 
     public function complain(): \Illuminate\Database\Eloquent\Relations\belongsTo

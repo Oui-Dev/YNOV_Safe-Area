@@ -17,6 +17,8 @@ const props = defineProps({
 })
 const reply = ref("");
 
+const currentUser = computed(() => usePage().props.value.auth.user);
+
 function isMyMessage(messageUserId) {
     return messageUserId === currentUser.value.id;
 }
@@ -42,8 +44,6 @@ function sendMessage() {
     reply.value = "";
 }
 
-const currentUser = computed(() => usePage().props.value.auth.user);
-
 </script>
 <template>
     <div class="w-full max-h-[64vh] flex flex-col flex-1 overflow bg-slate-50 pt-2 overflow-y-auto px-4">
@@ -67,11 +67,11 @@ const currentUser = computed(() => usePage().props.value.auth.user);
     </div>
     <div class="w-full flex items-center justify-center gap-1 m-2">
         <input
+            v-on:keyup.enter="sendMessage()"
+            v-model="reply"
             class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
             type="text"
-            v-on:keyup.enter="sendMessage()"
             :disabled="!props.canReply"
-            v-model="reply"
             />
         <PaperAirplaneIcon
             @click="sendMessage()"

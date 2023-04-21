@@ -19,7 +19,6 @@ const form = useForm({
 });
 
 const getReply = (reply) => {
-  console.log('reply', reply);
   form.content = reply;
   form.post(route('my.auth.complains.chat.post', props.complain.reference), {
     onSuccess: () => {
@@ -28,7 +27,7 @@ const getReply = (reply) => {
   });
 }
 
-const getDate = (props) => {
+const getDate = () => {
   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
   return new Date(props.complain.created_at).toLocaleDateString('fr-FR', options);
 }
@@ -44,7 +43,7 @@ const canReply = (status) => {
       <div class="flex gap-2 flex-col md:flex-row md:justify-between px-4 py-5 sm:px-6">
         <div>
           <h3 class="text-lg font-medium leading-6 text-gray-900">Plainte : {{ props.complain.reference }} </h3>
-          <p class="mt-1 max-w-2xl text-sm text-gray-500">Créé le {{ getDate(props) }}</p>
+          <p class="mt-1 max-w-2xl text-sm text-gray-500">Créé le {{ getDate() }}</p>
         </div>
       </div>
       <ChatRoom :messages="props.chats"
