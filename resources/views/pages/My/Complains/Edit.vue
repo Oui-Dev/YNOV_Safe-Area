@@ -1,6 +1,6 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
-import { PaperClipIcon, EyeIcon } from '@heroicons/vue/20/solid';
+import { PaperClipIcon, EyeIcon, XMarkIcon } from '@heroicons/vue/20/solid';
 import { SwitchGroup, Switch } from "@headlessui/vue";
 import { computed, watch } from 'vue';
 import { useForm } from "@inertiajs/inertia-vue3";
@@ -56,14 +56,18 @@ const getMail = (complain) => {
 
 <template>
     <DashboardLayout>
-        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+        <div class="overflow-hidden bg-white shadow sm:rounded-lg relative">
+            <Link class="absolute right-1 top-1"
+                  :href="route('my.auth.complains.list')">
+                <XMarkIcon class="h-5 w-5 cursor-pointer hover:text-safearea-red" />
+            </Link>
             <div class="flex gap-2 flex-col md:flex-row md:justify-between px-4 py-5 sm:px-6">
-                <div>
+                <div class="w-full">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Plainte : {{ props.complain.reference }} </h3>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">Créé le {{ getDate(props) }}</p>
                 </div>
 
-                <div class="w-auto flex justify-start md:justify-center">
+                <div class="w-auto min-w-fit flex justify-start md:justify-center">
                     <span v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 1"
                         class="bg-blue-100 h-8 text-blue-800 text-xs font-medium mr-2 px-3 py-2 rounded">Demande
                         effectuée</span>
