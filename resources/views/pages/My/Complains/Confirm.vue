@@ -16,10 +16,7 @@ const form = useForm({
     is_anonymous: false,
 });
 
-function getRef(){
-    let ref = props.token.token.split('--');
-    return ref[1];
-}
+const getRef = computed(() => props.token.token.split('--')[1]);
 
 function submit(state) {
     form.answer = state;
