@@ -2,7 +2,8 @@
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import CardForm from "../../../components/dashboard/CardForm.vue";
 import Input from "../../../components/dashboard/Input.vue";
-import { useForm } from '@inertiajs/inertia-vue3';
+import { useForm, Link } from '@inertiajs/inertia-vue3';
+import { XMarkIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({
     company: {
@@ -37,6 +38,10 @@ const submit = () => {
 			card-description="Dans cette section vous pouvez modifier une entreprise."
 			form-title="Modifier l'entreprise"
 		>
+            <Link class="absolute right-1 top-1"
+                  :href="route('console.auth.companies.list')">
+                <XMarkIcon class="h-5 w-5 cursor-pointer text-white hover:text-safearea-grey lg:text-black lg:hover:text-safearea-red" />
+            </Link>
             <form @submit.prevent="submit">
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
 				    <Input v-model="form.name" :error="form.errors?.name" title="Nom" />

@@ -1,9 +1,9 @@
 <script setup>
-import { useForm } from "@inertiajs/inertia-vue3";
+import { useForm, Link } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import CardForm from "../../../components/dashboard/CardForm.vue";
 import Input from "../../../components/dashboard/Input.vue";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
+import { CheckIcon, ChevronUpDownIcon, XMarkIcon } from "@heroicons/vue/20/solid";
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from "@headlessui/vue";
 
 const form = useForm({
@@ -40,6 +40,10 @@ function submit() {
 			card-description="Dans cette section, vous pouvez ajouter un nouvel utilisateur à votre entreprise."
 			form-title="Ajouter un nouvel utilisateur"
 		>
+            <Link class="absolute right-1 top-1"
+                  :href="route('my.auth.users.list')">
+                <XMarkIcon class="h-5 w-5 cursor-pointer text-white hover:text-safearea-grey lg:text-black lg:hover:text-safearea-red" />
+            </Link>
             <form @submit.prevent="submit">
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
                     <Input v-model="form.firstname" :error="form.errors?.firstname" title="Prenom" />
@@ -54,7 +58,7 @@ function submit() {
                     <Listbox as="div" v-model="form.userRole" class="pt-3">
                         <ListboxLabel class="block text-sm font-medium text-gray-700"> Role : </ListboxLabel>
                         <div class="relative mt-1">
-                            <ListboxButton 
+                            <ListboxButton
                                 class="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-safearea-blue focus:outline-none focus:ring-1 focus:ring-safeborder-safearea-blue sm:text-sm">
                                 <span class="flex items-center">
                                     <span class="ml-1 block truncate">{{ form.userRole }}</span>
