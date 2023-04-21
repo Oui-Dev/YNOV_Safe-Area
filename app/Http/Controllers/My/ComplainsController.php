@@ -169,23 +169,41 @@ class ComplainsController extends Controller
 
     public function confirmAnonym(Token $token)
     {
-        return inertia('My/Complains/Confirm', [
-            'token' => $token
-        ]);
+        $anonymRequest = Token::where('token', '=', $token->token)->first();
+        if($anonymRequest && ((time() - strtotime($anonymRequest->created_at)) < (48*3600))) {
+            return inertia('My/Complains/Confirm', [
+                'token' => $token
+            ]);
+        } else{
+            Token::where('token', $token->token)->delete();
+            $reference = substr($token->token, strpos($token->token, "--")+2); 
+            $complain = Complain::where('reference', $reference)->first();
+            $complain->identity_request = 0;
+            if($complain->save()){
+            return redirect()->route('my.auth.complains.list')->with('toast', [
+                'type' => 'error',
+                'message' => "Le token a expiré.",
+            ]);
+            }
+        }
     }
 
     public function updateAnonym(Token $token){
         $anonymRequest = Token::where('token', '=', $token->token)->first();
-        $answer = request()->answer;
-        $anonymous = request()->is_anonymous;
+
+        $data = request()->validate([
+            'answer' => ['required', 'string', 'max:255'],
+            'is_anonymous' => ['boolean'],
+        ]);
+
         $reference = substr($token->token, strpos($token->token, "--")+2); 
         $complain = Complain::where('reference', $reference)->first();
-        if($anonymRequest && ((time() - strtotime($anonymRequest->created_at)) < (2*86400))) {
-        if($anonymous == false && $answer == 'accept'){
+        if($anonymRequest && ((time() - strtotime($anonymRequest->created_at)) < (48*3600))) {
+        if($data['is_anonymous'] == false && $data['answer'] == 'accept'){
             throw ValidationException::withMessages([
                 'is_anonymous' => 'Vous devez accepter la condition pour pouvoir lever l\'anonymat.',
             ]);
-        } elseif ($anonymous == true && $answer == 'accept'){
+        } else if ($data['is_anonymous'] == true && $data['answer'] == 'accept'){
             $complain->is_anonymous = 0;
 
             Token::where('token', $token->token)->delete();
@@ -197,7 +215,7 @@ class ComplainsController extends Controller
             }
         }
 
-        if($answer == 'reject'){
+        if($data['answer'] == 'reject'){
             $complain->identity_request = 0;
             Token::where('token', $token->token)->delete();
             if($complain->save()){
@@ -209,9 +227,10 @@ class ComplainsController extends Controller
         }
     }else{
         Token::where('token', $token->token)->delete();
+        $complain->identity_request = 0;
         return redirect()->route('my.auth.complains.list')->with('toast', [
             'type' => 'error',
-            'message' => "Le liens a expiré.",
+            'message' => "Le token a expiré.",
         ]);
     }
     }
