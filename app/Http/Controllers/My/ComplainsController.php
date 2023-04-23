@@ -197,18 +197,14 @@ class ComplainsController extends Controller
 
     public function updateAnonym(Token $token)
     {
-        $anonymRequest = Token::where('token', '=', $token->token)->first();
-
         $data = request()->validate([
-            'answer' => ['required',
-            Rule::in(['accept', 'reject']),
-        ],
+            'answer' => ['required', Rule::in(['accept', 'reject'])],
             'is_anonymous' => ['boolean'],
         ]);
 
         $reference = substr($token->token, strpos($token->token, "--") + 2);
         $complain = Complain::where('reference', $reference)->first();
-        if ($anonymRequest && ((time() - strtotime($anonymRequest->created_at)) < (48 * 3600))) {
+        if ($token && ((time() - strtotime($token->created_at)) < (48 * 3600))) {
             if ($data['is_anonymous'] == false && $data['answer'] == 'accept') {
                 throw ValidationException::withMessages([
                     'is_anonymous' => 'Vous devez accepter la condition pour pouvoir lever l\'anonymat.',
