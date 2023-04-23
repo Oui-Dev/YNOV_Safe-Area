@@ -1,7 +1,7 @@
 <script setup>
 import { Link, useForm } from "@inertiajs/inertia-vue3";
 import { computed, watch } from 'vue';
-import { PaperClipIcon, ArrowLongLeftIcon, CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid';
+import { PaperClipIcon, XMarkIcon, CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions, Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue';
 import DashboardLayout from "../../../layouts/dashboard.vue";
 
@@ -36,7 +36,6 @@ const getStatusColor = computed(() => {
 const getFileNameFromPath = computed(() => {
     const path = props.ticket.file_url;
     if (!path) return null;
-    console.log('path', path);
     return path.split('/').pop();
 });
 
@@ -57,10 +56,11 @@ const getCreatedDate = (ticket) => {
 
 <template>
     <DashboardLayout>
-        <Link :href="route('console.auth.helpdesk.list')"
-              class="flex flex-row gap-1 text-safearea-blue hover:text-safearea-red mb-2">
-        <ArrowLongLeftIcon class="h-6 w-6 " />Retour</Link>
-        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+        <div class="overflow-hidden bg-white shadow sm:rounded-lg relative">
+            <Link :href="route('console.auth.helpdesk.list')"
+                  class="absolute right-1 top-1">
+                <XMarkIcon class="h-5 w-5 cursor-pointer text-white hover:text-safearea-grey lg:text-black lg:hover:text-safearea-red" />
+            </Link>
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">Ticket {{ ticket.reference }}</h3>
                 <p class="mt-1 max-w-2xl text-sm text-gray-500">Créé le {{ getCreatedDate(ticket) }}</p>

@@ -4,14 +4,20 @@ namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
 use App\Models\Complain;
+use App\Models\ComplainChat;
 
 class DashboardController extends Controller
 {
     public function index() {
         $user = auth()->user();
-        $complains = $user->hasrole("admin")
-            ? Complain::select('*')
-            : $user->complains();
+
+        if($user->hasrole("admin")) {
+            $complains = Complain::select('*')->whereHas('user', function($query) use ($user) {
+                $query->where('company_id', $user->company_id);
+            });
+        } else {
+            $complains = $user->complains();
+        }
         
         $complains = $complains
             ->with('assignedUser')->with('status')
@@ -42,10 +48,18 @@ class DashboardController extends Controller
 
         $lastComplain = $complains->pop();
 
+        $complainChat = ComplainChat::select('*')->whereHas('complain', function($query) use ($user) {
+            $query->whereHas('user', function($query) use ($user) {
+                $query->where('company_id', $user->company_id);
+            });
+        })->orderBy('created_at', 'desc')->first();
+        $complainChat->load('complain');
+
         return inertia('My/Index', [
             'complains' => $complains,
             'stats' => $stats,
             'lastComplain' => $lastComplain,
+            'complainChat' => $complainChat,
         ]);
     }
 }

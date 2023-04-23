@@ -41,6 +41,7 @@ const getFile = (file) => {
 		<CardForm
 			:card-title="'Bonjour, ' + currentUser.lastname"
 			:card-description="'Les données sont confidentielles.\nNe partagez pas de données personnelles ou sensibles.'"
+			back-link="my.auth.helpdesk.list"
 			form-title="Créez un ticket de support"
 		>
 			<form @submit.prevent="submit">
