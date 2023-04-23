@@ -130,7 +130,7 @@ const getEmergency = (complain) => {
                         </div>
                     </div>
                     <div v-else>
-                        Aucune données
+                        Aucune donnée
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@ const getEmergency = (complain) => {
                         </div>
                     </div>
                     <div v-else>
-                        Aucune données
+                        Aucune donnée
                     </div>
                 </div>
             </div>
