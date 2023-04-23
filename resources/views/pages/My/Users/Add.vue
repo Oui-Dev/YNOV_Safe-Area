@@ -1,9 +1,9 @@
 <script setup>
-import { useForm, Link } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import CardForm from "../../../components/dashboard/CardForm.vue";
 import Input from "../../../components/dashboard/Input.vue";
-import { CheckIcon, ChevronUpDownIcon, XMarkIcon } from "@heroicons/vue/20/solid";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from "@headlessui/vue";
 
 const form = useForm({
@@ -38,12 +38,9 @@ function submit() {
         <CardForm
 			card-title="Utilisateurs"
 			card-description="Dans cette section, vous pouvez ajouter un nouvel utilisateur à votre entreprise."
-			form-title="Ajouter un nouvel utilisateur"
+            back-link="my.auth.users.list"
+            form-title="Ajouter un nouvel utilisateur"
 		>
-            <Link class="absolute right-1 top-1"
-                  :href="route('my.auth.users.list')">
-                <XMarkIcon class="h-5 w-5 cursor-pointer text-white hover:text-safearea-grey lg:text-black lg:hover:text-safearea-red" />
-            </Link>
             <form @submit.prevent="submit">
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
                     <Input v-model="form.firstname" :error="form.errors?.firstname" title="Prenom" />

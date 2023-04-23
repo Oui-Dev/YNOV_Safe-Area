@@ -4,9 +4,8 @@ import { Switch, SwitchGroup, SwitchLabel } from "@headlessui/vue";
 import Dropzone from "../../../components/dashboard/Dropzone.vue";
 import Input from "../../../components/dashboard/Input.vue";
 import CardForm from "../../../components/dashboard/CardForm.vue";
-import { useForm, usePage, Link } from "@inertiajs/inertia-vue3";
+import { useForm, usePage } from "@inertiajs/inertia-vue3";
 import { computed, ref } from "vue";
-import { XMarkIcon } from '@heroicons/vue/24/outline';
 
 const currentUser = computed(() => usePage().props.value.auth.user);
 const isLoading = ref(false);
@@ -42,12 +41,9 @@ const getFile = (file) => {
 		<CardForm
 			:card-title="'Bonjour, ' + currentUser.lastname"
 			:card-description="'Les données sont confidentielles.\nNe partagez pas de données personnelles ou sensibles.'"
+			back-link="my.auth.helpdesk.list"
 			form-title="Créez un ticket de support"
 		>
-		<Link class="absolute right-1 top-1"
-              :href="route('my.auth.helpdesk.list')">
-                <XMarkIcon class="h-5 w-5 cursor-pointer text-white hover:text-safearea-grey lg:text-black lg:hover:text-safearea-red" />
-        </Link>
 			<form @submit.prevent="submit">
 				<SwitchGroup as="div" class="flex items-center justify-end sm:col-span-2 w-full">
 					<SwitchLabel as="span" class="mr-3">
