@@ -46,7 +46,7 @@ class UserController extends Controller
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'phone' => $data['phone'],
-            'sex' => $data['sexe'],
+            'sex' => $data['sex'],
             'personal_email' => $data['mail'],
             'professional_email' => $data['mailpro'],
             'identifiant' => $data['identifiant'],
@@ -55,7 +55,7 @@ class UserController extends Controller
         $user->assignRole($data['userRole']);
         $user->save();
 
-        Mail::to($user->email)->send(new NewUserEmail($user, $password));
+        Mail::to($user->professional_email)->send(new NewUserEmail($user, $password));
 
         return redirect()->route('my.auth.users.list')->with('toast', [
             'type' => 'success',

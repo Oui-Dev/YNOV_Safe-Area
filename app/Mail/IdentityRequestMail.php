@@ -12,6 +12,7 @@ class IdentityRequestMail extends Mailable
 
     public $complain;
     public $user;
+    public $token;
 
     /**
      * Create a new message instance.
@@ -19,9 +20,10 @@ class IdentityRequestMail extends Mailable
      * @param \App\Models\Complain $complain
      * @return void
      */
-    public function __construct($complain){
+    public function __construct($complain, $token){
         $this->complain = $complain;
         $this->user = $complain->user;
+        $this->token = $token;
     }
 
     /**
@@ -30,11 +32,13 @@ class IdentityRequestMail extends Mailable
      * @return $this
      */
     public function build(){
+        $url = request()->secure() ? 'https://' : 'http://' . "my." . config('app.domain') . "/complains/confirm/".$this->token;
         return $this->subject('Demande de levage d\'anonymat')
-            ->view('emails.identityRequest')
+            ->markdown('emails.identityRequest')
             ->with([
                 'complain' => $this->complain,
                 'user' => $this->user,
+                'url' => $url
             ]);
     }
 }
