@@ -73,7 +73,7 @@ const getMail = (complain) => {
                         effectuée</span>
 
                     <Link v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 0" method="post"
-                        :href="route('my.auth.complains.anonymity', { complain: props.complain })"
+                        :href="route('my.auth.complains.anonymity', props.complain.reference )"
                         class="flex justify-center h-7 md:w-44 rounded-md bg-safearea-blue p-0.5 mt-2 text-white shadow-sm hover:bg-indigo-700 gap-2">
                     <EyeIcon class="h-6 w-6"></EyeIcon>
                     <span>Lever l'anonymat</span>

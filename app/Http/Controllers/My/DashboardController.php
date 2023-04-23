@@ -9,9 +9,14 @@ class DashboardController extends Controller
 {
     public function index() {
         $user = auth()->user();
-        $complains = $user->hasrole("admin")
-            ? Complain::select('*')
-            : $user->complains();
+
+        if($user->hasrole("admin")) {
+            $complains = Complain::select('*')->whereHas('user', function($query) use ($user) {
+                $query->where('company_id', $user->company_id);
+            });
+        } else {
+            $complains = $user->complains();
+        }
         
         $complains = $complains
             ->with('assignedUser')->with('status')

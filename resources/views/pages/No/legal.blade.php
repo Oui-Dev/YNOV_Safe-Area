@@ -12,12 +12,11 @@
             </p>
             <h3 class="text-2xl font-bold tracking-tight mt-5 mb-2">Directeur de la publication</h3>
             <p>
-                Maxime LARROZE-FRANCEZAT
+                Kevin BLAISE
             <br>
             <h3 class="text-2xl font-bold tracking-tight mt-5 mb-2">Hébergeur</h3>
             <p>
-                Maxime LARROZE-FRANCEZAT <br>
-                27 rue Raoul Servant, 69007 Lyon <br>
+                Hostinger
             </p>
             <h3 class="text-2xl font-bold tracking-tight mt-5 mb-2">Données Personnelles</h3>
             <p>
