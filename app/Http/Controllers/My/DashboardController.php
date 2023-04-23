@@ -4,6 +4,7 @@ namespace App\Http\Controllers\My;
 
 use App\Http\Controllers\Controller;
 use App\Models\Complain;
+use App\Models\ComplainChat;
 
 class DashboardController extends Controller
 {
@@ -47,10 +48,18 @@ class DashboardController extends Controller
 
         $lastComplain = $complains->pop();
 
+        $complainChat = ComplainChat::select('*')->whereHas('complain', function($query) use ($user) {
+            $query->whereHas('user', function($query) use ($user) {
+                $query->where('company_id', $user->company_id);
+            });
+        })->orderBy('created_at', 'desc')->first();
+        $complainChat->load('complain');
+
         return inertia('My/Index', [
             'complains' => $complains,
             'stats' => $stats,
             'lastComplain' => $lastComplain,
+            'complainChat' => $complainChat,
         ]);
     }
 }

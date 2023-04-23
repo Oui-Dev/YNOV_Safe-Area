@@ -1,4 +1,5 @@
 <script setup>
+import { Link } from '@inertiajs/inertia-vue3';
 import { computed, ref } from "vue";
 import DashboardLayout from "../../layouts/dashboard.vue";
 import Table from "../../components/dashboard/Table.vue";
@@ -18,7 +19,12 @@ const props = defineProps({
         type: Object,
         required: true
     },
+    complainChat: {
+        type: Object,
+        required: true
+    }
 });
+
 
 const statsCardsData = ref([
     { title: "Total utilisateurs", value: props.stats.totalUsers, icon: UserIcon, iconBg: "bg-blue-500", clickable: true, path: "my.auth.users.list" },
@@ -78,10 +84,12 @@ const getEmergency = (complain) => {
                         <div class="flex flex-col gap-4 p-5">
                             <div class="flex-col flex gap-6">
                                 <div class="w-auto">
-                                    <div class="flex flex-row items-center gap-2">
-                                        <div class="text-lg font-medium text-gray-900">Référence : </div>
-                                        <div class="text-lg font-medium text-gray-500">{{ props.lastComplain.reference }}</div>
-                                    </div>
+                                    <Link :href="route('my.auth.complains.edit', props.lastComplain.reference)">
+                                        <div class="flex flex-row items-center gap-2">
+                                            <div class="text-lg font-medium text-gray-900">Référence : </div>
+                                            <div class="text-lg font-medium text-gray-500">{{ props.lastComplain.reference }}</div>
+                                        </div>
+                                    </Link>
                                 </div>
                                 <div class="w-auto flex md:flex-row sm:flex-col gap-3">
                                     <div v-if="isAnonymous" class="w-1/2 flex flex-col gap-5">
@@ -129,12 +137,14 @@ const getEmergency = (complain) => {
                 <div class="mt-2">
                     <div class="rounded-lg bg-white shadow h-full">
                         <div class="flex flex-col gap-5 p-5">
-                            <div class="w-auto flex flex-row items-center gap-1">
-                                <div class="text-lg font-medium text-gray-900">Référence :</div>
-                                <div class="text-sm font-medium text-gray-500">{{ }}</div>
-                            </div>
-                            <div class="text-sm font-medium text-gray-900">{{ getContent("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas fugiat atque") }}</div>
-                            <div class="text-sm font-medium text-gray-500">{{ getContent("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas fugiat atque dicta? Molestiae, aliquid reiciendis deleniti reprehenderit, dolore sapiente veritatis molestias consequuntur accusamus, cumque doloremque cupiditate magnam optio possimus eaque?", 300) }}</div>
+                            <Link :href="route('my.auth.complains.edit', props.complainChat.complain.reference)">
+                                <div class="w-auto flex flex-row items-center gap-1">
+                                    <div class="text-lg font-medium text-gray-900">Référence :</div>
+                                    <div class="text-sm font-medium text-gray-500">{{ props.complainChat.complain.reference }}</div>
+                                </div>
+                            </Link>
+                            <div class="text-sm font-medium text-gray-900">{{ getContent(props.complainChat.complain.title) }}</div>
+                            <div class="text-sm font-medium text-gray-500">{{ getContent(props.complainChat.content, 300) }}</div>
                         </div>
                     </div>
                 </div>
