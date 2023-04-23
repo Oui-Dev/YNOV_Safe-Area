@@ -31,7 +31,7 @@
         </div>
   
         <!-- Partners section -->
-        <div class="bg-gray-100">
+        {{-- <div class="bg-gray-100">
             <div class="mx-auto max-w-6xl py-16 px-4 sm:px-6 lg:px-8">
                 <p class="text-center text-lg font-semibold text-gray-700">Ils font confiance à notre solution (et bien d'autres)</p>
                 <div class="mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
@@ -52,10 +52,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Alternating Feature Sections -->
-        <div class="relative overflow-hidden pt-10 pb-32">
+        <div class="relative overflow-hidden py-24 lg:py-32">
             <div aria-hidden="true" class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-100"></div>
             <div class="relative">
                 <h2 class="text-center mb-16 md:mb-20">Pourquoi Safe Area ?</h2>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="mt-12 sm:mt-16 lg:mt-0">
                         <div class="-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg" alt="Inbox user interface">
+                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="{{Vite::asset('resources/images/complain.webp')}}" alt="Complain view">
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
                         <div class="-ml-48 pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none" src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg" alt="Customer profile user interface">
+                            <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none" src="{{Vite::asset('resources/images/complain_chat.webp')}}" alt="Complain chat">
                         </div>
                     </div>
                 </div>
@@ -278,11 +278,11 @@
                         <h2 class="text-center py-4">Notre équipe</h2>
                     </div>
                     <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-6 lg:gap-x-8">
-                        <x-team-card name="Kévin BLAISE" class="lg:col-span-2"
+                        <x-team-card name="Kévin BLAISE" class="lg:col-span-3"
                             role="Chef de projet / Expert web"
                             img="resources/images/team/kevin_blaise.webp"
                             linkedin="https://www.linkedin.com/in/k%C3%A9vin-blaise/"/>
-                        <x-team-card name="Petru OLTEAN" class="lg:col-span-2"
+                        <x-team-card name="Petru OLTEAN" class="lg:col-span-3"
                             role="Conseiller / Développeur web"
                             img="resources/images/team/petru_oltean.webp"
                             linkedin="https://www.linkedin.com/in/petru-oltean-7308a4171/"/>
@@ -290,11 +290,11 @@
                             role="Développeur web"
                             img="resources/images/team/leo_corre.webp"
                             linkedin="https://www.linkedin.com/in/lcorre/"/>
-                        <x-team-card name="Evan MARCEL" class="lg:col-span-3"
+                        <x-team-card name="Evan MARCEL" class="lg:col-span-2"
                             role="Développeur web"
                             img="resources/images/team/evan_marcel.webp"
                             linkedin="https://www.linkedin.com/in/evan-marcel-178a64171/"/>
-                        <x-team-card name="Jules Besson" class="sm:col-span-2 lg:col-span-3"
+                        <x-team-card name="Jules Besson" class="sm:col-span-2"
                             role="Développeur web"
                             img="resources/images/team/default.webp"
                             linkedin="#"/>
