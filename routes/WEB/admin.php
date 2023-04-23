@@ -38,8 +38,9 @@ Route::group([
     Route::put('/{complain:reference}', 'update')->name('edit.post');
     Route::get('/{complain:reference}', 'edit')->name('edit');
     Route::get('/download/{complain:reference}', 'download')->name('download');
-    Route::post('/{complain:id}', 'showAnonym')->name('anonymity');
-    Route::get('/chat/{complain:reference}', 'chat')->name('chat');
+    Route::post('/{complain:reference}', 'showAnonym')->name('anonymity');
+    Route::get('/confirm/{token:token}', 'confirmAnonym')->name('confirm.anonym');
+    Route::post('/confirm/{token:token}', 'updateAnonym')->name('update.anonym');
 });
 // Helpdesk
 Route::group([

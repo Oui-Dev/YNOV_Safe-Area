@@ -27,6 +27,7 @@ function submit() {
         <CardForm
 			card-title="Entreprises"
 			card-description="Dans cette section vous pouvez ajouter une nouvelle entreprise."
+            back-link="console.auth.companies.list"
 			form-title="Ajouter une nouvelle entreprise"
 		>
             <form @submit.prevent="submit">

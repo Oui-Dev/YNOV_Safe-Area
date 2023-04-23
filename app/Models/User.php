@@ -87,6 +87,11 @@ class User extends Authenticatable
         return $this->hasMany(HelpdeskSupport::class);
     }
 
+    public function complaintChats(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
+        return $this->hasMany(ComplainChat::class);
+    }
+
     public function is_blocked(){
         if(!empty($this->blocked_at)){return true;} else {return false;}
     }
@@ -106,10 +111,5 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
-    }
-
-    public function complaintChats(): \Illuminate\Database\Eloquent\Relations\hasMany
-    {
-        return $this->hasMany(ComplainChat::class);
     }
 }

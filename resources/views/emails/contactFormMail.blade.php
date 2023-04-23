@@ -14,7 +14,7 @@ Une nouvelle demande de contact à été envoyée le {{now()->format('d/m/Y H:i'
 {{$message}}
 
 
-    <a href="{{ config('app.url') }}">{{ config('app.name') }}</a>
+<a href="{{config('app.url')}}">{{ config('app.name') }}</a>
 
-    Email généré automatiquement, aucune réponse n'est attendue
+Email généré automatiquement, aucune réponse n'est attendue
 @endcomponent

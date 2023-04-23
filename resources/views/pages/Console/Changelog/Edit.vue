@@ -31,6 +31,7 @@ const submit = () => {
         <CardForm
 			card-title="Changelog"
 			card-description="Dans cette section vous pouvez modifier une version de la platforme."
+            back-link="console.auth.changelog.list"
 			form-title="Modifier la version"
 		>
             <form @submit.prevent="submit">

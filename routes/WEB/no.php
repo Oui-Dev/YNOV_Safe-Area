@@ -31,6 +31,10 @@ Route::group([
     Route::post('/newsletters', [NewsletterController::class, 'store'])->name('newsletters.store');
     Route::get('/policy', [StaticViewController::class, 'showLegal'])->name('legal');
     Route::get('/changelog', [StaticViewController::class, 'changelog'])->name('changelog');
+    Route::get('/termofservice', [StaticViewController::class, 'termofservice'])->name('termofservice');
+    Route::get('/cgu', [StaticViewController::class, 'cgu'])->name('cgu');
+
+
 
     // Login + Logout handling
     Route::group([

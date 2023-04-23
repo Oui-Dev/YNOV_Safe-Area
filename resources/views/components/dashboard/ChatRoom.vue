@@ -1,9 +1,9 @@
 <script setup>
 import { usePage } from '@inertiajs/inertia-vue3';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { PaperAirplaneIcon } from '@heroicons/vue/24/solid';
 
-
+const emits = defineEmits(['reply']);
 const props = defineProps({
     messages: {
         type: Object,
@@ -15,15 +15,16 @@ const props = defineProps({
         default: true
     },
 })
+const reply = ref("");
 
-console.log('props.messages', props.messages);
+const currentUser = computed(() => usePage().props.value.auth.user);
 
 function isMyMessage(messageUserId) {
     return messageUserId === currentUser.value.id;
 }
 
 function getUserName(message) {
-    return message.user?.firstname ?? "Anonyme"
+    return message.user ? `${message.user.firstname + ' ' + message.user.lastname}` : "Anonyme"
 }
 
 function datePrettyfier(date) {
@@ -38,36 +39,49 @@ function compareDates(date1, date2) {
     return new Date(date1).getDate() !== new Date(date2).getDate();
 }
 
-const currentUser = computed(() => usePage().props.value.auth.user);
+function sendMessage() {
+    emits('reply', reply.value);
+    reply.value = "";
+}
 
 </script>
 <template>
-    <div class="w-full max-h-[64vh] flex flex-col flex-1 overflow bg-slate-50 pt-2">
-        <div v-for="(message, index) in props.messages" >
+    <div class="w-full max-h-[64vh] flex flex-col flex-1 overflow bg-slate-50 pt-2 overflow-y-auto px-4">
+        <div v-if="props.messages.length === 0 "
+            class="text-gray-300 w-full h-14 flex justify-center items-center text-xl" >
+            <span>Aucun Message</span>
+        </div>
+        <div v-for="(message, index) in props.messages" :key="message.id">
             <div v-if="compareDates(message.created_at, messages[index-1]?.created_at)" class="text-center text-gray-500 text-sm mb-2">
                 {{ datePrettyfier(message.created_at) }}
             </div>
             <div v-if="isMyMessage(message.user_id)" class="message bg-safearea-blue float-right">
-                <div>Moi</div>
-                <div>{{ message.content }}</div>
+                <div class="font-medium">Moi</div>
+                <div class="text-sm">{{ message.content }}</div>
             </div>
             <div v-else class="message bg-safearea-red">
-                <div>{{getUserName(message)}}</div>
-                <div>{{ message.content }}</div>
+                <div class="font-medium">{{getUserName(message)}}</div>
+                <div class="text-sm">{{ message.content }}</div>
             </div>
         </div>
     </div>
     <div class="w-full flex items-center justify-center gap-1 m-2">
         <input
-        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
-         type="text"/>
-         <PaperAirplaneIcon class="h-10 w-10 pr-3 cursor-pointer hover:text-safearea-blue"/>
+            v-on:keyup.enter="sendMessage()"
+            v-model="reply"
+            class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+            type="text"
+            :disabled="!props.canReply"
+            />
+        <PaperAirplaneIcon
+            @click="sendMessage()"
+            :class="props.canReply ? 'hover:text-safearea-blue cursor-pointer' : 'cursor-not-allowed'"
+            class="h-10 w-10 pr-3"/>
         </div>
-
 </template>
 
 <style scoped>
 .message{
-    @apply w-96 max-w-full min-h-fit py-6 rounded-xl mb-6 px-8 text-white;
+    @apply w-96 max-w-full min-h-fit py-2 px-4 rounded-xl mb-6 text-white break-words;
 }
 </style>
