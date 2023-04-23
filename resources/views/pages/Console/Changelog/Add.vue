@@ -24,6 +24,7 @@ function submit() {
         <CardForm
 			card-title="Changelog"
 			card-description="Dans cette section vous pouvez ajouter une nouvelle version de la platforme."
+            back-link="console.auth.changelog.list"
 			form-title="Ajouter une nouvelle version"
 		>
             <form @submit.prevent="submit">
