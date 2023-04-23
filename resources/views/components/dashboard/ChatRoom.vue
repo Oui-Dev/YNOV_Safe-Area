@@ -51,7 +51,7 @@ function sendMessage() {
             class="text-gray-300 w-full h-14 flex justify-center items-center text-xl" >
             <span>Aucun Message</span>
         </div>
-        <div v-for="(message, index) in props.messages">
+        <div v-for="(message, index) in props.messages" :key="message.id">
             <div v-if="compareDates(message.created_at, messages[index-1]?.created_at)" class="text-center text-gray-500 text-sm mb-2">
                 {{ datePrettyfier(message.created_at) }}
             </div>
