@@ -52,8 +52,7 @@ class DashboardController extends Controller
             $query->whereHas('user', function($query) use ($user) {
                 $query->where('company_id', $user->company_id);
             });
-        })->orderBy('created_at', 'desc')->first();
-        $complainChat->load('complain');
+        })->orderBy('created_at', 'desc')->with('complain')->first();
 
         return inertia('My/Index', [
             'complains' => $complains,
