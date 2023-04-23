@@ -28,7 +28,7 @@ defineProps({
         <h2 class="sr-only">{{ formTitle }}</h2>
         <div class="grid grid-cols-1 lg:grid-cols-3">
             <Link :href="route(backLink)"
-                  class="absolute right-1 top-1">
+                  class="absolute right-1 top-1 z-50">
                 <XMarkIcon class="h-5 w-5 cursor-pointer text-white hover:text-safearea-grey lg:text-black lg:hover:text-safearea-red" />
             </Link>
             <!-- Card -->
