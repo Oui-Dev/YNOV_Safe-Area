@@ -35,6 +35,8 @@ Route::group([
         Route::get('/create', 'create')->middleware('role:my')->name('create');
         Route::post('/create', 'store')->middleware('role:my')->name('create.post');
         Route::put('/delete/{complain}', 'delete')->middleware('role:my')->name('delete');
+        Route::get('/chat/{complain:reference}', 'chat')->name('chat');
+        Route::post('/chat/{complain:reference}', 'sendChat')->name('chat.post');
         Route::get('/', 'list')->name('list');
     });
     // Profile

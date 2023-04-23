@@ -46,4 +46,9 @@ class Complain extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function complainChats(): \Illuminate\Database\Eloquent\Relations\hasMany
+    {
+        return $this->hasMany(ComplainChat::class);
+    }
 }

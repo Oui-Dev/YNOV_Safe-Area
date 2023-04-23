@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\IdentityRequestMail;
 use App\Models\ComplainType;
 use App\Models\Complain;
+use App\Models\ComplainChat;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -58,7 +59,6 @@ class ComplainsController extends Controller
             'complainsTypes' => $complainsTypes
         ]);
     }
-
 
     public function store()
     {
@@ -132,9 +132,54 @@ class ComplainsController extends Controller
             'complain_type_id' => $data['complain_type_id']
         ]);
 
-        return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
+        return redirect()->route('my.auth.complains.edit', $complain->reference)->with('toast', [
             'type' => 'success',
             'message' => "La plainte a bien été modifiée.",
+        ]);
+    }
+
+    public function chat (Complain $complain) {
+        $chats = $complain->complainChats;
+        $complain->load('status');
+
+        if(!$complain->is_anonymous || $complain->user_id == auth()->user()->id) {
+            $complain->load('user');
+            $chats = $chats->map(function($chat) {
+                $chat->load('user');
+                return $chat;
+            });
+        } else {
+            $chats = $chats->map(function($chat) use ($complain) {
+                if($chat->user_id == $complain->user_id) {
+                    $chat->user_id = null;
+                } else {
+                    $chat->load('user');
+                }
+                return $chat;
+            });
+            $complain->user_id = null;
+        }
+
+        return inertia('My/Complains/Chat', [
+            'complain' => $complain,
+            'chats' => $chats
+        ]);
+    }
+
+    public function sendChat(Complain $complain) {
+        $data = request()->validate([
+            'content' => ['required', 'string', 'max:1000'],
+        ]);
+
+        $complainChat = ComplainChat::create([
+            'complain_id' => $complain->id,
+            'user_id' => auth()->user()->id,
+            'content' => $data['content']
+        ]);
+
+        return redirect()->route('my.auth.complains.chat', $complain->reference)->with('toast', [
+            'type' => 'success',
+            'message' => "Votre message a bien été envoyé.",
         ]);
     }
 
@@ -168,7 +213,7 @@ class ComplainsController extends Controller
 
             Mail::to($complain->user->professional_email)->send(new IdentityRequestMail($complain, $token->token));
 
-            return redirect()->route('my.auth.complains.edit', $complain->id)->with('toast', [
+            return redirect()->route('my.auth.complains.edit', $complain->reference)->with('toast', [
                 'type' => 'success',
                 'message' => "La demande pour lever l'anonymat a bien été effectué",
             ]);

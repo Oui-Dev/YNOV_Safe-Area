@@ -38,7 +38,8 @@ function submit() {
         <CardForm
 			card-title="Utilisateurs"
 			card-description="Dans cette section, vous pouvez ajouter un nouvel utilisateur à votre entreprise."
-			form-title="Ajouter un nouvel utilisateur"
+            back-link="my.auth.users.list"
+            form-title="Ajouter un nouvel utilisateur"
 		>
             <form @submit.prevent="submit">
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
@@ -54,7 +55,7 @@ function submit() {
                     <Listbox as="div" v-model="form.userRole" class="pt-3">
                         <ListboxLabel class="block text-sm font-medium text-gray-700"> Role : </ListboxLabel>
                         <div class="relative mt-1">
-                            <ListboxButton 
+                            <ListboxButton
                                 class="relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-safearea-blue focus:outline-none focus:ring-1 focus:ring-safeborder-safearea-blue sm:text-sm">
                                 <span class="flex items-center">
                                     <span class="ml-1 block truncate">{{ form.userRole }}</span>

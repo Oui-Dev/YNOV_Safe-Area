@@ -35,6 +35,7 @@ const submit = () => {
         <CardForm
 			card-title="Entreprises"
 			card-description="Dans cette section vous pouvez modifier une entreprise."
+            back-link="console.auth.companies.list"
 			form-title="Modifier l'entreprise"
 		>
             <form @submit.prevent="submit">

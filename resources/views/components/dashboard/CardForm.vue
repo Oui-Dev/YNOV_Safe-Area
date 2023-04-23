@@ -1,4 +1,8 @@
 <script setup>
+
+import { Link } from "@inertiajs/inertia-vue3";
+import { XMarkIcon } from "@heroicons/vue/20/solid";
+
 defineProps({
     formTitle: {
         type: String,
@@ -11,7 +15,11 @@ defineProps({
     cardDescription: {
         type: String,
         required: true
-    }
+    },
+    backLink: {
+        type: String,
+        required: true
+    },
 });
 </script>
 
@@ -19,6 +27,10 @@ defineProps({
     <section class="relative bg-gray-100 shadow-xl rounded-lg mt-6">
         <h2 class="sr-only">{{ formTitle }}</h2>
         <div class="grid grid-cols-1 lg:grid-cols-3">
+            <Link :href="route(backLink)"
+                  class="absolute right-1 top-1 z-50">
+                <XMarkIcon class="h-5 w-5 cursor-pointer text-white hover:text-safearea-grey lg:text-black lg:hover:text-safearea-red" />
+            </Link>
             <!-- Card -->
             <div class="relative overflow-hidden bg-gradient-to-b from-safearea-red to-safearea-blue py-10 px-6 rounded-lg">
                 <div class="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">

@@ -40,6 +40,7 @@ function submit() {
         <CardForm
 			card-title="Plaintes"
 			:card-description="'Dans cette section, vous pouvez déposer une plainte.\nDécrivez votre problème et ajoutez un document si nécessaire.\nVous pouvez choisir de poster anonymement ou non.'"
+            back-link="my.auth.complains.list"
 			form-title="Déposer une plainte"
 		>
             <form @submit.prevent="submit">
