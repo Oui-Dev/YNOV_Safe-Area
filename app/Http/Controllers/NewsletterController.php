@@ -19,7 +19,7 @@ class NewsletterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required',
+            'email' => ['required','email:rfc,dns,spoof','max:255'],
         ]);
         try {
             Newsletter::firstOrCreate(['email'=>$request->email], ['email'=>$request->email]);
