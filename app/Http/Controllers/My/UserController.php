@@ -38,7 +38,7 @@ class UserController extends Controller
             'identifiant' => ['required', 'string', 'max:255', Rule::unique('users')],
             'userRole' => ['required', 'string', 'max:255', Rule::in(['admin', 'my'])],
         ]);
-        $password = Str::random(30);
+        $password = Str::random(15);
 
         $user = User::create([
             'company_id' => Auth()->user()->company_id,
