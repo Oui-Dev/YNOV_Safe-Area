@@ -72,7 +72,7 @@ function getStatus(complain) {
 
 			<!-- display admin -->
 			<Table v-if="isAdmin"
-				:tableTitles="['Dépositaire' , 'Titre', 'Assignée à', 'Urgence', 'Status']"
+				:tableTitles="['Dépositaire' , 'Titre', 'Assignée à', 'Urgent', 'Status']"
 				:tableKeys="[{function: getUser}, {function: getTitle}, {function: getAssignedUser}, {function: getEmergency}, {function: getStatus}]"
 				:data="complains"
 				:actions="[
