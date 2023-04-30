@@ -26,7 +26,7 @@ class Version extends Model
     }
 
     public function is_updated() {
-        return $this->updated_at !== $this->created_at;
+        return $this->updated_at > $this->created_at;
     }
 
     static public function active() {
