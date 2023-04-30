@@ -35,8 +35,8 @@ Route::group([
     'as' => 'complains.',
     'controller' => ComplainsController::class
 ], function () {
-    Route::put('/{complain:reference}', 'update')->name('edit.post');
     Route::get('/{complain:reference}', 'edit')->name('edit');
+    Route::put('/{complain:reference}', 'update')->name('edit.post');
     Route::get('/download/{complain:reference}', 'download')->name('download');
     Route::post('/{complain:reference}', 'showAnonym')->name('anonymity');
     Route::get('/confirm/{token:token}', 'confirmAnonym')->name('confirm.anonym');

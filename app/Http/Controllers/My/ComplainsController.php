@@ -21,7 +21,7 @@ class ComplainsController extends Controller
     {
         $user = auth()->user();
         $complains = $user->hasrole("admin")
-            ? Complain::select('*')
+            ? Complain::query()
             : $user->complains();
 
         $complains = $complains->with('assignedUser')->with('status')->where('deleted_at', NULL)->get();
@@ -101,6 +101,13 @@ class ComplainsController extends Controller
 
     public function edit(Complain $complain)
     {
+        if($complain->deleted_at != null) {
+            return redirect()->route('my.auth.complains.list')->with('toast', [
+                'type' => 'error',
+                'message' => "La plainte recherchée n'a pas été trouvée.",
+            ]);
+        }
+
         $complain = $complain->load('complainType', 'status');
 
         if (!$complain->is_anonymous) {
@@ -120,6 +127,13 @@ class ComplainsController extends Controller
 
     public function update(Complain $complain)
     {
+        if($complain->deleted_at != null) {
+            return redirect()->route('my.auth.complains.list')->with('toast', [
+                'type' => 'error',
+                'message' => "La plainte recherchée n'a pas été trouvée.",
+            ]);
+        }
+
         $data = request()->validate([
             'is_urgent' => ["boolean"],
             'assigned_to' => ["nullable", "integer"],
@@ -139,6 +153,13 @@ class ComplainsController extends Controller
     }
 
     public function chat (Complain $complain) {
+        if($complain->deleted_at != null) {
+            return redirect()->route('my.auth.complains.list')->with('toast', [
+                'type' => 'error',
+                'message' => "La plainte recherchée n'a pas été trouvée.",
+            ]);
+        }
+
         $chats = $complain->complainChats;
         $complain->load('status');
 
@@ -171,7 +192,7 @@ class ComplainsController extends Controller
             'content' => ['required', 'string', 'max:1000'],
         ]);
 
-        $complainChat = ComplainChat::create([
+        ComplainChat::create([
             'complain_id' => $complain->id,
             'user_id' => auth()->user()->id,
             'content' => $data['content']
