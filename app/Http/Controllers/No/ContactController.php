@@ -17,12 +17,12 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'subject' => 'required',
-            'message' => 'required',
+            'lastname' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'phone' => ['bail','required','max:20','min:10','regex:/^([0-9\s\-\+\(\)]*)$/'],
+            'email' => ['required','email:rfc,dns,spoof','max:255'],
+            'subject' => ['required','string','max:255'],
+            'message' => ['required','string'],
         ]);
 
         try {
