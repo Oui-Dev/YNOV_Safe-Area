@@ -15,11 +15,11 @@
                             <div class="relative flex space-x-3">
                                 <div>
                                     <span
-                                        class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white {{ !$version->is_archived() ? 'bg-green-400' : 'bg-blue-400' }}">
+                                        class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white {{ $version->is_archived() ? 'bg-blue-400' : 'bg-green-400' }}">
                                         @if ($version->is_archived())
-                                            <span class="material-icons text-white text-xl">done</span>
-                                        @else
                                             <span class="material-icons text-white text-xl">radio_button_checked</span>
+                                        @else
+                                            <span class="material-icons text-white text-xl">done</span>
                                         @endif
                                     </span>
                                 </div>

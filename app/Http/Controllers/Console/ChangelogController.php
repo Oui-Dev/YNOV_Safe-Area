@@ -28,6 +28,10 @@ class ChangelogController extends Controller
             'changelog' => ['required', 'string'],
         ]);
 
+        Version::where('archived_at', null)->update([
+            'archived_at' => now(),
+        ]);
+
         Version::create([
             'name' => $data['name'],
             'generation' => $data['generation'],
