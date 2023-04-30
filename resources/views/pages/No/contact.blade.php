@@ -118,34 +118,30 @@
                                 <div>
                                     <label for="firstname" class="block text-sm font-medium">Prénom</label>
                                     <div class="mt-1">
-                                        <input type="text" name="firstname" id="firstname" required
-                                            autocomplete="given-name"
+                                        <input type="text" name="firstname" id="firstname" required autocomplete="given-name"
                                             class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                                     </div>
                                 </div>
                                 <div>
                                     <label for="lastname" class="block text-sm font-medium">Nom</label>
                                     <div class="mt-1">
-                                        <input type="text" name="lastname" id="lastname" required
-                                            autocomplete="family-name"
+                                        <input type="text" name="lastname" id="lastname" required autocomplete="family-name"
                                             class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                                     </div>
                                 </div>
                                 <div>
                                     <label for="email" class="block text-sm font-medium">Adresse email</label>
                                     <div class="mt-1">
-                                        <input id="email" name="email" type="email" autocomplete="email"
-                                            required
+                                        <input id="email" name="email" type="email" autocomplete="email" required
                                             class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex justify-between">
-                                        <label for="phone" class="block text-sm font-medium">Numéro de
-                                            téléphone</label>
+                                        <label for="phone" class="block text-sm font-medium">Numéro de téléphone</label>
                                     </div>
                                     <div class="mt-1">
-                                        <input type="text" name="phone" id="phone" required autocomplete="tel"
+                                        <input type="tel" name="phone" id="phone" required autocomplete="tel"
                                             class="block w-full rounded-md py-3 px-4 shadow-sm focus:border-teal-500 focus:ring-teal-500"
                                             aria-describedby="phone-optional">
                                     </div>
