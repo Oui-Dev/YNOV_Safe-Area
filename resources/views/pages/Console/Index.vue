@@ -8,7 +8,7 @@ import { UserIcon, DocumentTextIcon , BuildingOffice2Icon} from '@heroicons/vue/
 const props = defineProps({
     companies: {
         type: Array,
-        required: true
+        required: false
     },
     stats: {
         type: Object,

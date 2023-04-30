@@ -9,7 +9,7 @@ import { ExclamationCircleIcon, ExclamationTriangleIcon, BuildingOfficeIcon, Che
 const props = defineProps({
     complains: {
         type: Array,
-        required: true
+        required: false
     },
     stats: {
         type: Object,
@@ -17,11 +17,11 @@ const props = defineProps({
     },
     lastComplain: {
         type: Object,
-        required: true
+        required: false
     },
     complainChat: {
         type: Object,
-        required: true
+        required: false
     }
 });
 
