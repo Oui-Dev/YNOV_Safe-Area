@@ -12,7 +12,7 @@ class DashboardController extends Controller
         $user = auth()->user();
 
         if($user->hasrole("admin")) {
-            $complains = Complain::select('*')->whereHas('user', function($query) use ($user) {
+            $complains = Complain::whereHas('user', function($query) use ($user) {
                 $query->where('company_id', $user->company_id);
             });
         } else {
@@ -39,16 +39,16 @@ class DashboardController extends Controller
         $stats = [
             'totalUsers' => $user->company->users()->count(),
             'totalComplains' => $user->company->users()->with('complains')->get()->sum(function($user) {
-                return $user->complains->count();
+                return $user->complains->where('deleted_at', NULL)->count();
             }),
             'totalNotAssignedComplains' => $user->company->users()->with('complains')->get()->sum(function($user) {
-                return $user->complains->where('assigned_to', NULL)->where('status_id', 1)->count();
+                return $user->complains->where('deleted_at', NULL)->where('assigned_to', NULL)->where('status_id', 1)->count();
             }),
         ];
 
         $lastComplain = $complains->pop();
 
-        $complainChat = ComplainChat::select('*')->whereHas('complain', function($query) use ($user) {
+        $complainChat = ComplainChat::whereHas('complain', function($query) use ($user) {
             $query->whereHas('user', function($query) use ($user) {
                 $query->where('company_id', $user->company_id);
             });

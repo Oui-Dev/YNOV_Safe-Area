@@ -73,10 +73,10 @@ const getEmergency = (complain) => {
         </section>
 
         <section class="mt-8">
-            <h2>Dernière plainte</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-                <div class="mt-2">
-                    <div v-if="lastComplain" class="relative rounded-lg bg-white shadow h-full">
+                <div class="h-full">
+                    <h2>Dernière plainte</h2>
+                    <div v-if="lastComplain" class="relative rounded-lg bg-white shadow mt-4">
                         <div v-if="isUrgent"
                             class="absolute w-10 h-10 top-0 right-0 flex justify-center items-center rounded text-white p-2 bg-red-600">
                             <ExclamationTriangleIcon />
@@ -129,13 +129,14 @@ const getEmergency = (complain) => {
                             </div>
                         </div>
                     </div>
-                    <div v-else>
+                    <div v-else class="text-center">
                         Aucune donnée
                     </div>
                 </div>
 
-                <div class="mt-2">
-                    <div v-if="complainChat" class="rounded-lg bg-white shadow h-full">
+                <div class="h-full">
+                    <h2>Dernier message reçu</h2>
+                    <div v-if="complainChat" class="rounded-lg bg-white shadow mt-4">
                         <div class="flex flex-col gap-5 p-5">
                             <Link :href="route('my.auth.complains.edit', complainChat.complain.reference)">
                                 <div class="w-auto flex flex-row items-center gap-1">
@@ -147,7 +148,7 @@ const getEmergency = (complain) => {
                             <div class="text-sm font-medium text-gray-500">{{ getContent(complainChat.content, 300) }}</div>
                         </div>
                     </div>
-                    <div v-else>
+                    <div v-else class="text-center">
                         Aucune donnée
                     </div>
                 </div>

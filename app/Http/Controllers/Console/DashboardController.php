@@ -16,7 +16,7 @@ class DashboardController extends Controller
 
         $stats = [
             'totalUsers' => User::count(),
-            'totalComplains' => Complain::count(),
+            'totalComplains' => Complain::where('deleted_at', NULL)->count(),
             'totalCompany' => Company::count(),
         ];
 
