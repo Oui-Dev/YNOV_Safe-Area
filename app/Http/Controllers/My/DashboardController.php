@@ -49,9 +49,13 @@ class DashboardController extends Controller
         $lastComplain = $complains->pop();
 
         $complainChat = ComplainChat::whereHas('complain', function($query) use ($user) {
-            $query->whereHas('user', function($query) use ($user) {
-                $query->where('company_id', $user->company_id);
-            });
+            if($user->hasrole("admin")) {
+                $query->whereHas('user', function($query) use ($user) {
+                    $query->where('company_id', $user->company_id);
+                });
+            } else {
+                $query->where('user_id', $user->id);
+            }
         })->orderBy('created_at', 'desc')->with('complain')->first();
 
         return inertia('My/Index', [
