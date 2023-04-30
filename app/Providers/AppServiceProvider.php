@@ -28,17 +28,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Carbon::setLocale('fr');
         setlocale(LC_TIME, 'French');
-         view()->composer('*', function ($view) use ($auth) {
-             $view->with('user', $auth->user());
+        view()->composer('*', function ($view) use ($auth) {
+            $view->with('user', $auth->user());
 
-//             $x_categories = Categorie::where('archived_at',null)->where('societe_id',1)->get();
-//             $view->with('x_categories', $x_categories);
-
-             $version = new Version();
-             if(!empty($version->active()))
-             {
-                 $view->with('version', $version->active());
-             }
-         });
+            $version = Version::orderBy('created_at', 'desc')->first();
+            if(!empty($version)) {
+                $view->with('version', $version);
+            }
+        });
     }
 }
