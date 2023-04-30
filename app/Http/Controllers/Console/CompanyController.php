@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Console;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\User;
 
 class CompanyController extends Controller
 {
@@ -16,7 +17,11 @@ class CompanyController extends Controller
     }
 
     public function create() {
-        return Inertia('Console/Companies/Add');
+        $users = User::role('my')->role('admin')->where('company_id', NULL)->get();
+        
+        return Inertia('Console/Companies/Add', [
+            'users' => $users,
+        ]);
     }
 
     public function store() {
@@ -29,6 +34,7 @@ class CompanyController extends Controller
             'siren' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'max:255'],
+            'owner_id' => ['required', 'integer', 'exists:users,id'],
         ]);
 
         Company::create([
@@ -40,6 +46,7 @@ class CompanyController extends Controller
             'siren' => $data['siren'],
             'phone' => $data['phone'],
             'email' => $data['email'],
+            'owner_id' => $data['owner_id'],
         ]);
 
         return redirect()->route('console.auth.companies.list')->with('toast', [
