@@ -1,10 +1,11 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import { PaperClipIcon, EyeIcon, XMarkIcon } from '@heroicons/vue/20/solid';
+import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/vue/24/outline";
 import { SwitchGroup, Switch } from "@headlessui/vue";
-import { computed, watch } from 'vue';
 import { useForm } from "@inertiajs/inertia-vue3";
 import { Link } from '@inertiajs/inertia-vue3';
+import { computed, watch } from 'vue';
 
 const props = defineProps({
     complain: {
@@ -72,7 +73,7 @@ const getMail = (complain) => {
                         class="bg-blue-100 h-8 text-blue-800 text-xs font-medium mr-2 px-3 py-2 rounded">Demande
                         effectuée</span>
 
-                    <Link v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 0" method="post"
+                    <Link v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 0" method="post" as="button"
                         :href="route('my.auth.complains.anonymity', props.complain.reference )"
                         class="flex justify-center h-7 md:w-44 rounded-md bg-safearea-blue p-0.5 mt-2 text-white shadow-sm hover:bg-indigo-700 gap-2">
                     <EyeIcon class="h-6 w-6"></EyeIcon>
@@ -116,7 +117,7 @@ const getMail = (complain) => {
                         </select>
                     </div>
                     <div class="sm:col-span-1">
-                        <dt class="text-sm font-medium text-gray-500">Prioritaire</dt>
+                        <dt class="text-sm font-medium text-gray-500">Urgent</dt>
                         <SwitchGroup as="div" class="flex items-start justify-start mt-2">
                             <Switch type="checkbox" v-model="form.is_urgent"
                                 :class="[form.is_urgent ? 'bg-safearea-red' : 'bg-safearea-blue', 'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out']">
@@ -125,6 +126,10 @@ const getMail = (complain) => {
                             </Switch>
                         </SwitchGroup>
                     </div>
+                    <Link :href="route('my.auth.complains.chat', props.complain.reference)" class="sm:col-span-1 inline-flex items-center gap-3">
+                        <ChatBubbleOvalLeftEllipsisIcon class="p-2 h-10 w-10 cursor-pointer rounded-full bg-safearea-blue text-white" />
+                        Accéder a la conversation
+                    </Link>
                     <div class="sm:col-span-2">
                         <dt class="text-sm font-medium text-gray-500">Message</dt>
                         <dd class="mt-1 text-sm text-gray-900">{{ props.complain.content }}</dd>
