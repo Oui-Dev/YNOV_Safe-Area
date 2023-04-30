@@ -42,8 +42,8 @@ function deleteUser(user) {
 		</div>
 
         <Table
-            :tableTitles="['Nom', 'Prénom', 'Email professionnel', 'Téléphone']"
-            :tableKeys="['firstname', 'lastname', 'professional_email', 'phone']"
+            :tableTitles="['Nom', 'Prénom', 'Email professionnel']"
+            :tableKeys="['firstname', 'lastname', 'professional_email']"
             :data="users"
             :actions="[
                 { type: 'Link', as: 'a', method: 'GET', routeName: 'my.auth.users.edit', param: 'reference', icon: PencilSquareIcon, iconText: 'Modifier', condition: () => isAdmin },

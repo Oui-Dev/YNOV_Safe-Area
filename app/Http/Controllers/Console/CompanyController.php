@@ -17,7 +17,7 @@ class CompanyController extends Controller
     }
 
     public function create() {
-        $users = User::role('my')->role('admin')->where('company_id', NULL)->get();
+        $users = User::role('admin')->where('company_id', NULL)->get();
         
         return Inertia('Console/Companies/Add', [
             'users' => $users,
