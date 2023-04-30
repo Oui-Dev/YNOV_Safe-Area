@@ -86,10 +86,12 @@
                     </svg>
                 </a>
             </div>
-            <p class="mt-8 text-base text-gray-900 md:order-1 md:mt-0">&copy; 2022 Safe Area. Tous droits réservés.</p>
-            <p class="mt-8 text-base text-gray-900 md:order-1 md:mt-0"><a  target="_blank" href="{{route('no.public.changelog')}}">
-                {{$version->name}} ({{$version->generation}}.{{$version->revision}}.{{$version->correction}})
-                {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y')}}</a>
+            <p class="mt-8 text-base text-gray-900 md:order-1 md:mt-0">&copy; 2023 Safe Area. Tous droits réservés.</p>
+            <p class="mt-8 text-base text-gray-900 md:order-1 md:mt-0">
+                <a target="_blank" href="{{route('no.public.changelog')}}">
+                    {{$version->name}} ({{$version->generation}}.{{$version->revision}}.{{$version->correction}})
+                    {{Carbon\Carbon::parse($version->updated_at)->format('d/m/Y')}}
+                </a>
             </p>
         </div>
     </div>

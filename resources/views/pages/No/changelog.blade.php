@@ -16,7 +16,7 @@
                                 <div>
                                     <span
                                         class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white {{ !$version->is_archived() ? 'bg-green-400' : 'bg-blue-400' }}">
-                                        @if (!$version->is_archived())
+                                        @if ($version->is_archived())
                                             <span class="material-icons text-white text-xl">done</span>
                                         @else
                                             <span class="material-icons text-white text-xl">radio_button_checked</span>
@@ -28,7 +28,6 @@
                                         <p class="font-medium text-gray-900">
                                             Version
                                             {{ $version["generation"] }}.{{ $version["revision"] }}.{{ $version["correction"] }} ({{ $version["name"] }})
-
                                         </p>
                                         <p class="text-sm text-gray-500">{{ $version["changelog"] }}</p>
                                     </div>
@@ -36,8 +35,7 @@
                                         <time
                                             datetime="event.datetime">{{ Carbon\Carbon::parse($version["created_at"])->format('d/m/Y') }}</time>
                                         @if ($version->is_updated())
-                                            <span
-                                                class="text-xs text-gray-400 whitespace-pre-line">{{ "\n(modifié)" }}</span>
+                                            <span class="text-xs text-gray-400 whitespace-pre-line">{{ "\n(modifié)" }}</span>
                                         @endif
                                     </div>
                                 </div>
