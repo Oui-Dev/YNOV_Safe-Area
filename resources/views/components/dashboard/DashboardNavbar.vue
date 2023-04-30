@@ -55,7 +55,15 @@ const consoleNavigation = [
     {name: "Dashboard", href: "console.auth.dashboard.index"},
     {
         type: "dropdown",
-        name: "Entreprises",
+        name: "Gestion utilisateurs",
+        items: [
+            { name: 'Liste', description: 'Liste des utilisateurs.', href: 'console.auth.users.list', icon: UsersIcon },
+            { name: 'Ajouts', description: 'Ajouter un utilisateur.', href: 'console.auth.users.create', icon: UserPlusIcon }
+        ]
+    },
+    {
+        type: "dropdown",
+        name: "Gestion entreprises",
         items: [
             { name: "Liste", description: "Liste des entreprises.", href: "console.auth.companies.list", icon: BuildingOffice2Icon },
             { name: "Ajout", description: "Ajouter une entreprise.", href: "console.auth.companies.create", icon: SquaresPlusIcon },

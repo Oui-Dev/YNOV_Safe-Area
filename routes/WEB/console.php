@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Console\DashboardController;
 use App\Http\Controllers\Console\CompanyController;
+use App\Http\Controllers\Console\UserController;
 use App\Http\Controllers\Console\ChangelogController;
 use App\Http\Controllers\My\HelpdeskController;
 use App\Http\Controllers\My\ProfilController;
@@ -64,6 +65,21 @@ Route::group([
         Route::delete('/delete/{company}', 'delete')->name('delete');
     });
 
+    // Users
+    Route::group([
+        'prefix' => 'users',
+        'as' => 'users.',
+        'controller' => UserController::class
+    ], function () {
+        Route::get('/', 'list')->name('list');
+        Route::get("/new", 'create')->name('create');
+        Route::post("/new", 'store')->name('create.post');
+        Route::get('/edit/{user:reference}', 'edit')->name('edit');
+        Route::put('/edit/{user:reference}', 'editPut')->name('edit.put');
+        Route::delete('/delete/{user:reference}', 'delete')->name('delete');
+    });
+
+    // Changelog
     Route::group([
         'prefix' => 'changelog',
         'as' => 'changelog.',

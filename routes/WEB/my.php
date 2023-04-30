@@ -39,6 +39,7 @@ Route::group([
         Route::post('/chat/{complain:reference}', 'sendChat')->name('chat.post');
         Route::get('/', 'list')->name('list');
     });
+
     // Profile
     Route::group([
         'prefix' => 'profile',
@@ -49,6 +50,7 @@ Route::group([
         Route::put('/', 'editProfil')->name('update');
         Route::put('/password', 'editPassword')->name('password');
     });
+    
     // Helpdesk
     Route::group([
         'prefix' => 'helpdesk',
