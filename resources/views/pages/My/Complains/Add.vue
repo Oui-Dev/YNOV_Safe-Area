@@ -52,7 +52,7 @@ function submit() {
                 </div>
                 <div :class="{ 'form-error-div': form.errors.content }">
                     <label for="url">Ajoutez un document :</label>
-                    <Dropzone @file="getFile"></Dropzone>
+                    <Dropzone @file="getFile" />
                     <div v-if="form.errors.content" class="form-error-field">{{ form.errors.content }}</div>
                 </div>
                 <div :class="{ 'form-error-div': form.errors.complain_type_id }">

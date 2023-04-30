@@ -22,7 +22,7 @@ class ContactController extends Controller
             'phone' => ['bail','required','max:20','min:10','regex:/^([0-9\s\-\+\(\)]*)$/'],
             'email' => ['required','email:rfc,dns,spoof','max:255'],
             'subject' => ['required','string','max:255'],
-            'message' => ['required','string'],
+            'message' => ['required','string','max:1000'],
         ]);
 
         try {

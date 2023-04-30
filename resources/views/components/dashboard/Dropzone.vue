@@ -7,7 +7,7 @@ const props = defineProps({
 	description: {
 		type: String,
 		required: false,
-		default: "PNG, JPG, GIF, jusqu'à 10Mo"
+		default: "JPEG, JPG, PNG, GIF, SVG jusqu'à 2Mo"
 	},
 	icon: {
 		type: Function,
