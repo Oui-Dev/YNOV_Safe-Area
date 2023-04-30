@@ -4,6 +4,14 @@ import CardForm from "../../../components/dashboard/CardForm.vue";
 import Input from "../../../components/dashboard/Input.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
+defineProps({
+    users: {
+        type: Array,
+        required: true,
+        default: [],
+    }
+});
+
 const form = useForm({
     name: "",
     address: "",
@@ -12,7 +20,8 @@ const form = useForm({
     siret: "",
     siren: "",
     phone: "",
-    email: ""
+    email: "",
+    owner_id: "",
 });
 
 function submit() {
@@ -46,6 +55,16 @@ function submit() {
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
 				    <Input v-model="form.phone" :error="form.errors?.phone" title="Téléphone" type="tel" />
 				    <Input v-model="form.email" :error="form.errors?.email" title="Email" type="email" />
+                </div>
+                <div :class="{ 'form-error-div': form.errors.owner_id }">
+                    <label for="owner_id">Administrateur :</label>
+                    <select id="owner_id" v-model="form.owner_id">
+                        <option v-if="users.length === 0" disabled>Aucun utilisateur disponible</option>
+                        <option v-for="user in users" :value="user.id">
+                            {{ user.firstname }} {{ user.lastname }} - {{ user.professional_email }}
+                        </option>
+                    </select>
+                    <div v-if="form.errors.owner_id" class="form-error-field">{{ form.errors.owner_id }}</div>
                 </div>
                 <button type="submit" class="btn primary sm mt-8">Enregistrer les informations</button>
             </form>

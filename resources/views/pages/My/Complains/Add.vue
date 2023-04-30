@@ -58,12 +58,11 @@ function submit() {
                 <div :class="{ 'form-error-div': form.errors.complain_type_id }">
                     <label for="complain_type_id">Type de plainte :</label>
                     <select id="complain_type_id" v-model="form.complain_type_id">
-                        <option v-for="complain_type in complainsTypes" :value="complain_type.id">{{
-                            complain_type.name
-                        }}</option>
+                        <option v-for="complain_type in complainsTypes" :value="complain_type.id">
+                            {{ complain_type.name }}
+                        </option>
                     </select>
-                    <div v-if="form.errors.complain_type_id" class="form-error-field">{{ form.errors.complain_type_id }}
-                    </div>
+                    <div v-if="form.errors.complain_type_id" class="form-error-field">{{ form.errors.complain_type_id }}</div>
                 </div>
                 <div :class="{ 'form-error-div': form.errors.is_anonymous }">
                     <div class="flex flex-column pt-4 space-x-4">
