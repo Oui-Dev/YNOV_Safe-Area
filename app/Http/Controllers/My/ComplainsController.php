@@ -116,8 +116,9 @@ class ComplainsController extends Controller
             $complain->user_id = null;
         }
 
-        $admins = User::role('admin')->get();
+        $admins = User::role('admin')->where('company_id', auth()->user()->company_id)->get();
         $complainTypes = ComplainType::all();
+
         return inertia('My/Complains/Edit', [
             'complain' => $complain,
             'admins' => $admins,
@@ -136,7 +137,7 @@ class ComplainsController extends Controller
 
         $data = request()->validate([
             'is_urgent' => ["boolean"],
-            'assigned_to' => ["nullable", "integer"],
+            'assigned_to' => ["nullable", "integer", 'exists:users,id'],
             'complain_type_id' => ["nullable", "integer"]
         ]);
 
