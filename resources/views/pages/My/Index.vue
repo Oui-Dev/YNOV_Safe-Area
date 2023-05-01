@@ -50,7 +50,7 @@ const getContent = (content, size = 150) => {
 };
 
 function getEmergency(complain) {
-	if(complain.is_urgent) return "<div class='h-4 w-4 rounded-full ml-2 bg-red-500' title='Urgent' />";
+	if(complain.is_urgent) return "<div class='h-4 w-4 rounded-full ml-4 bg-red-500' title='Urgent' />";
 }
 </script>
 
@@ -69,7 +69,8 @@ function getEmergency(complain) {
                     <h2>Dernière plainte</h2>
                     <div v-if="lastComplain" class="relative rounded-lg bg-white shadow mt-4">
                         <div v-if="isUrgent"
-                            class="absolute w-10 h-10 top-0 right-0 flex justify-center items-center rounded text-white p-2 bg-red-600">
+                            class="absolute w-10 h-10 top-0 right-0 flex justify-center items-center rounded text-white p-2 bg-red-600"
+                            title="Urgent">
                             <ExclamationTriangleIcon />
                         </div>
                         <div class="flex flex-col gap-4 p-5">
@@ -149,7 +150,7 @@ function getEmergency(complain) {
         <section class="mt-8">
             <h2>Activité récente</h2>
             <Table
-                :tableTitles="['Dépositaire', 'Titre', 'Urgence']"
+                :tableTitles="['Dépositaire', 'Titre', 'Urgent']"
                 :tableKeys="[{ function: getUser }, { function: getTitle }, { function: getEmergency }]"
                 :data="complains"
                 :pagination=false
