@@ -1,8 +1,8 @@
 <script setup>
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import { PaperClipIcon, EyeIcon, XMarkIcon } from '@heroicons/vue/20/solid';
-import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/vue/24/outline";
-import { SwitchGroup, Switch } from "@headlessui/vue";
+import { ChatBubbleOvalLeftEllipsisIcon, ChevronUpDownIcon, CheckIcon } from "@heroicons/vue/24/outline";
+import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions, Switch, SwitchGroup } from '@headlessui/vue';
 import { useForm } from "@inertiajs/inertia-vue3";
 import { Link } from '@inertiajs/inertia-vue3';
 import { computed, watch } from 'vue';
@@ -19,6 +19,10 @@ const props = defineProps({
     complainTypes: {
         type: Object,
         required: true
+    },
+    statuses: {
+        type: Object,
+        required: true,
     }
 });
 
@@ -26,8 +30,19 @@ const form = useForm({
     assigned_to: props.complain.assigned_to,
     is_urgent: props.complain.is_urgent === 1,
     complain_type_id: props.complain.complain_type_id,
+    status_id: props.complain.status_id,
 });
 const computedForm = computed(() => form.data());
+
+const getStatusName = computed(() => {
+    const status = props.statuses.find(s => s.id === form.status_id);
+    return status.name;
+});
+
+const getStatusColor = computed(() => {
+    const status = props.statuses.find(s => s.id === form.status_id);
+    return status.color;
+});
 
 const getFileNameFromPath = computed(() => {
     const path = props.complain.file_url;
@@ -92,8 +107,50 @@ const getMail = (complain) => {
                         <dd class="mt-1 text-sm text-gray-900">{{ getMail(props.complain) }}</dd>
                     </div>
                     <div class="sm:col-span-1">
-                        <dt class="text-sm font-medium text-gray-500">Status</dt>
-                        <dd class="mt-1 text-sm text-gray-900">{{ props.complain.status.name }}</dd>
+                        <Listbox as="div"
+                                 v-model="form.status_id">
+                            <ListboxLabel class="block text-sm font-medium text-gray-500">Status</ListboxLabel>
+                            <div class="relative mt-1">
+                                <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm sm:text-sm">
+                                    <div class="flex items-center justify-start gap-4">
+                                        <div class="h-4 w-4 rounded-full"
+                                             :style="{ backgroundColor: getStatusColor}"
+                                             :title="getStatusName" />
+                                        <span class="block truncate">{{ getStatusName }}</span>
+                                    </div>
+                                    <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                                        <ChevronUpDownIcon class="h-5 w-5"
+                                                           aria-hidden="true" />
+                                    </span>
+                                </ListboxButton>
+                                <transition leave-active-class="transition ease-in duration-100"
+                                            leave-from-class="opacity-100"
+                                            leave-to-class="opacity-0">
+                                    <ListboxOptions class="absolute z-10 mt-1 max-h-56 w-full sm:w-1/2 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm">
+                                        <ListboxOption as="template"
+                                                       v-for="status in props.statuses"
+                                                       :key="status.id"
+                                                       :value="status.id"
+                                                       v-slot="{ active, selected }">
+                                            <li :class="[active ? 'text-white bg-safearea-blue' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
+                                                <div class="flex items-center justify-start gap-4">
+                                                    <div class="h-4 w-4 rounded-full"
+                                                        :style="{ backgroundColor: status.color}"
+                                                        :title="status.name" />
+                                                    <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
+                                                        class="capitalize">{{ status.name }}</span>
+                                                </div>
+                                                <span v-if="selected"
+                                                      :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
+                                                    <CheckIcon class="h-5 w-5"
+                                                               aria-hidden="true" />
+                                                </span>
+                                            </li>
+                                        </ListboxOption>
+                                    </ListboxOptions>
+                                </transition>
+                            </div>
+                        </Listbox>
                     </div>
                     <div class="sm:col-span-1">
                         <dt class="text-sm font-medium text-gray-500">Sujet</dt>
