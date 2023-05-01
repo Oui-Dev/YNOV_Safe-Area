@@ -73,8 +73,7 @@ const getMail = (complain) => {
 <template>
     <DashboardLayout>
         <div class="overflow-hidden bg-white shadow sm:rounded-lg relative">
-            <Link class="absolute right-1 top-1"
-                  :href="route('my.auth.complains.list')">
+            <Link :href="route('my.auth.complains.list')" class="absolute right-1 top-1">
                 <XMarkIcon class="h-5 w-5 cursor-pointer hover:text-safearea-red" />
             </Link>
             <div class="flex gap-2 flex-col md:flex-row md:justify-between px-4 py-5 sm:px-6">
@@ -85,14 +84,16 @@ const getMail = (complain) => {
 
                 <div class="w-auto min-w-fit flex justify-start md:justify-center">
                     <span v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 1"
-                        class="bg-blue-100 h-8 text-blue-800 text-xs font-medium mr-2 px-3 py-2 rounded">Demande
-                        effectuée</span>
+                        class="bg-blue-100 h-8 text-blue-800 text-xs font-medium mr-2 px-3 py-2 rounded">
+                        Demande effectuée
+                    </span>
 
                     <Link v-if="props.complain.is_anonymous == 1 && props.complain.identity_request == 0" method="post" as="button"
                         :href="route('my.auth.complains.anonymity', props.complain.reference )"
-                        class="flex justify-center h-7 md:w-44 rounded-md bg-safearea-blue p-0.5 mt-2 text-white shadow-sm hover:bg-indigo-700 gap-2">
-                    <EyeIcon class="h-6 w-6"></EyeIcon>
-                    <span>Lever l'anonymat</span>
+                        class="flex justify-center h-7 md:w-44 rounded-md bg-safearea-blue p-0.5 mt-2 text-white shadow-sm hover:bg-indigo-700 gap-2"
+                    >
+                        <EyeIcon class="h-6 w-6"></EyeIcon>
+                        <span>Lever l'anonymat</span>
                     </Link>
                 </div>
             </div>
@@ -107,8 +108,7 @@ const getMail = (complain) => {
                         <dd class="mt-1 text-sm text-gray-900">{{ getMail(props.complain) }}</dd>
                     </div>
                     <div class="sm:col-span-1">
-                        <Listbox as="div"
-                                 v-model="form.status_id">
+                        <Listbox v-model="form.status_id" as="div">
                             <ListboxLabel class="block text-sm font-medium text-gray-500">Status</ListboxLabel>
                             <div class="relative mt-1">
                                 <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm sm:text-sm">
@@ -119,31 +119,30 @@ const getMail = (complain) => {
                                         <span class="block truncate">{{ getStatusName }}</span>
                                     </div>
                                     <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                        <ChevronUpDownIcon class="h-5 w-5"
-                                                           aria-hidden="true" />
+                                        <ChevronUpDownIcon class="h-5 w-5" aria-hidden="true" />
                                     </span>
                                 </ListboxButton>
                                 <transition leave-active-class="transition ease-in duration-100"
-                                            leave-from-class="opacity-100"
-                                            leave-to-class="opacity-0">
+                                    leave-from-class="opacity-100"
+                                    leave-to-class="opacity-0"
+                                >
                                     <ListboxOptions class="absolute z-10 mt-1 max-h-56 w-full sm:w-1/2 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm">
                                         <ListboxOption as="template"
-                                                       v-for="status in props.statuses"
-                                                       :key="status.id"
-                                                       :value="status.id"
-                                                       v-slot="{ active, selected }">
+                                            v-for="status in props.statuses"
+                                            :key="status.id"
+                                            :value="status.id"
+                                            v-slot="{ active, selected }"
+                                        >
                                             <li :class="[active ? 'text-white bg-safearea-blue' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
                                                 <div class="flex items-center justify-start gap-4">
-                                                    <div class="h-4 w-4 rounded-full"
-                                                        :style="{ backgroundColor: status.color}"
-                                                        :title="status.name" />
-                                                    <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
-                                                        class="capitalize">{{ status.name }}</span>
+                                                    <div class="h-4 w-4 rounded-full" :style="{ backgroundColor: status.color}" :title="status.name" />
+                                                    <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']" class="capitalize">
+                                                        {{ status.name }}
+                                                    </span>
                                                 </div>
                                                 <span v-if="selected"
                                                       :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
-                                                    <CheckIcon class="h-5 w-5"
-                                                               aria-hidden="true" />
+                                                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
                                                 </span>
                                             </li>
                                         </ListboxOption>
@@ -169,8 +168,9 @@ const getMail = (complain) => {
                         <select v-model="form.assigned_to"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-1/2 p-2.5">
                             <option :value="null">Non assigné</option>
-                            <option v-for="(admin, index) in props.admins" :key="index" :value="admin.id"> {{
-                                admin.firstname + ' ' + admin.lastname }} </option>
+                            <option v-for="(admin, index) in props.admins" :key="index" :value="admin.id">
+                                {{ admin.firstname + ' ' + admin.lastname }}
+                            </option>
                         </select>
                     </div>
                     <div class="sm:col-span-1">
