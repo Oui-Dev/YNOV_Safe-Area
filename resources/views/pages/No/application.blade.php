@@ -12,14 +12,16 @@
                 </h1>
                 <p class="mt-3 text-base text-gray-500 lg:text-lg">Utile, intuitive, et directe, 1 application pour tout gérer.</p>
                 <div class="mt-8 lg:mt-12 sm:mx-auto sm:max-w-lg text-center lg:mx-0 lg:text-left">
-                    <a href="{{route('no.public.mobileApp.download.android')}}"
+                    {{-- <a href="{{route('no.public.mobileApp.download.android')}}"
                         class="text-center font-bold text-xl block w-full bg-gradient-to-l from-safearea-red to-safearea-blue text-white p-3 rounded-xl">
                         Télécharger
-                    </a>
-                    <!-- Add link to changelog or something else ? -->
+                    </a> --}}
+                    <div class="text-center font-bold text-xl w-full bg-gray-500 text-white p-3 rounded-xl">
+                        Bientôt disponible
+                    </div>
                     <p class="mt-3 lg:mt-5 text-sm text-gray-500">
-                        We care about the protection of your data. Read our
-                        <a href="#" class="font-medium text-gray-900 underline">Privacy Policy</a>.
+                        Nous nous soucions de la protection de vos données. Lisez notre
+                        <a href="{{route('no.public.termofservice')}}" class="font-medium text-gray-900 underline hover:text-safearea-red">politique de confidentialité</a>.
                     </p>
                 </div>
             </div>
