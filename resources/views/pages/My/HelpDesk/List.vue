@@ -46,7 +46,7 @@ function getType(ticket) {
 
 function getStatus(ticket) {
 	const status = props.statuses.find((status) => status.id === ticket.status_id);
-	return ("<div class='h-4 w-4 rounded-full mx-auto "+status.color+"' title='"+status.name+"'/>");
+	return ("<div class='h-4 w-4 rounded-full mx-auto' style='background: " + status.color + "' title='" + status.name + "'/>");
 }
 
 function deleteHelpdesk(ticket) {

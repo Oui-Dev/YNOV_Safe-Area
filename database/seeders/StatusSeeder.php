@@ -17,37 +17,37 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => 'Nouveau',
             'slug' => 'nouveau',
-            'color' => 'bg-green-600'
+            'color' => '#16A34A'
         ]);
 
         Status::create([
             'name' => 'Attribué',
             'slug' => 'attribue',
-            'color' => 'bg-blue-600'
+            'color' => '#2563EB'
         ]);
 
         Status::create([
             'name' => 'En cours',
             'slug' => 'en-cours',
-            'color' => 'bg-yellow-600'
+            'color' => '#CA8A04'
         ]);
 
         Status::create([
             'name' => 'Terminé',
             'slug' => 'termine',
-            'color' => 'bg-slate-600'
+            'color' => '#334155'
         ]);
 
         Status::create([
             'name' => 'Annulé',
             'slug' => 'annule',
-            'color' => 'bg-gray-600'
+            'color' => '#6B7280'
         ]);
 
         Status::create([
             'name' => 'Clos',
             'slug' => 'clos',
-            'color' => 'bg-gray-600'
+            'color' => '#6B7280'
         ]);
     }
 }

@@ -103,7 +103,7 @@ const getCreatedDate = (ticket) => {
                                 <ListboxButton class="relative w-full sm:w-1/2 cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm sm:text-sm">
                                     <div class="flex items-center justify-start gap-4">
                                         <div class="h-4 w-4 rounded-full"
-                                             :class="getStatusColor"
+                                             :style="{ backgroundColor: getStatusColor}"
                                              :title="getStatusName" />
                                         <span class="block truncate">{{ getStatusName }}</span>
                                     </div>
@@ -123,10 +123,11 @@ const getCreatedDate = (ticket) => {
                                                        v-slot="{ active, selected }">
                                             <li :class="[active ? 'text-white bg-safearea-blue' : 'text-gray-900', 'relative cursor-default select-none py-2 pl-3 pr-9']">
                                                 <div class="flex items-center justify-start gap-4">
-                                                    <div :class="['h-4 w-4 rounded-full', status.color]"
-                                                         :title="status.name" />
+                                                    <div class="h-4 w-4 rounded-full"
+                                                        :style="{ backgroundColor: status.color}"
+                                                        :title="status.name" />
                                                     <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
-                                                          class="capitalize">{{ status.name }}</span>
+                                                        class="capitalize">{{ status.name }}</span>
                                                 </div>
                                                 <span v-if="selected"
                                                       :class="[active ? 'text-white' : 'text-safebg-safearea-blue', 'absolute inset-y-0 right-0 flex items-center pr-4']">
