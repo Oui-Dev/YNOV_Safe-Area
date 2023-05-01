@@ -81,6 +81,16 @@ class ComplainsController extends Controller
             $filePath = Storage::disk('local')->putFileAs('complains', $file, $fileName);
         }
 
+        $emergency_keywords = ['meurtre', 'assassinat', 'agression', 'braquage', 'vol', 'viol', 'suicide', 'dépression', 'désespoir', 'mort', 'automutilation'];
+        $isEmergency = false;
+      
+        foreach($emergency_keywords as $keyword) {
+            if(str_contains(strtolower($data['title']), $keyword) || str_contains(strtolower($data['content']), $keyword)) {
+                $isEmergency = true;
+                break;
+            }
+        }
+
         Complain::create([
             'user_id' => auth()->user()->id,
             'user_reference' => auth()->user()->reference,
@@ -88,6 +98,7 @@ class ComplainsController extends Controller
             'title' => $data['title'],
             'content' => $data['content'],
             'status_id' => 1,
+            'is_urgent' => $isEmergency,
             'file_url' => $filePath ?? null,
             'is_anonymous' => $data['is_anonymous'],
             'complain_type_id' => $data['complain_type_id'],
