@@ -9,6 +9,7 @@ use App\Mail\IdentityRequestMail;
 use App\Models\ComplainType;
 use App\Models\Complain;
 use App\Models\ComplainChat;
+use App\Models\Status;
 use App\Models\Token;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -80,6 +81,16 @@ class ComplainsController extends Controller
             $filePath = Storage::disk('local')->putFileAs('complains', $file, $fileName);
         }
 
+        $emergency_keywords = ['meurtre', 'assassinat', 'agression', 'braquage', 'vol', 'viol', 'suicide', 'dépression', 'désespoir', 'mort', 'automutilation'];
+        $isEmergency = false;
+      
+        foreach($emergency_keywords as $keyword) {
+            if(str_contains(strtolower($data['title']), $keyword) || str_contains(strtolower($data['content']), $keyword)) {
+                $isEmergency = true;
+                break;
+            }
+        }
+
         Complain::create([
             'user_id' => auth()->user()->id,
             'user_reference' => auth()->user()->reference,
@@ -87,6 +98,7 @@ class ComplainsController extends Controller
             'title' => $data['title'],
             'content' => $data['content'],
             'status_id' => 1,
+            'is_urgent' => $isEmergency,
             'file_url' => $filePath ?? null,
             'is_anonymous' => $data['is_anonymous'],
             'complain_type_id' => $data['complain_type_id'],
@@ -122,7 +134,8 @@ class ComplainsController extends Controller
         return inertia('My/Complains/Edit', [
             'complain' => $complain,
             'admins' => $admins,
-            'complainTypes' => $complainTypes
+            'complainTypes' => $complainTypes,
+            'statuses' => Status::all(),
         ]);
     }
 
@@ -138,13 +151,15 @@ class ComplainsController extends Controller
         $data = request()->validate([
             'is_urgent' => ["boolean"],
             'assigned_to' => ["nullable", "integer", 'exists:users,id'],
-            'complain_type_id' => ["nullable", "integer"]
+            'complain_type_id' => ["nullable", "integer"],
+            'status_id' => ["required"],
         ]);
 
         $complain->update([
             'is_urgent' => $data['is_urgent'],
             'assigned_to' => $data['assigned_to'],
-            'complain_type_id' => $data['complain_type_id']
+            'complain_type_id' => $data['complain_type_id'],
+            'status_id' => $data['status_id'],
         ]);
 
         return redirect()->route('my.auth.complains.edit', $complain->reference)->with('toast', [
