@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import DashboardLayout from "../../../layouts/dashboard.vue";
 import CardForm from "../../../components/dashboard/CardForm.vue";
@@ -24,11 +25,15 @@ const props = defineProps({
     }
 });
 
+const isLoading = ref(false);
+
 function submit() {
     form.post(route("my.auth.users.create.post"), {
         onStart: () => {
             form.clearErrors();
+            isLoading.value = true;
         },
+        onFinish: () => isLoading.value = false,
     });
 }
 </script>
@@ -99,7 +104,7 @@ function submit() {
                         <div v-if="form.errors.sex" class="form-error-field">{{ form.errors.sex }}</div>
                     </div>
                 </div>
-                <button type="submit" class="btn primary sm mt-8">Enregistrer les informations</button>
+                <button type="submit" class="btn primary sm mt-8" :disabled="isLoading">Enregistrer les informations</button>
             </form>
 		</CardForm>
     </DashboardLayout>

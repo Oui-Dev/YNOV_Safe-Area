@@ -37,7 +37,7 @@ function deleteUser(complain) {
 const getAssignedUser = (complain) => {
     return complain.assigned_user
         ? complain.assigned_user.firstname + " " + complain.assigned_user.lastname
-        : 'Not assigned';
+        : 'Non assignée';
 }
 
 function getEmergency(complain) {
@@ -54,7 +54,7 @@ function getEmergency(complain) {
 }
 
 function getStatus(complain) {
-	return "<div class='h-4 w-4 rounded-full mx-auto " + complain.status.color + " ' title=' " + complain.status.name + "' />";
+	return "<div class='h-4 w-4 rounded-full mx-auto' style='background: " + complain.status.color + "' title=' " + complain.status.name + "' />";
 }
 </script>
 
