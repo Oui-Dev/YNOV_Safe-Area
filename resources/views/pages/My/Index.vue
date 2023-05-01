@@ -49,17 +49,8 @@ const getContent = (content, size = 150) => {
     return content.substring(0, size) + (content.length > size ? "..." : "");
 };
 
-const getEmergency = (complain) => {
-    switch (complain.urgency) {
-        case '0':
-            return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' />";
-        case '1':
-            return "<div class='h-4 w-4 rounded-full mx-auto bg-yellow-600' />";
-        case '2':
-            return "<div class='h-4 w-4 rounded-full mx-auto bg-red-600' />";
-        default:
-            return "<div class='h-4 w-4 rounded-full mx-auto bg-green-600' />";
-    }
+function getEmergency(complain) {
+	if(complain.is_urgent) return "<div class='h-4 w-4 rounded-full ml-2 bg-red-500' title='Urgent' />";
 }
 </script>
 
