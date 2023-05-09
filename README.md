@@ -2,7 +2,7 @@
 [![Deploy](https://github.com/Oui-Dev/safe-area-web/actions/workflows/production-deploy.yml/badge.svg)](https://github.com/Oui-Dev/safe-area-web/actions/workflows/production-deploy.yml)
 
 # Projet SafeArea
-![SafeArea logo](./resources/images/logo.webp)
+<img alt="SafeArea logo" src="./resources/images/logo.webp"  width="60%" height="30%">
 
 
 Aujourd'hui, le nombre quantifié de plaintes, rapports et dénonciations au sujet des comportements entre collègues, ou sur le plan hiérarchique est en constante hausse. Sur l'ensemble des situations dégradantes et/ou malsaine au travail, seul une infime partie est reportée, par peur de représailles ou de non-traitement du problème.
