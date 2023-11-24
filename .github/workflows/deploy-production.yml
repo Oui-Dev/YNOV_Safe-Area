@@ -4,9 +4,11 @@ on:
     workflows: ["Tests & Build"]
     types:
       - completed
+    branches:
+      - 'prod'
 jobs:
   deploy:
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'prod'
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
