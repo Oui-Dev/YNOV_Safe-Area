@@ -1,10 +1,14 @@
 name: Deploy (production)
 on:
-  push:
-    branches: [ prod ]
+  workflow_run:
+    workflows: ["Tests & Build"]
+    types:
+      - completed
+    branches:
+      - 'prod'
 jobs:
   deploy:
-    needs: build
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
